@@ -56,7 +56,7 @@ function setupContextMenu() {
                                     {
                                         effectId: metadata?.[key],
                                         effectInfo: {
-                                            copies: 3,
+                                            copies: 1,
                                             source: sourceItem.position,
                                             destination: destinationItem.position
                                         },
@@ -91,7 +91,6 @@ function App() {
         setEffectsWorker(worker);
         // - setup the context menu
         const unmountContextMenu = setupContextMenu();
-
         // When the app unmounts, reverse both of those operations
         return () => {
             unmountContextMenu();
@@ -117,7 +116,10 @@ function App() {
                 <label htmlFor="spell_name">Spell: </label>
                 <input onChange={e => setSpell(e.target.value)} value={spell}></input>
             </div>
-            <MessageListener worker={effectsWorker} />
+            {
+                effectsWorker &&
+                <MessageListener worker={effectsWorker} />
+            }
         </>
     )
 }

@@ -7,7 +7,12 @@ interface MessageData {
 
 const workerFunction = function () {
     function log_info(...data: any[]) {
-        console.log("%c[Magic Missile 🪄]", "font-weight: bold; color: purple", ...data);
+        console.log(
+            "%c[Magic Missile 🪄] %c(WORKER)",
+            "font-weight: bold; color: purple",
+            "font-weight: bold",
+            ...data
+        );
     }
     
     self.onmessage = (event: MessageEvent) => {

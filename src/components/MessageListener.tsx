@@ -1,29 +1,62 @@
 import { EffectInstruction, MessageType } from "../types/messageListener";
-import { aoe, getEffect, projectile } from "../effects";
-import { log_error, log_info, log_warn } from "../logging";
+import { ProjectileInfo, ProjectileMessage } from "../types/projectile";
+import { aoe, cone, getEffect, precomputeProjectileAssets, projectile } from "../effects";
+import { log_error, log_warn } from "../logging";
 import { useCallback, useEffect, useState } from "react";
 
 import { AOEEffectMessage } from "../types/aoe";
 import { APP_KEY } from "../config";
 import { ConeMessage } from "../types/cone";
 import OBR from "@owlbear-rodeo/sdk";
-import { ProjectileMessage } from "../types/projectile";
-import { cone } from "../effects/cone";
+import { prefetchAssets } from "../effects/effects";
 import { useOBR } from "../react-obr/providers";
 
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 
-export function MessageListener({ worker }: { worker?: Worker }) {
+function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<string>) {
+    if (typeof instruction.effectId === "string") {
+        const effect = getEffect(instruction.effectId);
+        if (effect != undefined) {
+            if (effect.type === "TARGET") {
+                try {
+                    const projectileMessage = instruction.effectInfo as ProjectileMessage;
+                    const projectileInfo: ProjectileInfo = {
+                        name: instruction.effectId,
+                        copies: projectileMessage.copies,
+                        source: projectileMessage.source,
+                        destination: projectileMessage.destination,
+                        dpi: 1
+                    };
+                    for (const asset of precomputeProjectileAssets(projectileInfo)) {
+                        assets.add(asset);
+                    }
+                }
+                catch (e: unknown) {
+                    log_warn(`Error precomputing assets for effect ${instruction.effectId} (${(e as Error).message})`);
+                }
+            }
+        }
+    }
+
+    if (Array.isArray(instruction.instructions)) {
+        for (const newInstruction of instruction.instructions) {
+            _collectInstructionAssets(newInstruction, assets);
+        }
+    }
+    return assets;
+}
+
+function collectInstructionAssets(instruction: EffectInstruction) {
+    const assets = new Set<string>();
+    return Array.from(_collectInstructionAssets(instruction, assets).values());
+}
+
+export function MessageListener({ worker }: { worker: Worker }) {
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
 
     const processInstruction = useCallback((instruction: EffectInstruction, usedEffects: Map<string, number>) => {
-        if (worker == undefined) {
-            log_warn("Tried to play an effect without a service worker");
-            return;
-        }
-
-        const doMoreWork = (instructions: EffectInstruction[]) => {
+        const doMoreWork = (instructions?: EffectInstruction[]) => {
             if (instructions == undefined) {
                 return;
             }
@@ -178,14 +211,18 @@ export function MessageListener({ worker }: { worker?: Worker }) {
             if (!Array.isArray(messageData.instructions)) {
                 log_error("Malformatted message: message.instructions is not an array");
             }
-            const usedEffects = new Map<string, number>();
-            for (const instruction of messageData.instructions) {
-                log_info("Processing instruction...");
-                processInstruction(instruction, usedEffects);
-                if (instruction.effectId) {
-                    usedEffects.set(instruction.effectId, ((usedEffects.get(instruction.effectId)) ?? 0) + 1);
+            const assets = collectInstructionAssets({ instructions: messageData.instructions });
+
+            prefetchAssets(assets).then(() => {           
+                const usedEffects = new Map<string, number>();
+                for (const instruction of messageData.instructions) {
+                    processInstruction(instruction, usedEffects);
+                    if (instruction.effectId) {
+                        usedEffects.set(instruction.effectId, ((usedEffects.get(instruction.effectId)) ?? 0) + 1);
+                    }
                 }
-            }
+            });
+
         });
     }, [obr.ready, obr.sceneReady, processInstruction]);
 
