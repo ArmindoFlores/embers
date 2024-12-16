@@ -1,6 +1,5 @@
 import { EffectInstruction, MessageType } from "../types/messageListener";
-import { ProjectileInfo, ProjectileMessage } from "../types/projectile";
-import { aoe, cone, getEffect, precomputeProjectileAssets, projectile } from "../effects";
+import { aoe, cone, getEffect, projectile } from "../effects";
 import { log_error, log_info, log_warn } from "../logging";
 import { useCallback, useEffect, useState } from "react";
 
@@ -8,48 +7,49 @@ import { AOEEffectMessage } from "../types/aoe";
 import { APP_KEY } from "../config";
 import { ConeMessage } from "../types/cone";
 import OBR from "@owlbear-rodeo/sdk";
+import { ProjectileMessage } from "../types/projectile";
 import { useOBR } from "../react-obr/providers";
 
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 
-function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<string>) {
-    if (typeof instruction.effectId === "string") {
-        const effect = getEffect(instruction.effectId);
-        if (effect != undefined) {
-            if (effect.type === "TARGET") {
-                try {
-                    const projectileMessage = instruction.effectInfo as ProjectileMessage;
-                    const projectileInfo: ProjectileInfo = {
-                        name: instruction.effectId,
-                        copies: projectileMessage.copies,
-                        source: projectileMessage.source,
-                        destination: projectileMessage.destination,
-                        dpi: 1
-                    };
-                    for (const asset of precomputeProjectileAssets(projectileInfo)) {
-                        assets.add(asset);
-                    }
-                }
-                catch (e: unknown) {
-                    log_warn(`Error precomputing assets for effect ${instruction.effectId} (${(e as Error).message})`);
-                }
-            }
-        }
-    }
+// function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<string>) {
+//     if (typeof instruction.effectId === "string") {
+//         const effect = getEffect(instruction.effectId);
+//         if (effect != undefined) {
+//             if (effect.type === "TARGET") {
+//                 try {
+//                     const projectileMessage = instruction.effectInfo as ProjectileMessage;
+//                     const projectileInfo: ProjectileInfo = {
+//                         name: instruction.effectId,
+//                         copies: projectileMessage.copies,
+//                         source: projectileMessage.source,
+//                         destination: projectileMessage.destination,
+//                         dpi: 1
+//                     };
+//                     for (const asset of precomputeProjectileAssets(projectileInfo)) {
+//                         assets.add(asset);
+//                     }
+//                 }
+//                 catch (e: unknown) {
+//                     log_warn(`Error precomputing assets for effect ${instruction.effectId} (${(e as Error).message})`);
+//                 }
+//             }
+//         }
+//     }
 
-    if (Array.isArray(instruction.instructions)) {
-        for (const newInstruction of instruction.instructions) {
-            _collectInstructionAssets(newInstruction, assets);
-        }
-    }
-    return assets;
-}
+//     if (Array.isArray(instruction.instructions)) {
+//         for (const newInstruction of instruction.instructions) {
+//             _collectInstructionAssets(newInstruction, assets);
+//         }
+//     }
+//     return assets;
+// }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function collectInstructionAssets(instruction: EffectInstruction) {
-    const assets = new Set<string>();
-    return Array.from(_collectInstructionAssets(instruction, assets).values());
-}
+// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// function collectInstructionAssets(instruction: EffectInstruction) {
+//     const assets = new Set<string>();
+//     return Array.from(_collectInstructionAssets(instruction, assets).values());
+// }
 
 export function MessageListener({ worker, effectRegister }: { worker: Worker, effectRegister: Map<string, number> }) {
     const obr = useOBR();
