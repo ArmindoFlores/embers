@@ -7,7 +7,7 @@ import { createRoot } from "react-dom/client"
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-        <BaseOBRProvider proxy={false}>
+        <BaseOBRProvider>
             <App />
         </BaseOBRProvider>
     </StrictMode>,

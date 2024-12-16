@@ -1,8 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 
-import { APP_KEY } from "../../config";
-import BaseOBR from "@owlbear-rodeo/sdk";
+import OBR from "@owlbear-rodeo/sdk";
 import { arrayEqual } from "../../hooks";
 import { useOBR } from "./BaseOBRProvider";
 
@@ -29,28 +28,19 @@ const OBRMessageContext = createContext<OBRMessageContextType>({
 });
 export const useOBRMessaging = () => useContext(OBRMessageContext);
 
-export function OBRMessageProvider({ children, appKey, proxy }: { children: React.ReactNode, appKey: string, proxy: boolean }) {
+export function OBRMessageProvider({ children, appKey }: { children: React.ReactNode, appKey: string, proxy: boolean }) {
     const { player, party, ready } = useOBR();
 
     const [ handlers, setHandlers ] = useState<((msg: Message) => void)[]>([]);
     const [ partyIDs, setPartyIDs ] = useState<{ id: string, connectionId: string }[]>([]);
-    
-    const fOBR = useCallback(() => {
-        if (proxy) {
-            return window.opener[APP_KEY]?.OBR as (typeof BaseOBR) | undefined;
-        }
-        return window[APP_KEY]?.OBR;
-    }, [proxy]);
-    const OBR = fOBR();
 
     const sendMessage = useCallback((message: unknown, to?: string[], destination?: DestinationOptions) => {
-        if (OBR == undefined) return;
         OBR.broadcast.sendMessage(appKey, {
             sender: player?.id,
             recipients: to,
             message: message
         }, { destination: destination ?? "REMOTE" });
-    }, [appKey, player?.id, OBR]);
+    }, [appKey, player?.id]);
 
     const registerMessageHandler = useCallback((handler: (msg: Message) => void) => {
         setHandlers(prev => [...prev, handler]);
@@ -69,7 +59,6 @@ export function OBRMessageProvider({ children, appKey, proxy }: { children: Reac
     }, [party, partyIDs]);
 
     useEffect(() => {
-        if (OBR == undefined) return;
         if (!ready) return;
         
         return OBR.broadcast.onMessage(appKey, e => {
@@ -82,7 +71,7 @@ export function OBRMessageProvider({ children, appKey, proxy }: { children: Reac
                 }));
             }
         });
-    }, [player?.id, handlers, appKey, partyIDs, ready, OBR]);
+    }, [player?.id, handlers, appKey, partyIDs, ready]);
 
     return <OBRMessageContext.Provider value={{sendMessage, registerMessageHandler}}>
         { children }
