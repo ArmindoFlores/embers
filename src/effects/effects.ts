@@ -96,9 +96,7 @@ export function prefetchAssets(assets: string[]) {
             asset,
             { cache: "force-cache" }
         );
-        if (!response.ok) {
-            throw new Error(`Failed to fetch resource: ${response.statusText}`);
-        }
+        await response.blob(); // Make sure all data is received
     });
     return Promise.all(fetches);
 }
