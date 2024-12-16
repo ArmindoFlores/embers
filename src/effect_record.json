@@ -1,0 +1,340 @@
+{
+    "arms_of_hadar": {
+        "basename": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["500x500"],
+                "duration": 5000,
+                "size": [500, 500]
+            }
+        }
+    },
+    "bardic_inspiration": {
+        "basename": "1st_Level/Bardic_Inspiration/BardicInspiration_01_Regular_GreenOrange",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 2470,
+                "size": [400, 400]
+            }
+        }
+    },
+    "bless": {
+        "basename": "1st_Level/Bless/Bless_01_Regular_Yellow_Intro",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["200x200"],
+                "duration": 5000,
+                "size": [200, 200]
+            }
+        }
+    },
+    "burning_hands": {
+        "basename": "1st_Level/Burning_Hands/BurningHands_01_Regular_Orange",
+        "type": "CONE",
+        "variants": {
+            "0": {
+                "name": ["600x600"],
+                "duration": 5570,
+                "size": [600, 600]
+            }
+        }
+    },
+    "cure_wounds": {
+        "basename": "1st_Level/Cure_Wounds/CureWounds_01_Blue",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["200x200"],
+                "duration": 2470,
+                "size": [200, 200]
+            }
+        }
+    },
+    "detect_magic": {
+        "basename": "1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["1200x1200"],
+                "duration": 4003,
+                "size": [1200, 1200]
+            }
+        }
+    },
+    "entangle": {
+        "basename": "1st_Level/Entangle/Entangle02_02_Regular_Green",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["500x500"],
+                "duration": 8330,
+                "size": [500, 500]
+            }
+        }
+    },
+    "fog_cloud": {
+        "basename": "1st_Level/Fog_Cloud/FogCloud_01_White",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["800x800"],
+                "duration": 5040,
+                "size": [800, 800]
+            }
+        }
+    },
+    "grease": {
+        "basename": "1st_Level/Grease/Grease_Dark_Brown",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["600x600"],
+                "duration": 10030,
+                "size": [600, 600]
+            }
+        }
+    },
+    "guiding_bolt": {
+        "basename": "1st_Level/Guiding_Bolt/GuidingBolt_01_Regular_BlueYellow",
+        "type": "TARGET",
+        "variants": {
+            "5": {
+                "name": ["05ft_600x400"],
+                "duration": 5670,
+                "size": [600, 400]
+            },
+            "15": {
+                "name": ["15ft_1000x400"],
+                "duration": 5730,
+                "size": [1000, 400]
+            },
+            "30": {
+                "name": ["30ft_1600x400"],
+                "duration": 5900,
+                "size": [1600, 400]
+            },
+            "60": {
+                "name": ["60ft_2800x400"],
+                "duration": 6030,
+                "size": [2800, 400]
+            },
+            "90": {
+                "name": ["90ft_4000x400"],
+                "duration": 6230,
+                "size": [4000, 400]
+            }
+        }
+    },
+    "hunters_mark": {
+        "basename": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Pulse",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["200x200"],
+                "duration": 5000,
+                "size": [200, 200]
+            }
+        }
+    },
+    "magic_missile": {
+        "basename": "1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple",
+        "type": "TARGET",
+        "variants": {
+            "5": {
+                "name": ["05ft_01_600x400", "05ft_02_600x400", "05ft_03_600x400", "05ft_04_600x400"],
+                "duration": 1700,
+                "size": [600, 400]
+            },
+            "15": {
+                "name": ["15ft_01_1000x400", "15ft_02_1000x400", "15ft_03_1000x400", "15ft_04_1000x400"],
+                "duration": 1870,
+                "size": [1000, 400]
+            },
+            "30": {
+                "name": ["30ft_01_1600x400", "30ft_02_1600x400", "30ft_03_1600x400", "30ft_04_1600x400"],
+                "duration": 1870,
+                "size": [1600, 400]
+            },
+            "60": {
+                "name": ["60ft_01_2800x400", "60ft_02_2800x400", "60ft_03_2800x400", "60ft_04_2800x400"],
+                "duration": 2030,
+                "size": [2800, 400]
+            },
+            "90": {
+                "name": ["90ft_01_4000x400", "90ft_02_4000x400", "90ft_03_4000x400", "90ft_04_4000x400"],
+                "duration": 2200,
+                "size": [4000, 400]
+            }
+        }
+    },
+    "shield": {
+        "basename": "1st_Level/Shield/Shield_01_Regular_Blue_Complete",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 5930,
+                "size": [400, 400]
+            }
+        }
+    },
+    "sleep": {
+        "basename": "1st_Level/Sleep/SleepSymbol01_01_Regular_Pink",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 2540,
+                "size": [400, 400]
+            }
+        }
+    },
+    "sneak_attack": {
+        "basename": "1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["300x300"],
+                "duration": 3040,
+                "size": [300, 300]
+            }
+        }
+    },
+    "thunderwave": {
+        "basename": "1st_Level/Thunderwave/Thunderwave_01_Bright_Blue_Center",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["600x600"],
+                "duration": 1030,
+                "size": [600, 600]
+            }
+        }
+    },
+    "witch_bolt": {
+        "basename": "1st_Level/Witch_Bolt/WitchBolt_01_Regular_Blue",
+        "type": "TARGET",
+        "variants": {
+            "5": {
+                "name": ["05ft_600x400"],
+                "duration": 4000,
+                "size": [600, 400]
+            },
+            "15": {
+                "name": ["15ft_1000x400"],
+                "duration": 4000,
+                "size": [1000, 400]
+            },
+            "30": {
+                "name": ["30ft_1600x400"],
+                "duration": 4000,
+                "size": [1600, 400]
+            },
+            "60": {
+                "name": ["60ft_2800x400"],
+                "duration": 4000,
+                "size": [2800, 400]
+            },
+            "90": {
+                "name": ["90ft_4000x400"],
+                "duration": 4000,
+                "size": [4000, 400]
+            }
+        }
+    },
+    "cloud_of_daggers": {
+        "basename": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Blue",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 5000,
+                "size": [400, 400]
+            }
+        }
+    },
+    "darkness": {
+        "basename": "2nd_Level/Darkness/Opacities/Darkness_01_Black_75OPA",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["600x600"],
+                "duration": 5000,
+                "size": [600, 600]
+            }
+        }
+    },
+    "divine_smite_caster": {
+        "basename": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 3030,
+                "size": [400,400]
+            }
+        }
+    },
+    "divine_smite_target": {
+        "basename": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Target",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 2330,
+                "size": [400,400]
+            }
+        }
+    },
+    "flaming_sphere": {
+        "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_02_Orange",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["200x200"],
+                "duration": 5040,
+                "size": [200,200]
+            }
+        }
+    },
+    "gust_of_wind": {
+        "basename": "2nd_Level/Gust_Of_Wind/GustOfWind_01_White",
+        "type": "CONE",
+        "variants": {
+            "0": {
+                "name": ["1200x200"],
+                "duration": 4030,
+                "size": [1200,200]
+            }
+        }
+    },
+    "misty_step_out": {
+        "basename": "2nd_Level/Misty_Step/MistyStep_01_Regular_Blue",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 3000,
+                "size": [400,400]
+            }
+        }
+    },
+    "misty_step_in": {
+        "basename": "2nd_Level/Misty_Step/MistyStep_02_Regular_Blue",
+        "type": "CIRCLE",
+        "variants": {
+            "0": {
+                "name": ["400x400"],
+                "duration": 4870,
+                "size": [400,400]
+            }
+        }
+    },
+    "moonbeam": {
+        
+    }
+}

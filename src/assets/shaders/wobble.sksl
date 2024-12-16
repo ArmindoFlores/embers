@@ -1,0 +1,12 @@
+// kind=shader
+uniform shader scene;
+uniform mat3 view;
+uniform float j, k;
+uniform float time;
+
+half4 main(float2 coord) {
+    vec2 uv = (vec3(coord, 1) * view).xy;
+
+    uv.x += sin((uv.y + time * 25) / j) * (k + sin(time));
+    return scene.eval(uv);
+}

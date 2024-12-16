@@ -1,0 +1,24 @@
+// kind=shader
+uniform float time;
+uniform vec2 size;
+
+half4 main(float2 coord) {
+    // Normalize the coordinates to range [-1, 1]
+    vec2 uv = (coord / size - 0.5);
+
+    // Create a radial gradient centered at (0, 0)
+    float dist = 0.5 - length(uv);
+    float radius = 0.25 + 0.05 * sin(time * 4.0); // Pulsating radius
+    float glow = smoothstep(radius, radius + 0.2, dist);
+
+    // Add a wavy distortion to simulate motion
+    float wave = sin(uv.y * 10.0 + time * 5.0) * 0.05;
+    uv.x += wave;
+
+    // Compute the color: base color fades with distance
+    float intensity = 1.0 - glow;
+    half3 color = mix(half3(0.82, 0.28, 0.63), half3(0.0, 0.0, 0.0), intensity);
+
+    // Final output: Color with an alpha channel for the glow effect
+    return half4(color, 1.0 - intensity);
+}
