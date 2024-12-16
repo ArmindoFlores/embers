@@ -56,7 +56,16 @@ function setupContextMenu() {
                                     {
                                         effectId: metadata?.[key],
                                         effectInfo: {
-                                            copies: 1,
+                                            copies: 3,
+                                            source: sourceItem.position,
+                                            destination: destinationItem.position
+                                        },
+                                    },
+                                    {
+                                        effectId: metadata?.[key],
+                                        delay: 300,
+                                        effectInfo: {
+                                            copies: 3,
                                             source: sourceItem.position,
                                             destination: destinationItem.position
                                         },
@@ -79,6 +88,7 @@ function App() {
     const obr = useOBR();
     const [spell, setSpell] = useState("magic_missile");
     const [effectsWorker, setEffectsWorker] = useState<Worker>();
+    const [effectRegister, setEffectRegister] = useState<Map<string, number>>(new Map());
 
     useEffect(() => {
         if (!obr.ready) {
@@ -91,6 +101,9 @@ function App() {
         setEffectsWorker(worker);
         // - setup the context menu
         const unmountContextMenu = setupContextMenu();
+        // - setup the effects register
+        setEffectRegister(new Map());
+        
         // When the app unmounts, reverse both of those operations
         return () => {
             unmountContextMenu();
@@ -118,7 +131,7 @@ function App() {
             </div>
             {
                 effectsWorker &&
-                <MessageListener worker={effectsWorker} />
+                <MessageListener worker={effectsWorker} effectRegister={effectRegister} />
             }
         </>
     )

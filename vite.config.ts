@@ -11,4 +11,9 @@ export default defineConfig({
             match: /\.frag$/,
         })
     ],
+    server: {
+        headers: {
+            "Cache-Control": "public, max-age=60"
+        }
+    }
 });

@@ -1,14 +1,13 @@
 import { EffectInstruction, MessageType } from "../types/messageListener";
 import { ProjectileInfo, ProjectileMessage } from "../types/projectile";
 import { aoe, cone, getEffect, precomputeProjectileAssets, projectile } from "../effects";
-import { log_error, log_warn } from "../logging";
+import { log_error, log_info, log_warn } from "../logging";
 import { useCallback, useEffect, useState } from "react";
 
 import { AOEEffectMessage } from "../types/aoe";
 import { APP_KEY } from "../config";
 import { ConeMessage } from "../types/cone";
 import OBR from "@owlbear-rodeo/sdk";
-import { prefetchAssets } from "../effects/effects";
 import { useOBR } from "../react-obr/providers";
 
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
@@ -46,16 +45,17 @@ function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<s
     return assets;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function collectInstructionAssets(instruction: EffectInstruction) {
     const assets = new Set<string>();
     return Array.from(_collectInstructionAssets(instruction, assets).values());
 }
 
-export function MessageListener({ worker }: { worker: Worker }) {
+export function MessageListener({ worker, effectRegister }: { worker: Worker, effectRegister: Map<string, number> }) {
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
 
-    const processInstruction = useCallback((instruction: EffectInstruction, usedEffects: Map<string, number>) => {
+    const processInstruction = useCallback((instruction: EffectInstruction) => {
         const doMoreWork = (instructions?: EffectInstruction[]) => {
             if (instructions == undefined) {
                 return;
@@ -65,10 +65,7 @@ export function MessageListener({ worker }: { worker: Worker }) {
                 return;
             }
             for (const instruction of instructions) {
-                processInstruction(instruction, usedEffects);
-                if (instruction.effectId) {
-                    usedEffects.set(instruction.effectId, ((usedEffects.get(instruction.effectId)) ?? 0) + 1);
-                }
+                processInstruction(instruction);
             }
         }
 
@@ -83,7 +80,8 @@ export function MessageListener({ worker }: { worker: Worker }) {
                     log_error(`Couldn't find effect "${instruction.effectId}"`);
                     return;
                 }
-                const variant = usedEffects.get(instruction.effectId);
+                const variant = effectRegister.get(instruction.effectId) ?? 1;
+                log_info("Using variant", instruction.effectId, effectRegister.get(instruction.effectId));
                 if (effect.type === "TARGET") {
                     const projectileMessage = instruction.effectInfo as ProjectileMessage;
                     if (projectileMessage.copies == undefined) {
@@ -110,6 +108,7 @@ export function MessageListener({ worker }: { worker: Worker }) {
                         return;
                     }
 
+                    effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 0) + 1)
                     projectile(
                         {
                             name: instruction.effectId,
@@ -117,7 +116,10 @@ export function MessageListener({ worker }: { worker: Worker }) {
                             ...projectileMessage
                         },
                         worker,
-                        () => doMoreWork(instruction.instructions),
+                        () => {
+                            effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 1) - 1)
+                            doMoreWork(instruction.instructions);
+                        },
                         variant
                     );
                 }
@@ -140,6 +142,7 @@ export function MessageListener({ worker }: { worker: Worker }) {
                         return;
                     }
 
+                    effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 0) + 1)
                     cone(
                         {
                             name: instruction.effectId,
@@ -147,7 +150,10 @@ export function MessageListener({ worker }: { worker: Worker }) {
                             ...coneMessage
                         },
                         worker,
-                        () => doMoreWork(instruction.instructions),
+                        () => {
+                            effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 1) - 1)
+                            doMoreWork(instruction.instructions);
+                        },
                         variant
                     );
                 }
@@ -162,6 +168,7 @@ export function MessageListener({ worker }: { worker: Worker }) {
                         return;
                     }
 
+                    effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 0) + 1)
                     aoe(
                         {
                             name: instruction.effectId,
@@ -169,7 +176,10 @@ export function MessageListener({ worker }: { worker: Worker }) {
                             ...aoeEffectMessage
                         },
                         worker,
-                        () => doMoreWork(instruction.instructions),
+                        () => {
+                            effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 1) - 1)
+                            doMoreWork(instruction.instructions);
+                        },
                         variant
                     );
                 }
@@ -198,7 +208,7 @@ export function MessageListener({ worker }: { worker: Worker }) {
         else {
             doInstruction();
         }
-    }, [worker, dpi]);
+    }, [worker, dpi, effectRegister]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady) {
@@ -211,20 +221,14 @@ export function MessageListener({ worker }: { worker: Worker }) {
             if (!Array.isArray(messageData.instructions)) {
                 log_error("Malformatted message: message.instructions is not an array");
             }
-            const assets = collectInstructionAssets({ instructions: messageData.instructions });
-
-            prefetchAssets(assets).then(() => {           
-                const usedEffects = new Map<string, number>();
-                for (const instruction of messageData.instructions) {
-                    processInstruction(instruction, usedEffects);
-                    if (instruction.effectId) {
-                        usedEffects.set(instruction.effectId, ((usedEffects.get(instruction.effectId)) ?? 0) + 1);
-                    }
-                }
-            });
+            // const assets = collectInstructionAssets({ instructions: messageData.instructions });
+            
+            for (const instruction of messageData.instructions) {
+                processInstruction(instruction);
+            }
 
         });
-    }, [obr.ready, obr.sceneReady, processInstruction]);
+    }, [obr.ready, obr.sceneReady, processInstruction, effectRegister]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady) {
