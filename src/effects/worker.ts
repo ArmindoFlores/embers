@@ -8,8 +8,8 @@ interface MessageData {
 const workerFunction = function () {
     function log_info(...data: any[]) {
         console.log(
-            "%c[Magic Missile 🪄] %c(WORKER)",
-            "font-weight: bold; color: purple",
+            "%cMagic Missiles 🪄%c (WORKER)",
+            "background:purple;border-radius:9999px;color:#fff;padding:3px 7px;font-weight:bold;",
             "font-weight: bold",
             ...data
         );

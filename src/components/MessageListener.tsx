@@ -1,6 +1,6 @@
 import { EffectInstruction, MessageType } from "../types/messageListener";
 import { aoe, cone, getEffect, projectile } from "../effects";
-import { log_error, log_info, log_warn } from "../logging";
+import { log_error, log_warn } from "../logging";
 import { useCallback, useEffect, useState } from "react";
 
 import { AOEEffectMessage } from "../types/aoe";
@@ -11,6 +11,7 @@ import { ProjectileMessage } from "../types/projectile";
 import { useOBR } from "../react-obr/providers";
 
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
+export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
 
 // function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<string>) {
 //     if (typeof instruction.effectId === "string") {
@@ -81,7 +82,6 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                     return;
                 }
                 const variant = effectRegister.get(instruction.effectId) ?? 1;
-                log_info("Using variant", instruction.effectId, effectRegister.get(instruction.effectId));
                 if (effect.type === "TARGET") {
                     const projectileMessage = instruction.effectInfo as ProjectileMessage;
                     if (projectileMessage.copies == undefined) {
@@ -216,18 +216,20 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
             return;
         }
 
-        return OBR.broadcast.onMessage(MESSAGE_CHANNEL, message => {
+        const messageChannelUnsubscribe = OBR.broadcast.onMessage(MESSAGE_CHANNEL, message => {
             const messageData = message.data as MessageType;
             if (!Array.isArray(messageData.instructions)) {
                 log_error("Malformatted message: message.instructions is not an array");
             }
-            // const assets = collectInstructionAssets({ instructions: messageData.instructions });
             
             for (const instruction of messageData.instructions) {
                 processInstruction(instruction);
             }
-
         });
+
+        return () => {
+            messageChannelUnsubscribe();
+        }
     }, [obr.ready, obr.sceneReady, processInstruction, effectRegister]);
 
     useEffect(() => {

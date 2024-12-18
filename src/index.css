@@ -1,12 +1,28 @@
 :root {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color: white;
-  
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    color: white;
+    
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+}
+
+input {
+    padding: 0.1rem 0.5rem;
+    font-size: 1.2rem;
+    border-radius: 0.75rem;
+    border-width: 0;
 }

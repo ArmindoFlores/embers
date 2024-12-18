@@ -9,6 +9,7 @@ export interface EffectVariant {
 export interface Effect {
     basename: string;
     type: EffectType;
+    thumbnail: string;
     variants: {
         [key: string]: EffectVariant;
     }

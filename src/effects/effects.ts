@@ -1,8 +1,10 @@
 import { Effect, Effects } from "../types/effects";
 import OBR, { Image, Vector2 } from "@owlbear-rodeo/sdk";
+import { getSortedTargets, getTargetCount } from "../targetTool";
+import { log_error, log_info } from "../logging";
 
+import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import effectsJSON from "../effect_record.json";
-import { log_info } from "../logging";
 
 export const effects = effectsJSON as unknown as Effects;
 export const effectNames = Object.keys(effectsJSON);
@@ -99,4 +101,78 @@ export function prefetchAssets(assets: string[]) {
         await response.blob(); // Make sure all data is received
     });
     return Promise.all(fetches);
+}
+
+export function doEffect(effectName: string, effect?: Effect) {
+    if (effect == undefined) {
+        effect = getEffect(effectName);
+    }
+    if (effect == undefined) {
+        log_error(`Unknown effect "${effectName}"`);
+        return;
+    }
+    getSortedTargets().then(targets => {               
+        OBR.scene.local.deleteItems(targets.map(item => item.id));
+
+        if (effect.type === "TARGET") {
+            if (targets.length < 2) {
+                OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires at least 2 targets`, "ERROR");
+                return;
+            }
+
+            OBR.broadcast.sendMessage(
+                MESSAGE_CHANNEL, 
+                {
+                    instructions: targets.slice(1).map(target => ({
+                        effectId: effectName,
+                        effectInfo: {
+                            copies: getTargetCount(target),
+                            source: targets[0].position,
+                            destination: target.position
+                        }
+                    }))
+                },
+                { destination: "ALL" }
+            );
+        }
+        else if (effect.type === "CIRCLE") {
+            if (targets.length < 1) {
+                OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires at least 1 target`, "ERROR");
+                return;
+            }
+
+            OBR.broadcast.sendMessage(
+                MESSAGE_CHANNEL, 
+                {
+                    instructions: targets.map(target => ({
+                        effectId: effectName,
+                        effectInfo: {
+                            position: target.position
+                        }
+                    }))
+                },
+                { destination: "ALL" }
+            );
+        }
+        else if (effect.type === "CONE") {
+            if (targets.length != 2) {
+                OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires exactly 2 targets`, "ERROR");
+                return;
+            }
+            
+            OBR.broadcast.sendMessage(
+                MESSAGE_CHANNEL, 
+                {
+                    instructions: [{
+                        effectId: effectName,
+                        effectInfo: {
+                            source: targets[0].position,
+                            destination: targets[1].position
+                        }
+                    }]
+                },
+                { destination: "ALL" }
+            );
+        }
+    });
 }

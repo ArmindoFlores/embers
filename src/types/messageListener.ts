@@ -1,4 +1,5 @@
 import { AOEEffectMessage } from "./aoe";
+import { ConeMessage } from "./cone";
 import { ProjectileMessage } from "./projectile";
 
 export interface EffectInstruction {
@@ -7,7 +8,7 @@ export interface EffectInstruction {
     // Time to wait before starting this effect
     delay?: number;
     // Details about how to play this effect
-    effectInfo?: ProjectileMessage | AOEEffectMessage;
+    effectInfo?: ProjectileMessage | AOEEffectMessage | ConeMessage;
     // Instructions to execute after this effect is done
     instructions?: EffectInstruction[];
 }

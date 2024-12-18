@@ -1,0 +1,70 @@
+.spell-popover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    max-height: 300px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(30, 34, 49, 0.6);
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);;
+    border-bottom: 1px solid #333333;
+    border-radius: 0;
+}
+
+.search-input::placeholder {
+    color: #a0a0a0;
+}
+
+.results-list {
+    list-style: none;
+    overflow-y: auto;
+
+    padding: 0;
+    margin: 0;
+}
+
+.results-list li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #d4d4d4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.results-list li:hover {
+    background-color: rgba(30, 34, 49, 0.5);
+    color: #ffffff;
+}
+
+.results-list img {
+    height: 1.25rem;
+    margin-right: 1rem;
+}
+
+.no-result {
+    color: #888888;
+    text-align: center;
+    padding: 10px;
+}
+
+.spell-name {
+    margin: 0;
+}
+
+li.selected {
+    border: 1px solid white;
+}
