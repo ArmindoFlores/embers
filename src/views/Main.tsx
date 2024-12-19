@@ -2,9 +2,8 @@ import "./Main.css";
 
 import { useEffect, useState } from "react";
 
-import { APP_KEY } from "../config";
+import Checkbox from "../components/Checkbox";
 import { MessageListener } from "../components/MessageListener";
-import OBR from "@owlbear-rodeo/sdk";
 import effectsWorkerScript from "../effects/worker";
 import { setupContextMenu } from "../castSpellMenu";
 import { setupTargetTool } from "../targetTool";
@@ -12,10 +11,9 @@ import { useOBR } from "../react-obr/providers";
 
 export default function Main() {
     const obr = useOBR();
-    const [spell, setSpell] = useState("magic_missile");
-    const [blueprint, setBlueprint] = useState("[]");
     const [effectsWorker, setEffectsWorker] = useState<Worker>();
     const [effectRegister, setEffectRegister] = useState<Map<string, number>>(new Map());
+    const [keepTargets, setKeepTargets] = useState<boolean>(true);
 
     useEffect(() => {
         if (!obr.ready) {
@@ -38,37 +36,33 @@ export default function Main() {
             worker.terminate();
         };
     }, [obr.ready]);
-
-    useEffect(() => {
-        const key = `${APP_KEY}/selected-spell`;
-
-        if (!obr.ready || obr.player?.metadata?.[key] == spell) {
-            return;
-        }
-        obr.setPlayerMetadata(({
-            [key]: spell
-        }));
-    }, [obr, spell]);
-
-    useEffect(() => {
-        OBR.player.setMetadata({ [`${APP_KEY}/current_blueprint`]: blueprint });
-    }, [blueprint]);
     
     return (
-        <>
-            <h1>Magic Missiles</h1>
-            <div>
-                <label htmlFor="spell_name">Spell: </label>
-                <input name="spell_name" onChange={e => setSpell(e.target.value)} value={spell}></input>
-            </div>
-            <div>
-                <label htmlFor="blueprint">Blueprint: </label>
-                <textarea name="blueprint" onChange={e => setBlueprint(e.target.value)} value={blueprint}></textarea>
+        <div className="main-container">
+            <p className="title">Settings</p>
+            <hr></hr>
+            <div className="settings-menu">
+                <div className="settings-item">
+                    <label htmlFor="recent-spells-list-size">
+                        <p>Recent spells list size</p>
+                    </label>
+                    <input 
+                        name="recent-spells-list-size" 
+                        type="number"
+                        className="settings-input"
+                    />
+                </div>
+                <div className="settings-item">
+                    <label htmlFor="recent-spells-list-size">
+                        <p>Keep selected targets</p>
+                    </label>
+                    <Checkbox checked={keepTargets} setChecked={setKeepTargets} />
+                </div>
             </div>
             {
                 effectsWorker &&
                 <MessageListener worker={effectsWorker} effectRegister={effectRegister} />
             }
-        </>
+        </div>
     )
 }

@@ -1,0 +1,24 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+}
+
+.title {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.settings-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings-input {
+    height: 1.1rem;
+    width: 5rem;
+    font-size: 0.875rem;
+}
