@@ -1,6 +1,6 @@
 import "./SpellPopover.css";
 
-import { effects, getEffect } from "../effects";
+import { effectNames, getEffect } from "../effects";
 import { toolID, toolMetadataSelectedSpell } from "../targetTool";
 import { useEffect, useState } from "react";
 
@@ -16,6 +16,12 @@ function selectEffect(effectName: string) {
         toolID, 
         { [toolMetadataSelectedSpell]: effectName }
     ).then(() => OBR.popover.close(spellPopoverId));
+}
+
+function checkForEscape(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.code === "Escape") {
+        OBR.popover.close(spellPopoverId);
+    }
 }
 
 export default function SpellPopover() {
@@ -45,7 +51,7 @@ export default function SpellPopover() {
         return null;
     }
 
-    return <div className="spell-popover">
+    return <div className="spell-popover" onKeyDown={checkForEscape}>
             <div className="search-container">
                 <input type="text" className="search-input" placeholder="Type to search..." autoFocus value={search} onChange={event => setSearch(event.target.value)} />
                 <ul className="results-list">
@@ -57,9 +63,10 @@ export default function SpellPopover() {
                         </li>
                     }
                     {
-                        Object.entries(effects).filter(([effectName]) => effectName != selectedName && effectName.toLowerCase().includes(search.toLowerCase())).map(([effectName, effect]) => {
+                        effectNames.filter(effectName => effectName != selectedName && effectName.toLowerCase().includes(search.toLowerCase())).map(effectName => {
+                            const effect = getEffect(effectName);
                             return <li key={effectName} onClick={() => selectEffect(effectName)}>
-                                <img src={`${window.location.origin}/Library/${effect.thumbnail}`} loading="lazy" />
+                                <img src={`${window.location.origin}/Library/${effect!.thumbnail}`} loading="lazy" />
                                 <p className="spell-name">{ effectName }</p>
                             </li>;
                         })

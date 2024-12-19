@@ -110,7 +110,7 @@
             }
         },
         "cone": {
-            "basename": "1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue",
+            "basename": "1st_Level/Detect_Magic/DetectMagicCone_01_Regular_Blue",
             "thumbnail": "1st_Level/Detect_Magic/DetectMagicCone_01_Regular_Blue_Cone_Thumb.webp",
             "type": "CONE",
             "variants": {
@@ -149,6 +149,18 @@
     "fog_cloud": {
         "$": {
             "basename": "1st_Level/Fog_Cloud/FogCloud_01_White",
+            "thumbnail": "1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["800x800"],
+                    "duration": 5040,
+                    "size": [800, 800]
+                }
+            }
+        },
+        "transparent": {
+            "basename": "1st_Level/Fog_Cloud/Opacities/FogCloud_01_White_75OPA",
             "thumbnail": "1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
             "type": "CIRCLE",
             "variants": {
@@ -220,6 +232,18 @@
                     "size": [200, 200]
                 }
             }
+        },
+        "loop": {
+            "basename": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Loop",
+            "thumbnail": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Loop_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["200x200"],
+                    "duration": 5000,
+                    "size": [200, 200]
+                }
+            }
         }
     },
     "magic_missile": {
@@ -239,12 +263,12 @@
                     "size": [1000, 400]
                 },
                 "30": {
-                    "name": ["30ft_01_1600x400", "30ft_02_1600x400", "30ft_03_1600x400", "30ft_04_1600x400"],
+                    "name": ["30ft_01_1600x400", "30ft_02_1600x400", "30ft_03_1600x400", "30ft_04_1600x400", "30ft_05_1600x400", "30ft_06_1600x400", "30ft_07_1600x400", "30ft_08_1600x400", "30ft_09_1600x400"],
                     "duration": 1870,
                     "size": [1600, 400]
                 },
                 "60": {
-                    "name": ["60ft_01_2800x400", "60ft_02_2800x400", "60ft_03_2800x400", "60ft_04_2800x400"],
+                    "name": ["60ft_01_2800x400", "60ft_02_2800x400", "60ft_03_2800x400", "60ft_04_2800x400", "60ft_05_2800x400", "60ft_06_2800x400", "60ft_07_2800x400", "60ft_08_2800x400", "60ft_09_2800x400"],
                     "duration": 2030,
                     "size": [2800, 400]
                 },
@@ -268,10 +292,46 @@
                     "size": [400, 400]
                 }
             }
+        },
+        "intro": {
+            "basename": "1st_Level/Shield/Shield_01_Regular_Blue_Intro",
+            "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5930,
+                    "size": [400, 400]
+                }
+            }
+        },
+        "outro_fade": {
+            "basename": "1st_Level/Shield/Shield_01_Regular_Blue_OutroFade",
+            "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5930,
+                    "size": [400, 400]
+                }
+            }
+        },
+        "outro_explode": {
+            "basename": "1st_Level/Shield/Shield_01_Regular_Blue_OutroExplode",
+            "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5930,
+                    "size": [400, 400]
+                }
+            }
         }
     },
     "sleep": {
-        "$": {
+        "symbol_dark_pink": {
             "basename": "1st_Level/Sleep/SleepSymbol01_01_Dark_Pink",
             "thumbnail": "1st_Level/Sleep/SleepSymbol01_01_Dark_Pink_Thumb.webp",
             "type": "CIRCLE",
@@ -279,6 +339,54 @@
                 "0": {
                     "name": ["400x400"],
                     "duration": 2540,
+                    "size": [400, 400]
+                }
+            }
+        },
+        "symbol_regular_pink": {
+            "basename": "1st_Level/Sleep/SleepSymbol01_01_Regular_Pink",
+            "thumbnail": "1st_Level/Sleep/SleepSymbol01_01_Regular_Pink_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 2540,
+                    "size": [400, 400]
+                }
+            }
+        },
+        "cloud1": {
+            "basename": "1st_Level/Sleep/Cloud01_01_Regular_Pink",
+            "thumbnail": "1st_Level/Sleep/Cloud01_01_Regular_Pink_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400, 400]
+                }
+            }
+        },
+        "cloud2": {
+            "basename": "1st_Level/Sleep/Cloud01_02_Regular_Pink",
+            "thumbnail": "1st_Level/Sleep/Cloud01_02_Regular_Pink_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400, 400]
+                }
+            }
+        },
+        "marker": {
+            "basename": "1st_Level/Sleep/Cloud01_01_Regular_Pink",
+            "thumbnail": "1st_Level/Sleep/Cloud01_01_Regular_Pink_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
                     "size": [400, 400]
                 }
             }
@@ -461,7 +569,7 @@
     "moonbeam": {
         "$": {
             "basename": "2nd_Level/Moonbeam/MoonbeamComplete_01_Regular_Blue",
-            "thumbnail": "2nd_Level/Moonbeam/MoonbeamComplete_01_Regular_Blue_Thumb.webp",
+            "thumbnail": "2nd_Level/Moonbeam/Moonbeam_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
             "variants": {
                 "0": {
@@ -474,8 +582,8 @@
     },
     "scorching_ray": {
         "$": {
-            "basename": "2nd_Level/Scorching_Ray/ScorchingRayComplete_01_Regular_Orange",
-            "thumbnail": "2nd_Level/Scorching_Ray/ScorchingRayComplete_01_Regular_Orange_Thumb.webp",
+            "basename": "2nd_Level/Scorching_Ray/ScorchingRay_01_Regular_Orange",
+            "thumbnail": "2nd_Level/Scorching_Ray/ScorchingRay_01_Regular_Orange_Thumb.webp",
             "type": "TARGET",
             "variants": {
                 "5": {
@@ -515,6 +623,418 @@
                 "0": {
                     "name": ["400x400"],
                     "duration": 3030,
+                    "size": [400,400]
+                }
+            }
+        }
+    },
+    "spiritual_weapon": {
+        "spectral_green_club": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Club01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Club01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_dagger": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Dagger02_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Dagger02_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_falchion": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Falchion01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Falchion01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_glaive": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Glaive01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Glaive01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_greataxe": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_greatclub": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatClub01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatClub01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_greatsword": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatSword01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatSword01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_halberd": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Halberd01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Halberd01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_hammer1": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_hammer2": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer02_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer02_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_handaxe": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_HandAxe01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_HandAxe01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_javelin": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Javelin01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Javelin01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_katana": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Katana01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Katana01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "regular_blue_laserspear": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Laserspear01_01_Regular_Blue",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Laserspear01_01_Regular_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["600x600"],
+                    "duration": 5040,
+                    "size": [600,600]
+                }
+            }
+        },
+        "regular_blue_lasersword1": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword1H01_01_Regular_Blue",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword1H01_01_Regular_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "regular_blue_lasersword2": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword2H01_01_Regular_Blue",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword2H01_01_Regular_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["600x600"],
+                    "duration": 5040,
+                    "size": [600,600]
+                }
+            }
+        },
+        "spectral_green_longsword": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_LongSword01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_LongSword01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "flaming_yellow_mace": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Flaming_Yellow",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Flaming_Yellow_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["200x200"],
+                    "duration": 5040,
+                    "size": [200,200]
+                }
+            }
+        },
+        "spectral_blue_mace": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Spectral_Blue",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Spectral_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["200x200"],
+                    "duration": 5040,
+                    "size": [200,200]
+                }
+            }
+        },
+        "spectral_green_mace": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "flaming_yellow_maul": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Flaming_Yellow",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Flaming_Yellow_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["200x200"],
+                    "duration": 5040,
+                    "size": [200,200]
+                }
+            }
+        },
+        "spectral_blue_maul": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Spectral_Blue",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Spectral_Blue_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["200x200"],
+                    "duration": 5040,
+                    "size": [200,200]
+                }
+            }
+        },
+        "spectral_green_maul": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_quarterstaff": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Quarterstaff01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Quarterstaff01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_rapier": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Rapier01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Rapier01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_scimitar": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scimitar01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scimitar01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_scythe": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scythe01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scythe01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_shortsword": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Shortsword01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Shortsword01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_spear": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Spear01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Spear01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_trident": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Trident01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Trident01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_warhammer": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Warhammer01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Warhammer01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "spectral_green_wrench": {
+            "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Wrench01_02_Spectral_Green",
+            "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Wrench01_02_Spectral_Green_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        }
+    },
+    "web": {
+        "$": {
+            "basename": "2nd_Level/Web/Web_01_White_01",
+            "thumbnail": "2nd_Level/Web/Web_01_White_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
+                    "size": [400,400]
+                }
+            }
+        },
+        "transparent": {
+            "basename": "2nd_Level/Web/Opacities/Web_01_White_01_75OPA",
+            "thumbnail": "2nd_Level/Web/Web_01_White_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "0": {
+                    "name": ["400x400"],
+                    "duration": 5040,
                     "size": [400,400]
                 }
             }

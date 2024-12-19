@@ -16,5 +16,7 @@ export interface Effect {
 }
 
 export interface Effects {
-    [key: string]: Effect;
+    [key: string]: {
+        [key: string]: Effect;
+    };
 }

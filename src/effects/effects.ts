@@ -7,15 +7,22 @@ import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import effectsJSON from "../effect_record.json";
 
 export const effects = effectsJSON as unknown as Effects;
-export const effectNames = Object.keys(effectsJSON);
+export const effectNames = Object.entries(effects).flatMap(([key1, innerObject]) => Object.keys(innerObject).map(key2 => key2 != "$" ? `${key1}.${key2}` : key1));
 
-export function getEffect(name: string): Effect | undefined {
-    return effects[name];
+function getKeysFromEffectName(name: string) {
+    const [effect, subeffect] = name.split(".");
+    return [effect, subeffect ?? "$"];
 }
 
-export function getEffectURL(effectName: string, variantName: string, variantIndex?: number) {
+export function getEffect(name: string): Effect | undefined {
+    const [effect, subeffect] = getKeysFromEffectName(name);
+    return effects[effect][subeffect];
+}
+
+export function getEffectURL(name: string, variantName: string, variantIndex?: number) {
     // This function finds the appropriate effect and variant, and returns a URL to its video file
-    const effect =  effects[effectName];
+    const [effectName, subeffectName] = getKeysFromEffectName(name);
+    const effect =  effects[effectName][subeffectName];
     if (effect == undefined) {
         return undefined;
     }
@@ -41,7 +48,7 @@ export function urlVariant(url: string, variant?: number) {
 export function getVariantName(effectName: string, distance: number) {
     // Given the name of an effect and the distance to the target, this function returns
     // the key of the variant whose resolution is best suited.
-    const effect =  effects[effectName];
+    const effect =  getEffect(effectName);
     if (effect == undefined) {
         return undefined;
     }
