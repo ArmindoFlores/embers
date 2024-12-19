@@ -58,7 +58,7 @@ async function getSortedEffectList() {
 }
 
 function normalizeSearch(str: string) {
-    return str.toLowerCase().replace("_", " ").replace(".", " ");
+    return str.toLowerCase().replaceAll("_", " ").replaceAll(".", " ");
 }
 
 export default function SpellPopover() {

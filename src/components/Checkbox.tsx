@@ -12,6 +12,7 @@ export default function Checkbox(props: CheckboxProps) {
         <input 
             type="checkbox"
             checked={props.checked}
+            readOnly
         />
         <span className="checkmark" />
     </div>;
