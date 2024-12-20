@@ -26,3 +26,16 @@ input {
     border-radius: 0.75rem;
     border-width: 0;
 }
+
+hr {
+    margin: 0;
+    flex-shrink: 0;
+    border-width: 0px 0px thin;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+p {
+    margin: 0.25rem;
+    font-size: 0.875rem;
+}

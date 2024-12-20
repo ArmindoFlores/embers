@@ -4,18 +4,58 @@ import { getSortedTargets, getTargetCount } from "../targetTool";
 import { log_error, log_info } from "../logging";
 
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
-import effectsJSON from "../effect_record.json";
+import effectsJSON from "../assets/effect_record.json";
 
 export const effects = effectsJSON as unknown as Effects;
-export const effectNames = Object.keys(effectsJSON);
+export const effectNames = gatherEffectNames();
 
-export function getEffect(name: string): Effect | undefined {
-    return effects[name];
+function isEffect(obj: unknown): obj is Effect {
+    const effectObject = obj as Effect;
+    return effectObject.basename != undefined && effectObject.type != undefined && effectObject.variants != undefined;
 }
 
-export function getEffectURL(effectName: string, variantName: string, variantIndex?: number) {
+function getKeysFromEffectName(name: string) {
+    return name.split(".");
+}
+
+function gatherEffectNames() {
+    const names: string[] = [];
+    function gatherNames(effects: Effects|Effect, prefix: string) {
+        if (isEffect(effects)) {
+            names.push(prefix);
+            return;
+        }
+        for (const key of Object.keys(effects)) {
+            if (isEffect(effects[key])) {
+                names.push(`${prefix}${key}`);
+            }
+            else {
+                gatherNames(effects[key], `${prefix}${key}.`);
+            }
+        }
+    }
+    gatherNames(effects, "");
+    return names;
+}
+
+export function getEffect(name: string): Effect | undefined {
+    const keys = getKeysFromEffectName(name);
+    let effect: Effects|Effect = effects;
+    for (const key of keys) {
+        if ((effect as Effects)[key] == undefined || isEffect(effect)) {
+            return undefined;
+        }
+        effect = effect[key];
+    }
+    if (isEffect(effect)) {
+        return effect;
+    }
+    return undefined;
+}
+
+export function getEffectURL(name: string, variantName: string, variantIndex?: number) {
     // This function finds the appropriate effect and variant, and returns a URL to its video file
-    const effect =  effects[effectName];
+    const effect =  getEffect(name);
     if (effect == undefined) {
         return undefined;
     }
@@ -41,7 +81,7 @@ export function urlVariant(url: string, variant?: number) {
 export function getVariantName(effectName: string, distance: number) {
     // Given the name of an effect and the distance to the target, this function returns
     // the key of the variant whose resolution is best suited.
-    const effect =  effects[effectName];
+    const effect =  getEffect(effectName);
     if (effect == undefined) {
         return undefined;
     }
