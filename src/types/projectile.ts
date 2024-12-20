@@ -6,7 +6,7 @@ export interface ProjectileMessage {
     destination: Vector2;
 }
 
-export interface ProjectileInfo {
+export interface ProjectileProperties {
     name: string;
     copies: number;
     source: Vector2;

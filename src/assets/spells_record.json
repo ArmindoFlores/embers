@@ -1,0 +1,45 @@
+{
+    "magic_missiles": {
+        "name": "Magic Missiles",
+        "minTargets": 2,
+        "thumbnail": "Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
+        "replicate": "first_to_all",
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "magic_missile",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }                
+            }
+        ]
+    },
+    "divine_smite": {
+        "name": "Divine Smite",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
+        "replicate": "no",
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "divine_smite.caster",
+                "effectProperties": {
+                    "size": "$targets[0].size",
+                    "position": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "divine_smite.target",
+                "delay": 1500,
+                "effectProperties": {
+                    "size": "$targets[1].size",
+                    "position": "$targets[1].position"
+                }
+            }
+        ]
+    }
+}

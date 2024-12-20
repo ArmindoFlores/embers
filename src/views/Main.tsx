@@ -6,7 +6,7 @@ import Checkbox from "../components/Checkbox";
 import { MessageListener } from "../components/MessageListener";
 import effectsWorkerScript from "../effects/worker";
 import { setupContextMenu } from "../castSpellMenu";
-import { setupTargetTool } from "../targetTool";
+import { setupEffectsTool } from "../effectsTool";
 import { useOBR } from "../react-obr/providers";
 
 export default function Main() {
@@ -27,7 +27,7 @@ export default function Main() {
         // - setup the context menu
         setupContextMenu();
         // - setup tool
-        setupTargetTool();
+        setupEffectsTool();
         // - setup the effects register
         setEffectRegister(new Map());
         

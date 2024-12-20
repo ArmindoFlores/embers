@@ -1,6 +1,6 @@
 import { Effect, Effects } from "../types/effects";
 import OBR, { Image, Vector2 } from "@owlbear-rodeo/sdk";
-import { getSortedTargets, getTargetCount } from "../targetTool";
+import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
 
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
@@ -165,8 +165,8 @@ export function doEffect(effectName: string, effect?: Effect) {
                 MESSAGE_CHANNEL, 
                 {
                     instructions: targets.slice(1).map(target => ({
-                        effectId: effectName,
-                        effectInfo: {
+                        id: effectName,
+                        effectProperties: {
                             copies: getTargetCount(target),
                             source: targets[0].position,
                             destination: target.position
@@ -187,13 +187,12 @@ export function doEffect(effectName: string, effect?: Effect) {
             );
 
             Promise.all(targetAttachments).then(attachments => {
-                log_info("Attachments:", attachments);
                 OBR.broadcast.sendMessage(
                     MESSAGE_CHANNEL, 
                     {
                         instructions: targets.map((target, i) => ({
-                            effectId: effectName,
-                            effectInfo: {
+                            id: effectName,
+                            effectProperties: {
                                 position: target.position,
                                 size: attachments[i] ? getItemSize(attachments[i]) : 5,
                             }
@@ -213,8 +212,8 @@ export function doEffect(effectName: string, effect?: Effect) {
                 MESSAGE_CHANNEL, 
                 {
                     instructions: [{
-                        effectId: effectName,
-                        effectInfo: {
+                        id: effectName,
+                        effectProperties: {
                             source: targets[0].position,
                             destination: targets[1].position
                         }

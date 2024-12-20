@@ -5,7 +5,7 @@ export interface AOEEffectMessage {
     size: number;
 }
 
-export interface AOEEffectInfo {
+export interface AOEEffectProperties {
     name: string;
     position: Vector2;
     size: number;

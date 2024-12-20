@@ -1,16 +1,16 @@
 import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 
 import { APP_KEY } from "./config";
-import { doEffect } from "./effects/effects";
+import { doSpell } from "./effects/spells";
 import { getItemSize } from "./utils";
 import { log_error } from "./logging";
 import { spellPopoverId } from "./views/SpellPopover";
 
 export const toolID = `${APP_KEY}/effect-tool`;
 export const toolMetadataSelectedSpell = `${APP_KEY}/selected-spell`;
-export const targetToolModeID = `${APP_KEY}/target-tool-mode`;
-export const removeTargetToolModeID = `${APP_KEY}/remove-target-tool-mode`;
-export const targetToolActionID = `${APP_KEY}/target-tool-action`;
+export const effectsToolModeID = `${APP_KEY}/effects-tool-mode`;
+export const removeTargetToolModeID = `${APP_KEY}/remove-effects-tool-mode`;
+export const effectsToolActionID = `${APP_KEY}/effects-tool-action`;
 export const settingsToolActionID = `${APP_KEY}/settings-tool-action`;
 export const selectSpellToolActionID = `${APP_KEY}/select-spell-tool-action`;
 export const targetHighlightMetadataKey = `${APP_KEY}/target-highlight`;
@@ -123,10 +123,10 @@ async function getPointerPosition(position: Vector2, snapToGrid: boolean) {
     return position;
 }
 
-export function setupTargetTool() {    
+export function setupEffectsTool() {    
     OBR.tool.create({
         id: toolID,
-        defaultMode: targetToolModeID,
+        defaultMode: effectsToolModeID,
         defaultMetadata: {
             [toolMetadataSelectedSpell]: undefined,
         },
@@ -157,7 +157,7 @@ export function setupTargetTool() {
 async function setupToolActions() {
     // Cast spell action
     await OBR.tool.createAction({
-        id: targetToolActionID,
+        id: effectsToolActionID,
         icons: [{
             icon: `${window.location.origin}/icon.svg`,
             label: "Cast Selected Spell",
@@ -179,7 +179,7 @@ async function setupToolActions() {
                     OBR.notification.show(`Magic Missiles: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
                     return;
                 }
-                doEffect(metadata[toolMetadataSelectedSpell]);
+                doSpell(metadata[toolMetadataSelectedSpell]);
             });
         }
     });
@@ -210,7 +210,7 @@ async function setupToolActions() {
 
 async function setupTargetToolModes() {
     await OBR.tool.createMode({
-        id: targetToolModeID,
+        id: effectsToolModeID,
         icons: [{
             icon: `${window.location.origin}/target.svg`,
             label: "Add Targets",
@@ -320,7 +320,7 @@ async function setupTargetToolModes() {
             } 
         },
         onDeactivate(context) {
-            if (context.activeTool != toolID || context.activeMode != targetToolModeID) {
+            if (context.activeTool != toolID || context.activeMode != effectsToolModeID) {
                 deactivateTool();
             }
         }
