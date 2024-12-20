@@ -1,4 +1,4 @@
-import "./SpellPopover.css";
+import "./SpellSelectionPopover.css";
 
 import { getSpell, spellIDs } from "../effects/spells";
 import { toolID, toolMetadataSelectedSpell } from "../effectsTool";
@@ -24,8 +24,11 @@ async function selectSpell(spellName: string) {
     await OBR.player.setMetadata({ [mostRecentEffectsMetadataKey]: mostRecentSpellsList });
 
     // Set selected effect
-    await OBR.tool.setMetadata(
-        toolID, 
+    OBR.player.setMetadata(
+        { [toolMetadataSelectedSpell]: spellName }
+    );
+    OBR.tool.setMetadata(
+        toolID,
         { [toolMetadataSelectedSpell]: spellName }
     );
 
@@ -90,7 +93,7 @@ function EffectsList({ searchString, sortedSpellsList } : { searchString: string
     </ul>;
 }
 
-export default function SpellPopover() {
+export default function SpellSelectionPopover() {
     const obr = useOBR();
     const [search, setSearch] = useState("");
     const [sortedSpellsList, setSortedSpellsList] = useState<string[]>([]);
@@ -109,7 +112,7 @@ export default function SpellPopover() {
     }
 
     return <div className="popover-container">
-        <div className="spell-popover" onKeyDown={checkForEscape}>
+        <div className="spell-popover blurry-background" onKeyDown={checkForEscape}>
             <div className="search-container">
                 <input type="text" className="search-input" placeholder="Type to search..." autoFocus value={search} onChange={event => setSearch(event.target.value)} />
                 <EffectsList sortedSpellsList={sortedSpellsList} searchString={search} />

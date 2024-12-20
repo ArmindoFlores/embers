@@ -1,3 +1,9 @@
 import { BlueprintFunctionBuiltin } from "../types/blueprint";
 
-export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {};
+function concat(...strings: unknown[]) {
+    return String.prototype.concat(...(strings as string[]));
+}
+
+export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {
+    concat
+};

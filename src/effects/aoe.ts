@@ -4,7 +4,7 @@ import { AOEEffectProperties } from "../types/aoe";
 import { buildImage } from "@owlbear-rodeo/sdk";
 import { log_error } from "../logging";
 
-export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, onComplete?: () => void, variant?: number) {
+export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number) {
     const effect = getEffect(aoeEffectProperties.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${aoeEffectProperties.name}"`);
@@ -16,7 +16,7 @@ export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, on
         log_error(`Could not find adequate variant for effect "${aoeEffectProperties.name}"`);
         return;
     }
-    const duration = effect.variants[effectVariantName].duration;
+    const realDuration = duration ?? (loops != undefined ? loops * effect.variants[effectVariantName].duration : effect.variants[effectVariantName].duration);
     const scale = { 
         x: aoeEffectProperties.size, 
         y: aoeEffectProperties.size
@@ -44,12 +44,12 @@ export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, on
     ).position(
         aoeEffectProperties.position
     ).disableHit(
-        true
+        realDuration >= 0
     ).locked(
-        true
+        realDuration >= 0
     ).build();
 
     // Add all items to the local scene
-    registerEffect([image], worker, duration, onComplete);
+    registerEffect([image], worker, realDuration, onComplete);
 }
 

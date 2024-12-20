@@ -29,9 +29,13 @@ export interface EffectBlueprint {
     // Blueprint type
     type: BlueprintType;
     // Blueprint ID
-    id: string;
+    id: BlueprintValue<string>;
     // Time to wait before starting this effect
     delay?: BlueprintValue<number>;
+    // The duration, in milliseconds, to play this effect for
+    duration?: BlueprintValue<number>;
+    // The number of loops to play for this effect
+    loops?: BlueprintValue<number>;
     // Details about how to play this effect
     effectProperties?: ProjectileBlueprint | AOEEffectBlueprint | ConeBlueprint;
     // Instructions to execute after this effect is done
@@ -45,4 +49,4 @@ export interface ErrorOr<T> {
 
 export type Variables = Record<string, unknown>;
 
-export type BlueprintFunctionBuiltin = (variables: Variables, ...args: unknown[]) => unknown;
+export type BlueprintFunctionBuiltin = (...args: unknown[]) => unknown;

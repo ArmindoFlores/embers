@@ -82,6 +82,14 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                     return;
                 }
                 const variant = effectRegister.get(instruction.id) ?? 1;
+                if (instruction.duration != undefined && typeof instruction.duration !== "number") {
+                    log_error("Effect duration must be a number");
+                    return;
+                }
+                if (instruction.loops != undefined && typeof instruction.loops !== "number") {
+                    log_error("Effect loops must be a number");
+                    return;
+                }
                 if (effect.type === "TARGET") {
                     const projectileMessage = instruction.effectProperties as ProjectileMessage;
                     if (projectileMessage.copies == undefined) {
@@ -116,6 +124,8 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             ...projectileMessage
                         },
                         worker,
+                        instruction.duration,
+                        instruction.loops,
                         () => {
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
@@ -150,6 +160,8 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             ...coneMessage
                         },
                         worker,
+                        instruction.duration,
+                        instruction.loops,
                         () => {
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
@@ -177,6 +189,8 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             ...aoeEffectMessage
                         },
                         worker,
+                        instruction.duration,
+                        instruction.loops,
                         () => {
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);

@@ -2,6 +2,7 @@ import { Spell, Spells } from "../types/spells";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
 
+import { APP_KEY } from "../config";
 import { EffectInstruction } from "../types/messageListener";
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import OBR from "@owlbear-rodeo/sdk";
@@ -27,7 +28,8 @@ export function doSpell(spellID: string) {
         OBR.scene.local.deleteItems(targets.map(item => item.id));
 
         const replicationType = spell.replicate ?? "no";
-
+        const parameterValuesString = localStorage.getItem(`${APP_KEY}/spell-parameters/${spellID}`);
+        const parameterValues = parameterValuesString ? JSON.parse(parameterValuesString) : {};
 
         const instructions: EffectInstruction[] = [];
         if (replicationType === "no") {            
@@ -36,7 +38,8 @@ export function doSpell(spellID: string) {
                     position: target.position,
                     size: getItemSize(target),
                     count: getTargetCount(target)
-                }))
+                })),
+                ...parameterValues
             };
             const { value, error } = resolveBlueprint(spell.blueprints ?? [], variables);
             if (error) {
@@ -52,7 +55,8 @@ export function doSpell(spellID: string) {
                         position: target.position,
                         size: getItemSize(target),
                         count: getTargetCount(target)
-                    }]
+                    }],
+                    ...parameterValues
                 };
                 const { value, error } = resolveBlueprint(spell.blueprints ?? [], variables);
                 if (error) {
@@ -79,7 +83,8 @@ export function doSpell(spellID: string) {
                             size: getItemSize(target),
                             count: getTargetCount(target)
                         }
-                    ]
+                    ],
+                    ...parameterValues
                 };
                 const { value, error } = resolveBlueprint(spell.blueprints ?? [], variables);
                 if (error) {

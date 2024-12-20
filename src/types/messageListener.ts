@@ -9,6 +9,10 @@ export interface EffectInstruction {
     delay?: number;
     // Details about how to play this effect
     effectProperties?: ProjectileMessage | AOEEffectMessage | ConeMessage;
+    // The duration, in milliseconds, to play this effect for
+    duration?: number;
+    // The number of loops to play for this effect
+    loops?: number;
     // Instructions to execute after this effect is done
     instructions?: EffectInstruction[];
 }

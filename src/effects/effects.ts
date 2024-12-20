@@ -115,22 +115,31 @@ export function getDistance(source: Vector2, destination: Vector2) {
 }
 
 export function registerEffect(images: Image[], worker: Worker, duration: number, onComplete?: () => void) {
-    OBR.scene.local.addItems(images).then(() => {
-        const id = images[0].id;
+    if (duration >= 0) {
+        OBR.scene.local.addItems(images).then(() => {
+            const id = images[0].id;
 
-        // This worker will send a message to us with our ID, signaling us to delete
-        // the item because enough time has passed.
-        // We can't use setTimeout because, if the extension's window is not visible,
-        // the browser will throttle us and we might let the animation play for far
-        // too long.
-        worker.addEventListener("message", message => {
-            if (message.data == id) {
-                log_info(`Deleting effect assets (from web worker)`);
-                OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
+            // This worker will send a message to us with our ID, signaling us to delete
+            // the item because enough time has passed.
+            // We can't use setTimeout because, if the extension's window is not visible,
+            // the browser will throttle us and we might let the animation play for far
+            // too long.
+            worker.addEventListener("message", message => {
+                if (message.data == id) {
+                    log_info(`Deleting effect assets (from web worker)`);
+                    OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
+                }
+            });
+            worker.postMessage({ duration, id });
+        });
+    }
+    else {
+        OBR.player.getRole().then(role => {
+            if (role === "GM") {
+                OBR.scene.items.addItems(images);
             }
         });
-        worker.postMessage({ duration, id });
-    });
+    }
 }
 
 export function prefetchAssets(assets: string[]) {

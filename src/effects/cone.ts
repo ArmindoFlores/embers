@@ -16,7 +16,7 @@ function getDistance(source: Vector2, destination: Vector2) {
     return Math.sqrt(Math.pow(source.x - destination.x, 2) + Math.pow(source.y - destination.y, 2));
 }
 
-export function cone(coneInfo: ConeProperties, worker: Worker, onComplete?: () => void, variant?: number) {
+export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number) {
     const effect = getEffect(coneInfo.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${coneInfo.name}"`);
@@ -37,7 +37,7 @@ export function cone(coneInfo: ConeProperties, worker: Worker, onComplete?: () =
         log_error(`Could not find adequate variant for effect "${coneInfo.name}"`);
         return;
     }
-    const duration = effect.variants[effectVariantName].duration;
+    const realDuration = duration ?? (loops != undefined ? loops * effect.variants[effectVariantName].duration : effect.variants[effectVariantName].duration);
     const DPI = effect.variants[effectVariantName].size[1];
     const scale = { 
         x: (distance / coneInfo.dpi) / ((effect.variants[effectVariantName].size[0]) / DPI), 
@@ -68,12 +68,12 @@ export function cone(coneInfo: ConeProperties, worker: Worker, onComplete?: () =
     ).position(
         position
     ).disableHit(
-        true
+        realDuration >= 0
     ).locked(
-        true
+        realDuration >= 0
     ).build();
 
     // Add all items to the local scene
-    registerEffect([image], worker, duration, onComplete);
+    registerEffect([image], worker, realDuration, onComplete);
 }
 

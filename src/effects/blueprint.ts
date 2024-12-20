@@ -91,15 +91,22 @@ function parseBlueprintFunction<T>(func: BlueprintFunction, variables: Variables
         return _error("undefined function");
     }
 
-    const resolvedArguments = functionArguments.map(arg => {
-        if (isUnresolvedBlueprint(arg)) {
-            return parseExpression<T>(arg, variables);
+    const resolvedArguments: unknown[] = [];
+    for (const argument of functionArguments) {
+        if (isUnresolvedBlueprint(argument)) {
+            const maybeResolvedArgument = parseExpression<T>(argument, variables);
+            if (isError(maybeResolvedArgument)) {
+                return _error(maybeResolvedArgument.error);
+            }
+            resolvedArguments.push(maybeResolvedArgument.value);
         }
-        return arg;
-    });
+        else {
+            resolvedArguments.push(argument);
+        }
+    }
 
     try {
-        const result = builtinFunction(variables, ...resolvedArguments);
+        const result = builtinFunction(...resolvedArguments);
         return _value(result as T);
     }
     catch (e: unknown) {
@@ -116,11 +123,23 @@ function parseExpression<T = unknown>(expression: BlueprintValueUnresolved, vari
 }
 
 function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], variables: Variables): ErrorOr<EffectBlueprint> {
-    if (element.id != undefined && typeof element.id !== "string") {
-        log_error(`Invalid blueprint: id must be a string or undefined, not "${typeof element.id}"`);
-        return _error("invalid ID");
+    let id: string|undefined;
+    if (element.id != undefined) {
+        if (typeof element.id === "string" && element.id[0] !== "$") {
+            id = element.id;
+        }
+        else if (isUnresolvedBlueprint(element.id)) {
+            const maybeId = parseExpression<string>(element.id, variables);
+            if (isError(maybeId)) {
+                return _error(maybeId.error);
+            }
+            id = maybeId.value;
+        }
+        else {
+            log_error("Invalid blueprint: ID must be a string");
+            return _error("ID must be a string");
+        }
     }
-    const id = element.id;
 
     let delay: number|undefined;
     if (element.delay != undefined) {
@@ -138,6 +157,47 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             log_error("Invalid blueprint: delay must be a number");
             return _error("delay must be a number");
         }
+    }
+
+    let duration: number|undefined;
+    if (element.duration != undefined) {
+        if (typeof element.duration === "number") {
+            duration = element.duration;
+        }
+        else if (isUnresolvedBlueprint(element.duration)) {
+            const maybeDuration = parseExpression<number>(element.duration, variables);
+            if (isError(maybeDuration)) {
+                return _error(maybeDuration.error);
+            }
+            duration = maybeDuration.value;
+        }
+        else {
+            log_error("Invalid blueprint: duration must be a number");
+            return _error("duration must be a number");
+        }
+    }
+
+    let loops: number|undefined;
+    if (element.loops != undefined) {
+        if (typeof element.loops === "number") {
+            loops = element.loops;
+        }
+        else if (isUnresolvedBlueprint(element.loops)) {
+            const maybeLoops = parseExpression<number>(element.loops, variables);
+            if (isError(maybeLoops)) {
+                return _error(maybeLoops.error);
+            }
+            loops = maybeLoops.value;
+        }
+        else {
+            log_error("Invalid blueprint: loops must be a number");
+            return _error("loops must be a number");
+        }
+    }
+
+    if (loops != undefined && duration != undefined) {
+        log_error("Invalid blueprint: can't specify both duration and loop");
+        return _error("can't specify both duration and loop");
     }
 
     let effectProperties: ProjectileMessage | AOEEffectMessage | ConeMessage;
@@ -206,7 +266,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         effectProperties = {
             copies,
             source,
-            destination
+            destination,
         };
     }
     else if (
@@ -319,7 +379,9 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         id,
         effectProperties,
         delay,
-        instructions
+        instructions,
+        duration,
+        loops
     };
     message.push(newInstruction);
     return _value(element);

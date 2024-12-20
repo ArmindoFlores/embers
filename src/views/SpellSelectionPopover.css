@@ -12,8 +12,6 @@
     width: 100%;
     display: flex;
     max-height: 300px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(30, 34, 49, 0.6);
 }
 
 .search-container {

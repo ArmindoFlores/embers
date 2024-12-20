@@ -4,7 +4,7 @@ import { APP_KEY } from "./config";
 import { doSpell } from "./effects/spells";
 import { getItemSize } from "./utils";
 import { log_error } from "./logging";
-import { spellPopoverId } from "./views/SpellPopover";
+import { spellPopoverId } from "./views/SpellSelectionPopover";
 
 export const toolID = `${APP_KEY}/effect-tool`;
 export const toolMetadataSelectedSpell = `${APP_KEY}/selected-spell`;
@@ -123,7 +123,7 @@ async function getPointerPosition(position: Vector2, snapToGrid: boolean) {
     return position;
 }
 
-export function setupEffectsTool() {    
+export function setupEffectsTool() {
     OBR.tool.create({
         id: toolID,
         defaultMode: effectsToolModeID,
@@ -134,6 +134,7 @@ export function setupEffectsTool() {
             icon: `${window.location.origin}/icon.svg`,
             label: "Cast spell"
         }],
+        shortcut: "Shift+C",
         onClick(context) {
             if (context.activeTool === toolID) {
                 // de-select
@@ -147,11 +148,11 @@ export function setupEffectsTool() {
             }
             OBR.player.setMetadata({ [previousToolMetadataKey]: context.activeTool });
             return true;
-        },
-        shortcut: "Shift+C",
+        }
     });
     setupToolActions();
     setupTargetToolModes();
+    return () => {};
 }
 
 async function setupToolActions() {
@@ -173,8 +174,8 @@ async function setupToolActions() {
         },
         shortcut: "Enter",
         onClick() {
-            OBR.tool.getMetadata(toolID).then(metadata => {
-                if (metadata == undefined || typeof metadata[toolMetadataSelectedSpell] != "string") {
+            OBR.player.getMetadata().then(metadata => {
+                if (typeof metadata[toolMetadataSelectedSpell] != "string") {
                     log_error(`Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
                     OBR.notification.show(`Magic Missiles: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
                     return;
@@ -201,7 +202,7 @@ async function setupToolActions() {
                 id: spellPopoverId,
                 width: 500,
                 height: 300,
-                url: `${window.location.origin}/popover`,
+                url: `${window.location.origin}/spell-selection-popover`,
                 hidePaper: true
             });
         }

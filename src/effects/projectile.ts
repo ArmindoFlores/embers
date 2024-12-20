@@ -33,7 +33,7 @@ export function precomputeProjectileAssets(projectileInfo: ProjectileProperties,
     return assets;
 }
 
-export function projectile(projectileInfo: ProjectileProperties, worker: Worker, onComplete?: () => void, variant?: number) {
+export function projectile(projectileInfo: ProjectileProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number) {
     const effect = getEffect(projectileInfo.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${projectileInfo.name}"`);
@@ -54,7 +54,7 @@ export function projectile(projectileInfo: ProjectileProperties, worker: Worker,
         log_error(`Could not find adequate variant for effect "${projectileInfo.name}"`);
         return;
     }
-    const duration = effect.variants[effectVariantName].duration;
+    const realDuration = duration ?? (loops != undefined ? loops * effect.variants[effectVariantName].duration : effect.variants[effectVariantName].duration);
     const DPI = effect.variants[effectVariantName].size[1];
     const scale = { 
         x: (distance / projectileInfo.dpi) / ((effect.variants[effectVariantName].size[0] - DPI) / DPI), 
@@ -88,14 +88,14 @@ export function projectile(projectileInfo: ProjectileProperties, worker: Worker,
         ).position(
             position
         ).disableHit(
-            true
+            realDuration >= 0
         ).locked(
-            true
+            realDuration >= 0
         ).build();
         images.push(image);
     }
 
     // Add all items to the local scene
-    registerEffect(images, worker, duration, onComplete);
+    registerEffect(images, worker, realDuration, onComplete);
 }
 
