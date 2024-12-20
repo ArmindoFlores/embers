@@ -1608,5 +1608,74 @@
                 }
             }
         }
+    },
+    "lightning_bolt": {
+        "basename": "3rd_Level/Lightning_Bolt/LightningBolt_01_Regular_Blue",
+        "thumbnail": "3rd_Level/Lightning_Bolt/LightningBolt_01_Regular_Blue_Thumb.webp",
+        "type": "CONE",
+        "variants": {
+            "200": {
+                "name": ["4000x200"],
+                "duration": 4000,
+                "size": [4000, 200]
+            },
+            "400": {
+                "name": ["4000x400"],
+                "duration": 4000,
+                "size": [4000, 400]
+            }
+        }
+    },
+    "sleet_storm": {
+        "transparent": {
+            "1": {
+                "basename": "3rd_Level/Sleet_Storm/SleetStorm_01_Blue",
+                "thumbnail": "3rd_Level/Sleet_Storm/SleetStorm_01_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": 6250,
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "2": {
+                "basename": "3rd_Level/Sleet_Storm/SleetStorm_02_Blue",
+                "thumbnail": "3rd_Level/Sleet_Storm/SleetStorm_02_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": 6250,
+                        "size": [800, 800]
+                    }
+                }
+            }
+        },
+        "opaque": {
+            "basename": "3rd_Level/Sleet_Storm/Opacities/SleetStorm_01_Blue_100OPA",
+            "thumbnail": "3rd_Level/Sleet_Storm/Opacities/SleetStorm_01_Blue_100OPA_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "800": {
+                    "name": ["800x800"],
+                    "duration": 6250,
+                    "size": [800, 800]
+                }
+            }
+        }
+    },
+    "spirit_guardians": {
+        "basename": "3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow",
+        "thumbnail": "3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow_Thumb.webp",
+        "type": "CIRCLE",
+        "variants": {
+            "600": {
+                "name": ["600x600"],
+                "duration": 6250,
+                "size": [600, 600]
+            }
+        }
     }
 }

@@ -85,7 +85,7 @@ export default function SpellPopover() {
                     {
                         sortedEffectsList.length > 0 &&
                         <li onClick={() => selectEffect(sortedEffectsList[0])} className="selected">
-                            <img src={`${window.location.origin}/Library/${getEffect(sortedEffectsList[0])!.thumbnail}`} loading="lazy" />
+                            <img src={`${window.location.origin}/Library/${getEffect(sortedEffectsList[0])?.thumbnail}`} loading="lazy" />
                             <p className="spell-name">{ sortedEffectsList[0] }</p>
                         </li>
                     }
@@ -93,7 +93,7 @@ export default function SpellPopover() {
                         sortedEffectsList.slice(1).filter(name => normalizeSearch(name).includes(normalizeSearch(search))).map(effectName => {
                             const effect = getEffect(effectName);
                             return <li key={effectName} onClick={() => selectEffect(effectName)}>
-                                <img src={`${window.location.origin}/Library/${effect!.thumbnail}`} loading="lazy" />
+                                <img src={`${window.location.origin}/Library/${effect?.thumbnail}`} loading="lazy" />
                                 <p className="spell-name">{ effectName }</p>
                             </li>;
                         })
