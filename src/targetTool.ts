@@ -2,6 +2,7 @@ import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/s
 
 import { APP_KEY } from "./config";
 import { doEffect } from "./effects/effects";
+import { getItemSize } from "./utils";
 import { log_error } from "./logging";
 import { spellPopoverId } from "./views/SpellPopover";
 
@@ -113,6 +114,13 @@ export async function getSortedTargets() {
     ).sort(
         (a, b) => (a.metadata[targetHighlightMetadataKey] as number) - (b.metadata[targetHighlightMetadataKey] as number)
     ) as Image[];
+}
+
+async function getPointerPosition(position: Vector2, snapToGrid: boolean) {
+    if (snapToGrid) {
+        return OBR.scene.grid.snapPosition(position);
+    }
+    return position;
 }
 
 export function setupTargetTool() {    
@@ -231,14 +239,9 @@ async function setupTargetToolModes() {
                     const selected: Image|undefined = targets.filter(image => image.attachedTo === event.target!.id)[0];
 
                     if (!selected) {
-                        let gridFactor = 1;
-                        if (isImage(event.target!)) {
-                            gridFactor = Math.max(event.target!.image.width, event.target!.image.height) / event.target!.grid.dpi;
-                        }
-                        const scale = Math.max(event.target!.scale.x, event.target!.scale.y) * gridFactor * 1.31;
                         const targetHighlight = buildTarget(
                             ((targets.length > 0 ? getTargetID(targets[targets.length-1]) : undefined) ?? 0) + 1,
-                            scale,
+                            getItemSize(event.target!) * 1.31,
                             event.target!.position,
                             targets.length == 0,
                             event.target!.id
@@ -256,11 +259,14 @@ async function setupTargetToolModes() {
             }
             // No target is being selected, just a position
             else {
-                getSortedTargets().then(targets => {
+                Promise.all([
+                    getSortedTargets(),
+                    getPointerPosition(event.pointerPosition, !event.shiftKey)
+                ]).then(([targets, position]) => {
                     const targetHighlight = buildTarget(
                         ((targets.length > 0 ? getTargetID(targets[targets.length-1]) : undefined) ?? 0) + 1,
                         2 / 3,
-                        event.pointerPosition,
+                        position,
                         targets.length == 0
                     );
                     OBR.scene.local.addItems([targetHighlight]);

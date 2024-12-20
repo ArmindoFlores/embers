@@ -18,8 +18,8 @@ export function aoe(aoeEffectInfo: AOEEffectInfo, worker: Worker, onComplete?: (
     }
     const duration = effect.variants[effectVariantName].duration;
     const scale = { 
-        x: 4, 
-        y: 4
+        x: aoeEffectInfo.size, 
+        y: aoeEffectInfo.size
     };
     
     const url = getEffectURL(aoeEffectInfo.name, effectVariantName);

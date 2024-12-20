@@ -160,6 +160,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                 else if (effect.type === "CIRCLE") {
                     const aoeEffectMessage = instruction.effectInfo as AOEEffectMessage;
                     if (
+                        typeof aoeEffectMessage.size !== "number" ||
                         typeof aoeEffectMessage.position !== "object" || 
                         typeof aoeEffectMessage.position.x !== "number" ||
                         typeof aoeEffectMessage.position.y !== "number"

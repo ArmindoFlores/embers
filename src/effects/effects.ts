@@ -5,6 +5,7 @@ import { log_error, log_info } from "../logging";
 
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import effectsJSON from "../assets/effect_record.json";
+import { getItemSize } from "../utils";
 
 export const effects = effectsJSON as unknown as Effects;
 export const effectNames = gatherEffectNames();
@@ -180,19 +181,27 @@ export function doEffect(effectName: string, effect?: Effect) {
                 OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires at least 1 target`, "ERROR");
                 return;
             }
-
-            OBR.broadcast.sendMessage(
-                MESSAGE_CHANNEL, 
-                {
-                    instructions: targets.map(target => ({
-                        effectId: effectName,
-                        effectInfo: {
-                            position: target.position
-                        }
-                    }))
-                },
-                { destination: "ALL" }
+            
+            const targetAttachments = targets.map(
+                async target => target.attachedTo ? (await OBR.scene.items.getItems([target.attachedTo]))[0] : undefined
             );
+
+            Promise.all(targetAttachments).then(attachments => {
+                log_info("Attachments:", attachments);
+                OBR.broadcast.sendMessage(
+                    MESSAGE_CHANNEL, 
+                    {
+                        instructions: targets.map((target, i) => ({
+                            effectId: effectName,
+                            effectInfo: {
+                                position: target.position,
+                                size: attachments[i] ? getItemSize(attachments[i]) : 5,
+                            }
+                        }))
+                    },
+                    { destination: "ALL" }
+                );
+            });
         }
         else if (effect.type === "CONE") {
             if (targets.length != 2) {
