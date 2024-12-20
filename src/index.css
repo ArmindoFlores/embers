@@ -39,3 +39,12 @@ p {
     margin: 0.25rem;
     font-size: 0.875rem;
 }
+
+.no-margin {
+    margin: 0;
+}
+
+.blurry-background {
+    backdrop-filter: blur(10px);
+    background-color: rgba(30, 34, 49, 0.6);
+}

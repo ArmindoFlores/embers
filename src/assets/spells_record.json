@@ -1,0 +1,136 @@
+{
+    "arms_of_hadar": {
+        "name": "Arms of Hadar",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
+        "replicate": "all",
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 3,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "arms_of_hadar",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }                
+            }
+        ]
+    },
+    "magic_missiles": {
+        "name": "Magic Missiles",
+        "minTargets": 2,
+        "thumbnail": "Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
+        "replicate": "first_to_all",
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "magic_missile",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }                
+            }
+        ]
+    },
+    "divine_smite": {
+        "name": "Divine Smite",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
+        "replicate": "no",
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "divine_smite.caster",
+                "effectProperties": {
+                    "size": "$targets[0].size",
+                    "position": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "divine_smite.target",
+                "delay": 1500,
+                "effectProperties": {
+                    "size": "$targets[1].size",
+                    "position": "$targets[1].position"
+                }
+            }
+        ]
+    },
+    "spiritual_weapon": {
+        "name": "Spiritual Weapon",
+        "minTargets": 1,
+        "maxTargets": 1,
+        "thumbnail": "Library/2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green_Thumb.webp",
+        "replicate": "no",
+        "parameters": [
+            {
+                "name": "Weapon variant",
+                "id": "weapon_variant",
+                "type": "options",
+                "defaultValue": "spectral_green_greataxe",
+                "content": [
+                    { "value": "spectral_green_club", "label": "Spectral Green Club" },
+                    { "value": "spectral_green_dagger", "label": "Spectral Green Dagger" },
+                    { "value": "spectral_green_falchion", "label": "Spectral Green Falchion" },
+                    { "value": "spectral_green_glaive", "label": "Spectral Green Glaive" },
+                    { "value": "spectral_green_greataxe", "label": "Spectral Green Greataxe" },
+                    { "value": "spectral_green_greatclub", "label": "Spectral Green Greatclub" },
+                    { "value": "spectral_green_greatsword", "label": "Spectral Green Greatsword" },
+                    { "value": "spectral_green_halberd", "label": "Spectral Green Halberd" },
+                    { "value": "spectral_green_hammer1", "label": "Spectral Green Hammer (1)" },
+                    { "value": "spectral_green_hammer2", "label": "Spectral Green Hammer (2)" },
+                    { "value": "spectral_green_handaxe", "label": "Spectral Green Handaxe" },
+                    { "value": "spectral_green_javelin", "label": "Spectral Green Javelin" },
+                    { "value": "spectral_green_katana", "label": "Spectral Green Katana" },
+                    { "value": "regular_blue_laserspear", "label": "Regular Blue Laserspear" },
+                    { "value": "regular_blue_lasersword1", "label": "Regular Blue Lasersword1" },
+                    { "value": "regular_blue_lasersword2", "label": "Regular Blue Lasersword2" },
+                    { "value": "spectral_green_longsword", "label": "Spectral Green Longsword" },
+                    { "value": "flaming_yellow_mace", "label": "Flaming Yellow Mace" },
+                    { "value": "spectral_blue_mace", "label": "Spectral Blue Mace" },
+                    { "value": "spectral_green_mace", "label": "Spectral Green Mace" },
+                    { "value": "flaming_yellow_maul", "label": "Flaming Yellow Maul" },
+                    { "value": "spectral_blue_maul", "label": "Spectral Blue Maul" },
+                    { "value": "spectral_green_maul", "label": "Spectral Green Maul" },
+                    { "value": "spectral_green_quarterstaff", "label": "Spectral Green Quarterstaff" },
+                    { "value": "spectral_green_rapier", "label": "Spectral Green Rapier" },
+                    { "value": "spectral_green_scimitar", "label": "Spectral Green Scimitar" },
+                    { "value": "spectral_green_scythe", "label": "Spectral Green Scythe" },
+                    { "value": "spectral_green_shortsword", "label": "Spectral Green Shortsword" },
+                    { "value": "spectral_green_spear", "label": "Spectral Green Spear" },
+                    { "value": "spectral_green_trident", "label": "Spectral Green Trident" },
+                    { "value": "spectral_green_warhammer", "label": "Spectral Green Warhammer" },
+                    { "value": "spectral_green_wrench", "label": "Spectral Green Wrench" }
+                ]
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["spiritual_weapon.", "$weapon_variant"]
+                },
+                "duration": -1,
+                "effectProperties": {
+                    "size": 1,
+                    "position": "$targets[0].position"
+                }
+            }
+        ]
+    }
+}

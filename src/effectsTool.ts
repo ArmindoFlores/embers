@@ -1,15 +1,16 @@
 import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 
 import { APP_KEY } from "./config";
-import { doEffect } from "./effects/effects";
+import { doSpell } from "./effects/spells";
+import { getItemSize } from "./utils";
 import { log_error } from "./logging";
-import { spellPopoverId } from "./views/SpellPopover";
+import { spellPopoverId } from "./views/SpellSelectionPopover";
 
 export const toolID = `${APP_KEY}/effect-tool`;
 export const toolMetadataSelectedSpell = `${APP_KEY}/selected-spell`;
-export const targetToolModeID = `${APP_KEY}/target-tool-mode`;
-export const removeTargetToolModeID = `${APP_KEY}/remove-target-tool-mode`;
-export const targetToolActionID = `${APP_KEY}/target-tool-action`;
+export const effectsToolModeID = `${APP_KEY}/effects-tool-mode`;
+export const removeTargetToolModeID = `${APP_KEY}/remove-effects-tool-mode`;
+export const effectsToolActionID = `${APP_KEY}/effects-tool-action`;
 export const settingsToolActionID = `${APP_KEY}/settings-tool-action`;
 export const selectSpellToolActionID = `${APP_KEY}/select-spell-tool-action`;
 export const targetHighlightMetadataKey = `${APP_KEY}/target-highlight`;
@@ -115,10 +116,17 @@ export async function getSortedTargets() {
     ) as Image[];
 }
 
-export function setupTargetTool() {    
+async function getPointerPosition(position: Vector2, snapToGrid: boolean) {
+    if (snapToGrid) {
+        return OBR.scene.grid.snapPosition(position);
+    }
+    return position;
+}
+
+export function setupEffectsTool() {
     OBR.tool.create({
         id: toolID,
-        defaultMode: targetToolModeID,
+        defaultMode: effectsToolModeID,
         defaultMetadata: {
             [toolMetadataSelectedSpell]: undefined,
         },
@@ -126,6 +134,7 @@ export function setupTargetTool() {
             icon: `${window.location.origin}/icon.svg`,
             label: "Cast spell"
         }],
+        shortcut: "Shift+C",
         onClick(context) {
             if (context.activeTool === toolID) {
                 // de-select
@@ -139,17 +148,17 @@ export function setupTargetTool() {
             }
             OBR.player.setMetadata({ [previousToolMetadataKey]: context.activeTool });
             return true;
-        },
-        shortcut: "Shift+C",
+        }
     });
     setupToolActions();
     setupTargetToolModes();
+    return () => {};
 }
 
 async function setupToolActions() {
     // Cast spell action
     await OBR.tool.createAction({
-        id: targetToolActionID,
+        id: effectsToolActionID,
         icons: [{
             icon: `${window.location.origin}/icon.svg`,
             label: "Cast Selected Spell",
@@ -165,13 +174,13 @@ async function setupToolActions() {
         },
         shortcut: "Enter",
         onClick() {
-            OBR.tool.getMetadata(toolID).then(metadata => {
-                if (metadata == undefined || typeof metadata[toolMetadataSelectedSpell] != "string") {
+            OBR.player.getMetadata().then(metadata => {
+                if (typeof metadata[toolMetadataSelectedSpell] != "string") {
                     log_error(`Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
                     OBR.notification.show(`Magic Missiles: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
                     return;
                 }
-                doEffect(metadata[toolMetadataSelectedSpell]);
+                doSpell(metadata[toolMetadataSelectedSpell]);
             });
         }
     });
@@ -193,7 +202,7 @@ async function setupToolActions() {
                 id: spellPopoverId,
                 width: 500,
                 height: 300,
-                url: `${window.location.origin}/popover`,
+                url: `${window.location.origin}/spell-selection-popover`,
                 hidePaper: true
             });
         }
@@ -202,7 +211,7 @@ async function setupToolActions() {
 
 async function setupTargetToolModes() {
     await OBR.tool.createMode({
-        id: targetToolModeID,
+        id: effectsToolModeID,
         icons: [{
             icon: `${window.location.origin}/target.svg`,
             label: "Add Targets",
@@ -231,14 +240,9 @@ async function setupTargetToolModes() {
                     const selected: Image|undefined = targets.filter(image => image.attachedTo === event.target!.id)[0];
 
                     if (!selected) {
-                        let gridFactor = 1;
-                        if (isImage(event.target!)) {
-                            gridFactor = Math.max(event.target!.image.width, event.target!.image.height) / event.target!.grid.dpi;
-                        }
-                        const scale = Math.max(event.target!.scale.x, event.target!.scale.y) * gridFactor * 1.31;
                         const targetHighlight = buildTarget(
                             ((targets.length > 0 ? getTargetID(targets[targets.length-1]) : undefined) ?? 0) + 1,
-                            scale,
+                            getItemSize(event.target!) * 1.31,
                             event.target!.position,
                             targets.length == 0,
                             event.target!.id
@@ -256,11 +260,14 @@ async function setupTargetToolModes() {
             }
             // No target is being selected, just a position
             else {
-                getSortedTargets().then(targets => {
+                Promise.all([
+                    getSortedTargets(),
+                    getPointerPosition(event.pointerPosition, !event.shiftKey)
+                ]).then(([targets, position]) => {
                     const targetHighlight = buildTarget(
                         ((targets.length > 0 ? getTargetID(targets[targets.length-1]) : undefined) ?? 0) + 1,
                         2 / 3,
-                        event.pointerPosition,
+                        position,
                         targets.length == 0
                     );
                     OBR.scene.local.addItems([targetHighlight]);
@@ -314,7 +321,7 @@ async function setupTargetToolModes() {
             } 
         },
         onDeactivate(context) {
-            if (context.activeTool != toolID || context.activeMode != targetToolModeID) {
+            if (context.activeTool != toolID || context.activeMode != effectsToolModeID) {
                 deactivateTool();
             }
         }

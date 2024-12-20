@@ -14,14 +14,14 @@ export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
 
 // function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<string>) {
-//     if (typeof instruction.effectId === "string") {
-//         const effect = getEffect(instruction.effectId);
+//     if (typeof instruction.id === "string") {
+//         const effect = getEffect(instruction.id);
 //         if (effect != undefined) {
 //             if (effect.type === "TARGET") {
 //                 try {
-//                     const projectileMessage = instruction.effectInfo as ProjectileMessage;
-//                     const projectileInfo: ProjectileInfo = {
-//                         name: instruction.effectId,
+//                     const projectileMessage = instruction.effectProperties as ProjectileMessage;
+//                     const projectileInfo: ProjectileProperties = {
+//                         name: instruction.id,
 //                         copies: projectileMessage.copies,
 //                         source: projectileMessage.source,
 //                         destination: projectileMessage.destination,
@@ -32,7 +32,7 @@ export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
 //                     }
 //                 }
 //                 catch (e: unknown) {
-//                     log_warn(`Error precomputing assets for effect ${instruction.effectId} (${(e as Error).message})`);
+//                     log_warn(`Error precomputing assets for effect ${instruction.id} (${(e as Error).message})`);
 //                 }
 //             }
 //         }
@@ -71,19 +71,27 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
         }
 
         const doInstruction = () => {
-            if (instruction.effectId != undefined) {
-                if (typeof instruction.effectId !== "string") {
-                    log_error(`Instruction effectId must be a string, not a "${typeof instruction.effectId}"`);
+            if (instruction.id != undefined) {
+                if (typeof instruction.id !== "string") {
+                    log_error(`Instruction id must be a string, not a "${typeof instruction.id}"`);
                     return;
                 }
-                const effect = getEffect(instruction.effectId);
+                const effect = getEffect(instruction.id);
                 if (effect == undefined) {
-                    log_error(`Couldn't find effect "${instruction.effectId}"`);
+                    log_error(`Couldn't find effect "${instruction.id}"`);
                     return;
                 }
-                const variant = effectRegister.get(instruction.effectId) ?? 1;
+                const variant = effectRegister.get(instruction.id) ?? 1;
+                if (instruction.duration != undefined && typeof instruction.duration !== "number") {
+                    log_error("Effect duration must be a number");
+                    return;
+                }
+                if (instruction.loops != undefined && typeof instruction.loops !== "number") {
+                    log_error("Effect loops must be a number");
+                    return;
+                }
                 if (effect.type === "TARGET") {
-                    const projectileMessage = instruction.effectInfo as ProjectileMessage;
+                    const projectileMessage = instruction.effectProperties as ProjectileMessage;
                     if (projectileMessage.copies == undefined) {
                         projectileMessage.copies = 1;
                     }
@@ -108,23 +116,25 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         return;
                     }
 
-                    effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 0) + 1)
+                    effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
                     projectile(
                         {
-                            name: instruction.effectId,
+                            name: instruction.id,
                             dpi,
                             ...projectileMessage
                         },
                         worker,
+                        instruction.duration,
+                        instruction.loops,
                         () => {
-                            effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 1) - 1)
+                            effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
                         },
                         variant
                     );
                 }
                 else if (effect.type === "CONE") {
-                    const coneMessage = instruction.effectInfo as ConeMessage;
+                    const coneMessage = instruction.effectProperties as ConeMessage;
                     if (
                         typeof coneMessage.destination !== "object" || 
                         typeof coneMessage.destination.x !== "number" ||
@@ -142,24 +152,27 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         return;
                     }
 
-                    effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 0) + 1)
+                    effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
                     cone(
                         {
-                            name: instruction.effectId,
+                            name: instruction.id,
                             dpi,
                             ...coneMessage
                         },
                         worker,
+                        instruction.duration,
+                        instruction.loops,
                         () => {
-                            effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 1) - 1)
+                            effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
                         },
                         variant
                     );
                 }
                 else if (effect.type === "CIRCLE") {
-                    const aoeEffectMessage = instruction.effectInfo as AOEEffectMessage;
+                    const aoeEffectMessage = instruction.effectProperties as AOEEffectMessage;
                     if (
+                        typeof aoeEffectMessage.size !== "number" ||
                         typeof aoeEffectMessage.position !== "object" || 
                         typeof aoeEffectMessage.position.x !== "number" ||
                         typeof aoeEffectMessage.position.y !== "number"
@@ -168,16 +181,18 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         return;
                     }
 
-                    effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 0) + 1)
+                    effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
                     aoe(
                         {
-                            name: instruction.effectId,
+                            name: instruction.id,
                             dpi,
                             ...aoeEffectMessage
                         },
                         worker,
+                        instruction.duration,
+                        instruction.loops,
                         () => {
-                            effectRegister.set(instruction.effectId!, (effectRegister.get(instruction.effectId!) ?? 1) - 1)
+                            effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
                         },
                         variant

@@ -1,10 +1,17 @@
+.popover-container {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.filler {
+    flex: 1;
+}
+
 .spell-popover {
     width: 100%;
-    height: 100%;
     display: flex;
     max-height: 300px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(30, 34, 49, 0.6);
 }
 
 .search-container {
@@ -15,6 +22,7 @@
 
 .search-input {
     flex: 1;
+    max-height: 1.75rem;
     padding: 12px 15px;
     border: none;
     outline: none;

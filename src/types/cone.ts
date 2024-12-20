@@ -5,7 +5,7 @@ export interface ConeMessage {
     destination: Vector2;
 }
 
-export interface ConeInfo {
+export interface ConeProperties {
     name: string;
     source: Vector2;
     destination: Vector2;

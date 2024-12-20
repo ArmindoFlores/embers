@@ -1,0 +1,26 @@
+.spell-details-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spell-details-thumbnail {
+    width: 3rem;
+    height: 3rem;
+}
+
+.spell-details-divider {
+    padding-top: 0.5rem;
+}
+
+.spell-details-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.label {
+    font-weight: 700;
+}

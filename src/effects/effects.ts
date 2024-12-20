@@ -1,10 +1,11 @@
 import { Effect, Effects } from "../types/effects";
 import OBR, { Image, Vector2 } from "@owlbear-rodeo/sdk";
-import { getSortedTargets, getTargetCount } from "../targetTool";
+import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
 
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import effectsJSON from "../assets/effect_record.json";
+import { getItemSize } from "../utils";
 
 export const effects = effectsJSON as unknown as Effects;
 export const effectNames = gatherEffectNames();
@@ -114,22 +115,31 @@ export function getDistance(source: Vector2, destination: Vector2) {
 }
 
 export function registerEffect(images: Image[], worker: Worker, duration: number, onComplete?: () => void) {
-    OBR.scene.local.addItems(images).then(() => {
-        const id = images[0].id;
+    if (duration >= 0) {
+        OBR.scene.local.addItems(images).then(() => {
+            const id = images[0].id;
 
-        // This worker will send a message to us with our ID, signaling us to delete
-        // the item because enough time has passed.
-        // We can't use setTimeout because, if the extension's window is not visible,
-        // the browser will throttle us and we might let the animation play for far
-        // too long.
-        worker.addEventListener("message", message => {
-            if (message.data == id) {
-                log_info(`Deleting effect assets (from web worker)`);
-                OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
+            // This worker will send a message to us with our ID, signaling us to delete
+            // the item because enough time has passed.
+            // We can't use setTimeout because, if the extension's window is not visible,
+            // the browser will throttle us and we might let the animation play for far
+            // too long.
+            worker.addEventListener("message", message => {
+                if (message.data == id) {
+                    log_info(`Deleting effect assets (from web worker)`);
+                    OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
+                }
+            });
+            worker.postMessage({ duration, id });
+        });
+    }
+    else {
+        OBR.player.getRole().then(role => {
+            if (role === "GM") {
+                OBR.scene.items.addItems(images);
             }
         });
-        worker.postMessage({ duration, id });
-    });
+    }
 }
 
 export function prefetchAssets(assets: string[]) {
@@ -164,8 +174,8 @@ export function doEffect(effectName: string, effect?: Effect) {
                 MESSAGE_CHANNEL, 
                 {
                     instructions: targets.slice(1).map(target => ({
-                        effectId: effectName,
-                        effectInfo: {
+                        id: effectName,
+                        effectProperties: {
                             copies: getTargetCount(target),
                             source: targets[0].position,
                             destination: target.position
@@ -180,19 +190,26 @@ export function doEffect(effectName: string, effect?: Effect) {
                 OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires at least 1 target`, "ERROR");
                 return;
             }
-
-            OBR.broadcast.sendMessage(
-                MESSAGE_CHANNEL, 
-                {
-                    instructions: targets.map(target => ({
-                        effectId: effectName,
-                        effectInfo: {
-                            position: target.position
-                        }
-                    }))
-                },
-                { destination: "ALL" }
+            
+            const targetAttachments = targets.map(
+                async target => target.attachedTo ? (await OBR.scene.items.getItems([target.attachedTo]))[0] : undefined
             );
+
+            Promise.all(targetAttachments).then(attachments => {
+                OBR.broadcast.sendMessage(
+                    MESSAGE_CHANNEL, 
+                    {
+                        instructions: targets.map((target, i) => ({
+                            id: effectName,
+                            effectProperties: {
+                                position: target.position,
+                                size: attachments[i] ? getItemSize(attachments[i]) : 5,
+                            }
+                        }))
+                    },
+                    { destination: "ALL" }
+                );
+            });
         }
         else if (effect.type === "CONE") {
             if (targets.length != 2) {
@@ -204,8 +221,8 @@ export function doEffect(effectName: string, effect?: Effect) {
                 MESSAGE_CHANNEL, 
                 {
                     instructions: [{
-                        effectId: effectName,
-                        effectInfo: {
+                        id: effectName,
+                        effectProperties: {
                             source: targets[0].position,
                             destination: targets[1].position
                         }

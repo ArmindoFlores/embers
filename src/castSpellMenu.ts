@@ -29,8 +29,8 @@ export function setupContextMenu() {
                         MESSAGE_CHANNEL, 
                         {
                             instructions: [{
-                                effectId: metadata?.[key],
-                                effectInfo: {
+                                id: metadata?.[key],
+                                effectProperties: {
                                     position: selectedItems[0].position
                                 }
                             }]
@@ -46,8 +46,8 @@ export function setupContextMenu() {
                         {
                             instructions: [
                                 {
-                                    effectId: metadata?.[key],
-                                    effectInfo: {
+                                    id: metadata?.[key],
+                                    effectProperties: {
                                         copies: 1,
                                         source: sourceItem.position,
                                         destination: destinationItem.position
