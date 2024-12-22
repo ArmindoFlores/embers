@@ -208,7 +208,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
             }
 
             if (instruction.delay < 0) {
-                log_error(`Instruction delay must be >=0 (was ${instruction.delay})`);
+                log_error(`Instruction delay must be >= 0 (was ${instruction.delay})`);
                 return;
             }
 

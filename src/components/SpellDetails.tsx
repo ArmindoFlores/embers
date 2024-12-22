@@ -22,6 +22,19 @@ function replicationValue(replicationValue: ReplicationType) {
     return "?";
 }
 
+function copyValue(copyDelay: number) {
+    if (copyDelay < 0) {
+        return "None";
+    }
+    else if (copyDelay === 0) {
+        return "Instant";
+    }
+    else if (copyDelay > 0) {
+        return `Delayed (${copyDelay}ms)`;
+    }
+    return "?";
+}
+
 function DetailRow({ label, value }: { label: string, value: string}) {
     return <div className="spell-details-row">
         <p className="label">{ label }</p>
@@ -147,13 +160,16 @@ export default function SpellDetails() {
         </div>
         <hr className="spell-details-divider" />
         {
-            selectedSpell.minTargets && <DetailRow label="Minimum number of targets" value={selectedSpell.minTargets.toString()} />
+            selectedSpell.minTargets != undefined && <DetailRow label="Minimum number of targets" value={selectedSpell.minTargets.toString()} />
         }
         {
-            selectedSpell.maxTargets && <DetailRow label="Maximum number of targets" value={selectedSpell.maxTargets.toString()} />
+            selectedSpell.maxTargets != undefined && <DetailRow label="Maximum number of targets" value={selectedSpell.maxTargets.toString()} />
         }
         {
             selectedSpell.replicate && <DetailRow label="Replication mode" value={replicationValue(selectedSpell.replicate)} />
+        }
+        {
+            selectedSpell.copy != undefined && <DetailRow label="Copy mode" value={copyValue(selectedSpell.copy)} />
         }
         {
             selectedSpellID && selectedSpell.parameters && selectedSpell.parameters.map(

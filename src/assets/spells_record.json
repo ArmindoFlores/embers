@@ -1,9 +1,187 @@
 {
+    "dancing_lights": {
+        "name": "Dancing Lights",
+        "minTargets": 1,
+        "thumbnail": "Library/Cantrip/Dancing_Lights/DancingLights_01_Yellow_Thumb.webp",
+        "replicate": "all",
+        "copy": 0,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "yellow",
+                "content": [
+                    { "value": "blue_teal", "label": "Blue teal" },
+                    { "value": "blue_yellow", "label": "Blue and yellow" },
+                    { "value": "green", "label": "Green" },
+                    { "value": "pink", "label": "Pink" },
+                    { "value": "purple_green", "label": "Purple and green" },
+                    { "value": "red", "label": "Red" },
+                    { "value": "yellow", "label": "Yellow" }
+                ]
+            },
+            {
+                "name": "Size",
+                "id": "size",
+                "type": "number",
+                "defaultValue": 1,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["dancing_lights.", "$color"]
+                },
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$size"
+                }
+            }
+        ]
+    },
+    "eldritch_blast": {
+        "name": "Eldritch Blast",
+        "minTargets": 2,
+        "thumbnail": "Library/Cantrip/Eldritch_Blast/EldritchBlast_01_Regular_Purple_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": 200,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "eldritch_blast",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }
+            }
+        ]
+    },
+    "fire_bolt": {
+        "name": "Fire Bolt",
+        "minTargets": 2,
+        "thumbnail": "Library/Cantrip/Fire_Bolt/FireBolt_01_Regular_Orange_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "fire_bolt",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }
+            }
+        ]
+    },
+    "frostbite": {
+        "name": "Frostbite",
+        "thumbnail": "Library/Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Loop_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.ice.snowflake_burst.complete",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
+    "mind_sliver": {
+        "name": "Mind Sliver",
+        "thumbnail": "Library/Generic/Healing/HealingAbility_01_Purple_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.healing.purple",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
+    "ray_of_frost": {
+        "name": "Ray of Frost",
+        "minTargets": 2,
+        "thumbnail": "Library/Cantrip/Ray_Of_Frost/RayOfFrost_01_Regular_Blue_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "ray_of_frost",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }
+            }
+        ]
+    },
+    "sacred_flame": {
+        "name": "Sacred Flame",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/Cantrip/Sacred_Flame/SacredFlameSource_01_Regular_Yellow_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "sacred_flame.source",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "sacred_flame.target",
+                "delay": 3000,
+                "effectProperties": {
+                    "position": "$targets[1].position",
+                    "size": "$targets[1].size"
+                }
+            }
+        ] 
+    },
+    "toll_the_dead": {
+        "name": "Toll the Dead",
+        "minTargets": 1,
+        "thumbnail": "Library/Cantrip/Toll_The_Dead/TollTheDead_01_Regular_Green_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "toll_the_dead.simple",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }                
+            }
+        ]
+    },
     "arms_of_hadar": {
         "name": "Arms of Hadar",
         "minTargets": 1,
         "thumbnail": "Library/1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
         "replicate": "all",
+        "copy": -1,
         "parameters": [
             {
                 "name": "Radius (in cells)",
@@ -27,11 +205,39 @@
             }
         ]
     },
+    "bless": {
+        "name": "Bless",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Bless/Bless_01_Regular_Yellow_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "bless.intro",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }                
+            },
+            {
+                "type": "effect",
+                "id": "bless.loop",
+                "delay": 4000,
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }                
+            }
+        ]
+    },
     "magic_missiles": {
         "name": "Magic Missiles",
         "minTargets": 2,
         "thumbnail": "Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
         "replicate": "first_to_all",
+        "copy": 0,
         "blueprints": [
             {
                 "type": "effect",
@@ -50,6 +256,7 @@
         "maxTargets": 2,
         "thumbnail": "Library/2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
         "replicate": "no",
+        "copy": -1,
         "blueprints": [
             {
                 "type": "effect",
@@ -76,6 +283,7 @@
         "maxTargets": 1,
         "thumbnail": "Library/2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green_Thumb.webp",
         "replicate": "no",
+        "copy": 0,
         "parameters": [
             {
                 "name": "Weapon variant",
