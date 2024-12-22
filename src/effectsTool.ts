@@ -131,7 +131,7 @@ export function setupEffectsTool() {
             [toolMetadataSelectedSpell]: undefined,
         },
         icons: [{
-            icon: `${window.location.origin}/icon.svg`,
+            icon: `${window.location.origin}/embers.svg`,
             label: "Cast spell"
         }],
         shortcut: "Shift+C",
@@ -160,7 +160,7 @@ async function setupToolActions() {
     await OBR.tool.createAction({
         id: effectsToolActionID,
         icons: [{
-            icon: `${window.location.origin}/icon.svg`,
+            icon: `${window.location.origin}/cast.svg`,
             label: "Cast Selected Spell",
             filter: {
                 activeTools: [toolID],
@@ -177,7 +177,7 @@ async function setupToolActions() {
             OBR.player.getMetadata().then(metadata => {
                 if (typeof metadata[toolMetadataSelectedSpell] != "string") {
                     log_error(`Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
-                    OBR.notification.show(`Magic Missiles: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
+                    OBR.notification.show(`Embers: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
                     return;
                 }
                 doSpell(metadata[toolMetadataSelectedSpell]);

@@ -10,7 +10,7 @@ export function setupContextMenu() {
         id,
             icons: [
             {
-                icon: "/icon.svg",
+                icon: "/cast.svg",
                 label: "Cast spell from here",
                 filter: {
                     min: 1,

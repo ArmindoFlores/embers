@@ -166,7 +166,7 @@ export function doEffect(effectName: string, effect?: Effect) {
 
         if (effect.type === "TARGET") {
             if (targets.length < 2) {
-                OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires at least 2 targets`, "ERROR");
+                OBR.notification.show(`Embers: The effect "${effectName}" requires at least 2 targets`, "ERROR");
                 return;
             }
 
@@ -187,7 +187,7 @@ export function doEffect(effectName: string, effect?: Effect) {
         }
         else if (effect.type === "CIRCLE") {
             if (targets.length < 1) {
-                OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires at least 1 target`, "ERROR");
+                OBR.notification.show(`Embers: The effect "${effectName}" requires at least 1 target`, "ERROR");
                 return;
             }
             
@@ -213,7 +213,7 @@ export function doEffect(effectName: string, effect?: Effect) {
         }
         else if (effect.type === "CONE") {
             if (targets.length != 2) {
-                OBR.notification.show(`Magic Missiles: The effect "${effectName}" requires exactly 2 targets`, "ERROR");
+                OBR.notification.show(`Embers: The effect "${effectName}" requires exactly 2 targets`, "ERROR");
                 return;
             }
             
