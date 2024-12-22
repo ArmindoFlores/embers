@@ -32,6 +32,8 @@ export interface Spell {
     thumbnail?: string;
     // Whether this effect should be repeated and how to do so
     replicate?: ReplicationType;
+    // Whether this effect should be copied when targetting the same item multiple times and how to do so
+    copy?: number;
 
     // List of parameters for this spell
     parameters?: Parameter[];

@@ -2515,6 +2515,104 @@
                     }
                 }
             }
+        },
+        "ice": {
+            "snowflake_burst": {
+                "complete": {
+                    "basename": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Burst",
+                    "thumbnail": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Burst_Thumb.webp",
+                    "type": "CIRCLE",
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": 2370,
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Loop",
+                    "thumbnail": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Loop_Thumb.webp",
+                    "type": "CIRCLE",
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": 2370,
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            }
+        },
+        "healing": {
+            "blue": {
+                "basename": "Generic/Healing/HealingAbility_01_Blue",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": 1700,
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": 1700,
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "green": {
+                "basename": "Generic/Healing/HealingAbility_01_Green",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": 1700,
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": 1700,
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "purple": {
+                "basename": "Generic/Healing/HealingAbility_01_Purple",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Purple_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": 1700,
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": 1700,
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "yellow": {
+                "basename": "Generic/Healing/HealingAbility_01_Yellow",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Yellow_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": 1700,
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": 1700,
+                        "size": [400, 400]
+                    }
+                }
+            }
         }
     }
 }
