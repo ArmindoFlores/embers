@@ -32,7 +32,7 @@ These are some features that are on Embers' backlog:
 - [x] Support basic projectiles/AOE effects
 - [x] Support all spell effects from JB2A
 - [ ] Support all generic effects from JB2A
-- [ ] Implement all spells from D&D 5e's Player Handbook (12/361 - 3.3%)
+- [ ] Implement all spells from D&D 5e's Player Handbook (20/361 - 5.5%)
 - [x] Support permanent effects
 - [ ] Support custom metadata
 - [x] Allow for custom spell parameters

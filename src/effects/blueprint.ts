@@ -340,7 +340,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         if (typeof abEffectProperties.size === "number") {
             size = abEffectProperties.size;
         }
-        else if (typeof abEffectProperties.size === "string") {
+        else if (isUnresolvedBlueprint(abEffectProperties.size)) {
             const maybeSize = parseExpression<number>(abEffectProperties.size, variables);
             if (isError(maybeSize)) {
                 return _error(maybeSize.error);
