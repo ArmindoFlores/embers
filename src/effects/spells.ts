@@ -115,7 +115,7 @@ export function getSpell(spellID: string): Spell|undefined {
     return spells[spellID];
 }
 
-export function doSpell(spellID: string) {
+export function doSpell(spellID: string, playerID: string) {
     const spell = getSpell(spellID);
     if (spell == undefined) {
         log_error(`Unknown spell "${spellID}"`);
@@ -150,6 +150,13 @@ export function doSpell(spellID: string) {
 
         copySpellInstructions(instructions, copyDelay);
 
-        OBR.broadcast.sendMessage(MESSAGE_CHANNEL, { instructions  }, { destination: "ALL" });
+        const message = {
+            instructions,
+            spellData: {
+                name: spellID,
+                caster: playerID
+            }
+        };
+        OBR.broadcast.sendMessage(MESSAGE_CHANNEL, message, { destination: "ALL" });
     });
 }

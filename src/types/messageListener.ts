@@ -19,4 +19,8 @@ export interface EffectInstruction {
 
 export interface MessageType {
     instructions: EffectInstruction[];
+    spellData?: {
+        name: string;
+        caster: string;
+    };
 }

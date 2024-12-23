@@ -48,3 +48,17 @@ p {
     backdrop-filter: blur(10px);
     background-color: rgba(30, 34, 49, 0.6);
 }
+
+.non-selectable {
+    user-select: none;
+}
+
+.title {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 700;
+}

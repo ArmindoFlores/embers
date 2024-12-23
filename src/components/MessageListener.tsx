@@ -56,7 +56,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
 
-    const processInstruction = useCallback((instruction: EffectInstruction) => {
+    const processInstruction = useCallback((instruction: EffectInstruction, spellName?: string, spellCaster?: string) => {
         const doMoreWork = (instructions?: EffectInstruction[]) => {
             if (instructions == undefined) {
                 return;
@@ -130,7 +130,9 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
                         },
-                        variant
+                        variant,
+                        spellName,
+                        spellCaster
                     );
                 }
                 else if (effect.type === "CONE") {
@@ -166,7 +168,9 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
                         },
-                        variant
+                        variant,
+                        spellName,
+                        spellCaster
                     );
                 }
                 else if (effect.type === "CIRCLE") {
@@ -195,7 +199,9 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
                         },
-                        variant
+                        variant,
+                        spellName,
+                        spellCaster
                     );
                 }
             }
@@ -236,9 +242,10 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
             if (!Array.isArray(messageData.instructions)) {
                 log_error("Malformatted message: message.instructions is not an array");
             }
-            
+            const spellName = messageData.spellData ? messageData.spellData.name : undefined;
+            const spellCaster = messageData.spellData ? messageData.spellData.caster : undefined;
             for (const instruction of messageData.instructions) {
-                processInstruction(instruction);
+                processInstruction(instruction, spellName, spellCaster);
             }
         });
 

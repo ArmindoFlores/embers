@@ -1,5 +1,6 @@
 import { Effect, Effects } from "../types/effects";
-import OBR, { Image, Vector2 } from "@owlbear-rodeo/sdk";
+import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "../components/Settings";
+import OBR, { Image, Metadata, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
 
@@ -10,7 +11,8 @@ import { getItemSize } from "../utils";
 
 export const effects = effectsJSON as unknown as Effects;
 export const effectNames = gatherEffectNames();
-export const effectMetadataKey = `${APP_KEY}/is-effect`;
+export const effectMetadataKey = `${APP_KEY}/effect-id`;
+export const spellMetadataKey = `${APP_KEY}/spell-id`;
 
 function isEffect(obj: unknown): obj is Effect {
     const effectObject = obj as Effect;
@@ -116,7 +118,7 @@ export function getDistance(source: Vector2, destination: Vector2) {
     return Math.sqrt(Math.pow(source.x - destination.x, 2) + Math.pow(source.y - destination.y, 2));
 }
 
-export function registerEffect(images: Image[], worker: Worker, duration: number, onComplete?: () => void) {
+export function registerEffect(images: Image[], worker: Worker, duration: number, onComplete?: () => void, spellCaster?: string) {
     if (duration >= 0) {
         OBR.scene.local.addItems(images).then(() => {
             const id = images[0].id;
@@ -136,12 +138,73 @@ export function registerEffect(images: Image[], worker: Worker, duration: number
         });
     }
     else {
-        OBR.player.getRole().then(role => {
-            if (role === "GM") {
+        Promise.all([getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE), OBR.player.getId(), OBR.player.getRole()]).then(([summonRule, id, role]) => {
+            if ((summonRule === "caster" && id === spellCaster) || (summonRule === "gm-only" && role === "GM")) {
                 OBR.scene.items.addItems(images);
             }
         });
     }
+}
+
+export function buildEffectImage(effectName: string, effect: Effect, size: number, offset: Vector2, position: Vector2, rotation: number, variant?: number, variantIndex?: number, disableHit?: boolean, attachedTo?: string, duration?: number, loops?: number, spellName?: string) {
+    const effectVariantName = getVariantName(effectName, size * effect.dpi);
+    if (effectVariantName == undefined) {
+        log_error(`Could not find adequate variant for effect "${effectName}"`);
+        return undefined;
+    }
+    const variantDistance = parseInt(effectVariantName);
+    const scale = size / (variantDistance / effect.dpi);
+    const scaleVector = { 
+        x: scale, 
+        y: scale
+    };
+    const effectDuration = duration ?? (loops != undefined ? loops * effect.variants[effectVariantName].duration : effect.variants[effectVariantName].duration);
+    
+    const url = getEffectURL(effectName, effectVariantName, variantIndex ? variantIndex % (effect.variants[effectVariantName].name.length) : undefined);
+    if (url == undefined) {
+        log_error(`Could not find URL for effect "${effectName}" (selected variant: ${effectVariantName})`);
+        return undefined;
+    }
+
+    const metadata: Metadata = { [effectMetadataKey]: effectName };
+    if (spellName != undefined) {
+        metadata[spellMetadataKey] = spellName;
+    }
+    
+    const isCompanion = effectDuration < 0 && attachedTo == undefined;
+
+    const image = buildImage(
+        {
+            width: effect.variants[effectVariantName].size[0],
+            height: effect.variants[effectVariantName].size[1],
+            url: urlVariant(url, variant),
+            mime: "video/webm",
+        },
+        {
+            dpi: effect.dpi,
+            offset: { x: effect.variants[effectVariantName].size[1] * offset.x, y: effect.variants[effectVariantName].size[1] * offset.y }
+        }
+    ).scale(
+        scaleVector
+    ).position(
+        position
+    ).rotation(
+        rotation
+    ).disableHit(
+        disableHit != undefined ? disableHit : effectDuration >= 0
+    ).locked(
+        effectDuration >= 0
+    ).metadata(
+        metadata
+    ).layer(
+        isCompanion ? "CHARACTER" : "ATTACHMENT"
+    );
+    if (attachedTo != undefined) {
+        // Maybe change the item this attaches to's metadata
+        // to enable a context menu?
+        image.attachedTo(attachedTo);
+    }
+    return { image, effectDuration };
 }
 
 export function prefetchAssets(assets: string[]) {

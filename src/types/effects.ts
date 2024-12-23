@@ -10,6 +10,7 @@ export interface Effect {
     basename: string;
     type: EffectType;
     thumbnail: string;
+    dpi: number;
     variants: {
         [key: string]: EffectVariant;
     }

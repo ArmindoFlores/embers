@@ -1,5 +1,6 @@
 import "./SpellSelectionPopover.css";
 
+import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
 import { getSpell, spellIDs } from "../effects/spells";
 import { toolID, toolMetadataSelectedSpell } from "../effectsTool";
 import { useEffect, useState } from "react";
@@ -8,7 +9,6 @@ import { APP_KEY } from "../config";
 import OBR from "@owlbear-rodeo/sdk";
 import { useOBR } from "../react-obr/providers";
 
-const MAX_RECENT_SPELLS = 5;
 export const spellPopoverId = `${APP_KEY}/spell-popover`;
 export const mostRecentEffectsMetadataKey = `${APP_KEY}/most-recent-effects`;
 
@@ -18,7 +18,7 @@ async function selectSpell(spellName: string) {
         name => name != spellName
     );
     mostRecentSpellsList.splice(0, 0, spellName);
-    if (mostRecentSpellsList.length > MAX_RECENT_SPELLS) {
+    if (mostRecentSpellsList.length > getSettingsValue(LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE)) {
         mostRecentSpellsList.pop();
     }
     await OBR.player.setMetadata({ [mostRecentEffectsMetadataKey]: mostRecentSpellsList });
