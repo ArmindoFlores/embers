@@ -3,7 +3,7 @@ import "./SceneControls.css";
 import { FaArrowPointer, FaEye, FaEyeSlash, FaLink, FaLinkSlash, FaSquareMinus } from "react-icons/fa6";
 import OBR, { Item, Player } from "@owlbear-rodeo/sdk";
 import { effectMetadataKey, spellMetadataKey } from "../effects/effects";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { MessageType } from "../types/messageListener";
 import { Spell } from "../types/spells";
@@ -77,6 +77,17 @@ export default function SceneControls() {
     const [player, setPlayer] = useState<Player|null>(null);
     const [globalSpellItems, _setGlobalSpellItems] = useState<Item[]>([]);
 
+    const spellEffectsPresent = useMemo(() => {
+        const playerIDs = [player, ...party].map(player => player?.id).filter(player => player != undefined);
+        for (const item of globalSpellItems) {
+            const caster = (item.metadata[spellMetadataKey] as MessageType["spellData"])?.caster;
+            if (caster != undefined && playerIDs.includes(caster)) {
+                return true;
+            }
+        }
+        return false;
+    }, [player, party, globalSpellItems]);
+
     const setGlobalSpellItems = useCallback((items: Item[]) => (
         _setGlobalSpellItems(items.filter(item => (
             item.metadata[effectMetadataKey] != undefined || item.metadata[spellMetadataKey] != undefined
@@ -108,12 +119,12 @@ export default function SceneControls() {
     }, [globalSpellItems]);
 
     useEffect(() => {
-        if (!obr.ready || !obr.sceneReady) {
+        if (!obr.ready || !obr.sceneReady || obr.player?.role !== "GM") {
             setParty([]);
             return;
         }
         setParty(obr.party);
-    }, [obr.ready, obr.sceneReady, obr.party]);
+    }, [obr.ready, obr.sceneReady, obr.party, obr.player?.role]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady) {
@@ -142,14 +153,13 @@ export default function SceneControls() {
         {
             player ? <>
                 <p className="subtitle">Active Effects</p>
-                <PlayerEffects player={player} />
                 {
-                    globalSpellItems.length != 0 ?
-                        party.map(player => (
-                            <PlayerEffects key={player.id} player={player} />
-                        ))
-                        :
-                        <p>No spell effects in this scene.</p>
+                    [player, ...party].map(player => (
+                        <PlayerEffects key={player.id} player={player} />
+                    ))
+                }
+                {
+                    !spellEffectsPresent && <p>No spell effects in this scene.</p> 
                 }
             </> : <p>No scene selected.</p>
         }

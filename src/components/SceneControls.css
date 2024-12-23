@@ -1,6 +1,7 @@
 .scene-spell-list {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
+    margin: 0 0 1rem 1rem;
 }
 
 .scene-spell-display-item {
