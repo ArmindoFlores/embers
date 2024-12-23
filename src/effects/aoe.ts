@@ -1,4 +1,4 @@
-import { getEffect, getEffectURL, getVariantName, registerEffect, urlVariant } from "./effects";
+import { effectMetadataKey, getEffect, getEffectURL, getVariantName, registerEffect, urlVariant } from "./effects";
 
 import { AOEEffectProperties } from "../types/aoe";
 import { buildImage } from "@owlbear-rodeo/sdk";
@@ -44,12 +44,19 @@ export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, du
     ).position(
         aoeEffectProperties.position
     ).disableHit(
-        realDuration >= 0
+        aoeEffectProperties.disableHit != undefined ? aoeEffectProperties.disableHit : realDuration >= 0
     ).locked(
         realDuration >= 0
-    ).build();
+    ).metadata(
+        { [effectMetadataKey]: true }
+    );
+    if (aoeEffectProperties.attachedTo != undefined) {
+        // Maybe change the item this attaches to's metadata
+        // to enable a context menu?
+        image.attachedTo(aoeEffectProperties.attachedTo);
+    }
 
     // Add all items to the local scene
-    registerEffect([image], worker, realDuration, onComplete);
+    registerEffect([image.build()], worker, realDuration, onComplete);
 }
 

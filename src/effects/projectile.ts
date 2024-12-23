@@ -1,5 +1,5 @@
 import { Image, buildImage } from "@owlbear-rodeo/sdk";
-import { getDistance, getEffect, getEffectURL, getRotation, getVariantName, registerEffect, urlVariant } from "./effects";
+import { effectMetadataKey, getDistance, getEffect, getEffectURL, getRotation, getVariantName, registerEffect, urlVariant } from "./effects";
 
 import { ProjectileProperties } from "../types/projectile";
 import { log_error } from "../logging";
@@ -88,11 +88,16 @@ export function projectile(projectileInfo: ProjectileProperties, worker: Worker,
         ).position(
             position
         ).disableHit(
-            realDuration >= 0
+            projectileInfo.disableHit != undefined ? projectileInfo.disableHit : realDuration >= 0
         ).locked(
             realDuration >= 0
-        ).build();
-        images.push(image);
+        ).metadata(
+            { [effectMetadataKey]: true }
+        );
+        if (projectileInfo.attachedTo != undefined) {
+            image.attachedTo(projectileInfo.attachedTo);
+        }
+        images.push(image.build());
     }
 
     // Add all items to the local scene

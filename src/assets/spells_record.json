@@ -198,10 +198,12 @@
                 "type": "effect",
                 "id": "arms_of_hadar.transparent",
                 "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
-                }                
+                }
             }
         ]
     },
@@ -215,6 +217,7 @@
             {
                 "type": "effect",
                 "id": "bless.intro",
+                "attachedTo": "$targets[0].id",
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -225,6 +228,8 @@
                 "id": "bless.loop",
                 "delay": 4000,
                 "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -284,6 +289,8 @@
                     "arguments": ["detect_magic.", "$aoe_type"]
                 },
                 "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
@@ -465,6 +472,8 @@
                 "id": "shield.loop",
                 "delay": 1100,
                 "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": {
@@ -501,6 +510,8 @@
                     "arguments": ["sleep.symbol.", "$color"]
                 },
                 "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"

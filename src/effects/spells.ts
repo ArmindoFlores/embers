@@ -18,9 +18,10 @@ function replicateSpell(variables: Variables[], targets: Item[], parameterValues
     if (replicationType === "no") {            
         variables.push({
             targets: targets.map(target => ({
+                id: target.attachedTo,
                 position: target.position,
                 size: getItemSize(target),
-                count: getTargetCount(target)
+                count: getTargetCount(target),
             })),
             ...parameterValues
         });
@@ -29,9 +30,10 @@ function replicateSpell(variables: Variables[], targets: Item[], parameterValues
         for (const target of targets) {
             variables.push({
                 targets: [{
+                    id: target.attachedTo,
                     position: target.position,
                     size: getItemSize(target),
-                    count: getTargetCount(target)
+                    count: getTargetCount(target),
                 }],
                 ...parameterValues
             });
@@ -43,14 +45,16 @@ function replicateSpell(variables: Variables[], targets: Item[], parameterValues
             variables.push({
                 targets: [
                     {
+                        id: target.attachedTo,
                         position: firstTarget.position,
                         size: getItemSize(firstTarget),
                         count: getTargetCount(firstTarget)
                     },
                     {
+                        id: target.attachedTo,
                         position: target.position,
                         size: getItemSize(target),
-                        count: getTargetCount(target)
+                        count: getTargetCount(target),
                     }
                 ],
                 ...parameterValues

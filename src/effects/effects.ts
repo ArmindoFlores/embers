@@ -3,12 +3,14 @@ import OBR, { Image, Vector2 } from "@owlbear-rodeo/sdk";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
 
+import { APP_KEY } from "../config";
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import effectsJSON from "../assets/effect_record.json";
 import { getItemSize } from "../utils";
 
 export const effects = effectsJSON as unknown as Effects;
 export const effectNames = gatherEffectNames();
+export const effectMetadataKey = `${APP_KEY}/is-effect`;
 
 function isEffect(obj: unknown): obj is Effect {
     const effectObject = obj as Effect;

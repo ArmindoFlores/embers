@@ -18,3 +18,15 @@ export interface Effect {
 export interface Effects {
     [key: string]: Effects | Effect;
 }
+
+export interface BaseEffectMessage {
+    disableHit?: boolean;
+    attachedTo?: string;
+}
+
+export interface BaseEffectProperties {
+    name: string;
+    dpi: number;
+    disableHit?: boolean;
+    attachedTo?: string;
+}
