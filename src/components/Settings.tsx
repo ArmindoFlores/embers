@@ -23,6 +23,23 @@ export default function Settings() {
                 </label>
                 <Checkbox checked={keepTargets} setChecked={setKeepTargets} />
             </div>
+            <div className="settings-item">
+                <label htmlFor="recent-spells-list-size">
+                    <p>Players can cast spells</p>
+                </label>
+                <Checkbox checked={keepTargets} setChecked={setKeepTargets} />
+            </div>
+            <div className="settings-item">
+                <label htmlFor="recent-spells-list-size">
+                    <p>Summoned entities rule</p>
+                </label>
+                <input 
+                    name="recent-spells-list-size" 
+                    type="text"
+                    className="settings-input"
+                    defaultValue="GM Only"
+                />
+            </div>
         </div>
     </div>;
 }

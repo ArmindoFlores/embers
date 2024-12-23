@@ -36,6 +36,10 @@ export interface EffectBlueprint {
     duration?: BlueprintValue<number>;
     // The number of loops to play for this effect
     loops?: BlueprintValue<number>;
+    // What item to attach this effect to
+    attachedTo?: BlueprintValue<string>;
+    // Whether to disable hit detection
+    disableHit?: BlueprintValue<boolean>;
     // Details about how to play this effect
     effectProperties?: ProjectileBlueprint | AOEEffectBlueprint | ConeBlueprint;
     // Instructions to execute after this effect is done

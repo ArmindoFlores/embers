@@ -11,7 +11,7 @@ export function setupContextMenu() {
             icons: [
             {
                 icon: "/cast.svg",
-                label: "Cast spell from here",
+                label: "Cast spell from here", // Turn this into "End spell effect"
                 filter: {
                     min: 1,
                     max: 2,

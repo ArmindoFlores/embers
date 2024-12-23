@@ -1,5 +1,5 @@
 import { Vector2, buildImage } from "@owlbear-rodeo/sdk";
-import { getEffect, getEffectURL, getVariantName, registerEffect, urlVariant } from "./effects";
+import { effectMetadataKey, getEffect, getEffectURL, getVariantName, registerEffect, urlVariant } from "./effects";
 
 import { ConeProperties } from "../types/cone";
 import { log_error } from "../logging";
@@ -68,12 +68,17 @@ export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number
     ).position(
         position
     ).disableHit(
-        realDuration >= 0
+        coneInfo.disableHit != undefined ? coneInfo.disableHit : realDuration >= 0
     ).locked(
         realDuration >= 0
-    ).build();
+    ).metadata(
+        { [effectMetadataKey]: true }
+    );
+    if (coneInfo.attachedTo != undefined) {
+        image.attachedTo(coneInfo.attachedTo);
+    }
 
     // Add all items to the local scene
-    registerEffect([image], worker, realDuration, onComplete);
+    registerEffect([image.build()], worker, realDuration, onComplete);
 }
 

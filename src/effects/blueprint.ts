@@ -195,6 +195,42 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         }
     }
 
+    let attachedTo: string|undefined;
+    if (element.attachedTo != undefined) {
+        if (isUnresolvedBlueprint(element.attachedTo)) {
+            const maybeAttachedTo = parseExpression<string>(element.attachedTo, variables);
+            if (isError(maybeAttachedTo)) {
+                return _error(maybeAttachedTo.error);
+            }
+            attachedTo = maybeAttachedTo.value;
+        }
+        else if (typeof element.attachedTo === "string") {
+            attachedTo = element.attachedTo;
+        }
+        else {
+            log_error("Invalid blueprint: attachedTo must be a string");
+            return _error("attachedTo must be a string");
+        }
+    }
+
+    let disableHit: boolean|undefined;
+    if (element.disableHit != undefined) {
+        if (isUnresolvedBlueprint(element.disableHit)) {
+            const maybeDisableHit = parseExpression<boolean>(element.disableHit, variables);
+            if (isError(maybeDisableHit)) {
+                return _error(maybeDisableHit.error);
+            }
+            disableHit = maybeDisableHit.value;
+        }
+        else if (typeof element.disableHit === "boolean") {
+            disableHit = element.disableHit;
+        }
+        else {
+            log_error("Invalid blueprint: disableHit must be a boolean");
+            return _error("disableHit must be a boolean");
+        }
+    }
+
     if (loops != undefined && duration != undefined) {
         log_error("Invalid blueprint: can't specify both duration and loop");
         return _error("can't specify both duration and loop");
@@ -340,7 +376,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         if (typeof abEffectProperties.size === "number") {
             size = abEffectProperties.size;
         }
-        else if (typeof abEffectProperties.size === "string") {
+        else if (isUnresolvedBlueprint(abEffectProperties.size)) {
             const maybeSize = parseExpression<number>(abEffectProperties.size, variables);
             if (isError(maybeSize)) {
                 return _error(maybeSize.error);
@@ -373,6 +409,12 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         if (error) {
             return _error(error);
         }
+    }
+
+    effectProperties = {
+        ...effectProperties,
+        attachedTo,
+        disableHit
     }
 
     const newInstruction: EffectInstruction = {

@@ -196,12 +196,14 @@
         "blueprints": [
             {
                 "type": "effect",
-                "id": "arms_of_hadar",
+                "id": "arms_of_hadar.transparent",
                 "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
-                }                
+                }
             }
         ]
     },
@@ -215,6 +217,7 @@
             {
                 "type": "effect",
                 "id": "bless.intro",
+                "attachedTo": "$targets[0].id",
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -225,10 +228,205 @@
                 "id": "bless.loop",
                 "delay": 4000,
                 "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
                 }                
+            }
+        ]
+    },
+    "cure_wounds": {
+        "name": "Cure Wounds",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Cure_Wounds/CureWounds_01_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "cure_wounds",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
+    "detect_magic": {
+        "name": "Detect Magic",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Area of effect",
+                "id": "aoe_type",
+                "type": "options",
+                "defaultValue": "circle",
+                "content": [
+                    { "value": "circle", "label": "Circle" },
+                    { "value": "cone", "label": "Cone" }
+                ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["detect_magic.", "$aoe_type"]
+                },
+                "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }                
+            }
+        ]
+    },
+    "entangle": {
+        "name": "Entangle",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "entangle.transparent.complete",
+                "duration": 7000,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "entangle.transparent.loop",
+                "duration": -1,
+                "delay": 6000,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "fog_cloud": {
+        "name": "Fog Cloud",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "fog_cloud.transparent",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "grease": {
+        "name": "Grease",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Grease/Grease_Dark_Brown_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "grease",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "guiding_bolt": {
+        "name": "Guiding Bolt",
+        "minTargets": 2,
+        "thumbnail": "Library/1st_Level/Guiding_Bolt/GuidingBolt_01_Regular_BlueYellow_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": 200,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "guiding_bolt",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            }
+        ]
+    },
+    "hunters_mark": {
+        "name": "Hunter's Mark",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Pulse_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "hunters_mark.pulse",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
             }
         ]
     },
@@ -247,6 +445,94 @@
                     "destination": "$targets[1].position",
                     "copies": "$targets[1].count"
                 }                
+            }
+        ]
+    },
+    "shield": {
+        "name": "Shield",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "shield.intro",
+                "duration": 1200,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": [1.5, "$targets[0].size"]
+                    }
+                }
+            },
+            {
+                "type": "effect",
+                "id": "shield.loop",
+                "delay": 1100,
+                "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": [1.5, "$targets[0].size"]
+                    }
+                }
+            }
+        ]
+    },
+    "sleep": {
+        "name": "Sleep",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Sleep/SleepSymbol01_01_Dark_Pink_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "dark_pink",
+                "content": [
+                    { "value": "dark_pink", "label": "Dark Pink" },
+                    { "value": "regular_pink", "label": "Regular Pink" }
+                ]
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["sleep.symbol.", "$color"]
+                },
+                "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
+    "sneak_attack": {
+        "name": "Sneak Attack",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "sneak_attack",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
             }
         ]
     },
