@@ -45,7 +45,8 @@ export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number
         coneInfo.attachedTo,
         duration,
         loops,
-        spellName
+        spellName,
+        spellCaster
     );
     if (result == undefined) {
         return;

@@ -59,7 +59,7 @@ export default function Main() {
                     <Tab>
                         <p className="title no-margin non-selectable">Settings</p>
                     </Tab>
-                    <Tab>
+                    <Tab disabled={!obr.sceneReady}>
                         <p className="title no-margin non-selectable">Scene</p>
                     </Tab>
                     <Tab disabled={!toolSelected}>

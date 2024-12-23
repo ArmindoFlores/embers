@@ -27,7 +27,8 @@ export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, du
         aoeEffectProperties.attachedTo,
         duration,
         loops,
-        spellName
+        spellName,
+        spellCaster
     );
     if (result == undefined) {
         return;

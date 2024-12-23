@@ -1,0 +1,26 @@
+.scene-spell-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.scene-spell-display-item {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scene-spell-display-controls {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+
+.scene-spell-display-control-button {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}

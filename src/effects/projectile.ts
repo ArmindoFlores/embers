@@ -66,7 +66,8 @@ export function projectile(projectileInfo: ProjectileProperties, worker: Worker,
             projectileInfo.attachedTo,
             duration,
             loops,
-            spellName
+            spellName,
+            spellCaster
         );
         if (result == undefined) {
             return;
