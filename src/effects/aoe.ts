@@ -1,9 +1,20 @@
 import { buildEffectImage, getEffect, getVariantName, registerEffect } from "./effects";
 
 import { AOEEffectProperties } from "../types/aoe";
+import { Metadata } from "@owlbear-rodeo/sdk";
 import { log_error } from "../logging";
 
-export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string, spellCaster?: string) {
+export function aoe(
+    aoeEffectProperties: AOEEffectProperties,
+    worker: Worker,
+    duration?: number,
+    loops?: number,
+    metadata?: Metadata,
+    onComplete?: () => void,
+    variant?: number,
+    spellName?: string,
+    spellCaster?: string
+) {
     const effect = getEffect(aoeEffectProperties.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${aoeEffectProperties.name}"`);
@@ -27,6 +38,7 @@ export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, du
         aoeEffectProperties.attachedTo,
         duration,
         loops,
+        metadata,
         spellName,
         spellCaster
     );

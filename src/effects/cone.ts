@@ -1,7 +1,7 @@
+import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 import { buildEffectImage, getEffect, registerEffect } from "./effects";
 
 import { ConeProperties } from "../types/cone";
-import { Vector2 } from "@owlbear-rodeo/sdk";
 import { log_error } from "../logging";
 
 function getRotation(source: Vector2, destination: Vector2) {
@@ -16,7 +16,17 @@ function getDistance(source: Vector2, destination: Vector2) {
     return Math.sqrt(Math.pow(source.x - destination.x, 2) + Math.pow(source.y - destination.y, 2));
 }
 
-export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string, spellCaster?: string) {
+export function cone(
+    coneInfo: ConeProperties,
+    worker: Worker,
+    duration?: number,
+    loops?: number,
+    metadata?: Metadata,
+    onComplete?: () => void,
+    variant?: number,
+    spellName?: string,
+    spellCaster?: string
+) {
     const effect = getEffect(coneInfo.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${coneInfo.name}"`);
@@ -45,6 +55,7 @@ export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number
         coneInfo.attachedTo,
         duration,
         loops,
+        metadata,
         spellName,
         spellCaster
     );

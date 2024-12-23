@@ -1,10 +1,10 @@
 import { AOEEffectBlueprint, BlueprintFunction, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
 import { EffectInstruction, MessageType } from "../types/messageListener";
+import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 import { AOEEffectMessage } from "../types/aoe";
 import { ConeMessage } from "../types/cone";
 import { ProjectileMessage } from "../types/projectile";
-import { Vector2 } from "@owlbear-rodeo/sdk";
 import { blueprintFunctions } from "./blueprintFunctions";
 import { log_error } from "../logging";
 
@@ -231,6 +231,24 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         }
     }
 
+    let metadata: Metadata|undefined;
+    if (element.metadata != undefined) {
+        if (isUnresolvedBlueprint(element.metadata)) {
+            const maybeMetadata = parseExpression<Metadata>(element.metadata, variables);
+            if (isError(maybeMetadata)) {
+                return _error(maybeMetadata.error);
+            }
+            metadata = maybeMetadata.value;
+        }
+        else if (typeof element.metadata === "object") {
+            metadata = element.metadata;
+        }
+        else {
+            log_error("Invalid blueprint: metadata must be an object");
+            return _error("metadata must be an object");
+        }
+    }
+
     if (loops != undefined && duration != undefined) {
         log_error("Invalid blueprint: can't specify both duration and loop");
         return _error("can't specify both duration and loop");
@@ -405,7 +423,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
 
     const instructions: EffectInstruction[] = [];
     if (element.blueprints != undefined) {
-        const error = _realiseBlueprint(element.blueprints, instructions, variables);
+        const error = _resolveBlueprint(element.blueprints, instructions, variables);
         if (error) {
             return _error(error);
         }
@@ -423,13 +441,14 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         delay,
         instructions,
         duration,
-        loops
+        loops,
+        metadata
     };
     message.push(newInstruction);
     return _value(element);
 }
 
-function _realiseBlueprint(blueprint: EffectBlueprint[], message: EffectInstruction[], variables: Variables): string|undefined {
+function _resolveBlueprint(blueprint: EffectBlueprint[], message: EffectInstruction[], variables: Variables): string|undefined {
     if (!Array.isArray(blueprint)) {
         log_error("Invalid blueprint: blueprint must be an array");
         return "blueprint must be an array";
@@ -449,7 +468,7 @@ export function resolveBlueprint(blueprint: string|EffectBlueprint[], variables:
         const blueprintJSON = (typeof blueprint === "string" ? JSON.parse(blueprint) : blueprint) as EffectBlueprint[];
         const message: MessageType = { instructions: [] };
 
-        const error = _realiseBlueprint(blueprintJSON, message.instructions, variables);
+        const error = _resolveBlueprint(blueprintJSON, message.instructions, variables);
         return { value: message, error };
     }
     catch (e: unknown) {

@@ -1,7 +1,7 @@
 import { EffectBlueprint } from "./blueprint";
 
 export type ReplicationType = "no" | "all" | "first_to_all";
-export type ParameterType = "options" | "number";
+export type ParameterType = "options" | "number" | "boolean";
 
 export type OptionsContent = {
     value: string;
@@ -13,12 +13,14 @@ export interface NumberContent {
     max?: number;
 }
 
+export type BooleanContent = undefined;
+
 export interface Parameter {
     name: string;
     id: string;
     type: ParameterType;
     defaultValue: unknown;
-    content: OptionsContent | NumberContent;
+    content: OptionsContent | NumberContent | BooleanContent;
 }
 
 export interface Spell {

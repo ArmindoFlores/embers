@@ -29,6 +29,12 @@
                 "content": {
                     "min": 1
                 }
+            },
+            {
+                "name": "Lightsource",
+                "id": "light",
+                "type": "boolean",
+                "defaultValue": true
             }
         ],
         "blueprints": [
@@ -39,6 +45,18 @@
                     "arguments": ["dancing_lights.", "$color"]
                 },
                 "duration": -1,
+                "metadata": {
+                    "name": "if",
+                    "arguments": [
+                        "$light", 
+                        {
+                            "com.battle-system.smoke/hasVision": true,
+                            "com.battle-system.smoke/isTorch": true,
+                            "com.battle-system.smoke/visionFallOff": "1",
+                            "com.battle-system.smoke/visionRange": "10"
+                        }
+                    ]
+                },
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$size"

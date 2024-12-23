@@ -13,45 +13,6 @@ import { useOBR } from "../react-obr/providers";
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
 
-// function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<string>) {
-//     if (typeof instruction.id === "string") {
-//         const effect = getEffect(instruction.id);
-//         if (effect != undefined) {
-//             if (effect.type === "TARGET") {
-//                 try {
-//                     const projectileMessage = instruction.effectProperties as ProjectileMessage;
-//                     const projectileInfo: ProjectileProperties = {
-//                         name: instruction.id,
-//                         copies: projectileMessage.copies,
-//                         source: projectileMessage.source,
-//                         destination: projectileMessage.destination,
-//                         dpi: 1
-//                     };
-//                     for (const asset of precomputeProjectileAssets(projectileInfo)) {
-//                         assets.add(asset);
-//                     }
-//                 }
-//                 catch (e: unknown) {
-//                     log_warn(`Error precomputing assets for effect ${instruction.id} (${(e as Error).message})`);
-//                 }
-//             }
-//         }
-//     }
-
-//     if (Array.isArray(instruction.instructions)) {
-//         for (const newInstruction of instruction.instructions) {
-//             _collectInstructionAssets(newInstruction, assets);
-//         }
-//     }
-//     return assets;
-// }
-
-// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// function collectInstructionAssets(instruction: EffectInstruction) {
-//     const assets = new Set<string>();
-//     return Array.from(_collectInstructionAssets(instruction, assets).values());
-// }
-
 export function MessageListener({ worker, effectRegister }: { worker: Worker, effectRegister: Map<string, number> }) {
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
@@ -126,6 +87,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         worker,
                         instruction.duration,
                         instruction.loops,
+                        instruction.metadata,
                         () => {
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
@@ -164,6 +126,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         worker,
                         instruction.duration,
                         instruction.loops,
+                        instruction.metadata,
                         () => {
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);
@@ -195,6 +158,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         worker,
                         instruction.duration,
                         instruction.loops,
+                        instruction.metadata,
                         () => {
                             effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                             doMoreWork(instruction.instructions);

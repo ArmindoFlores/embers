@@ -5,6 +5,7 @@ import OBR, { Metadata } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useState } from "react";
 
 import { APP_KEY } from "../config";
+import Checkbox from "./Checkbox";
 import { getSpell } from "../effects/spells";
 import { toolMetadataSelectedSpell } from "../effectsTool";
 import { useOBR } from "../react-obr/providers";
@@ -85,7 +86,15 @@ function ParameterRow({ spellID, parameter }: { spellID: string, parameter: Para
         const spellParameters = localStorage.getItem(`${APP_KEY}/spell-parameters/${spellID}`);
         if (spellParameters) {
             const parameters = JSON.parse(spellParameters);
-            parameters[parameter.id] = parameter.type === "options" ? parameterValue : parseInt(parameterValue ?? parameter.defaultValue);
+            if (parameter.type === "options") {
+                parameters[parameter.id] = parameterValue;
+            }
+            else if (parameter.type === "number") {
+                parameters[parameter.id] = parseInt(parameterValue ?? parameter.defaultValue)
+            }
+            else if (parameter.type === "boolean") {
+                parameters[parameter.id] = parameterValue == "true";
+            }
             localStorage.setItem(`${APP_KEY}/spell-parameters/${spellID}`, JSON.stringify(parameters));
         }
         else {
@@ -117,6 +126,11 @@ function ParameterRow({ spellID, parameter }: { spellID: string, parameter: Para
                     onChange={e => setValidatedParameterValue(e.currentTarget.value)}
                     onInput={e => setInputValue(e.currentTarget.value)}
                 />
+            )
+        }
+        {
+            parameter.type === "boolean" && (
+                <Checkbox checked={parameterValue == "true"} setChecked={value => setParameterValue(value ? "true" : "")} />
             )
         }
     </div>;
