@@ -4,6 +4,7 @@
             "basename": "Cantrip/Dancing_Lights/DancingLights_01_BlueTeal",
             "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_BlueTeal_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -16,6 +17,7 @@
             "basename": "Cantrip/Dancing_Lights/DancingLights_01_BlueYellow",
             "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_BlueYellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -28,6 +30,7 @@
             "basename": "Cantrip/Dancing_Lights/DancingLights_01_Green",
             "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -40,6 +43,7 @@
             "basename": "Cantrip/Dancing_Lights/DancingLights_01_Pink",
             "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_Pink_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -52,6 +56,7 @@
             "basename": "Cantrip/Dancing_Lights/DancingLights_01_PurpleGreen",
             "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_PurpleGreen_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -64,6 +69,7 @@
             "basename": "Cantrip/Dancing_Lights/DancingLights_01_Red",
             "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_Red_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -76,6 +82,7 @@
             "basename": "Cantrip/Dancing_Lights/DancingLights_01_Yellow",
             "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -89,28 +96,29 @@
         "basename": "Cantrip/Eldritch_Blast/EldritchBlast_01_Regular_Purple",
         "thumbnail": "Cantrip/Eldritch_Blast/EldritchBlast_01_Regular_Purple_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_600x400"],
                 "duration": 4370,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_1000x400"],
                 "duration": 4370,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_1600x400"],
                 "duration": 4370,
                 "size": [1600, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_2800x400"],
                 "duration": 4370,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_4000x400"],
                 "duration": 4370,
                 "size": [4000, 400]
@@ -121,28 +129,29 @@
         "basename": "Cantrip/Fire_Bolt/FireBolt_01_Regular_Orange",
         "thumbnail": "Cantrip/Fire_Bolt/FireBolt_01_Regular_Orange_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_600x400"],
                 "duration": 1530,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_1000x400"],
                 "duration": 1530,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_1600x400"],
                 "duration": 1530,
                 "size": [1600, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_2800x400"],
                 "duration": 1700,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_4000x400"],
                 "duration": 1800,
                 "size": [4000, 400]
@@ -153,28 +162,29 @@
         "basename": "Cantrip/Ray_Of_Frost/RayOfFrost_01_Regular_Blue",
         "thumbnail": "Cantrip/Ray_Of_Frost/RayOfFrost_01_Regular_Blue_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_600x400"],
                 "duration": 2530,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_1000x400"],
                 "duration": 2530,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_1600x400"],
                 "duration": 2530,
                 "size": [1600, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_2800x400"],
                 "duration": 2530,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_4000x400"],
                 "duration": 2600,
                 "size": [4000, 400]
@@ -186,6 +196,7 @@
             "basename": "Cantrip/Sacred_Flame/SacredFlameSource_01_Regular_Yellow",
             "thumbnail": "Cantrip/Sacred_Flame/SacredFlameSource_01_Regular_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 400,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -198,6 +209,7 @@
             "basename": "Cantrip/Sacred_Flame/SacredFlameTarget_01_Regular_Yellow",
             "thumbnail": "Cantrip/Sacred_Flame/SacredFlameTarget_01_Regular_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 400,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -212,6 +224,7 @@
             "basename": "Cantrip/Toll_The_Dead/TollTheDead_01_Regular_Green",
             "thumbnail": "Cantrip/Toll_The_Dead/TollTheDead_01_Regular_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 400,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -224,6 +237,7 @@
             "basename": "Cantrip/Toll_The_Dead/TollTheDeadBell_01_Regular_Green",
             "thumbnail": "Cantrip/Toll_The_Dead/TollTheDeadBell_01_Regular_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 400,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -236,6 +250,7 @@
             "basename": "Cantrip/Toll_The_Dead/TollTheDeadShockwave_01_Regular_Green",
             "thumbnail": "Cantrip/Toll_The_Dead/TollTheDeadShockwave_01_Regular_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 400,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -248,6 +263,7 @@
             "basename": "Cantrip/Toll_The_Dead/TollTheDeadSkullSmoke_01_Regular_Green",
             "thumbnail": "Cantrip/Toll_The_Dead/TollTheDeadSkullSmoke_01_Regular_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 400,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -262,6 +278,7 @@
             "basename": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple",
             "thumbnail": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 500,
             "variants": {
                 "500": {
                     "name": ["500x500"],
@@ -274,6 +291,7 @@
             "basename": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_75OPA",
             "thumbnail": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 500,
             "variants": {
                 "500": {
                     "name": ["500x500"],
@@ -287,6 +305,7 @@
         "basename": "1st_Level/Bardic_Inspiration/BardicInspiration_01_Regular_GreenOrange",
         "thumbnail": "1st_Level/Bardic_Inspiration/BardicInspiration_01_Regular_GreenOrange_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 400,
         "variants": {
             "400": {
                 "name": ["400x400"],
@@ -300,6 +319,7 @@
             "basename": "1st_Level/Bless/Bless_01_Regular_Yellow_Intro",
             "thumbnail": "1st_Level/Bless/Bless_01_Regular_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -317,6 +337,7 @@
             "basename": "1st_Level/Bless/Bless_01_Regular_Yellow_Loop",
             "thumbnail": "1st_Level/Bless/Bless_01_Regular_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -335,9 +356,10 @@
         "basename": "1st_Level/Burning_Hands/BurningHands_01_Regular_Orange",
         "thumbnail": "1st_Level/Burning_Hands/BurningHands_01_Regular_Orange_Thumb.webp",
         "type": "CONE",
+        "dpi": 600,
         "variants": {
             "600": {
-            "name": ["600x600"],
+                "name": ["600x600"],
                 "duration": 5570,
                 "size": [600, 600]
             }
@@ -347,6 +369,7 @@
         "basename": "1st_Level/Cure_Wounds/CureWounds_01_Blue",
         "thumbnail": "1st_Level/Cure_Wounds/CureWounds_01_Blue_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 200,
         "variants": {
             "200": {
                 "name": ["200x200"],
@@ -365,6 +388,7 @@
             "basename": "1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue",
             "thumbnail": "1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "1200": {
                     "name": ["1200x1200"],
@@ -377,18 +401,19 @@
             "basename": "1st_Level/Detect_Magic/DetectMagicCone_01_Regular_Blue",
             "thumbnail": "1st_Level/Detect_Magic/DetectMagicCone_01_Regular_Blue_Cone_Thumb.webp",
             "type": "CONE",
+            "dpi": 300,
             "variants": {
                 "300": {
                     "name": ["05ft_300x300"],
                     "duration": 3003,
                     "size": [300, 300]
                 },
-                "500": {
+                "900": {
                     "name": ["15ft_500x500"],
                     "duration": 4003,
                     "size": [500, 500]
                 },
-                "800": {
+                "1800": {
                     "name": ["30ft_800x800"],
                     "duration": 4003,
                     "size": [800, 800]
@@ -402,6 +427,7 @@
                 "basename": "1st_Level/Entangle/Entangle02_02_Regular_Green",
                 "thumbnail": "1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "500": {
                         "name": ["500x500"],
@@ -414,6 +440,7 @@
                 "basename": "1st_Level/Entangle/EntangleLoop02_02_Regular_Green",
                 "thumbnail": "1st_Level/Entangle/EntangleLoop02_02_Regular_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "500": {
                         "name": ["500x500"],
@@ -428,6 +455,7 @@
                 "basename": "1st_Level/Entangle/Opacities/Entangle02_02_Regular_Green_75OPA",
                 "thumbnail": "1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "500": {
                         "name": ["500x500"],
@@ -440,6 +468,7 @@
                 "basename": "1st_Level/Entangle/Opacities/EntangleLoop02_02_Regular_Green_75OPA",
                 "thumbnail": "1st_Level/Entangle/EntangleLoop02_02_Regular_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "500": {
                         "name": ["500x500"],
@@ -455,6 +484,7 @@
             "basename": "1st_Level/Fog_Cloud/FogCloud_01_White",
             "thumbnail": "1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "800": {
                     "name": ["800x800"],
@@ -467,6 +497,7 @@
             "basename": "1st_Level/Fog_Cloud/Opacities/FogCloud_01_White_75OPA",
             "thumbnail": "1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "800": {
                     "name": ["800x800"],
@@ -480,6 +511,7 @@
         "basename": "1st_Level/Grease/Grease_Dark_Brown",
         "thumbnail": "1st_Level/Grease/Grease_Dark_Brown_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 200,
         "variants": {
             "600": {
                 "name": ["600x600"],
@@ -492,28 +524,29 @@
         "basename": "1st_Level/Guiding_Bolt/GuidingBolt_01_Regular_BlueYellow",
         "thumbnail": "1st_Level/Guiding_Bolt/GuidingBolt_01_Regular_BlueYellow_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_600x400"],
                 "duration": 5670,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_1000x400"],
                 "duration": 5730,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_1600x400"],
                 "duration": 5900,
                 "size": [1600, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_2800x400"],
                 "duration": 6030,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_4000x400"],
                 "duration": 6230,
                 "size": [4000, 400]
@@ -525,6 +558,7 @@
             "basename": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Pulse",
             "thumbnail": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Pulse_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -537,6 +571,7 @@
             "basename": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Loop",
             "thumbnail": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Loop_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -550,28 +585,29 @@
         "basename": "1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple",
         "thumbnail": "1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_01_600x400", "05ft_02_600x400", "05ft_03_600x400", "05ft_04_600x400"],
                 "duration": 1700,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_01_1000x400", "15ft_02_1000x400", "15ft_03_1000x400", "15ft_04_1000x400"],
                 "duration": 1870,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_01_1600x400", "30ft_02_1600x400", "30ft_03_1600x400", "30ft_04_1600x400", "30ft_05_1600x400", "30ft_06_1600x400", "30ft_07_1600x400", "30ft_08_1600x400", "30ft_09_1600x400"],
                 "duration": 1870,
                 "size": [1600, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_01_2800x400", "60ft_02_2800x400", "60ft_03_2800x400", "60ft_04_2800x400", "60ft_05_2800x400", "60ft_06_2800x400", "60ft_07_2800x400", "60ft_08_2800x400", "60ft_09_2800x400"],
                 "duration": 2030,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_01_4000x400", "90ft_02_4000x400", "90ft_03_4000x400", "90ft_04_4000x400"],
                 "duration": 2200,
                 "size": [4000, 400]
@@ -583,6 +619,7 @@
             "basename": "1st_Level/Shield/Shield_01_Regular_Blue_Complete",
             "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -595,6 +632,7 @@
             "basename": "1st_Level/Shield/Shield_01_Regular_Blue_Intro",
             "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -607,6 +645,7 @@
             "basename": "1st_Level/Shield/Shield_01_Regular_Blue_Loop",
             "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -620,6 +659,7 @@
                 "basename": "1st_Level/Shield/Shield_01_Regular_Blue_OutroFade",
                 "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -632,6 +672,7 @@
                 "basename": "1st_Level/Shield/Shield_01_Regular_Blue_OutroExplode",
                 "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -648,6 +689,7 @@
                 "basename": "1st_Level/Sleep/SleepSymbol01_01_Dark_Pink",
                 "thumbnail": "1st_Level/Sleep/SleepSymbol01_01_Dark_Pink_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -660,6 +702,7 @@
                 "basename": "1st_Level/Sleep/SleepSymbol01_01_Regular_Pink",
                 "thumbnail": "1st_Level/Sleep/SleepSymbol01_01_Regular_Pink_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -674,6 +717,7 @@
                 "basename": "1st_Level/Sleep/Cloud01_01_Regular_Pink",
                 "thumbnail": "1st_Level/Sleep/Cloud01_01_Regular_Pink_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -686,6 +730,7 @@
                 "basename": "1st_Level/Sleep/Cloud01_02_Regular_Pink",
                 "thumbnail": "1st_Level/Sleep/Cloud01_02_Regular_Pink_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -699,6 +744,7 @@
             "basename": "1st_Level/Sleep/SleepMarker01_01_Regular_Pink",
             "thumbnail": "1st_Level/Sleep/SleepMarker01_01_Regular_Pink_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -712,6 +758,7 @@
         "basename": "1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green",
         "thumbnail": "1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 100,
         "variants": {
             "300": {
                 "name": ["300x300"],
@@ -724,8 +771,9 @@
         "basename": "1st_Level/Thunderwave/Thunderwave_01_Bright_Blue_Center",
         "thumbnail": "1st_Level/Thunderwave/Thunderwave_01_Bright_Blue_Center_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 200,
         "variants": {
-            "300": {
+            "600": {
                 "name": ["600x600"],
                 "duration": 1030,
                 "size": [600, 600]
@@ -736,28 +784,29 @@
         "basename": "1st_Level/Witch_Bolt/WitchBolt_01_Regular_Blue",
         "thumbnail": "1st_Level/Witch_Bolt/WitchBolt_01_Regular_Blue_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_600x400"],
                 "duration": 4000,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_1000x400"],
                 "duration": 4000,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_1600x400"],
                 "duration": 4000,
                 "size": [1600, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_2800x400"],
                 "duration": 4000,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_4000x400"],
                 "duration": 4000,
                 "size": [4000, 400]
@@ -769,6 +818,7 @@
             "basename": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Blue",
             "thumbnail": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -781,6 +831,7 @@
             "basename": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Green",
             "thumbnail": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -793,6 +844,7 @@
             "basename": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Purple",
             "thumbnail": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Purple_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -805,6 +857,7 @@
             "basename": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Red",
             "thumbnail": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Red_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -817,6 +870,7 @@
             "basename": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Yellow",
             "thumbnail": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -829,6 +883,7 @@
             "basename": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Orange",
             "thumbnail": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Orange_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -843,6 +898,7 @@
             "basename": "2nd_Level/Darkness/Darkness_01_Black",
             "thumbnail": "2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "600": {
                     "name": ["600x600"],
@@ -855,6 +911,7 @@
             "basename": "2nd_Level/Darkness/Opacities/Darkness_01_Black_75OPA",
             "thumbnail": "2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "600": {
                     "name": ["600x600"],
@@ -869,6 +926,7 @@
             "basename": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster",
             "thumbnail": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -881,6 +939,7 @@
             "basename": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Target",
             "thumbnail": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Target_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -896,6 +955,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Blue",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -908,6 +968,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Green",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -921,6 +982,7 @@
                     "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Orange",
                     "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Orange_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "200": {
                             "name": ["200x200"],
@@ -933,6 +995,7 @@
                     "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_02_Orange",
                     "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_02_Orange_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "200": {
                             "name": ["200x200"],
@@ -951,6 +1014,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Pink",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Pink_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -963,6 +1027,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Purple",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Purple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -975,6 +1040,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Red",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Red_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -987,6 +1053,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Multicoloured/FlamingSphere_01_GreenToBlue",
                 "thumbnail": "2nd_Level/Flaming_Sphere/Multicoloured/FlamingSphere_01_Rainbow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -999,6 +1066,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Multicoloured/FlamingSphere_01_Rainbow",
                 "thumbnail": "2nd_Level/Flaming_Sphere/Multicoloured/FlamingSphere_01_Rainbow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1013,6 +1081,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Opacities/FlamingSphere_01_Blue_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1025,6 +1094,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Opacities/FlamingSphere_01_Green_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1037,6 +1107,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Opacities/FlamingSphere_01_Orange_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Orange_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1049,6 +1120,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Opacities/FlamingSphere_01_Pink_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Pink_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1061,6 +1133,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Opacities/FlamingSphere_01_Purple_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Purple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1073,6 +1146,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Opacities/FlamingSphere_01_Red_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_01_Red_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1085,6 +1159,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Multicoloured/Opacities/FlamingSphere_01_GreenToBlue_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/Multicoloured/FlamingSphere_01_Rainbow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1097,6 +1172,7 @@
                 "basename": "2nd_Level/Flaming_Sphere/Multicoloured/Opacities/FlamingSphere_01_Rainbow_75OPA",
                 "thumbnail": "2nd_Level/Flaming_Sphere/Multicoloured/FlamingSphere_01_Rainbow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -1111,6 +1187,7 @@
         "basename": "2nd_Level/Gust_Of_Wind/GustOfWind_01_White",
         "thumbnail": "2nd_Level/Gust_Of_Wind/GustOfWind_01_White_Thumb.webp",
         "type": "CONE",
+        "dpi": 200,
         "variants": {
             "1200": {
                 "name": ["1200x200"],
@@ -1124,6 +1201,7 @@
             "basename": "2nd_Level/Misty_Step/MistyStep_01_Regular_Blue",
             "thumbnail": "2nd_Level/Misty_Step/MistyStep_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1136,6 +1214,7 @@
             "basename": "2nd_Level/Misty_Step/MistyStep_02_Regular_Blue",
             "thumbnail": "2nd_Level/Misty_Step/MistyStep_02_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1150,6 +1229,7 @@
             "basename": "2nd_Level/Moonbeam/Moonbeam_01_Regular_Blue",
             "thumbnail": "2nd_Level/Moonbeam/Moonbeam_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1162,6 +1242,7 @@
             "basename": "2nd_Level/Moonbeam/MoonbeamComplete_01_Regular_Blue",
             "thumbnail": "2nd_Level/Moonbeam/Moonbeam_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1174,6 +1255,7 @@
             "basename": "2nd_Level/Moonbeam/MoonbeamIntro_01_Regular_Blue",
             "thumbnail": "2nd_Level/Moonbeam/MoonbeamIntro_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1186,6 +1268,7 @@
             "basename": "2nd_Level/Moonbeam/MoonbeamNoPulse_01_Regular_Blue",
             "thumbnail": "2nd_Level/Moonbeam/MoonbeamNoPulse_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1198,6 +1281,7 @@
             "basename": "2nd_Level/Moonbeam/MoonbeamOutro_01_Regular_Blue",
             "thumbnail": "2nd_Level/Moonbeam/MoonbeamOutro_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1211,28 +1295,29 @@
         "basename": "2nd_Level/Scorching_Ray/ScorchingRay_01_Regular_Orange",
         "thumbnail": "2nd_Level/Scorching_Ray/ScorchingRay_01_Regular_Orange_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_600x400"],
                 "duration": 1800,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_1000x400"],
                 "duration": 1800,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_1600x400"],
                 "duration": 1800,
                 "size": [1600, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_2800x400"],
                 "duration": 2030,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_4000x400"],
                 "duration": 2030,
                 "size": [4000, 400]
@@ -1243,6 +1328,7 @@
         "basename": "2nd_Level/Shatter/Shatter_01_Blue",
         "thumbnail": "2nd_Level/Shatter/Shatter_01_Blue_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 100,
         "variants": {
             "400": {
                 "name": ["400x400"],
@@ -1256,6 +1342,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Club01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Club01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1268,6 +1355,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Dagger02_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Dagger02_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1280,6 +1368,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Falchion01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Falchion01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1292,6 +1381,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Glaive01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Glaive01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1304,6 +1394,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1316,6 +1407,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatClub01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatClub01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1328,6 +1420,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatSword01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatSword01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1340,6 +1433,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Halberd01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Halberd01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1352,6 +1446,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1364,6 +1459,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer02_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Hammer02_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1376,6 +1472,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_HandAxe01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_HandAxe01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1388,6 +1485,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Javelin01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Javelin01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1400,6 +1498,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Katana01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Katana01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1412,6 +1511,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Laserspear01_01_Regular_Blue",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Laserspear01_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "600": {
                     "name": ["600x600"],
@@ -1424,6 +1524,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword1H01_01_Regular_Blue",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword1H01_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1436,6 +1537,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword2H01_01_Regular_Blue",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Lasersword2H01_01_Regular_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "600": {
                     "name": ["600x600"],
@@ -1448,6 +1550,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_LongSword01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_LongSword01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1460,6 +1563,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Flaming_Yellow",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Flaming_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -1472,6 +1576,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Spectral_Blue",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_01_Spectral_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -1484,6 +1589,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Mace01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1496,6 +1602,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Flaming_Yellow",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Flaming_Yellow_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -1508,6 +1615,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Spectral_Blue",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_01_Spectral_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -1520,6 +1628,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Maul01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1532,6 +1641,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Quarterstaff01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Quarterstaff01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1544,6 +1654,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Rapier01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Rapier01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1556,6 +1667,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scimitar01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scimitar01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1568,6 +1680,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scythe01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Scythe01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1580,6 +1693,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Shortsword01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Shortsword01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1592,6 +1706,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Spear01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Spear01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1604,6 +1719,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Trident01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Trident01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1616,6 +1732,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Warhammer01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Warhammer01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1628,6 +1745,7 @@
             "basename": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Wrench01_02_Spectral_Green",
             "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_Wrench01_02_Spectral_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -1643,6 +1761,7 @@
                 "basename": "2nd_Level/Web/Web_01_White_01",
                 "thumbnail": "2nd_Level/Web/Web_01_White_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -1655,6 +1774,7 @@
                 "basename": "2nd_Level/Web/Web_01_White_02",
                 "thumbnail": "2nd_Level/Web/Web_01_White_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -1669,6 +1789,7 @@
                 "basename": "2nd_Level/Web/Opacities/Web_01_White_01_75OPA",
                 "thumbnail": "2nd_Level/Web/Web_01_White_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -1681,6 +1802,7 @@
                 "basename": "2nd_Level/Web/Opacities/Web_01_White_02_75OPA",
                 "thumbnail": "2nd_Level/Web/Web_01_White_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -1697,6 +1819,7 @@
                 "basename": "3rd_Level/Call_Lightning/CallLightning_01_Blue",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1709,6 +1832,7 @@
                 "basename": "3rd_Level/Call_Lightning/CallLightning_01_BlueOrange",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_BlueOrange_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1721,6 +1845,7 @@
                 "basename": "3rd_Level/Call_Lightning/CallLightning_01_Green",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1733,6 +1858,7 @@
                 "basename": "3rd_Level/Call_Lightning/CallLightning_01_PinkYellow",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_PinkYellow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1745,6 +1871,7 @@
                 "basename": "3rd_Level/Call_Lightning/CallLightning_01_Purple",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Purple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1757,6 +1884,7 @@
                 "basename": "3rd_Level/Call_Lightning/CallLightning_01_Red",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Red_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1769,6 +1897,7 @@
                 "basename": "3rd_Level/Call_Lightning/CallLightning_01_Yellow",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Yellow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1783,6 +1912,7 @@
                 "basename": "3rd_Level/Call_Lightning/Opacities/CallLightning_01_Blue_75OPA",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1795,6 +1925,7 @@
                 "basename": "3rd_Level/Call_Lightning/Opacities/CallLightning_01_BlueOrange_75OPA",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_BlueOrange_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1807,6 +1938,7 @@
                 "basename": "3rd_Level/Call_Lightning/Opacities/CallLightning_01_Green_75OPA",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1819,6 +1951,7 @@
                 "basename": "3rd_Level/Call_Lightning/Opacities/CallLightning_01_PinkYellow_75OPA",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_PinkYellow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1831,6 +1964,7 @@
                 "basename": "3rd_Level/Call_Lightning/Opacities/CallLightning_01_Purple_75OPA",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Purple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1843,6 +1977,7 @@
                 "basename": "3rd_Level/Call_Lightning/Opacities/CallLightning_01_Red_75OPA",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Red_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1855,6 +1990,7 @@
                 "basename": "3rd_Level/Call_Lightning/Opacities/CallLightning_01_Yellow_75OPA",
                 "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Yellow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "1000": {
                         "name": ["1000x1000"],
@@ -1870,28 +2006,29 @@
             "basename": "3rd_Level/Fireball/FireballBeam_01_Orange",
             "thumbnail": "3rd_Level/Fireball/FireballBeam_01_Orange_Thumb.webp",
             "type": "TARGET",
+            "dpi": 200,
             "variants": {
-                "5": {
+                "200": {
                     "name": ["05ft_600x400"],
                     "duration": 4040,
                     "size": [600, 400]
                 },
-                "15": {
+                "600": {
                     "name": ["15ft_1000x400"],
                     "duration": 4040,
                     "size": [1000, 400]
                 },
-                "30": {
+                "1200": {
                     "name": ["30ft_1600x400"],
                     "duration": 4040,
                     "size": [1600, 400]
                 },
-                "60": {
+                "2400": {
                     "name": ["60ft_2800x400"],
                     "duration": 4040,
                     "size": [2800, 400]
                 },
-                "90": {
+                "3600": {
                     "name": ["90ft_4000x400"],
                     "duration": 4040,
                     "size": [4000, 400]
@@ -1902,6 +2039,7 @@
             "basename": "3rd_Level/Fireball/FireballExplosion_01_Orange",
             "thumbnail": "3rd_Level/Fireball/FireballExplosion_01_Orange_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "800": {
                     "name": ["800x800"],
@@ -1914,6 +2052,7 @@
             "basename": "3rd_Level/Fireball/FireballLoop_01_Orange",
             "thumbnail": "3rd_Level/Fireball/FireballLoop_01_Orange_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "800": {
                     "name": ["800x800"],
@@ -1926,6 +2065,7 @@
             "basename": "3rd_Level/Fireball/FireballLoopNoDebris_01_Orange",
             "thumbnail": "3rd_Level/Fireball/FireballLoopNoDebris_01_Orange_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "800": {
                     "name": ["800x800"],
@@ -1939,6 +2079,7 @@
         "basename": "3rd_Level/Lightning_Bolt/LightningBolt_01_Regular_Blue",
         "thumbnail": "3rd_Level/Lightning_Bolt/LightningBolt_01_Regular_Blue_Thumb.webp",
         "type": "CONE",
+        "dpi": 200,
         "variants": {
             "200": {
                 "name": ["4000x200"],
@@ -1958,6 +2099,7 @@
                 "basename": "3rd_Level/Sleet_Storm/SleetStorm_01_Blue",
                 "thumbnail": "3rd_Level/Sleet_Storm/SleetStorm_01_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "800": {
                         "name": ["800x800"],
@@ -1970,6 +2112,7 @@
                 "basename": "3rd_Level/Sleet_Storm/SleetStorm_02_Blue",
                 "thumbnail": "3rd_Level/Sleet_Storm/SleetStorm_02_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "800": {
                         "name": ["800x800"],
@@ -1983,6 +2126,7 @@
             "basename": "3rd_Level/Sleet_Storm/Opacities/SleetStorm_01_Blue_100OPA",
             "thumbnail": "3rd_Level/Sleet_Storm/Opacities/SleetStorm_01_Blue_100OPA_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 200,
             "variants": {
                 "800": {
                     "name": ["800x800"],
@@ -1996,6 +2140,7 @@
         "basename": "3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow",
         "thumbnail": "3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 200,
         "variants": {
             "600": {
                 "name": ["600x600"],
@@ -2009,6 +2154,7 @@
             "basename": "3rd_Level/Wind_Wall/WindWall_01_75OPA",
             "thumbnail": "3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
             "type": "CONE",
+            "dpi": 100,
             "variants": {
                 "100": {
                     "name": ["100x100"],
@@ -2036,6 +2182,7 @@
             "basename": "3rd_Level/Wind_Wall/WindWall_01",
             "thumbnail": "3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
             "type": "CONE",
+            "dpi": 100,
             "variants": {
                 "100": {
                     "name": ["100x100"],
@@ -2064,6 +2211,7 @@
         "basename": "4th_Level/Black_Tentacles/BlackTentacles_01_Dark_Purple",
         "thumbnail": "4th_Level/Black_Tentacles/BlackTentacles_01_Dark_Purple_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 200,
         "variants": {
             "600": {
                 "name": ["600x600"],
@@ -2079,6 +2227,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue_Thumb.webp",
                     "type": "LINE",
+                    "dpi": 100,
                     "variants": {
                         "100": {
                             "name": ["100x100"],
@@ -2106,6 +2255,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Thumb.webp",
                     "type": "LINE",
+                    "dpi": 100,
                     "variants": {
                         "100": {
                             "name": ["100x100"],
@@ -2135,6 +2285,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue_Ring",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue_Ring_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "400": {
                             "name": ["400x400"],
@@ -2147,6 +2298,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Ring",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Ring_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "400": {
                             "name": ["400x400"],
@@ -2163,6 +2315,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/Opacities/WallOfFire_01_Blue_75OPA",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue_Thumb.webp",
                     "type": "LINE",
+                    "dpi": 100,
                     "variants": {
                         "100": {
                             "name": ["100x100"],
@@ -2190,6 +2343,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/Opacities/WallOfFire_01_Yellow_75OPA",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Thumb.webp",
                     "type": "LINE",
+                    "dpi": 100,
                     "variants": {
                         "100": {
                             "name": ["100x100"],
@@ -2219,6 +2373,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/Opacities/WallOfFire_01_Blue_Ring_75OPA",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue_Ring_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "400": {
                             "name": ["400x400"],
@@ -2231,6 +2386,7 @@
                     "basename": "4th_Level/Wall_Of_Fire/Opacities/WallOfFire_01_Yellow_Ring_75OPA",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Ring_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "400": {
                             "name": ["400x400"],
@@ -2247,6 +2403,7 @@
             "basename": "5th_Level/Antilife_Shell/AntilifeShell_01_Blue_Circle",
             "thumbnail": "5th_Level/Antilife_Shell/Antilifeshell_01_Blue_Circle_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -2259,6 +2416,7 @@
             "basename": "5th_Level/Antilife_Shell/AntilifeShell_01_Blue_NoCircle",
             "thumbnail": "5th_Level/Antilife_Shell/Antilifeshell_01_Blue_NoCircle_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -2273,6 +2431,7 @@
             "basename": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Blue",
             "thumbnail": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Blue_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -2285,6 +2444,7 @@
             "basename": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Green",
             "thumbnail": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Green_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -2297,6 +2457,7 @@
             "basename": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Purple",
             "thumbnail": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Purple_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -2309,6 +2470,7 @@
             "basename": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Red",
             "thumbnail": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Red_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -2322,6 +2484,7 @@
         "basename": "5th_Level/Cone_Of_Cold/ConeOfCold_01_Regular_Blue",
         "thumbnail": "5th_Level/Cone_Of_Cold/ConeOfCold_01_Regular_Blue_Thumb.webp",
         "type": "CONE",
+        "dpi": 200,
         "variants": {
             "200": {
                 "name": ["600x600"],
@@ -2335,6 +2498,7 @@
             "basename": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_H",
             "thumbnail": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_H_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "200": {
                     "name": ["200x200"],
@@ -2347,6 +2511,7 @@
             "basename": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_Sphere",
             "thumbnail": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_Sphere_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "400": {
                     "name": ["400x400"],
@@ -2359,6 +2524,7 @@
             "basename": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_V",
             "thumbnail": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_V_Thumb.webp",
             "type": "CIRCLE",
+            "dpi": 100,
             "variants": {
                 "200": {
                     "name": ["200x25"],
@@ -2373,28 +2539,29 @@
             "basename": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue",
             "thumbnail": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue_Primary_Thumb.webp",
             "type": "TARGET",
+            "dpi": 200,
             "variants": {
-                "5": {
+                "200": {
                     "name": ["05ft_Primary_600x400"],
                     "duration": 1630,
                     "size": [600, 400]
                 },
-                "15": {
+                "600": {
                     "name": ["15ft_Primary_1000x400"],
                     "duration": 1670,
                     "size": [1000, 400]
                 },
-                "30": {
+                "1200": {
                     "name": ["30ft_Primary_1600x400"],
                     "duration": 1700,
                     "size": [1600, 400]
                 },
-                "60": {
+                "2400": {
                     "name": ["60ft_Primary_2800x400"],
                     "duration": 1730,
                     "size": [2800, 400]
                 },
-                "90": {
+                "3600": {
                     "name": ["90ft_Primary_4000x400"],
                     "duration": 1770,
                     "size": [4000, 400]
@@ -2406,27 +2573,27 @@
             "thumbnail": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue_Secondary_Thumb.webp",
             "type": "TARGET",
             "variants": {
-                "5": {
+                "200": {
                     "name": ["05ft_Secondary_600x400"],
                     "duration": 1200,
                     "size": [600, 400]
                 },
-                "15": {
+                "600": {
                     "name": ["15ft_Secondary_1000x400"],
                     "duration": 1270,
                     "size": [1000, 400]
                 },
-                "30": {
+                "1200": {
                     "name": ["30ft_Secondary_1600x400"],
                     "duration": 1300,
                     "size": [1600, 400]
                 },
-                "60": {
+                "2400": {
                     "name": ["60ft_Secondary_2800x400"],
                     "duration": 1330,
                     "size": [2800, 400]
                 },
-                "90": {
+                "3600": {
                     "name": ["90ft_Secondary_4000x400"],
                     "duration": 1330,
                     "size": [4000, 400]
@@ -2438,33 +2605,34 @@
         "basename": "6th_Level/Disintegrate/Disintegrate_01_Regular_Green01",
         "thumbnail": "6th_Level/Disintegrate/Disintegrate_01_Regular_Green01_Thumb.webp",
         "type": "TARGET",
+        "dpi": 200,
         "variants": {
-            "5": {
+            "200": {
                 "name": ["05ft_600x400"],
                 "duration": 3030,
                 "size": [600, 400]
             },
-            "15": {
+            "600": {
                 "name": ["15ft_1000x400"],
                 "duration": 2930,
                 "size": [1000, 400]
             },
-            "30": {
+            "1200": {
                 "name": ["30ft_1600x400"],
                 "duration": 2970,
                 "size": [1600, 400]
             },
-            "45": {
+            "1800": {
                 "name": ["45ft_2200x400"],
                 "duration": 3030,
                 "size": [2200, 400]
             },
-            "60": {
+            "2400": {
                 "name": ["60ft_2800x400"],
                 "duration": 3030,
                 "size": [2800, 400]
             },
-            "90": {
+            "3600": {
                 "name": ["90ft_4000x400"],
                 "duration": 3030,
                 "size": [4000, 400]
@@ -2475,6 +2643,7 @@
         "basename": "7th_Level/Whirlwind/Whirlwind_01_BlueGrey_01",
         "thumbnail": "7th_Level/Whirlwind/Whirlwind_01_BlueGrey_01_Thumb.webp",
         "type": "CIRCLE",
+        "dpi": 100,
         "variants": {
             "400": {
                 "name": ["400x400"],
@@ -2490,6 +2659,7 @@
                     "basename": "Generic/Butterflies/Butterflies_01_Regular_Orange_Few",
                     "thumbnail": "Generic/Butterflies/Butterflies_01_Regular_Orange_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "400": {
                             "name": ["400x400"],
@@ -2502,6 +2672,7 @@
                     "basename": "Generic/Butterflies/Butterflies_01_Regular_Orange_Many",
                     "thumbnail": "Generic/Butterflies/Butterflies_01_Regular_Orange_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "400": {
                             "name": ["400x400"],
@@ -2514,6 +2685,7 @@
                     "basename": "Generic/Butterflies/Butterflies_01_Regular_Orange_Single",
                     "thumbnail": "Generic/Butterflies/Butterflies_01_Regular_Orange_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 100,
                     "variants": {
                         "400": {
                             "name": ["400x400"],
@@ -2527,6 +2699,7 @@
                 "basename": "Generic/Butterflies/ButterfliesComplete01_01_Regular_BluePurple",
                 "thumbnail": "Generic/Butterflies/ButterfliesComplete01_01_Regular_BluePurple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "600": {
                         "name": ["600x600"],
@@ -2539,6 +2712,7 @@
                 "basename": "Generic/Butterflies/ButterfliesInward01_01_Regular_BluePurple",
                 "thumbnail": "Generic/Butterflies/ButterfliesInward01_01_Regular_BluePurple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "600": {
                         "name": ["600x600"],
@@ -2551,6 +2725,7 @@
                 "basename": "Generic/Butterflies/ButterfliesInwardBurst01_01_Regular_BluePurple",
                 "thumbnail": "Generic/Butterflies/ButterfliesInwardBurst01_01_Regular_BluePurple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "600": {
                         "name": ["600x600"],
@@ -2563,6 +2738,7 @@
                 "basename": "Generic/Butterflies/ButterfliesOutward01_01_Regular_BluePurple",
                 "thumbnail": "Generic/Butterflies/ButterfliesOutward01_01_Regular_BluePurple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 200,
                 "variants": {
                     "600": {
                         "name": ["600x600"],
@@ -2575,6 +2751,7 @@
                 "basename": "Generic/Butterflies/ButterfliesOutwardBurst01_01_Regular_BluePurple",
                 "thumbnail": "Generic/Butterflies/ButterfliesOutwardBurst01_01_Regular_BluePurple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "400": {
                         "name": ["400x400"],
@@ -2590,6 +2767,7 @@
                     "basename": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Burst",
                     "thumbnail": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Burst_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 200,
                     "variants": {
                         "600": {
                             "name": ["600x600"],
@@ -2602,6 +2780,7 @@
                     "basename": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Loop",
                     "thumbnail": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Loop_Thumb.webp",
                     "type": "CIRCLE",
+                    "dpi": 200,
                     "variants": {
                         "600": {
                             "name": ["600x600"],
@@ -2617,6 +2796,7 @@
                 "basename": "Generic/Healing/HealingAbility_01_Blue",
                 "thumbnail": "Generic/Healing/HealingAbility_01_Blue_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -2634,6 +2814,7 @@
                 "basename": "Generic/Healing/HealingAbility_01_Green",
                 "thumbnail": "Generic/Healing/HealingAbility_01_Green_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -2651,6 +2832,7 @@
                 "basename": "Generic/Healing/HealingAbility_01_Purple",
                 "thumbnail": "Generic/Healing/HealingAbility_01_Purple_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
@@ -2668,6 +2850,7 @@
                 "basename": "Generic/Healing/HealingAbility_01_Yellow",
                 "thumbnail": "Generic/Healing/HealingAbility_01_Yellow_Thumb.webp",
                 "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "200": {
                         "name": ["200x200"],
