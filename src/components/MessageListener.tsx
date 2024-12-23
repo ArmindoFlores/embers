@@ -56,7 +56,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
 
-    const processInstruction = useCallback((instruction: EffectInstruction, spellName?: string) => {
+    const processInstruction = useCallback((instruction: EffectInstruction, spellName?: string, spellCaster?: string) => {
         const doMoreWork = (instructions?: EffectInstruction[]) => {
             if (instructions == undefined) {
                 return;
@@ -131,7 +131,8 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             doMoreWork(instruction.instructions);
                         },
                         variant,
-                        spellName
+                        spellName,
+                        spellCaster
                     );
                 }
                 else if (effect.type === "CONE") {
@@ -168,7 +169,8 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             doMoreWork(instruction.instructions);
                         },
                         variant,
-                        spellName
+                        spellName,
+                        spellCaster
                     );
                 }
                 else if (effect.type === "CIRCLE") {
@@ -198,7 +200,8 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             doMoreWork(instruction.instructions);
                         },
                         variant,
-                        spellName
+                        spellName,
+                        spellCaster
                     );
                 }
             }
@@ -240,8 +243,9 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                 log_error("Malformatted message: message.instructions is not an array");
             }
             const spellName = messageData.spellData ? messageData.spellData.name : undefined;
+            const spellCaster = messageData.spellData ? messageData.spellData.caster : undefined;
             for (const instruction of messageData.instructions) {
-                processInstruction(instruction, spellName);
+                processInstruction(instruction, spellName, spellCaster);
             }
         });
 

@@ -16,7 +16,7 @@ function getDistance(source: Vector2, destination: Vector2) {
     return Math.sqrt(Math.pow(source.x - destination.x, 2) + Math.pow(source.y - destination.y, 2));
 }
 
-export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string) {
+export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string, spellCaster?: string) {
     const effect = getEffect(coneInfo.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${coneInfo.name}"`);
@@ -53,6 +53,6 @@ export function cone(coneInfo: ConeProperties, worker: Worker, duration?: number
     const { image, effectDuration } = result;
 
     // Add all items to the local scene
-    registerEffect([image.build()], worker, effectDuration, onComplete);
+    registerEffect([image.build()], worker, effectDuration, onComplete, spellCaster);
 }
 

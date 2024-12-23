@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 
 import { MessageListener } from "../components/MessageListener";
 import OBR from "@owlbear-rodeo/sdk";
+import SceneControls from "../components/SceneControls";
 import Settings from "../components/Settings";
+import SpellBook from "../components/SpellBook";
 import SpellDetails from "../components/SpellDetails";
 import effectsWorkerScript from "../effects/worker";
 import { setupContextMenu } from "../castSpellMenu";
@@ -20,48 +22,58 @@ export default function Main() {
     const [selectedTab, setSelectedTab] = useState(0);
 
     useEffect(() => {
-        if (!obr.ready) {
+        if (!obr.ready || !obr.sceneReady || !obr.player?.role || !obr.player?.id) {
             return;
         }
-
         // When the app mounts:
         // - create a new worker
         const worker = new Worker(effectsWorkerScript);
         setEffectsWorker(worker);
         // - setup the context menu
-        setupContextMenu();
+        setupContextMenu(obr.player.role);
         // - setup tool
-        const unmountTool = setupEffectsTool();
+        setupEffectsTool(obr.player.role, obr.player.id);
         // - setup the effects register
         setEffectRegister(new Map());
         // - setup callback to know when our tool is active
         const unmountToolCallback = OBR.tool.onToolChange(tool => {
             const selectedOurTool = tool === toolID;
             setToolSelected(selectedOurTool);
-            setSelectedTab(selectedOurTool ? 1 : 0);
+            setSelectedTab(selectedOurTool ? 3 : 0);
         });
         
         // When the app unmounts, reverse both of those operations
         return () => {
             worker.terminate();
-            unmountTool();
             unmountToolCallback();
         };
-    }, [obr.ready]);
+    }, [obr.ready, obr.sceneReady, obr.player?.role, obr.player?.id]);
     
     return (
         <div className="main-container">
             <Tabs selectedIndex={selectedTab} onSelect={tab => setSelectedTab(tab)}>
                 <TabList>
                     <Tab>
+                        <p className="title no-margin non-selectable">Book</p>
+                    </Tab>
+                    <Tab>
                         <p className="title no-margin non-selectable">Settings</p>
                     </Tab>
+                    <Tab>
+                        <p className="title no-margin non-selectable">Scene</p>
+                    </Tab>
                     <Tab disabled={!toolSelected}>
-                        <p className="title no-margin non-selectable">Spell Details</p>
+                        <p className="title no-margin non-selectable">Spell</p>
                     </Tab>
                 </TabList>
                 <TabPanel>
+                    <SpellBook />
+                </TabPanel>
+                <TabPanel>
                     <Settings />
+                </TabPanel>
+                <TabPanel>
+                    <SceneControls />
                 </TabPanel>
                 <TabPanel>
                     <SpellDetails />

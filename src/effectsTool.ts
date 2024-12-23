@@ -1,3 +1,4 @@
+import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "./components/Settings";
 import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 
 import { APP_KEY } from "./config";
@@ -123,39 +124,43 @@ async function getPointerPosition(position: Vector2, snapToGrid: boolean) {
     return position;
 }
 
-export function setupEffectsTool() {
-    OBR.tool.create({
-        id: toolID,
-        defaultMode: effectsToolModeID,
-        defaultMetadata: {
-            [toolMetadataSelectedSpell]: undefined,
-        },
-        icons: [{
-            icon: `${window.location.origin}/embers.svg`,
-            label: "Cast spell"
-        }],
-        shortcut: "Shift+C",
-        onClick(context) {
-            if (context.activeTool === toolID) {
-                // de-select
-                OBR.player.getMetadata().then(metadata => {
-                    const previousTool = metadata?.[previousToolMetadataKey] as string | undefined;
-                    if (previousTool != undefined) {
-                        OBR.tool.activateTool(previousTool);
-                    }
-                })
-                return false;
-            }
-            OBR.player.setMetadata({ [previousToolMetadataKey]: context.activeTool });
-            return true;
+export function setupEffectsTool(playerRole: "GM" | "PLAYER", playerID: string) {
+    getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.PLAYERS_CAN_CAST_SPELLS).then(canCastSpells => {
+        if (!canCastSpells && playerRole !== "GM") {
+            return;
         }
+        OBR.tool.create({
+            id: toolID,
+            defaultMode: effectsToolModeID,
+            defaultMetadata: {
+                [toolMetadataSelectedSpell]: undefined,
+            },
+            icons: [{
+                icon: `${window.location.origin}/embers.svg`,
+                label: "Cast spell"
+            }],
+            shortcut: "Shift+C",
+            onClick(context) {
+                if (context.activeTool === toolID) {
+                    // de-select
+                    OBR.player.getMetadata().then(metadata => {
+                        const previousTool = metadata?.[previousToolMetadataKey] as string | undefined;
+                        if (previousTool != undefined) {
+                            OBR.tool.activateTool(previousTool);
+                        }
+                    })
+                    return false;
+                }
+                OBR.player.setMetadata({ [previousToolMetadataKey]: context.activeTool });
+                return true;
+            }
+        });
+        setupToolActions(playerRole, playerID);
+        setupTargetToolModes();
     });
-    setupToolActions();
-    setupTargetToolModes();
-    return () => {};
 }
-
-async function setupToolActions() {
+    
+async function setupToolActions(playerRole: "GM" | "PLAYER", playerID: string) {
     // Cast spell action
     await OBR.tool.createAction({
         id: effectsToolActionID,
@@ -174,13 +179,17 @@ async function setupToolActions() {
         },
         shortcut: "Enter",
         onClick() {
-            OBR.player.getMetadata().then(metadata => {
-                if (typeof metadata[toolMetadataSelectedSpell] != "string") {
-                    log_error(`Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
-                    OBR.notification.show(`Embers: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
+            Promise.all([OBR.player.getMetadata(), getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.PLAYERS_CAN_CAST_SPELLS)]).then(([metadata, canCastSpells]) => {
+                if (!canCastSpells && playerRole !== "GM") {
+                    OBR.notification.show("Embers: You do not have permission to cast spells", "ERROR");
                     return;
                 }
-                doSpell(metadata[toolMetadataSelectedSpell]);
+                if (typeof metadata[toolMetadataSelectedSpell] != "string") {
+                    log_error(`Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`);
+                    OBR.notification.show(`Embers: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`, "ERROR");
+                    return;
+                }
+                doSpell(metadata[toolMetadataSelectedSpell], playerID);
             });
         }
     });

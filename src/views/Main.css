@@ -5,11 +5,6 @@
     padding: 1rem;
 }
 
-.title {
-    font-size: 1.125rem;
-    font-weight: 700;
-}
-
 .settings-item {
     display: flex;
     flex-direction: row;
@@ -21,10 +16,6 @@
     height: 1.1rem;
     width: 5rem;
     font-size: 0.875rem;
-}
-
-.non-selectable {
-    user-select: none;
 }
 
 .react-tabs {

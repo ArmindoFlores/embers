@@ -1,4 +1,5 @@
 import { Effect, Effects } from "../types/effects";
+import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "../components/Settings";
 import OBR, { Image, Metadata, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
@@ -117,7 +118,7 @@ export function getDistance(source: Vector2, destination: Vector2) {
     return Math.sqrt(Math.pow(source.x - destination.x, 2) + Math.pow(source.y - destination.y, 2));
 }
 
-export function registerEffect(images: Image[], worker: Worker, duration: number, onComplete?: () => void) {
+export function registerEffect(images: Image[], worker: Worker, duration: number, onComplete?: () => void, spellCaster?: string) {
     if (duration >= 0) {
         OBR.scene.local.addItems(images).then(() => {
             const id = images[0].id;
@@ -137,8 +138,8 @@ export function registerEffect(images: Image[], worker: Worker, duration: number
         });
     }
     else {
-        OBR.player.getRole().then(role => {
-            if (role === "GM") {
+        Promise.all([getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE), OBR.player.getId(), OBR.player.getRole()]).then(([summonRule, id, role]) => {
+            if ((summonRule === "caster" && id === spellCaster) || (summonRule === "gm-only" && role === "GM")) {
                 OBR.scene.items.addItems(images);
             }
         });
@@ -169,6 +170,8 @@ export function buildEffectImage(effectName: string, effect: Effect, size: numbe
     if (spellName != undefined) {
         metadata[spellMetadataKey] = spellName;
     }
+    
+    const isCompanion = effectDuration < 0 && attachedTo == undefined;
 
     const image = buildImage(
         {
@@ -193,6 +196,8 @@ export function buildEffectImage(effectName: string, effect: Effect, size: numbe
         effectDuration >= 0
     ).metadata(
         metadata
+    ).layer(
+        isCompanion ? "CHARACTER" : "ATTACHMENT"
     );
     if (attachedTo != undefined) {
         // Maybe change the item this attaches to's metadata

@@ -33,7 +33,7 @@ export function precomputeProjectileAssets(projectileInfo: ProjectileProperties,
     return assets;
 }
 
-export function projectile(projectileInfo: ProjectileProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string) {
+export function projectile(projectileInfo: ProjectileProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string, spellCaster?: string) {
     const effect = getEffect(projectileInfo.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${projectileInfo.name}"`);
@@ -77,6 +77,6 @@ export function projectile(projectileInfo: ProjectileProperties, worker: Worker,
     }
 
     // Add all items to the local scene
-    registerEffect(images, worker, realDuration, onComplete);
+    registerEffect(images, worker, realDuration, onComplete, spellCaster);
 }
 

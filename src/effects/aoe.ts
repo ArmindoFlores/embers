@@ -3,7 +3,7 @@ import { buildEffectImage, getEffect, getVariantName, registerEffect } from "./e
 import { AOEEffectProperties } from "../types/aoe";
 import { log_error } from "../logging";
 
-export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string) {
+export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string, spellCaster?: string) {
     const effect = getEffect(aoeEffectProperties.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${aoeEffectProperties.name}"`);
@@ -35,6 +35,6 @@ export function aoe(aoeEffectProperties: AOEEffectProperties, worker: Worker, du
     const { image, effectDuration } = result;
 
     // Add all items to the local scene
-    registerEffect([image.build()], worker, effectDuration, onComplete);
+    registerEffect([image.build()], worker, effectDuration, onComplete, spellCaster);
 }
 
