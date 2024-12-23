@@ -196,7 +196,7 @@
         "blueprints": [
             {
                 "type": "effect",
-                "id": "arms_of_hadar",
+                "id": "arms_of_hadar.transparent",
                 "duration": -1,
                 "effectProperties": {
                     "position": "$targets[0].position",
@@ -229,6 +229,133 @@
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
                 }                
+            }
+        ]
+    },
+    "cure_wounds": {
+        "name": "Cure Wounds",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Cure_Wounds/CureWounds_01_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "cure_wounds",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
+    "detect_magic": {
+        "name": "Detect Magic",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Area of effect",
+                "id": "aoe_type",
+                "type": "options",
+                "defaultValue": "circle",
+                "content": [
+                    { "value": "circle", "label": "Circle" },
+                    { "value": "cone", "label": "Cone" }
+                ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["detect_magic.", "$aoe_type"]
+                },
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }                
+            }
+        ]
+    },
+    "entangle": {
+        "name": "Entangle",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "entangle.transparent.complete",
+                "duration": 7000,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "entangle.transparent.loop",
+                "duration": -1,
+                "delay": 6000,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "fog_cloud": {
+        "name": "Fog Cloud",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "fog_cloud.transparent",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
             }
         ]
     },

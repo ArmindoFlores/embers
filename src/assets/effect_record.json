@@ -258,14 +258,28 @@
         }
     },
     "arms_of_hadar": {
-        "basename": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple",
-        "thumbnail": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
-        "type": "CIRCLE",
-        "variants": {
-            "500": {
-                "name": ["500x500"],
-                "duration": 5000,
-                "size": [500, 500]
+        "opaque": {
+            "basename": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple",
+            "thumbnail": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "500": {
+                    "name": ["500x500"],
+                    "duration": 5000,
+                    "size": [500, 500]
+                }
+            }
+        },
+        "transparent": {
+            "basename": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_75OPA",
+            "thumbnail": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
+            "type": "CIRCLE",
+            "variants": {
+                "500": {
+                    "name": ["500x500"],
+                    "duration": 5000,
+                    "size": [500, 500]
+                }
             }
         }
     },
@@ -383,14 +397,56 @@
         }
     },
     "entangle": {
-        "basename": "1st_Level/Entangle/Entangle02_02_Regular_Green",
-        "thumbnail": "1st_Level/Entangle/EntangleLoop02_02_Regular_Green_Thumb.webp",
-        "type": "CIRCLE",
-        "variants": {
-            "500": {
-                "name": ["500x500"],
-                "duration": 8330,
-                "size": [500, 500]
+        "opaque": {
+            "complete": {
+                "basename": "1st_Level/Entangle/Entangle02_02_Regular_Green",
+                "thumbnail": "1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": 8330,
+                        "size": [500, 500]
+                    }
+                }
+            },
+            "loop": {
+                "basename": "1st_Level/Entangle/EntangleLoop02_02_Regular_Green",
+                "thumbnail": "1st_Level/Entangle/EntangleLoop02_02_Regular_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": 4170,
+                        "size": [500, 500]
+                    }
+                }
+            }
+        },
+        "transparent": {
+            "complete": {
+                "basename": "1st_Level/Entangle/Opacities/Entangle02_02_Regular_Green_75OPA",
+                "thumbnail": "1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": 8330,
+                        "size": [500, 500]
+                    }
+                }
+            },
+            "loop": {
+                "basename": "1st_Level/Entangle/Opacities/EntangleLoop02_02_Regular_Green_75OPA",
+                "thumbnail": "1st_Level/Entangle/EntangleLoop02_02_Regular_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": 4170,
+                        "size": [500, 500]
+                    }
+                }
             }
         }
     },
