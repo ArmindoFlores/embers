@@ -48,7 +48,7 @@
                 "metadata": {
                     "name": "if",
                     "arguments": [
-                        "$light", 
+                        "$light",
                         {
                             "com.battle-system.smoke/hasVision": true,
                             "com.battle-system.smoke/isTorch": true,
@@ -175,7 +175,7 @@
                     "size": "$targets[1].size"
                 }
             }
-        ] 
+        ]
     },
     "toll_the_dead": {
         "name": "Toll the Dead",
@@ -190,7 +190,7 @@
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
-                }                
+                }
             }
         ]
     },
@@ -239,7 +239,7 @@
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
-                }                
+                }
             },
             {
                 "type": "effect",
@@ -251,7 +251,7 @@
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$targets[0].size"
-                }                
+                }
             }
         ]
     },
@@ -312,7 +312,7 @@
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
-                }                
+                }
             }
         ]
     },
@@ -462,7 +462,7 @@
                     "source": "$targets[0].position",
                     "destination": "$targets[1].position",
                     "copies": "$targets[1].count"
-                }                
+                }
             }
         ]
     },
@@ -580,7 +580,7 @@
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
-                }                
+                }
             }
         ]
     },
@@ -610,7 +610,7 @@
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
-                }                
+                }
             }
         ]
     },
@@ -664,7 +664,7 @@
                         {
                             "name": "if",
                             "arguments": ["$transparent", "transparent.", "opaque."]
-                        }, 
+                        },
                         "$color"
                     ]
                 },
@@ -673,7 +673,7 @@
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
-                }                
+                }
             }
         ]
     },

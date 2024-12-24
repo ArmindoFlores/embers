@@ -14,7 +14,7 @@ const workerFunction = function () {
             ...data
         );
     }
-    
+
     self.onmessage = (event: MessageEvent) => {
         const messageData = event.data as MessageData;
         log_info(`Scheduling update in ${messageData.duration} for ${messageData.id}`);
@@ -23,7 +23,7 @@ const workerFunction = function () {
         }, messageData.duration);
     };
 };
-    
+
 const codeToString = workerFunction.toString();
 const mainCode = codeToString.substring(codeToString.indexOf("{") + 1, codeToString.lastIndexOf("}"));
 const blob = new Blob([mainCode], { type: "application/javascript" });

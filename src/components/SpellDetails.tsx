@@ -117,7 +117,7 @@ function ParameterRow({ spellID, parameter }: { spellID: string, parameter: Para
         }
         {
             parameter.type === "number" && (
-                <input 
+                <input
                     className="settings-input"
                     type="number"
                     value={inputValue ?? (parameter.defaultValue as number).toString()}

@@ -28,7 +28,7 @@ def check_paths(effects, current_key=""):
 def main():
     with open(os.path.join(CURRENT_DIR, "src/assets/effect_record.json"), "r") as f:
         effects = json.load(f)
-    
+
     invalid_paths = check_paths(effects)
     if invalid_paths > 0:
         print(f"Found {invalid_paths} invalid asset paths")

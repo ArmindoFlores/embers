@@ -15,7 +15,7 @@ export const spells = spellsJSON as Spells;
 export const spellIDs = Object.keys(spells);
 
 function replicateSpell(variables: Variables[], targets: Item[], parameterValues: object, replicationType: ReplicationType) {
-    if (replicationType === "no") {            
+    if (replicationType === "no") {
         variables.push({
             targets: targets.map(target => ({
                 id: target.attachedTo,
@@ -121,7 +121,7 @@ export function doSpell(spellID: string, playerID: string) {
         log_error(`Unknown spell "${spellID}"`);
         return;
     }
-    getSortedTargets().then(targets => {               
+    getSortedTargets().then(targets => {
         OBR.scene.local.deleteItems(targets.map(item => item.id));
 
         const replicationType = spell.replicate ?? "no";

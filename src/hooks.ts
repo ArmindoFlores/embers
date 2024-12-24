@@ -12,7 +12,7 @@ export function useThrottled<F extends (...args: any[]) => R, R>(fn: F, delay: n
             fn(...args);
         }
         else if (type == "both" || type == "trailing") {
-            if (timeoutRef.current !== undefined) { 
+            if (timeoutRef.current !== undefined) {
                 clearTimeout(timeoutRef.current);
             }
             timeoutRef.current = setTimeout(() => {

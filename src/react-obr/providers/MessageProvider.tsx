@@ -60,7 +60,7 @@ export function OBRMessageProvider({ children, appKey }: { children: React.React
 
     useEffect(() => {
         if (!ready) return;
-        
+
         return OBR.broadcast.onMessage(appKey, e => {
             const messageData = e.data as InternalMessage;
             if (messageData.recipients === undefined || (player?.id && messageData.recipients.includes(player.id))) {

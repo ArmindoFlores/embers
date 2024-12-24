@@ -14,13 +14,13 @@ export function precomputeProjectileAssets(projectileInfo: ProjectileProperties,
     }
 
     const distance = getDistance(projectileInfo.source, projectileInfo.destination);
-    
+
     const effectVariantName = getVariantName(projectileInfo.name, distance / 30);
     if (effectVariantName == undefined) {
         log_error(`Could not find adequate variant for effect "${projectileInfo.name}"`);
         return assets;
     }
-    
+
     for (let i = 0; i < projectileInfo.copies; i++) {
         const url = getEffectURL(projectileInfo.name, effectVariantName, i % (effect.variants[effectVariantName].name.length));
         if (url == undefined) {
@@ -58,7 +58,7 @@ export function projectile(
         x: projectileInfo.source.x,
         y: projectileInfo.source.y,
     };
-    
+
     // For each copy, create a new Image object based on a variant of our chosen effect
     let realDuration = 0;
     const images: Image[] = [];
@@ -91,4 +91,3 @@ export function projectile(
     // Add all items to the local scene
     registerEffect(images, worker, realDuration, onComplete, spellCaster);
 }
-
