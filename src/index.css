@@ -27,6 +27,17 @@ input {
     border-width: 0;
 }
 
+input.medium {
+    font-size: 1.125rem;
+    height: 1.2rem;
+}
+
+input.small {
+    font-size: 0.875rem;
+    height: 1rem;
+    width: 4rem;
+}
+
 hr {
     margin: 0;
     flex-shrink: 0;
@@ -65,4 +76,10 @@ p {
 
 .bold {
     font-weight: 700;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

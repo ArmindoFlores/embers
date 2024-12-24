@@ -1,0 +1,81 @@
+.spell-creation {
+    display: flex;
+    flex-direction: column;
+}
+
+.spell-creation-header {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    overflow: hidden;
+}
+
+.spell-creation-first-row {
+    justify-content: space-between;
+}
+
+.spell-creation-name-and-id {
+    display: flex;
+    flex-direction: column;
+}
+
+.spell-creation-name-and-id > * {
+    margin-bottom: 0.5rem;
+}
+
+.spell-creation-thumbnail {
+    width: 3rem;
+    height: 3rem;
+}
+
+.spell-creation-targets {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spell-creation-replication {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spell-creation-blueprint-container {
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.25rem;
+    border-radius: 1rem;
+    border: thin solid white;
+
+    background-color: rgb(30, 34, 49);
+
+    cursor: pointer;
+}
+
+.spell-creation-blueprint-controls > * {
+    margin-left: 1rem;
+}
+
+.spell-creation-edit-blueprint {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.spell-creation-edit-blueprint-values {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.blueprint-value-cell {
+    margin:  0 0 0.5rem 0.5rem;
+    padding: 0.25rem;
+    border-radius: 1rem;
+    border: thin solid white;
+
+    background-color: rgb(30, 34, 49);
+
+    cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import { AOEEffectBlueprint, BlueprintFunction, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
+import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
 import { EffectInstruction, MessageType } from "../types/messageListener";
 import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
@@ -20,15 +20,15 @@ function isError<T>(value: ErrorOr<T>): value is { error: string } {
     return value.error != undefined;
 }
 
-function isBlueprintFunction(value: unknown): value is BlueprintFunction {
+export function isBlueprintFunction(value: unknown): value is BlueprintFunction {
     return (value as BlueprintFunction).name != undefined && (value as BlueprintFunction).arguments != undefined;
 }
 
-function isBlueprintVariable(value: unknown): value is string {
+export function isBlueprintVariable(value: unknown): value is string {
     return typeof value === "string" && value.startsWith("$");
 }
 
-function isUnresolvedBlueprint(value: unknown): value is BlueprintValueUnresolved {
+export function isUnresolvedBlueprint(value: BlueprintValue<unknown>): value is BlueprintValueUnresolved {
     return isBlueprintFunction(value) || isBlueprintVariable(value);
 }
 

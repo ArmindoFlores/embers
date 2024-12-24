@@ -4,6 +4,8 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { setupEffectsTool, toolID } from "../effectsTool";
 import { useEffect, useState } from "react";
 
+import AddSpell from "../components/AddSpell";
+import { FaPlus } from "react-icons/fa6";
 import { MessageListener } from "../components/MessageListener";
 import OBR from "@owlbear-rodeo/sdk";
 import SceneControls from "../components/SceneControls";
@@ -52,7 +54,7 @@ export default function Main() {
             const selectedOurTool = tool === toolID;
             setToolSelected(selectedOurTool);
             setPreviouslySelectedTab(selectedTab);
-            setSelectedTab(selectedOurTool ? 3 : previouslySelectedTab);
+            setSelectedTab(selectedOurTool ? 2 : previouslySelectedTab);
         });
     }, [obr.ready, selectedTab, previouslySelectedTab]);
     
@@ -60,30 +62,36 @@ export default function Main() {
         <div className="main-container">
             <Tabs selectedIndex={selectedTab} onSelect={tab => setSelectedTab(tab)}>
                 <TabList>
-                    <Tab>
-                        <p className="title no-margin non-selectable">Book</p>
+                    <Tab disabled={!obr.sceneReady}>
+                        <p className="title no-margin non-selectable">Scene</p>
                     </Tab>
                     <Tab>
                         <p className="title no-margin non-selectable">Settings</p>
                     </Tab>
-                    <Tab disabled={!obr.sceneReady}>
-                        <p className="title no-margin non-selectable">Scene</p>
-                    </Tab>
                     <Tab disabled={!toolSelected}>
                         <p className="title no-margin non-selectable">Spell</p>
                     </Tab>
+                    <Tab>
+                        <p className="title no-margin non-selectable">Book</p>
+                    </Tab>
+                    <Tab>
+                        <p className="title no-margin non-selectable"><FaPlus /></p>
+                    </Tab>
                 </TabList>
                 <TabPanel>
-                    <SpellBook />
+                    <SceneControls />
                 </TabPanel>
                 <TabPanel>
                     <Settings />
                 </TabPanel>
                 <TabPanel>
-                    <SceneControls />
+                    <SpellDetails />
                 </TabPanel>
                 <TabPanel>
-                    <SpellDetails />
+                    <SpellBook />
+                </TabPanel>
+                <TabPanel>
+                    <AddSpell />
                 </TabPanel>
             </Tabs>
             {
