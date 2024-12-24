@@ -1,10 +1,13 @@
 import { AOEEffectMessage } from "./aoe";
 import { ConeMessage } from "./cone";
+import { Metadata } from "@owlbear-rodeo/sdk";
 import { ProjectileMessage } from "./projectile";
 
 export interface EffectInstruction {
     // The name of the effect to play
     id?: string;
+    // The type of effect (effect or action)
+    type?: "effect" | "action";
     // Time to wait before starting this effect
     delay?: number;
     // Details about how to play this effect
@@ -13,6 +16,10 @@ export interface EffectInstruction {
     duration?: number;
     // The number of loops to play for this effect
     loops?: number;
+    // Custom metadata to add to this effect
+    metadata?: Metadata;
+    // Arguments if this instruction is an action
+    arguments?: unknown[];
     // Instructions to execute after this effect is done
     instructions?: EffectInstruction[];
 }

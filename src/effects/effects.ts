@@ -146,7 +146,23 @@ export function registerEffect(images: Image[], worker: Worker, duration: number
     }
 }
 
-export function buildEffectImage(effectName: string, effect: Effect, size: number, offset: Vector2, position: Vector2, rotation: number, variant?: number, variantIndex?: number, disableHit?: boolean, attachedTo?: string, duration?: number, loops?: number, spellName?: string) {
+export function buildEffectImage(
+    effectName: string,
+    effect: Effect,
+    size: number,
+    offset: Vector2,
+    position: Vector2,
+    rotation: number,
+    variant?: number,
+    variantIndex?: number,
+    disableHit?: boolean,
+    attachedTo?: string,
+    duration?: number,
+    loops?: number,
+    metadata?: Metadata,
+    spellName?: string,
+    spellCaster?: string
+) {
     const effectVariantName = getVariantName(effectName, size * effect.dpi);
     if (effectVariantName == undefined) {
         log_error(`Could not find adequate variant for effect "${effectName}"`);
@@ -166,12 +182,12 @@ export function buildEffectImage(effectName: string, effect: Effect, size: numbe
         return undefined;
     }
 
-    const metadata: Metadata = { [effectMetadataKey]: effectName };
+    const gatheredMetadata: Metadata = { ...metadata, [effectMetadataKey]: effectName };
     if (spellName != undefined) {
-        metadata[spellMetadataKey] = spellName;
+        gatheredMetadata[spellMetadataKey] = { name: spellName, caster: spellCaster };
     }
     
-    const isCompanion = effectDuration < 0 && attachedTo == undefined;
+    const isCompanion = effectDuration < 0 && attachedTo == undefined && disableHit != true;
 
     const image = buildImage(
         {
@@ -195,7 +211,7 @@ export function buildEffectImage(effectName: string, effect: Effect, size: numbe
     ).locked(
         effectDuration >= 0
     ).metadata(
-        metadata
+        gatheredMetadata
     ).layer(
         isCompanion ? "CHARACTER" : "ATTACHMENT"
     );

@@ -8,49 +8,11 @@ import { APP_KEY } from "../config";
 import { ConeMessage } from "../types/cone";
 import OBR from "@owlbear-rodeo/sdk";
 import { ProjectileMessage } from "../types/projectile";
+import { actions } from "../effects/actions";
 import { useOBR } from "../react-obr/providers";
 
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
-
-// function _collectInstructionAssets(instruction: EffectInstruction, assets: Set<string>) {
-//     if (typeof instruction.id === "string") {
-//         const effect = getEffect(instruction.id);
-//         if (effect != undefined) {
-//             if (effect.type === "TARGET") {
-//                 try {
-//                     const projectileMessage = instruction.effectProperties as ProjectileMessage;
-//                     const projectileInfo: ProjectileProperties = {
-//                         name: instruction.id,
-//                         copies: projectileMessage.copies,
-//                         source: projectileMessage.source,
-//                         destination: projectileMessage.destination,
-//                         dpi: 1
-//                     };
-//                     for (const asset of precomputeProjectileAssets(projectileInfo)) {
-//                         assets.add(asset);
-//                     }
-//                 }
-//                 catch (e: unknown) {
-//                     log_warn(`Error precomputing assets for effect ${instruction.id} (${(e as Error).message})`);
-//                 }
-//             }
-//         }
-//     }
-
-//     if (Array.isArray(instruction.instructions)) {
-//         for (const newInstruction of instruction.instructions) {
-//             _collectInstructionAssets(newInstruction, assets);
-//         }
-//     }
-//     return assets;
-// }
-
-// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// function collectInstructionAssets(instruction: EffectInstruction) {
-//     const assets = new Set<string>();
-//     return Array.from(_collectInstructionAssets(instruction, assets).values());
-// }
 
 export function MessageListener({ worker, effectRegister }: { worker: Worker, effectRegister: Map<string, number> }) {
     const obr = useOBR();
@@ -76,133 +38,150 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                     log_error(`Instruction id must be a string, not a "${typeof instruction.id}"`);
                     return;
                 }
-                const effect = getEffect(instruction.id);
-                if (effect == undefined) {
-                    log_error(`Couldn't find effect "${instruction.id}"`);
-                    return;
-                }
-                const variant = effectRegister.get(instruction.id) ?? 1;
-                if (instruction.duration != undefined && typeof instruction.duration !== "number") {
-                    log_error("Effect duration must be a number");
-                    return;
-                }
-                if (instruction.loops != undefined && typeof instruction.loops !== "number") {
-                    log_error("Effect loops must be a number");
-                    return;
-                }
-                if (effect.type === "TARGET") {
-                    const projectileMessage = instruction.effectProperties as ProjectileMessage;
-                    if (projectileMessage.copies == undefined) {
-                        projectileMessage.copies = 1;
-                    }
-                    if (typeof projectileMessage.copies !== "number" || projectileMessage.copies <= 0) {
-                        log_error("The number of projectile copies must be an number and be >=0, not", projectileMessage.copies);
+                if (instruction.type === "effect") {
+                    const effect = getEffect(instruction.id);
+                    if (effect == undefined) {
+                        log_error(`Couldn't find effect "${instruction.id}"`);
                         return;
                     }
-                    if (
-                        typeof projectileMessage.destination !== "object" || 
-                        typeof projectileMessage.destination.x !== "number" ||
-                        typeof projectileMessage.destination.y !== "number"
-                    ) {
-                        log_error("The destination of a projectile must be a Vector2, not", projectileMessage.destination);
+                    const variant = effectRegister.get(instruction.id) ?? 1;
+                    if (instruction.duration != undefined && typeof instruction.duration !== "number") {
+                        log_error("Effect duration must be a number");
                         return;
                     }
-                    if (
-                        typeof projectileMessage.source !== "object" ||
-                        typeof projectileMessage.source.x !== "number" ||
-                        typeof projectileMessage.source.y !== "number"
-                    ) {
-                        log_error("The source of a projectile must be a Vector2, not", projectileMessage.source);
+                    if (instruction.loops != undefined && typeof instruction.loops !== "number") {
+                        log_error("Effect loops must be a number");
                         return;
                     }
+                    if (effect.type === "TARGET") {
+                        const projectileMessage = instruction.effectProperties as ProjectileMessage;
+                        if (projectileMessage.copies == undefined) {
+                            projectileMessage.copies = 1;
+                        }
+                        if (typeof projectileMessage.copies !== "number" || projectileMessage.copies <= 0) {
+                            log_error("The number of projectile copies must be an number and be >=0, not", projectileMessage.copies);
+                            return;
+                        }
+                        if (
+                            typeof projectileMessage.destination !== "object" || 
+                            typeof projectileMessage.destination.x !== "number" ||
+                            typeof projectileMessage.destination.y !== "number"
+                        ) {
+                            log_error("The destination of a projectile must be a Vector2, not", projectileMessage.destination);
+                            return;
+                        }
+                        if (
+                            typeof projectileMessage.source !== "object" ||
+                            typeof projectileMessage.source.x !== "number" ||
+                            typeof projectileMessage.source.y !== "number"
+                        ) {
+                            log_error("The source of a projectile must be a Vector2, not", projectileMessage.source);
+                            return;
+                        }
 
-                    effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
-                    projectile(
-                        {
-                            name: instruction.id,
-                            dpi,
-                            ...projectileMessage
-                        },
-                        worker,
-                        instruction.duration,
-                        instruction.loops,
-                        () => {
-                            effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
-                            doMoreWork(instruction.instructions);
-                        },
-                        variant,
-                        spellName,
-                        spellCaster
-                    );
-                }
-                else if (effect.type === "CONE") {
-                    const coneMessage = instruction.effectProperties as ConeMessage;
-                    if (
-                        typeof coneMessage.destination !== "object" || 
-                        typeof coneMessage.destination.x !== "number" ||
-                        typeof coneMessage.destination.y !== "number"
-                    ) {
-                        log_error("The destination of a projectile must be a Vector2, not", coneMessage.destination);
-                        return;
+                        effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
+                        projectile(
+                            {
+                                name: instruction.id,
+                                dpi,
+                                ...projectileMessage
+                            },
+                            worker,
+                            instruction.duration,
+                            instruction.loops,
+                            instruction.metadata,
+                            () => {
+                                effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
+                                doMoreWork(instruction.instructions);
+                            },
+                            variant,
+                            spellName,
+                            spellCaster
+                        );
                     }
-                    if (
-                        typeof coneMessage.source !== "object" ||
-                        typeof coneMessage.source.x !== "number" ||
-                        typeof coneMessage.source.y !== "number"
-                    ) {
-                        log_error("The source of a projectile must be a Vector2, not", coneMessage.source);
-                        return;
-                    }
+                    else if (effect.type === "CONE") {
+                        const coneMessage = instruction.effectProperties as ConeMessage;
+                        if (
+                            typeof coneMessage.destination !== "object" || 
+                            typeof coneMessage.destination.x !== "number" ||
+                            typeof coneMessage.destination.y !== "number"
+                        ) {
+                            log_error("The destination of a projectile must be a Vector2, not", coneMessage.destination);
+                            return;
+                        }
+                        if (
+                            typeof coneMessage.source !== "object" ||
+                            typeof coneMessage.source.x !== "number" ||
+                            typeof coneMessage.source.y !== "number"
+                        ) {
+                            log_error("The source of a projectile must be a Vector2, not", coneMessage.source);
+                            return;
+                        }
 
-                    effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
-                    cone(
-                        {
-                            name: instruction.id,
-                            dpi,
-                            ...coneMessage
-                        },
-                        worker,
-                        instruction.duration,
-                        instruction.loops,
-                        () => {
-                            effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
-                            doMoreWork(instruction.instructions);
-                        },
-                        variant,
-                        spellName,
-                        spellCaster
-                    );
+                        effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
+                        cone(
+                            {
+                                name: instruction.id,
+                                dpi,
+                                ...coneMessage
+                            },
+                            worker,
+                            instruction.duration,
+                            instruction.loops,
+                            instruction.metadata,
+                            () => {
+                                effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
+                                doMoreWork(instruction.instructions);
+                            },
+                            variant,
+                            spellName,
+                            spellCaster
+                        );
+                    }
+                    else if (effect.type === "CIRCLE") {
+                        const aoeEffectMessage = instruction.effectProperties as AOEEffectMessage;
+                        if (
+                            typeof aoeEffectMessage.size !== "number" ||
+                            typeof aoeEffectMessage.position !== "object" || 
+                            typeof aoeEffectMessage.position.x !== "number" ||
+                            typeof aoeEffectMessage.position.y !== "number"
+                        ) {
+                            log_error("The position of an AOE effect must be a Vector2, not", aoeEffectMessage.position);
+                            return;
+                        }
+
+                        effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
+                        aoe(
+                            {
+                                name: instruction.id,
+                                dpi,
+                                ...aoeEffectMessage
+                            },
+                            worker,
+                            instruction.duration,
+                            instruction.loops,
+                            instruction.metadata,
+                            () => {
+                                effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
+                                doMoreWork(instruction.instructions);
+                            },
+                            variant,
+                            spellName,
+                            spellCaster
+                        );
+                    }
                 }
-                else if (effect.type === "CIRCLE") {
-                    const aoeEffectMessage = instruction.effectProperties as AOEEffectMessage;
-                    if (
-                        typeof aoeEffectMessage.size !== "number" ||
-                        typeof aoeEffectMessage.position !== "object" || 
-                        typeof aoeEffectMessage.position.x !== "number" ||
-                        typeof aoeEffectMessage.position.y !== "number"
-                    ) {
-                        log_error("The position of an AOE effect must be a Vector2, not", aoeEffectMessage.position);
+                else if (instruction.type === "action") {
+                    const action = actions[instruction.id];
+                    if (action == undefined) {
+                        log_error(`Invalid blueprint: undefined action "${instruction.id}"`);
                         return;
                     }
-
-                    effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 0) + 1)
-                    aoe(
-                        {
-                            name: instruction.id,
-                            dpi,
-                            ...aoeEffectMessage
-                        },
-                        worker,
-                        instruction.duration,
-                        instruction.loops,
-                        () => {
-                            effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
-                            doMoreWork(instruction.instructions);
-                        },
-                        variant,
-                        spellName,
-                        spellCaster
-                    );
+                    action(...(instruction.arguments ?? []));
+                }
+                else {
+                    log_error(`Invalid instruction type "${instruction.type}"`);
+                    return;
                 }
             }
         }

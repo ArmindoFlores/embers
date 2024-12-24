@@ -22,13 +22,19 @@
                 ]
             },
             {
-                "name": "Size",
-                "id": "size",
+                "name": "Radius (in cells)",
+                "id": "radius",
                 "type": "number",
                 "defaultValue": 1,
                 "content": {
                     "min": 1
                 }
+            },
+            {
+                "name": "Lightsource",
+                "id": "light",
+                "type": "boolean",
+                "defaultValue": true
             }
         ],
         "blueprints": [
@@ -39,6 +45,18 @@
                     "arguments": ["dancing_lights.", "$color"]
                 },
                 "duration": -1,
+                "metadata": {
+                    "name": "if",
+                    "arguments": [
+                        "$light", 
+                        {
+                            "com.battle-system.smoke/hasVision": true,
+                            "com.battle-system.smoke/isTorch": true,
+                            "com.battle-system.smoke/visionFallOff": "1",
+                            "com.battle-system.smoke/visionRange": "10"
+                        }
+                    ]
+                },
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$size"
@@ -519,47 +537,188 @@
             }
         ]
     },
-    "sneak_attack": {
-        "name": "Sneak Attack",
+    "cloud_of_daggers": {
+        "name": "Cloud of Daggers",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green_Thumb.webp",
+        "thumbnail": "Library/2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "light_blue",
+                "content": [
+                    { "value": "light_blue", "label": "Light Blue" },
+                    { "value": "light_green", "label": "Light Green" },
+                    { "value": "light_purple", "label": "Light Purple" },
+                    { "value": "light_red", "label": "Light Red" },
+                    { "value": "light_yellow", "label": "Light Yellow" },
+                    { "value": "light_orange", "label": "Light Orange" }
+                ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 2,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "sneak_attack",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["cloud_of_daggers.", "$color"]
+                },
+                "duration": -1,
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
-                    "size": "$targets[0].size"
-                }
+                    "size": "$radius"
+                }                
             }
         ]
     },
-    "divine_smite": {
-        "name": "Divine Smite",
+    "darkness": {
+        "name": "Darkness",
+        "minTargets": 1,
+        "thumbnail": "Library/2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 5,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "darkness.transparent",
+                "duration": -1,
+                "disableHit": true,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }                
+            }
+        ]
+    },
+    "flaming_sphere": {
+        "name": "Flaming Sphere",
+        "minTargets": 1,
+        "thumbnail": "Library/2nd_Level/Flaming_Sphere/FlamingSphere_02_Orange_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "orange.2",
+                "content": [
+                    { "value": "blue", "label": "Blue" },
+                    { "value": "green", "label": "Green" },
+                    { "value": "orange.1", "label": "Orange" },
+                    { "value": "orange.2", "label": "Fire" },
+                    { "value": "pink", "label": "Pink" },
+                    { "value": "purple", "label": "Purple" },
+                    { "value": "red", "label": "Red" },
+                    { "value": "green_to_blue", "label": "Green to blue" },
+                    { "value": "rainbow", "label": "Rainbow" }
+                ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 1,
+                "content": {
+                    "min": 1
+                }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": false
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": [
+                        "flaming_sphere.",
+                        {
+                            "name": "if",
+                            "arguments": ["$transparent", "transparent.", "opaque."]
+                        }, 
+                        "$color"
+                    ]
+                },
+                "duration": -1,
+                "disableHit": false,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }                
+            }
+        ]
+    },
+    "misty_step": {
+        "name": "Misty Step",
         "minTargets": 2,
         "maxTargets": 2,
-        "thumbnail": "Library/2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
+        "thumbnail": "Library/2nd_Level/Misty_Step/MistyStep_02_Regular_Blue_Thumb.webp",
         "replicate": "no",
         "copy": -1,
         "blueprints": [
             {
                 "type": "effect",
-                "id": "divine_smite.caster",
+                "id": "misty_step.out",
                 "effectProperties": {
                     "size": "$targets[0].size",
                     "position": "$targets[0].position"
                 }
             },
             {
+                "type": "action",
+                "id": "hide",
+                "delay": 1000,
+                "arguments": ["$targets[0].id"]
+            },
+            {
                 "type": "effect",
-                "id": "divine_smite.target",
+                "id": "misty_step.in",
                 "delay": 1500,
                 "effectProperties": {
-                    "size": "$targets[1].size",
+                    "size": "$targets[0].size",
                     "position": "$targets[1].position"
                 }
+            },
+            {
+                "type": "action",
+                "id": "move",
+                "delay": 1500,
+                "arguments": ["$targets[0].id", "$targets[1].position"]
+            },
+            {
+                "type": "action",
+                "id": "show",
+                "delay": 3000,
+                "arguments": ["$targets[0].id"]
             }
         ]
     },
@@ -623,6 +782,50 @@
                 "effectProperties": {
                     "size": 1,
                     "position": "$targets[0].position"
+                }
+            }
+        ]
+    },
+    "sneak_attack": {
+        "name": "Sneak Attack",
+        "minTargets": 1,
+        "thumbnail": "Library/1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "sneak_attack",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
+    "divine_smite": {
+        "name": "Divine Smite",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "divine_smite.caster",
+                "effectProperties": {
+                    "size": "$targets[0].size",
+                    "position": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "divine_smite.target",
+                "delay": 1500,
+                "effectProperties": {
+                    "size": "$targets[1].size",
+                    "position": "$targets[1].position"
                 }
             }
         ]

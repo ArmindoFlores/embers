@@ -1,8 +1,8 @@
-import { Vector2 } from "@owlbear-rodeo/sdk";
+import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 export type BlueprintValueUnresolved = string | BlueprintFunction;
 export type BlueprintValue<T> = T | BlueprintValueUnresolved; 
-export type BlueprintType = "effect" | "spell";
+export type BlueprintType = "effect" | "spell" | "action";
 
 export interface BlueprintFunction {
     name: string;
@@ -40,10 +40,14 @@ export interface EffectBlueprint {
     attachedTo?: BlueprintValue<string>;
     // Whether to disable hit detection
     disableHit?: BlueprintValue<boolean>;
+    // Custom metadata to add to this effect
+    metadata?: BlueprintValue<Metadata>;
     // Details about how to play this effect
     effectProperties?: ProjectileBlueprint | AOEEffectBlueprint | ConeBlueprint;
     // Instructions to execute after this effect is done
     blueprints?: EffectBlueprint[];
+    // Arguments for this action (if type is action)
+    arguments?: BlueprintValue<unknown>[];
 }
 
 export interface ErrorOr<T> {

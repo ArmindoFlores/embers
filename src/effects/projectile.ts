@@ -1,6 +1,6 @@
+import { Image, Metadata } from "@owlbear-rodeo/sdk";
 import { buildEffectImage, getDistance, getEffect, getEffectURL, getRotation, getVariantName, registerEffect, urlVariant } from "./effects";
 
-import { Image } from "@owlbear-rodeo/sdk";
 import { ProjectileProperties } from "../types/projectile";
 import { log_error } from "../logging";
 
@@ -33,7 +33,17 @@ export function precomputeProjectileAssets(projectileInfo: ProjectileProperties,
     return assets;
 }
 
-export function projectile(projectileInfo: ProjectileProperties, worker: Worker, duration?: number, loops?: number, onComplete?: () => void, variant?: number, spellName?: string, spellCaster?: string) {
+export function projectile(
+    projectileInfo: ProjectileProperties,
+    worker: Worker,
+    duration?: number,
+    loops?: number,
+    metadata?: Metadata,
+    onComplete?: () => void,
+    variant?: number,
+    spellName?: string,
+    spellCaster?: string
+) {
     const effect = getEffect(projectileInfo.name);
     if (effect == undefined) {
         log_error(`Could not find effect "${projectileInfo.name}"`);
@@ -66,7 +76,9 @@ export function projectile(projectileInfo: ProjectileProperties, worker: Worker,
             projectileInfo.attachedTo,
             duration,
             loops,
-            spellName
+            metadata,
+            spellName,
+            spellCaster
         );
         if (result == undefined) {
             return;
