@@ -722,6 +722,91 @@
             }
         ]
     },
+    "moonbeam": {
+        "name": "Moonbeam",
+        "minTargets": 1,
+        "thumbnail": "Library/2nd_Level/Moonbeam/Moonbeam_01_Regular_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 3,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "moonbeam.intro",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "moonbeam.regular",
+                "duration": -1,
+                "delay": 2000,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "scorching_ray": {
+        "name": "Scorching Ray",
+        "minTargets": 2,
+        "thumbnail": "Library/2nd_Level/Scorching_Ray/ScorchingRay_01_Regular_Orange_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": 500,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "scorching_ray",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }
+            }
+        ]
+    },
+    "shatter": {
+        "name": "Shatter",
+        "minTargets": 1,
+        "thumbnail": "Library/2nd_Level/Shatter/Shatter_01_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "shatter",
+                "disableHit": true,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
     "spiritual_weapon": {
         "name": "Spiritual Weapon",
         "minTargets": 1,
@@ -782,6 +867,61 @@
                 "effectProperties": {
                     "size": 1,
                     "position": "$targets[0].position"
+                }
+            }
+        ]
+    },
+    "web": {
+        "name": "Web",
+        "minTargets": 1,
+        "thumbnail": "Library/2nd_Level/Web/Web_01_White_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Mode",
+                "id": "mode",
+                "type": "options",
+                "defaultValue": "simple",
+                "content": [
+                    { "value": "simple", "label": "Simple" },
+                    { "value": "spiders", "label": "Spiders" }
+                ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 5,
+                "content": {
+                    "min": 1
+                }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": true
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": [
+                        "web.",
+                        {
+                            "name": "if",
+                            "arguments": ["$transparent", "transparent.", "opaque."]
+                        },
+                        "$mode"
+                    ]
+                },
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
                 }
             }
         ]
