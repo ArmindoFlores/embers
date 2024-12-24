@@ -8,14 +8,12 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { MessageType } from "../types/messageListener";
 import { Spell } from "../types/spells";
 import { getSpell } from "../effects/spells";
-import { log_info } from "../logging";
 import { useOBR } from "../react-obr/providers";
 
 function SpellDisplay({ spellID, item }: { spellID?: string, item: Item }) {
     const [spell, setSpell] = useState<Spell>();
 
     const selectItem = useCallback(() => {
-        log_info(item);
         OBR.player.select([item.id], false);
     }, [item]);
     

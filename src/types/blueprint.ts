@@ -2,7 +2,7 @@ import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 export type BlueprintValueUnresolved = string | BlueprintFunction;
 export type BlueprintValue<T> = T | BlueprintValueUnresolved; 
-export type BlueprintType = "effect" | "spell";
+export type BlueprintType = "effect" | "spell" | "action";
 
 export interface BlueprintFunction {
     name: string;
@@ -46,6 +46,8 @@ export interface EffectBlueprint {
     effectProperties?: ProjectileBlueprint | AOEEffectBlueprint | ConeBlueprint;
     // Instructions to execute after this effect is done
     blueprints?: EffectBlueprint[];
+    // Arguments for this action (if type is action)
+    arguments?: BlueprintValue<unknown>[];
 }
 
 export interface ErrorOr<T> {

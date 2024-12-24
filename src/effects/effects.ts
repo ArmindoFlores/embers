@@ -187,7 +187,7 @@ export function buildEffectImage(
         gatheredMetadata[spellMetadataKey] = { name: spellName, caster: spellCaster };
     }
     
-    const isCompanion = effectDuration < 0 && attachedTo == undefined;
+    const isCompanion = effectDuration < 0 && attachedTo == undefined && disableHit != true;
 
     const image = buildImage(
         {

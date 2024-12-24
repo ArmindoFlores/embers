@@ -123,6 +123,11 @@ function parseExpression<T = unknown>(expression: BlueprintValueUnresolved, vari
 }
 
 function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], variables: Variables): ErrorOr<EffectBlueprint> {
+    if (element.type === "spell") {
+        log_error("Invalid blueprint: type spell is not supported");
+        return _error("type spell is not supported");
+    }
+
     let id: string|undefined;
     if (element.id != undefined) {
         if (typeof element.id === "string" && element.id[0] !== "$") {
@@ -249,171 +254,210 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         }
     }
 
+    let actionArguments: unknown[]|undefined;
+    if (element.arguments != undefined) {
+        if (isUnresolvedBlueprint(element.arguments)) {
+            const maybeArguments = parseExpression<unknown[]>(element.arguments, variables);
+            if (isError(maybeArguments)) {
+                return _error(maybeArguments.error);
+            }
+            actionArguments = maybeArguments.value;
+        }
+        else if (Array.isArray(element.arguments)) {
+            const resolvedArguments = [];
+            for (const argument of element.arguments) {
+                if (isUnresolvedBlueprint(argument)) {
+                    const maybeResolvedArgument = parseExpression<unknown>(argument, variables);
+                    if (isError(maybeResolvedArgument)) {
+                        return _error(maybeResolvedArgument.error);
+                    }
+                    resolvedArguments.push(maybeResolvedArgument.value);
+                }
+                else {
+                    resolvedArguments.push(argument);
+                }
+            }
+            actionArguments = resolvedArguments;
+        }
+        else {
+            log_error("Invalid blueprint: arguments must be an array");
+            return _error("arguments must be an array");
+        }
+    }
+
     if (loops != undefined && duration != undefined) {
         log_error("Invalid blueprint: can't specify both duration and loop");
         return _error("can't specify both duration and loop");
     }
 
-    let effectProperties: ProjectileMessage | AOEEffectMessage | ConeMessage;
-    if (element.effectProperties == undefined) {
+    let effectProperties: ProjectileMessage | AOEEffectMessage | ConeMessage | undefined = undefined;
+    if (element.effectProperties == undefined && element.type === "effect") {
         log_error("Invalid blueprint: missing effectProperties");
         return _error("missing effect properties");
     }
     const ukEffectProperties = element.effectProperties as unknown;
-    if (
-        (ukEffectProperties as ProjectileBlueprint).copies != undefined && 
-        (ukEffectProperties as ProjectileBlueprint).source != undefined && 
-        (ukEffectProperties as ProjectileBlueprint).destination != undefined
-    ) {
-        const pbEffectProperties = ukEffectProperties as ProjectileBlueprint;
+    if (element.effectProperties) {
+        if (
+            (ukEffectProperties as ProjectileBlueprint).copies != undefined && 
+            (ukEffectProperties as ProjectileBlueprint).source != undefined && 
+            (ukEffectProperties as ProjectileBlueprint).destination != undefined
+        ) {
+            const pbEffectProperties = ukEffectProperties as ProjectileBlueprint;
 
-        let copies: number|undefined = 0;
-        if (typeof pbEffectProperties.copies === "number") {
-            copies = pbEffectProperties.copies;
-        }
-        else if (isUnresolvedBlueprint(pbEffectProperties.copies)) {
-            const maybeCopies = parseExpression<number>(pbEffectProperties.copies, variables);
-            if (isError(maybeCopies)) {
-                return _error(maybeCopies.error);
+            let copies: number|undefined = 0;
+            if (typeof pbEffectProperties.copies === "number") {
+                copies = pbEffectProperties.copies;
             }
-            copies = maybeCopies.value!;
+            else if (isUnresolvedBlueprint(pbEffectProperties.copies)) {
+                const maybeCopies = parseExpression<number>(pbEffectProperties.copies, variables);
+                if (isError(maybeCopies)) {
+                    return _error(maybeCopies.error);
+                }
+                copies = maybeCopies.value!;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.copies must be a number, not "${typeof pbEffectProperties.copies}"`);
+                return _error("copies must be a number");
+            }
+
+            let source: Vector2|undefined =  { x: 0, y: 0 };
+            if (isUnresolvedBlueprint(pbEffectProperties.source)) {
+                const maybeSource = parseExpression<Vector2>(pbEffectProperties.source, variables);
+                if (isError(maybeSource)) {
+                    return _error(maybeSource.error);
+                }
+                source = maybeSource.value!;
+            }
+            else if (typeof pbEffectProperties.source.x === "number" && typeof pbEffectProperties.source.y === "number") {
+                source.x = pbEffectProperties.source.x;
+                source.y = pbEffectProperties.source.y;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.source must be of the form { x: number, y: number }`);
+                return _error("source must be a 2D vector");
+            }
+
+            let destination: Vector2|undefined = { x: 0, y: 0 };
+            if (isUnresolvedBlueprint(pbEffectProperties.destination)) {
+                const maybeDestination = parseExpression<Vector2>(pbEffectProperties.destination, variables);
+                if (isError(maybeDestination)) {
+                    return _error(maybeDestination.error);
+                }
+                destination = maybeDestination.value!;
+            }
+            else if (typeof pbEffectProperties.destination.x === "number" && typeof pbEffectProperties.destination.y === "number") {
+                destination.x = pbEffectProperties.destination.x;
+                destination.y = pbEffectProperties.destination.y;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.destination must be of the form { x: number, y: number }`);
+                return _error("destination must be a 2D vector");
+            }
+
+            effectProperties = {
+                copies,
+                source,
+                destination,
+            };
+        }
+        else if (
+            (ukEffectProperties as ConeBlueprint).source != undefined && 
+            (ukEffectProperties as ConeBlueprint).destination != undefined
+        ) {
+            const cbEffectProperties = ukEffectProperties as ConeBlueprint;
+
+            let source: Vector2|undefined =  { x: 0, y: 0 };
+            if (isUnresolvedBlueprint(cbEffectProperties.source)) {
+                const maybeSource = parseExpression<Vector2>(cbEffectProperties.source, variables);
+                if (isError(maybeSource)) {
+                    return _error(maybeSource.error);
+                }
+                source = maybeSource.value!;
+            }
+            else if (typeof cbEffectProperties.source.x === "number" && typeof cbEffectProperties.source.y === "number") {
+                source.x = cbEffectProperties.source.x;
+                source.y = cbEffectProperties.source.y;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.source must be of the form { x: number, y: number }`);
+                return _error("source must be a 2D vector");
+            }
+
+            let destination: Vector2|undefined =  { x: 0, y: 0 };
+            if (isUnresolvedBlueprint(cbEffectProperties.destination)) {
+                const maybeDestination = parseExpression<Vector2>(cbEffectProperties.destination, variables);
+                if (isError(maybeDestination)) {
+                    return _error(maybeDestination.error);
+                }
+                destination = maybeDestination.value!;
+            }
+            else if (typeof cbEffectProperties.destination.x === "number" && typeof cbEffectProperties.destination.y === "number") {
+                destination.x = cbEffectProperties.destination.x;
+                destination.y = cbEffectProperties.destination.y;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.destination must be of the form { x: number, y: number }`);
+                return _error("destination must be a 2D vector");
+            }
+
+            effectProperties = {
+                source,
+                destination
+            };
+        }
+        else if (
+            (ukEffectProperties as AOEEffectBlueprint).position != undefined
+        ) {
+            const abEffectProperties = ukEffectProperties as AOEEffectBlueprint;
+
+            let position: Vector2|undefined =  { x: 0, y: 0 };
+            if (isUnresolvedBlueprint(abEffectProperties.position)) {
+                const maybePosition = parseExpression<Vector2>(abEffectProperties.position, variables);
+                if (isError(maybePosition)) {
+                    return _error(maybePosition.error);
+                }
+                position = maybePosition.value!;
+            }
+            else if (typeof abEffectProperties.position.x === "number" && typeof abEffectProperties.position.y === "number") {
+                position.x = abEffectProperties.position.x;
+                position.y = abEffectProperties.position.y;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.position must be of the form { x: number, y: number }`);
+                return _error("position must be a 2D vector");
+            }
+
+            let size: number = 0;
+            if (typeof abEffectProperties.size === "number") {
+                size = abEffectProperties.size;
+            }
+            else if (isUnresolvedBlueprint(abEffectProperties.size)) {
+                const maybeSize = parseExpression<number>(abEffectProperties.size, variables);
+                if (isError(maybeSize)) {
+                    return _error(maybeSize.error);
+                }
+                size = maybeSize.value!;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.size must be a number, not "${typeof abEffectProperties.size}"`);
+                return _error("size must be a number");
+            }
+
+            effectProperties = {
+                position,
+                size
+            };
         }
         else {
-            log_error(`Invalid blueprint: effectProperties.copies must be a number, not "${typeof pbEffectProperties.copies}"`);
-            return _error("copies must be a number");
-        }
-
-        let source: Vector2|undefined =  { x: 0, y: 0 };
-        if (isUnresolvedBlueprint(pbEffectProperties.source)) {
-            const maybeSource = parseExpression<Vector2>(pbEffectProperties.source, variables);
-            if (isError(maybeSource)) {
-                return _error(maybeSource.error);
-            }
-            source = maybeSource.value!;
-        }
-        else if (typeof pbEffectProperties.source.x === "number" && typeof pbEffectProperties.source.y === "number") {
-            source.x = pbEffectProperties.source.x;
-            source.y = pbEffectProperties.source.y;
-        }
-        else {
-            log_error(`Invalid blueprint: effectProperties.source must be of the form { x: number, y: number }`);
-            return _error("source must be a 2D vector");
-        }
-
-        let destination: Vector2|undefined = { x: 0, y: 0 };
-        if (isUnresolvedBlueprint(pbEffectProperties.destination)) {
-            const maybeDestination = parseExpression<Vector2>(pbEffectProperties.destination, variables);
-            if (isError(maybeDestination)) {
-                return _error(maybeDestination.error);
-            }
-            destination = maybeDestination.value!;
-        }
-        else if (typeof pbEffectProperties.destination.x === "number" && typeof pbEffectProperties.destination.y === "number") {
-            destination.x = pbEffectProperties.destination.x;
-            destination.y = pbEffectProperties.destination.y;
-        }
-        else {
-            log_error(`Invalid blueprint: effectProperties.destination must be of the form { x: number, y: number }`);
-            return _error("destination must be a 2D vector");
+            log_error("Invalid blueprint: effectProperties cannot be parsed");
+            return _error("invalid effect properties");
         }
 
         effectProperties = {
-            copies,
-            source,
-            destination,
-        };
-    }
-    else if (
-        (ukEffectProperties as ConeBlueprint).source != undefined && 
-        (ukEffectProperties as ConeBlueprint).destination != undefined
-    ) {
-        const cbEffectProperties = ukEffectProperties as ConeBlueprint;
-
-        let source: Vector2|undefined =  { x: 0, y: 0 };
-        if (isUnresolvedBlueprint(cbEffectProperties.source)) {
-            const maybeSource = parseExpression<Vector2>(cbEffectProperties.source, variables);
-            if (isError(maybeSource)) {
-                return _error(maybeSource.error);
-            }
-            source = maybeSource.value!;
+            ...effectProperties,
+            attachedTo,
+            disableHit
         }
-        else if (typeof cbEffectProperties.source.x === "number" && typeof cbEffectProperties.source.y === "number") {
-            source.x = cbEffectProperties.source.x;
-            source.y = cbEffectProperties.source.y;
-        }
-        else {
-            log_error(`Invalid blueprint: effectProperties.source must be of the form { x: number, y: number }`);
-            return _error("source must be a 2D vector");
-        }
-
-        let destination: Vector2|undefined =  { x: 0, y: 0 };
-        if (isUnresolvedBlueprint(cbEffectProperties.destination)) {
-            const maybeDestination = parseExpression<Vector2>(cbEffectProperties.destination, variables);
-            if (isError(maybeDestination)) {
-                return _error(maybeDestination.error);
-            }
-            destination = maybeDestination.value!;
-        }
-        else if (typeof cbEffectProperties.destination.x === "number" && typeof cbEffectProperties.destination.y === "number") {
-            destination.x = cbEffectProperties.destination.x;
-            destination.y = cbEffectProperties.destination.y;
-        }
-        else {
-            log_error(`Invalid blueprint: effectProperties.destination must be of the form { x: number, y: number }`);
-            return _error("destination must be a 2D vector");
-        }
-
-        effectProperties = {
-            source,
-            destination
-        };
-    }
-    else if (
-        (ukEffectProperties as AOEEffectBlueprint).position != undefined
-    ) {
-        const abEffectProperties = ukEffectProperties as AOEEffectBlueprint;
-
-        let position: Vector2|undefined =  { x: 0, y: 0 };
-        if (isUnresolvedBlueprint(abEffectProperties.position)) {
-            const maybePosition = parseExpression<Vector2>(abEffectProperties.position, variables);
-            if (isError(maybePosition)) {
-                return _error(maybePosition.error);
-            }
-            position = maybePosition.value!;
-        }
-        else if (typeof abEffectProperties.position.x === "number" && typeof abEffectProperties.position.y === "number") {
-            position.x = abEffectProperties.position.x;
-            position.y = abEffectProperties.position.y;
-        }
-        else {
-            log_error(`Invalid blueprint: effectProperties.position must be of the form { x: number, y: number }`);
-            return _error("position must be a 2D vector");
-        }
-
-        let size: number = 0;
-        if (typeof abEffectProperties.size === "number") {
-            size = abEffectProperties.size;
-        }
-        else if (isUnresolvedBlueprint(abEffectProperties.size)) {
-            const maybeSize = parseExpression<number>(abEffectProperties.size, variables);
-            if (isError(maybeSize)) {
-                return _error(maybeSize.error);
-            }
-            size = maybeSize.value!;
-        }
-        else {
-            log_error(`Invalid blueprint: effectProperties.size must be a number, not "${typeof abEffectProperties.size}"`);
-            return _error("size must be a number");
-        }
-
-        effectProperties = {
-            position,
-            size
-        };
-    }
-    else {
-        log_error("Invalid blueprint: effectProperties cannot be parsed");
-        return _error("invalid effect properties");
     }
 
     if (element.blueprints != undefined && !Array.isArray(element.blueprints)) {
@@ -427,22 +471,18 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         if (error) {
             return _error(error);
         }
-    }
-
-    effectProperties = {
-        ...effectProperties,
-        attachedTo,
-        disableHit
-    }
+    }    
 
     const newInstruction: EffectInstruction = {
         id,
+        type: element.type,
         effectProperties,
         delay,
         instructions,
         duration,
         loops,
-        metadata
+        metadata,
+        arguments: actionArguments
     };
     message.push(newInstruction);
     return _value(element);
