@@ -50,7 +50,7 @@ function buildTarget(id: number, scale: number, position: Vector2, isFirst: bool
         true
     ).disableHit(
         attachedTo != undefined
-    ).metadata({ 
+    ).metadata({
         [targetHighlightMetadataKey]: {
             id,
             count: 1
@@ -159,7 +159,7 @@ export function setupEffectsTool(playerRole: "GM" | "PLAYER", playerID: string) 
         setupTargetToolModes();
     });
 }
-    
+
 async function setupToolActions(playerRole: "GM" | "PLAYER", playerID: string) {
     // Cast spell action
     await OBR.tool.createAction({
@@ -206,7 +206,7 @@ async function setupToolActions(playerRole: "GM" | "PLAYER", playerID: string) {
         }],
         shortcut: ".",
         onClick() {
-            // Open popup to select a spell          
+            // Open popup to select a spell
             OBR.popover.open({
                 id: spellPopoverId,
                 width: 500,
@@ -327,7 +327,7 @@ async function setupTargetToolModes() {
                 getSortedTargets().then(targets => {
                     removeTarget(event.target! as Image, targets);
                 });
-            } 
+            }
         },
         onDeactivate(context) {
             if (context.activeTool != toolID || context.activeMode != effectsToolModeID) {

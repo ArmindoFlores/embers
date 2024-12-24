@@ -72,7 +72,7 @@ if __name__ == "__main__":
             image_files = split_into_files(input_file, tempdir)
             set_transparency(alpha_factor, image_files)
             create_video_from_files(output_file, tempdir)
-        
+
     except ValueError as ve:
         print(f"Invalid input: {ve}")
         sys.exit(1)

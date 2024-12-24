@@ -1,7 +1,7 @@
 import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 export type BlueprintValueUnresolved = string | BlueprintFunction;
-export type BlueprintValue<T> = T | BlueprintValueUnresolved; 
+export type BlueprintValue<T> = T | BlueprintValueUnresolved;
 export type BlueprintType = "effect" | "spell" | "action";
 
 export interface BlueprintFunction {

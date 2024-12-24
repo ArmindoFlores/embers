@@ -50,4 +50,3 @@ export function aoe(
     // Add all items to the local scene
     registerEffect([image.build()], worker, effectDuration, onComplete, spellCaster);
 }
-

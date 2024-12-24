@@ -113,7 +113,7 @@ export default function Settings() {
         }
         setGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE, summonedEntities);
     }, [summonedEntities]);
-    
+
     return <div>
         <div className="settings-menu">
             <div>
@@ -122,8 +122,8 @@ export default function Settings() {
                     <label htmlFor="recent-spells-list-size">
                         <p>Recent spells list size</p>
                     </label>
-                    <input 
-                        name="recent-spells-list-size" 
+                    <input
+                        name="recent-spells-list-size"
                         min="0"
                         type="number"
                         className="settings-input"

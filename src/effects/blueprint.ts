@@ -54,7 +54,7 @@ function parseBlueprintVariable<T>(variable: string, variables: Variables): Erro
         }
         const index = variableIndexString == undefined ? undefined : parseInt(variableIndexString);
         const tempVariable = currentVariable[variableName];
-        
+
         let element = undefined;
         if (index != undefined) {
             if (!Array.isArray(tempVariable)) {
@@ -298,8 +298,8 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
     const ukEffectProperties = element.effectProperties as unknown;
     if (element.effectProperties) {
         if (
-            (ukEffectProperties as ProjectileBlueprint).copies != undefined && 
-            (ukEffectProperties as ProjectileBlueprint).source != undefined && 
+            (ukEffectProperties as ProjectileBlueprint).copies != undefined &&
+            (ukEffectProperties as ProjectileBlueprint).source != undefined &&
             (ukEffectProperties as ProjectileBlueprint).destination != undefined
         ) {
             const pbEffectProperties = ukEffectProperties as ProjectileBlueprint;
@@ -361,7 +361,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             };
         }
         else if (
-            (ukEffectProperties as ConeBlueprint).source != undefined && 
+            (ukEffectProperties as ConeBlueprint).source != undefined &&
             (ukEffectProperties as ConeBlueprint).destination != undefined
         ) {
             const cbEffectProperties = ukEffectProperties as ConeBlueprint;
@@ -471,7 +471,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         if (error) {
             return _error(error);
         }
-    }    
+    }
 
     const newInstruction: EffectInstruction = {
         id,

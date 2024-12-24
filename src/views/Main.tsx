@@ -36,7 +36,7 @@ export default function Main() {
         setupEffectsTool(obr.player.role, obr.player.id);
         // - setup the effects register
         setEffectRegister(new Map());
-        
+
         // When the app unmounts, reverse both of those operations
         return () => {
             worker.terminate();
@@ -55,7 +55,7 @@ export default function Main() {
             setSelectedTab(selectedOurTool ? 3 : previouslySelectedTab);
         });
     }, [obr.ready, selectedTab, previouslySelectedTab]);
-    
+
     return (
         <div className="main-container">
             <Tabs selectedIndex={selectedTab} onSelect={tab => setSelectedTab(tab)}>

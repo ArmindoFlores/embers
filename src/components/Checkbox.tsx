@@ -9,7 +9,7 @@ export interface CheckboxProps {
 export default function Checkbox(props: CheckboxProps) {
 
    return <div className="container" onClick={() => props.setChecked(!props.checked)}>
-        <input 
+        <input
             type="checkbox"
             checked={props.checked}
             readOnly

@@ -11,7 +11,7 @@ export function setupContextMenu(playerRole: "GM" | "PLAYER") {
         if (!canCastSpells && playerRole !== "GM") {
             return;
         }
-        
+
         OBR.contextMenu.create({
             id,
                 icons: [
@@ -28,11 +28,11 @@ export function setupContextMenu(playerRole: "GM" | "PLAYER") {
             onClick(context) {
                 const selectedItems = context.items as Image[];
                 const key = `${APP_KEY}/selected-spell`;
-    
+
                 OBR.player.getMetadata().then(metadata => {
                     if (selectedItems.length == 1) {
                         OBR.broadcast.sendMessage(
-                            MESSAGE_CHANNEL, 
+                            MESSAGE_CHANNEL,
                             {
                                 instructions: [{
                                     id: metadata?.[key],
@@ -46,9 +46,9 @@ export function setupContextMenu(playerRole: "GM" | "PLAYER") {
                     }
                     else {
                         const [sourceItem, destinationItem] = selectedItems;
-    
+
                         OBR.broadcast.sendMessage(
-                            MESSAGE_CHANNEL, 
+                            MESSAGE_CHANNEL,
                             {
                                 instructions: [
                                     {

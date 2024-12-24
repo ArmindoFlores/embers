@@ -12,7 +12,7 @@ Once you are done selecting all your targets, you can select the spell you want 
 
 ![Tool Modes](./images/toolmodes.png)
 
-This image shows, from left to right: 
+This image shows, from left to right:
 * Add Target (`A`)
 * Remove Target (`R`)
 * Cast Selected Spell (`Enter`)

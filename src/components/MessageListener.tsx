@@ -63,7 +63,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             return;
                         }
                         if (
-                            typeof projectileMessage.destination !== "object" || 
+                            typeof projectileMessage.destination !== "object" ||
                             typeof projectileMessage.destination.x !== "number" ||
                             typeof projectileMessage.destination.y !== "number"
                         ) {
@@ -102,7 +102,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                     else if (effect.type === "CONE") {
                         const coneMessage = instruction.effectProperties as ConeMessage;
                         if (
-                            typeof coneMessage.destination !== "object" || 
+                            typeof coneMessage.destination !== "object" ||
                             typeof coneMessage.destination.x !== "number" ||
                             typeof coneMessage.destination.y !== "number"
                         ) {
@@ -142,7 +142,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         const aoeEffectMessage = instruction.effectProperties as AOEEffectMessage;
                         if (
                             typeof aoeEffectMessage.size !== "number" ||
-                            typeof aoeEffectMessage.position !== "object" || 
+                            typeof aoeEffectMessage.position !== "object" ||
                             typeof aoeEffectMessage.position.x !== "number" ||
                             typeof aoeEffectMessage.position.y !== "number"
                         ) {
@@ -188,7 +188,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
 
         if (instruction.delay) {
             if (typeof instruction.delay !== "number") {
-                log_error(`Instruction delay must be a number, not a "${typeof instruction.delay}"`);    
+                log_error(`Instruction delay must be a number, not a "${typeof instruction.delay}"`);
                 return;
             }
 

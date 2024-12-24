@@ -170,12 +170,12 @@ export function buildEffectImage(
     }
     const variantDistance = parseInt(effectVariantName);
     const scale = size / (variantDistance / effect.dpi);
-    const scaleVector = { 
-        x: scale, 
+    const scaleVector = {
+        x: scale,
         y: scale
     };
     const effectDuration = duration ?? (loops != undefined ? loops * effect.variants[effectVariantName].duration : effect.variants[effectVariantName].duration);
-    
+
     const url = getEffectURL(effectName, effectVariantName, variantIndex ? variantIndex % (effect.variants[effectVariantName].name.length) : undefined);
     if (url == undefined) {
         log_error(`Could not find URL for effect "${effectName}" (selected variant: ${effectVariantName})`);
@@ -186,7 +186,7 @@ export function buildEffectImage(
     if (spellName != undefined) {
         gatheredMetadata[spellMetadataKey] = { name: spellName, caster: spellCaster };
     }
-    
+
     const isCompanion = effectDuration < 0 && attachedTo == undefined && disableHit != true;
 
     const image = buildImage(
@@ -242,7 +242,7 @@ export function doEffect(effectName: string, effect?: Effect) {
         log_error(`Unknown effect "${effectName}"`);
         return;
     }
-    getSortedTargets().then(targets => {               
+    getSortedTargets().then(targets => {
         OBR.scene.local.deleteItems(targets.map(item => item.id));
 
         if (effect.type === "TARGET") {
@@ -252,7 +252,7 @@ export function doEffect(effectName: string, effect?: Effect) {
             }
 
             OBR.broadcast.sendMessage(
-                MESSAGE_CHANNEL, 
+                MESSAGE_CHANNEL,
                 {
                     instructions: targets.slice(1).map(target => ({
                         id: effectName,
@@ -271,14 +271,14 @@ export function doEffect(effectName: string, effect?: Effect) {
                 OBR.notification.show(`Embers: The effect "${effectName}" requires at least 1 target`, "ERROR");
                 return;
             }
-            
+
             const targetAttachments = targets.map(
                 async target => target.attachedTo ? (await OBR.scene.items.getItems([target.attachedTo]))[0] : undefined
             );
 
             Promise.all(targetAttachments).then(attachments => {
                 OBR.broadcast.sendMessage(
-                    MESSAGE_CHANNEL, 
+                    MESSAGE_CHANNEL,
                     {
                         instructions: targets.map((target, i) => ({
                             id: effectName,
@@ -297,9 +297,9 @@ export function doEffect(effectName: string, effect?: Effect) {
                 OBR.notification.show(`Embers: The effect "${effectName}" requires exactly 2 targets`, "ERROR");
                 return;
             }
-            
+
             OBR.broadcast.sendMessage(
-                MESSAGE_CHANNEL, 
+                MESSAGE_CHANNEL,
                 {
                     instructions: [{
                         id: effectName,

@@ -16,7 +16,7 @@ function SpellDisplay({ spellID, item }: { spellID?: string, item: Item }) {
     const selectItem = useCallback(() => {
         OBR.player.select([item.id], false);
     }, [item]);
-    
+
     const toggleItemVisibility = useCallback(() => {
         OBR.scene.items.updateItems([item], items => {
             for (const itemDraft of items) {
@@ -36,18 +36,18 @@ function SpellDisplay({ spellID, item }: { spellID?: string, item: Item }) {
     const deleteItem = useCallback(() => {
         OBR.scene.items.deleteItems([item.id]);
     }, [item]);
-    
+
     useEffect(() => {
         if (spellID == undefined) {
             return;
         }
         setSpell(getSpell(spellID));
     }, [spellID]);
-    
+
     if (spell == undefined) {
         return null;
     }
-    
+
     return <div className="scene-spell-display-item">
         <p> { spell.name }</p>
         <div className="scene-spell-display-controls">
@@ -159,7 +159,7 @@ export default function SceneControls() {
                     ))
                 }
                 {
-                    !spellEffectsPresent && <p>No spell effects in this scene.</p> 
+                    !spellEffectsPresent && <p>No spell effects in this scene.</p>
                 }
             </> : <p>No scene selected.</p>
         }
