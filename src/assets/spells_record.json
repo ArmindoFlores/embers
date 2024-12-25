@@ -926,6 +926,303 @@
             }
         ]
     },
+    "call_lightning": {
+        "name": "Call Lightning",
+        "minTargets": 1,
+        "thumbnail": "Library/3rd_Level/Call_Lightning/CallLightning_01_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "blue",
+                "content": [
+                    { "value": "blue", "label": "Blue" },
+                    { "value": "blue_orange", "label": "Blue and orange" },
+                    { "value": "green", "label": "Green" },
+                    { "value": "pink_yellow", "label": "Pink and yellow" },
+                    { "value": "purple", "label": "Purple" },
+                    { "value": "red", "label": "Red" },
+                    { "value": "yellow", "label": "Yellow" }
+                ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 5,
+                "content": {
+                    "min": 1
+                }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": true
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": [
+                        "call_lightning.",
+                        {
+                            "name": "if",
+                            "arguments": ["$transparent", "transparent.", "opaque."]
+                        },
+                        "$color"
+                    ]
+                },
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "fireball": {
+        "name": "Fireball",
+        "minTargets": 2,
+        "thumbnail": "Library/3rd_Level/Fireball/FireballExplosion_01_Orange_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 10,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "fireball.beam",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "fireball.explosion",
+                "delay": 3000,
+                "effectProperties": {
+                    "position": "$targets[1].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "sleet_storm": {
+        "name": "Sleet Storm",
+        "minTargets": 1,
+        "thumbnail": "Library/3rd_Level/Sleet_Storm/SleetStorm_01_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Mode",
+                "id": "mode",
+                "type": "options",
+                "defaultValue": "1",
+                "content": [
+                    { "value": "1", "label": "Mode #1" },
+                    { "value": "2", "label": "Mode #2" }
+                ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 5,
+                "content": {
+                    "min": 1
+                }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": true
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": [
+                        "sleet_storm.",
+                        {
+                            "name": "if",
+                            "arguments": ["$transparent", "transparent", "opaque"]
+                        },
+                        {
+                            "name": "if",
+                            "arguments": [
+                                "$transparent",
+                                {
+                                    "name": "concat",
+                                    "arguments": [".", "$mode"]
+                                },
+                                ""
+                            ]
+                        }
+                    ]
+                },
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "spirit_guardians": {
+        "name": "Spirit Guardians",
+        "minTargets": 1,
+        "thumbnail": "Library/3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 7,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "spirit_guardians",
+                "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "black_tentacles": {
+        "name": "Black Tentacles",
+        "minTargets": 1,
+        "thumbnail": "Library/4th_Level/Black_Tentacles/BlackTentacles_01_Dark_Purple_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 5,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "black_tentacles",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "antilife_shell": {
+        "name": "Antilife Shell",
+        "minTargets": 1,
+        "thumbnail": "Library/5th_Level/Antilife_Shell/Antilifeshell_01_Blue_Circle_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Circle",
+                "id": "circle",
+                "type": "boolean",
+                "defaultValue": true
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "if",
+                    "arguments": ["$circle", "antilife_shell.circle", "antilife_shell.no_circle"]
+                },
+                "disableHit": true,
+                "attachedTo": "$targets[0].id",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "arcane_hand": {
+        "name": "Arcane Hand",
+        "minTargets": 1,
+        "thumbnail": "Library/5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Purple_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "purple",
+                "content": [
+                    { "value": "blue", "label": "Blue" },
+                    { "value": "green", "label": "Green" },
+                    { "value": "purple", "label": "Purple" },
+                    { "value": "red", "label": "Red" }
+                ]
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["arcane_hand.", "$color"]
+                },
+                "duration": -1,
+                "effectProperties": {
+                    "size": 1,
+                    "position": "$targets[0].position"
+                }
+            }
+        ]
+    },
     "sneak_attack": {
         "name": "Sneak Attack",
         "minTargets": 1,
