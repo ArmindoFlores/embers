@@ -362,7 +362,8 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         }
         else if (
             (ukEffectProperties as ConeBlueprint).source != undefined &&
-            (ukEffectProperties as ConeBlueprint).destination != undefined
+            (ukEffectProperties as ConeBlueprint).rotation != undefined &&
+            (ukEffectProperties as ConeBlueprint).size != undefined
         ) {
             const cbEffectProperties = ukEffectProperties as ConeBlueprint;
 
@@ -383,26 +384,42 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
                 return _error("source must be a 2D vector");
             }
 
-            let destination: Vector2|undefined =  { x: 0, y: 0 };
-            if (isUnresolvedBlueprint(cbEffectProperties.destination)) {
-                const maybeDestination = parseExpression<Vector2>(cbEffectProperties.destination, variables);
-                if (isError(maybeDestination)) {
-                    return _error(maybeDestination.error);
-                }
-                destination = maybeDestination.value!;
+            let size: number = 0;
+            if (typeof cbEffectProperties.size === "number") {
+                size = cbEffectProperties.size;
             }
-            else if (typeof cbEffectProperties.destination.x === "number" && typeof cbEffectProperties.destination.y === "number") {
-                destination.x = cbEffectProperties.destination.x;
-                destination.y = cbEffectProperties.destination.y;
+            else if (isUnresolvedBlueprint(cbEffectProperties.size)) {
+                const maybeSize = parseExpression<number>(cbEffectProperties.size, variables);
+                if (isError(maybeSize)) {
+                    return _error(maybeSize.error);
+                }
+                size = maybeSize.value!;
             }
             else {
-                log_error(`Invalid blueprint: effectProperties.destination must be of the form { x: number, y: number }`);
-                return _error("destination must be a 2D vector");
+                log_error(`Invalid blueprint: effectProperties.size must be a number, not "${typeof cbEffectProperties.size}"`);
+                return _error("size must be a number");
+            }
+
+            let rotation: number = 0;
+            if (typeof cbEffectProperties.rotation === "number") {
+                rotation = cbEffectProperties.rotation;
+            }
+            else if (isUnresolvedBlueprint(cbEffectProperties.rotation)) {
+                const maybeSize = parseExpression<number>(cbEffectProperties.rotation, variables);
+                if (isError(maybeSize)) {
+                    return _error(maybeSize.error);
+                }
+                rotation = maybeSize.value!;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.rotation must be a number, not "${typeof cbEffectProperties.rotation}"`);
+                return _error("rotation must be a number");
             }
 
             effectProperties = {
                 source,
-                destination
+                size,
+                rotation
             };
         }
         else if (

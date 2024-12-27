@@ -102,11 +102,15 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                     else if (effect.type === "CONE") {
                         const coneMessage = instruction.effectProperties as ConeMessage;
                         if (
-                            typeof coneMessage.destination !== "object" ||
-                            typeof coneMessage.destination.x !== "number" ||
-                            typeof coneMessage.destination.y !== "number"
+                            typeof coneMessage.size !== "number"
                         ) {
-                            log_error("The destination of a projectile must be a Vector2, not", coneMessage.destination);
+                            log_error("The size of a cone must be a number, not", coneMessage.size);
+                            return;
+                        }
+                        if (
+                            typeof coneMessage.rotation !== "number"
+                        ) {
+                            log_error("The rotation of a cone must be a number, not", coneMessage.rotation);
                             return;
                         }
                         if (
@@ -114,7 +118,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             typeof coneMessage.source.x !== "number" ||
                             typeof coneMessage.source.y !== "number"
                         ) {
-                            log_error("The source of a projectile must be a Vector2, not", coneMessage.source);
+                            log_error("The source of a cone must be a number, not", coneMessage.source);
                             return;
                         }
 

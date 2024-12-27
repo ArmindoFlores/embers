@@ -22,7 +22,8 @@ export interface AOEEffectBlueprint {
 
 export interface ConeBlueprint {
     source: BlueprintValue<Vector2>;
-    destination: BlueprintValue<Vector2>;
+    rotation: BlueprintValue<number>;
+    size: BlueprintValue<number>;
 }
 
 export interface EffectBlueprint {

@@ -255,6 +255,40 @@
             }
         ]
     },
+    "burning_hands": {
+        "name": "Burning Hands",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/1st_Level/Burning_Hands/BurningHands_01_Regular_Orange_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Size (in cells)",
+                "id": "size",
+                "type": "number",
+                "defaultValue": 5,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "burning_hands",
+                "attachedTo": "$targets[0].id",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "rotation": {
+                        "name": "rotation",
+                        "arguments": ["$targets[0].position", "$targets[1].position"]
+                    },
+                    "size": "$size"
+                }
+            }
+        ]
+    },
     "cure_wounds": {
         "name": "Cure Wounds",
         "minTargets": 1,
