@@ -1359,6 +1359,101 @@
             }
         ]
     },
+    "cone_of_cold": {
+        "name": "Cone of Cold",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "5th_Level/Cone_Of_Cold/ConeOfCold_01_Regular_Blue_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Length (in cells)",
+                "id": "length",
+                "type": "number",
+                "defaultValue": 12,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "cone_of_cold",
+                "attachedTo": "$targets[0].id",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "rotation": {
+                        "name": "rotation",
+                        "arguments": ["$targets[0].position", "$targets[1].position"]
+                    },
+                    "size": "$length"
+                }
+            }
+        ]
+    },
+    "chain_lightning": {
+        "name": "Chain Lightning",
+        "minTargets": 2,
+        "maxTargets": 5,
+        "thumbnail": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue_Primary_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "chain_lightning.primary",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "id": "chain_lightning.secondary",
+                "delay": 1000,
+                "disabled": {
+                    "name": "lesser_than",
+                    "arguments": ["$targets.length", 3]
+                },
+                "effectProperties": {
+                    "source": "$targets[1].position",
+                    "destination": "$targets[2].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "id": "chain_lightning.secondary",
+                "delay": 1000,
+                "disabled": {
+                    "name": "lesser_than",
+                    "arguments": ["$targets.length", 4]
+                },
+                "effectProperties": {
+                    "source": "$targets[1].position",
+                    "destination": "$targets[3].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "id": "chain_lightning.secondary",
+                "delay": 1000,
+                "disabled": {
+                    "name": "lesser_than",
+                    "arguments": ["$targets.length", 5]
+                },
+                "effectProperties": {
+                    "source": "$targets[1].position",
+                    "destination": "$targets[4].position",
+                    "copies": 1
+                }
+            }
+        ]
+    },
     "disintegrate": {
         "name": "Disintegrate",
         "minTargets": 2,

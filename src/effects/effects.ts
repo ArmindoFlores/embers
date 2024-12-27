@@ -140,6 +140,7 @@ export function registerEffect(images: Image[], worker: Worker, duration: number
     else {
         Promise.all([getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE), OBR.player.getId(), OBR.player.getRole()]).then(([summonRule, id, role]) => {
             if ((summonRule === "caster" && id === spellCaster) || (summonRule === "gm-only" && role === "GM")) {
+                console.log(images);
                 OBR.scene.items.addItems(images);
             }
         });

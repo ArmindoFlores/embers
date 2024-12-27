@@ -22,6 +22,14 @@ function if_(condition: unknown, success: unknown, failure?: unknown) {
     }
 }
 
+function greater_than(arg1: unknown, arg2: unknown) {
+    return (arg1 as number) > (arg2 as number);
+}
+
+function lesser_than(arg1: unknown, arg2: unknown) {
+    return (arg1 as number) < (arg2 as number);
+}
+
 function rotation(source: unknown, destination: unknown) {
     const deltaX = (destination as Vector2).x - (source as Vector2).x;
     const deltaY = (destination as Vector2).y - (source as Vector2).y;
@@ -36,4 +44,6 @@ export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {
     sum,
     if: if_,
     rotation,
+    greater_than,
+    lesser_than
 };
