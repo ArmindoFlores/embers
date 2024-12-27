@@ -2,7 +2,7 @@
     "dancing_lights": {
         "name": "Dancing Lights",
         "minTargets": 1,
-        "thumbnail": "Library/Cantrip/Dancing_Lights/DancingLights_01_Yellow_Thumb.webp",
+        "thumbnail": "Cantrip/Dancing_Lights/DancingLights_01_Yellow_Thumb.webp",
         "replicate": "all",
         "copy": 0,
         "parameters": [
@@ -67,7 +67,7 @@
     "eldritch_blast": {
         "name": "Eldritch Blast",
         "minTargets": 2,
-        "thumbnail": "Library/Cantrip/Eldritch_Blast/EldritchBlast_01_Regular_Purple_Thumb.webp",
+        "thumbnail": "Cantrip/Eldritch_Blast/EldritchBlast_01_Regular_Purple_Thumb.webp",
         "replicate": "first_to_all",
         "copy": 200,
         "blueprints": [
@@ -85,7 +85,7 @@
     "fire_bolt": {
         "name": "Fire Bolt",
         "minTargets": 2,
-        "thumbnail": "Library/Cantrip/Fire_Bolt/FireBolt_01_Regular_Orange_Thumb.webp",
+        "thumbnail": "Cantrip/Fire_Bolt/FireBolt_01_Regular_Orange_Thumb.webp",
         "replicate": "first_to_all",
         "copy": -1,
         "blueprints": [
@@ -102,7 +102,7 @@
     },
     "frostbite": {
         "name": "Frostbite",
-        "thumbnail": "Library/Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Loop_Thumb.webp",
+        "thumbnail": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Loop_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -118,7 +118,7 @@
     },
     "mind_sliver": {
         "name": "Mind Sliver",
-        "thumbnail": "Library/Generic/Healing/HealingAbility_01_Purple_Thumb.webp",
+        "thumbnail": "Generic/Healing/HealingAbility_01_Purple_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -135,7 +135,7 @@
     "ray_of_frost": {
         "name": "Ray of Frost",
         "minTargets": 2,
-        "thumbnail": "Library/Cantrip/Ray_Of_Frost/RayOfFrost_01_Regular_Blue_Thumb.webp",
+        "thumbnail": "Cantrip/Ray_Of_Frost/RayOfFrost_01_Regular_Blue_Thumb.webp",
         "replicate": "first_to_all",
         "copy": -1,
         "blueprints": [
@@ -154,7 +154,7 @@
         "name": "Sacred Flame",
         "minTargets": 2,
         "maxTargets": 2,
-        "thumbnail": "Library/Cantrip/Sacred_Flame/SacredFlameSource_01_Regular_Yellow_Thumb.webp",
+        "thumbnail": "Cantrip/Sacred_Flame/SacredFlameSource_01_Regular_Yellow_Thumb.webp",
         "replicate": "no",
         "copy": -1,
         "blueprints": [
@@ -180,7 +180,7 @@
     "toll_the_dead": {
         "name": "Toll the Dead",
         "minTargets": 1,
-        "thumbnail": "Library/Cantrip/Toll_The_Dead/TollTheDead_01_Regular_Green_Thumb.webp",
+        "thumbnail": "Cantrip/Toll_The_Dead/TollTheDead_01_Regular_Green_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -197,7 +197,7 @@
     "arms_of_hadar": {
         "name": "Arms of Hadar",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
+        "thumbnail": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -228,7 +228,7 @@
     "bless": {
         "name": "Bless",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Bless/Bless_01_Regular_Yellow_Thumb.webp",
+        "thumbnail": "1st_Level/Bless/Bless_01_Regular_Yellow_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -259,13 +259,13 @@
         "name": "Burning Hands",
         "minTargets": 2,
         "maxTargets": 2,
-        "thumbnail": "Library/1st_Level/Burning_Hands/BurningHands_01_Regular_Orange_Thumb.webp",
+        "thumbnail": "1st_Level/Burning_Hands/BurningHands_01_Regular_Orange_Thumb.webp",
         "replicate": "no",
         "copy": -1,
         "parameters": [
             {
-                "name": "Size (in cells)",
-                "id": "size",
+                "name": "Length (in cells)",
+                "id": "length",
                 "type": "number",
                 "defaultValue": 5,
                 "content": {
@@ -284,7 +284,7 @@
                         "name": "rotation",
                         "arguments": ["$targets[0].position", "$targets[1].position"]
                     },
-                    "size": "$size"
+                    "size": "$length"
                 }
             }
         ]
@@ -292,7 +292,7 @@
     "cure_wounds": {
         "name": "Cure Wounds",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Cure_Wounds/CureWounds_01_Blue_Thumb.webp",
+        "thumbnail": "1st_Level/Cure_Wounds/CureWounds_01_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -309,7 +309,7 @@
     "detect_magic": {
         "name": "Detect Magic",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue_Thumb.webp",
+        "thumbnail": "1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -353,7 +353,7 @@
     "entangle": {
         "name": "Entangle",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
+        "thumbnail": "1st_Level/Entangle/Entangle02_02_Regular_Green_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -392,7 +392,7 @@
     "fog_cloud": {
         "name": "Fog Cloud",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
+        "thumbnail": "1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -421,7 +421,7 @@
     "grease": {
         "name": "Grease",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Grease/Grease_Dark_Brown_Thumb.webp",
+        "thumbnail": "1st_Level/Grease/Grease_Dark_Brown_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -450,7 +450,7 @@
     "guiding_bolt": {
         "name": "Guiding Bolt",
         "minTargets": 2,
-        "thumbnail": "Library/1st_Level/Guiding_Bolt/GuidingBolt_01_Regular_BlueYellow_Thumb.webp",
+        "thumbnail": "1st_Level/Guiding_Bolt/GuidingBolt_01_Regular_BlueYellow_Thumb.webp",
         "replicate": "first_to_all",
         "copy": 200,
         "blueprints": [
@@ -468,7 +468,7 @@
     "hunters_mark": {
         "name": "Hunter's Mark",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Pulse_Thumb.webp",
+        "thumbnail": "1st_Level/Hunters_Mark/HuntersMark_01_Regular_Green_Pulse_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -485,7 +485,7 @@
     "magic_missiles": {
         "name": "Magic Missiles",
         "minTargets": 2,
-        "thumbnail": "Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
+        "thumbnail": "1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
         "replicate": "first_to_all",
         "copy": 0,
         "blueprints": [
@@ -503,7 +503,7 @@
     "shield": {
         "name": "Shield",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
+        "thumbnail": "1st_Level/Shield/Shield_01_Regular_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -539,7 +539,7 @@
     "sleep": {
         "name": "Sleep",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Sleep/SleepSymbol01_01_Dark_Pink_Thumb.webp",
+        "thumbnail": "1st_Level/Sleep/SleepSymbol01_01_Dark_Pink_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -574,7 +574,7 @@
     "cloud_of_daggers": {
         "name": "Cloud of Daggers",
         "minTargets": 1,
-        "thumbnail": "Library/2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Blue_Thumb.webp",
+        "thumbnail": "2nd_Level/Cloud_Of_Daggers/CloudOfDaggers_01_Light_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -621,7 +621,7 @@
     "darkness": {
         "name": "Darkness",
         "minTargets": 1,
-        "thumbnail": "Library/2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
+        "thumbnail": "2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -651,7 +651,7 @@
     "flaming_sphere": {
         "name": "Flaming Sphere",
         "minTargets": 1,
-        "thumbnail": "Library/2nd_Level/Flaming_Sphere/FlamingSphere_02_Orange_Thumb.webp",
+        "thumbnail": "2nd_Level/Flaming_Sphere/FlamingSphere_02_Orange_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -715,7 +715,7 @@
         "name": "Misty Step",
         "minTargets": 2,
         "maxTargets": 2,
-        "thumbnail": "Library/2nd_Level/Misty_Step/MistyStep_02_Regular_Blue_Thumb.webp",
+        "thumbnail": "2nd_Level/Misty_Step/MistyStep_02_Regular_Blue_Thumb.webp",
         "replicate": "no",
         "copy": -1,
         "blueprints": [
@@ -756,10 +756,46 @@
             }
         ]
     },
+    "gust_of_wind": {
+        "name": "Gust of Wind",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "2nd_Level/Gust_Of_Wind/GustOfWind_01_White_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Length (in cells)",
+                "id": "length",
+                "type": "number",
+                "defaultValue": 12,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "gust_of_wind",
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
+                "duration": -1,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "rotation": {
+                        "name": "rotation",
+                        "arguments": ["$targets[0].position", "$targets[1].position"]
+                    },
+                    "size": "$length"
+                }
+            }
+        ]
+    },
     "moonbeam": {
         "name": "Moonbeam",
         "minTargets": 1,
-        "thumbnail": "Library/2nd_Level/Moonbeam/Moonbeam_01_Regular_Blue_Thumb.webp",
+        "thumbnail": "2nd_Level/Moonbeam/Moonbeam_01_Regular_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -797,7 +833,7 @@
     "scorching_ray": {
         "name": "Scorching Ray",
         "minTargets": 2,
-        "thumbnail": "Library/2nd_Level/Scorching_Ray/ScorchingRay_01_Regular_Orange_Thumb.webp",
+        "thumbnail": "2nd_Level/Scorching_Ray/ScorchingRay_01_Regular_Orange_Thumb.webp",
         "replicate": "first_to_all",
         "copy": 500,
         "blueprints": [
@@ -815,7 +851,7 @@
     "shatter": {
         "name": "Shatter",
         "minTargets": 1,
-        "thumbnail": "Library/2nd_Level/Shatter/Shatter_01_Blue_Thumb.webp",
+        "thumbnail": "2nd_Level/Shatter/Shatter_01_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -845,7 +881,7 @@
         "name": "Spiritual Weapon",
         "minTargets": 1,
         "maxTargets": 1,
-        "thumbnail": "Library/2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green_Thumb.webp",
+        "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green_Thumb.webp",
         "replicate": "no",
         "copy": 0,
         "parameters": [
@@ -908,7 +944,7 @@
     "web": {
         "name": "Web",
         "minTargets": 1,
-        "thumbnail": "Library/2nd_Level/Web/Web_01_White_Thumb.webp",
+        "thumbnail": "2nd_Level/Web/Web_01_White_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -963,7 +999,7 @@
     "call_lightning": {
         "name": "Call Lightning",
         "minTargets": 1,
-        "thumbnail": "Library/3rd_Level/Call_Lightning/CallLightning_01_Blue_Thumb.webp",
+        "thumbnail": "3rd_Level/Call_Lightning/CallLightning_01_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -1023,7 +1059,7 @@
     "fireball": {
         "name": "Fireball",
         "minTargets": 2,
-        "thumbnail": "Library/3rd_Level/Fireball/FireballExplosion_01_Orange_Thumb.webp",
+        "thumbnail": "3rd_Level/Fireball/FireballExplosion_01_Orange_Thumb.webp",
         "replicate": "first_to_all",
         "copy": -1,
         "parameters": [
@@ -1057,10 +1093,76 @@
             }
         ]
     },
+    "lightning_bolt": {
+        "name": "Lightning Bolt",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "3rd_Level/Lightning_Bolt/LightningBolt_01_Regular_Blue_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Length (in cells)",
+                "id": "length",
+                "type": "number",
+                "defaultValue": 20,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "lightning_bolt",
+                "attachedTo": "$targets[0].id",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "rotation": {
+                        "name": "rotation",
+                        "arguments": ["$targets[0].position", "$targets[1].position"]
+                    },
+                    "size": "$length"
+                }
+            }
+        ]
+    },
+    "wind_wall": {
+        "name": "Wind Wall",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": true
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "if",
+                    "arguments": ["$transparent", "wind_wall.transparent", "wind_wall.opaque"]
+                },
+                "duration": -1,
+                "disableHit": true,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            }
+        ]
+    },
     "sleet_storm": {
         "name": "Sleet Storm",
         "minTargets": 1,
-        "thumbnail": "Library/3rd_Level/Sleet_Storm/SleetStorm_01_Blue_Thumb.webp",
+        "thumbnail": "3rd_Level/Sleet_Storm/SleetStorm_01_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -1125,7 +1227,7 @@
     "spirit_guardians": {
         "name": "Spirit Guardians",
         "minTargets": 1,
-        "thumbnail": "Library/3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow_Thumb.webp",
+        "thumbnail": "3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -1156,7 +1258,7 @@
     "black_tentacles": {
         "name": "Black Tentacles",
         "minTargets": 1,
-        "thumbnail": "Library/4th_Level/Black_Tentacles/BlackTentacles_01_Dark_Purple_Thumb.webp",
+        "thumbnail": "4th_Level/Black_Tentacles/BlackTentacles_01_Dark_Purple_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -1185,7 +1287,7 @@
     "antilife_shell": {
         "name": "Antilife Shell",
         "minTargets": 1,
-        "thumbnail": "Library/5th_Level/Antilife_Shell/Antilifeshell_01_Blue_Circle_Thumb.webp",
+        "thumbnail": "5th_Level/Antilife_Shell/Antilifeshell_01_Blue_Circle_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -1225,7 +1327,7 @@
     "arcane_hand": {
         "name": "Arcane Hand",
         "minTargets": 1,
-        "thumbnail": "Library/5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Purple_Thumb.webp",
+        "thumbnail": "5th_Level/Arcane_Hand/ArcaneHand_Human_01_Idle_Purple_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -1260,7 +1362,7 @@
     "disintegrate": {
         "name": "Disintegrate",
         "minTargets": 2,
-        "thumbnail": "Library/6th_Level/Disintegrate/Disintegrate_01_Regular_Green01_Thumb.webp",
+        "thumbnail": "6th_Level/Disintegrate/Disintegrate_01_Regular_Green01_Thumb.webp",
         "replicate": "first_to_all",
         "copy": 200,
         "blueprints": [
@@ -1278,7 +1380,7 @@
     "whirlwind": {
         "name": "Whirlwind",
         "minTargets": 1,
-        "thumbnail": "Library/7th_Level/Whirlwind/Whirlwind_01_BlueGrey_01_Thumb.webp",
+        "thumbnail": "7th_Level/Whirlwind/Whirlwind_01_BlueGrey_01_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -1307,7 +1409,7 @@
     "sneak_attack": {
         "name": "Sneak Attack",
         "minTargets": 1,
-        "thumbnail": "Library/1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green_Thumb.webp",
+        "thumbnail": "1st_Level/Sneak_Attack/Sneak_Attack_Dark_Green_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "blueprints": [
@@ -1325,7 +1427,7 @@
         "name": "Divine Smite",
         "minTargets": 2,
         "maxTargets": 2,
-        "thumbnail": "Library/2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
+        "thumbnail": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
         "replicate": "no",
         "copy": -1,
         "blueprints": [

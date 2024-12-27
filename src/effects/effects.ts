@@ -1,10 +1,10 @@
+import { APP_KEY, ASSET_LOCATION } from "../config";
 import { Effect, Effects } from "../types/effects";
 import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "../components/Settings";
 import OBR, { Image, Metadata, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
 
-import { APP_KEY } from "../config";
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import effectsJSON from "../assets/effect_record.json";
 import { getItemSize } from "../utils";
@@ -73,7 +73,7 @@ export function getEffectURL(name: string, variantName: string, variantIndex?: n
         return undefined;
     }
 
-    return `${window.location.origin}/Library/${effect.basename}_${variantPath}.webm`;
+    return `${ASSET_LOCATION}/${effect.basename}_${variantPath}.webm`;
 }
 
 export function urlVariant(url: string, variant?: number) {

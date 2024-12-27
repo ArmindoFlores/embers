@@ -1,11 +1,11 @@
 import "./SpellSelectionPopover.css";
 
+import { APP_KEY, ASSET_LOCATION } from "../config";
 import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
 import { getSpell, spellIDs } from "../effects/spells";
 import { toolID, toolMetadataSelectedSpell } from "../effectsTool";
 import { useEffect, useState } from "react";
 
-import { APP_KEY } from "../config";
 import OBR from "@owlbear-rodeo/sdk";
 import { useOBR } from "../react-obr/providers";
 
@@ -76,7 +76,7 @@ function EffectsList({ searchString, sortedSpellsList } : { searchString: string
         {
             mostRecentSpell &&
             <li onClick={() => selectSpell(sortedSpellsList[0])} className="selected">
-                <img src={`${window.location.origin}/${mostRecentSpell.thumbnail}`} loading="lazy" />
+                <img src={`${ASSET_LOCATION}/${mostRecentSpell.thumbnail}`} loading="lazy" />
                 <p className="spell-name">{ mostRecentSpell.name }</p>
             </li>
         }
@@ -85,7 +85,7 @@ function EffectsList({ searchString, sortedSpellsList } : { searchString: string
                 // const effect = getEffect(spellName);
                 const spell = getSpell(spellName);
                 return <li key={spellName} onClick={() => selectSpell(spellName)}>
-                    <img src={`${window.location.origin}/${spell?.thumbnail}`} loading="lazy" />
+                    <img src={`${ASSET_LOCATION}/${spell?.thumbnail}`} loading="lazy" />
                     <p className="spell-name">{ spell?.name || spellName }</p>
                 </li>;
             })

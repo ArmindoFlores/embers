@@ -2081,15 +2081,10 @@
         "type": "CONE",
         "dpi": 200,
         "variants": {
-            "200": {
+            "4000": {
                 "name": ["4000x200"],
                 "duration": 4000,
                 "size": [4000, 200]
-            },
-            "400": {
-                "name": ["4000x400"],
-                "duration": 4000,
-                "size": [4000, 400]
             }
         }
     },
@@ -2153,7 +2148,7 @@
         "transparent": {
             "basename": "3rd_Level/Wind_Wall/WindWall_01_75OPA",
             "thumbnail": "3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
-            "type": "CONE",
+            "type": "TARGET",
             "dpi": 100,
             "variants": {
                 "100": {
@@ -2181,7 +2176,7 @@
         "opaque": {
             "basename": "3rd_Level/Wind_Wall/WindWall_01",
             "thumbnail": "3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
-            "type": "CONE",
+            "type": "TARGET",
             "dpi": 100,
             "variants": {
                 "100": {
