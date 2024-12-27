@@ -20,7 +20,7 @@ export interface Parameter {
     id: string;
     type: ParameterType;
     defaultValue: unknown;
-    content: OptionsContent | NumberContent | BooleanContent;
+    content?: OptionsContent | NumberContent | BooleanContent;
 }
 
 export interface Spell {
