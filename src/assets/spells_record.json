@@ -1223,6 +1223,53 @@
             }
         ]
     },
+    "disintegrate": {
+        "name": "Disintegrate",
+        "minTargets": 2,
+        "thumbnail": "Library/6th_Level/Disintegrate/Disintegrate_01_Regular_Green01_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": 200,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "disintegrate",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }
+            }
+        ]
+    },
+    "whirlwind": {
+        "name": "Whirlwind",
+        "minTargets": 1,
+        "thumbnail": "Library/7th_Level/Whirlwind/Whirlwind_01_BlueGrey_01_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 3,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "whirlwind",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
     "sneak_attack": {
         "name": "Sneak Attack",
         "minTargets": 1,
