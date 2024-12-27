@@ -264,8 +264,8 @@
         "copy": -1,
         "parameters": [
             {
-                "name": "Size (in cells)",
-                "id": "size",
+                "name": "Length (in cells)",
+                "id": "length",
                 "type": "number",
                 "defaultValue": 5,
                 "content": {
@@ -284,7 +284,7 @@
                         "name": "rotation",
                         "arguments": ["$targets[0].position", "$targets[1].position"]
                     },
-                    "size": "$size"
+                    "size": "$length"
                 }
             }
         ]
@@ -756,6 +756,42 @@
             }
         ]
     },
+    "gust_of_wind": {
+        "name": "Gust of Wind",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/2nd_Level/Gust_Of_Wind/GustOfWind_01_White_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Length (in cells)",
+                "id": "length",
+                "type": "number",
+                "defaultValue": 12,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "gust_of_wind",
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
+                "duration": -1,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "rotation": {
+                        "name": "rotation",
+                        "arguments": ["$targets[0].position", "$targets[1].position"]
+                    },
+                    "size": "$length"
+                }
+            }
+        ]
+    },
     "moonbeam": {
         "name": "Moonbeam",
         "minTargets": 1,
@@ -1053,6 +1089,72 @@
                 "effectProperties": {
                     "position": "$targets[1].position",
                     "size": "$radius"
+                }
+            }
+        ]
+    },
+    "lightning_bolt": {
+        "name": "Lightning Bolt",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/3rd_Level/Lightning_Bolt/LightningBolt_01_Regular_Blue_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Length (in cells)",
+                "id": "length",
+                "type": "number",
+                "defaultValue": 20,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "lightning_bolt",
+                "attachedTo": "$targets[0].id",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "rotation": {
+                        "name": "rotation",
+                        "arguments": ["$targets[0].position", "$targets[1].position"]
+                    },
+                    "size": "$length"
+                }
+            }
+        ]
+    },
+    "wind_wall": {
+        "name": "Wind Wall",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": true
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "if",
+                    "arguments": ["$transparent", "wind_wall.transparent", "wind_wall.opaque"]
+                },
+                "duration": -1,
+                "disableHit": true,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
                 }
             }
         ]

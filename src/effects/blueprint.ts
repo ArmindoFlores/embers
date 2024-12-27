@@ -43,7 +43,7 @@ function parseBlueprintVariable<T>(variable: string, variables: Variables): Erro
             return _error("malformatted variable");
         }
         const [variableName, variableIndexString] = [match[1], match[2]];
-        if (currentVariable[variableName] == undefined) {
+        if (!Object.hasOwn(currentVariable, variableName)) {
             if (currentVariable == variables) {
                 log_error(`Invalid blueprint: undefined variable "${variableName}"`);
             }
