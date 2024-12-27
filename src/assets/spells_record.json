@@ -255,6 +255,40 @@
             }
         ]
     },
+    "burning_hands": {
+        "name": "Burning Hands",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "Library/1st_Level/Burning_Hands/BurningHands_01_Regular_Orange_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Size (in cells)",
+                "id": "size",
+                "type": "number",
+                "defaultValue": 5,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "burning_hands",
+                "attachedTo": "$targets[0].id",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "rotation": {
+                        "name": "rotation",
+                        "arguments": ["$targets[0].position", "$targets[1].position"]
+                    },
+                    "size": "$size"
+                }
+            }
+        ]
+    },
     "cure_wounds": {
         "name": "Cure Wounds",
         "minTargets": 1,
@@ -1219,6 +1253,53 @@
                 "effectProperties": {
                     "size": 1,
                     "position": "$targets[0].position"
+                }
+            }
+        ]
+    },
+    "disintegrate": {
+        "name": "Disintegrate",
+        "minTargets": 2,
+        "thumbnail": "Library/6th_Level/Disintegrate/Disintegrate_01_Regular_Green01_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": 200,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "disintegrate",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": "$targets[1].count"
+                }
+            }
+        ]
+    },
+    "whirlwind": {
+        "name": "Whirlwind",
+        "minTargets": 1,
+        "thumbnail": "Library/7th_Level/Whirlwind/Whirlwind_01_BlueGrey_01_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 3,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "whirlwind",
+                "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
                 }
             }
         ]
