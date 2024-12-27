@@ -2481,7 +2481,7 @@
         "type": "CONE",
         "dpi": 200,
         "variants": {
-            "200": {
+            "600": {
                 "name": ["600x600"],
                 "duration": 4400,
                 "size": [600, 600]
@@ -2567,6 +2567,7 @@
             "basename": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue",
             "thumbnail": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue_Secondary_Thumb.webp",
             "type": "TARGET",
+            "dpi": 200,
             "variants": {
                 "200": {
                     "name": ["05ft_Secondary_600x400"],

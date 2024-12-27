@@ -49,6 +49,8 @@ export interface EffectBlueprint {
     blueprints?: EffectBlueprint[];
     // Arguments for this action (if type is action)
     arguments?: BlueprintValue<unknown>[];
+    // Whether to disregard this blueprint
+    disabled?: BlueprintValue<boolean>;
 }
 
 export interface ErrorOr<T> {

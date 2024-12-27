@@ -128,6 +128,30 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         return _error("type spell is not supported");
     }
 
+    let disabled: boolean|undefined;
+    if (element.disabled != undefined) {
+        if (typeof element.disabled === "boolean") {
+            disabled = element.disabled;
+        }
+        else if (isUnresolvedBlueprint(element.disabled)) {
+            const maybeDisabled = parseExpression<boolean>(element.disabled, variables);
+            if (isError(maybeDisabled)) {
+                return _error(maybeDisabled.error);
+            }
+            disabled = maybeDisabled.value;
+        }
+        else {
+            log_error("Invalid blueprint: disabled must be a boolean");
+            return _error("disabled must be a boolean");
+        }
+    }
+
+    console.log("Disabled:", disabled)
+
+    if (disabled === true) {
+        return _value(element);
+    }
+
     let id: string|undefined;
     if (element.id != undefined) {
         if (typeof element.id === "string" && element.id[0] !== "$") {
