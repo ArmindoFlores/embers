@@ -1,10 +1,10 @@
 import "./SpellDetails.css";
 
+import { APP_KEY, ASSET_LOCATION } from "../config";
 import { NumberContent, OptionsContent, Parameter, ReplicationType, Spell } from "../types/spells";
 import OBR, { Metadata } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useState } from "react";
 
-import { APP_KEY } from "../config";
 import Checkbox from "./Checkbox";
 import { getSpell } from "../effects/spells";
 import { toolMetadataSelectedSpell } from "../effectsTool";
@@ -170,7 +170,7 @@ export default function SpellDetails() {
                 <p className="title">{ selectedSpell.name }</p>
                 <p>{ selectedSpellID }</p>
             </div>
-            <img className="spell-details-thumbnail" src={`${window.location.origin}/${selectedSpell.thumbnail}`} />
+            <img className="spell-details-thumbnail" src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`} />
         </div>
         <hr className="spell-details-divider" />
         {
