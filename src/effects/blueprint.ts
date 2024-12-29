@@ -1,4 +1,4 @@
-import { AOEEffectBlueprint, BlueprintFunction, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
+import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
 import { EffectInstruction, MessageType } from "../types/messageListener";
 import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
@@ -91,23 +91,22 @@ function parseBlueprintFunction<T>(func: BlueprintFunction, variables: Variables
         return _error("undefined function");
     }
 
-    const resolvedArguments: unknown[] = [];
-    for (const argument of functionArguments) {
+    function resolve<T>(argument: BlueprintValue<T>) {
         if (isUnresolvedBlueprint(argument)) {
             const maybeResolvedArgument = parseExpression<T>(argument, variables);
             if (isError(maybeResolvedArgument)) {
                 return _error(maybeResolvedArgument.error);
             }
-            resolvedArguments.push(maybeResolvedArgument.value);
+            return _value(maybeResolvedArgument.value);
         }
         else {
-            resolvedArguments.push(argument);
+            return _value(argument);
         }
     }
 
     try {
-        const result = builtinFunction(...resolvedArguments);
-        return _value(result as T);
+        const result = builtinFunction(resolve, ...functionArguments);
+        return result as ErrorOr<T>;
     }
     catch (e: unknown) {
         log_error(`Invalid blueprint: error while executing function "${functionName}" (${(e as Error).message})`);
@@ -145,8 +144,6 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             return _error("disabled must be a boolean");
         }
     }
-
-    console.log("Disabled:", disabled)
 
     if (disabled === true) {
         return _value(element);
@@ -389,6 +386,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             (ukEffectProperties as ConeBlueprint).rotation != undefined &&
             (ukEffectProperties as ConeBlueprint).size != undefined
         ) {
+            console.log("im a cone");
             const cbEffectProperties = ukEffectProperties as ConeBlueprint;
 
             let source: Vector2|undefined =  { x: 0, y: 0 };
