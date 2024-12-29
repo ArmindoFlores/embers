@@ -1,41 +1,107 @@
-import { BlueprintFunctionBuiltin } from "../types/blueprint";
+import { BlueprintFunctionBuiltin, BlueprintFunctionResolveArgs, BlueprintValue, ErrorOr } from "../types/blueprint";
+
 import { Vector2 } from "@owlbear-rodeo/sdk";
 
-function concat(...strings: unknown[]) {
-    return String.prototype.concat(...(strings as string[]));
+function _error(message: string): ErrorOr<never> {
+    return { error: message };
 }
 
-function product(...numbers: unknown[]) {
-    return (numbers as number[]).reduce((acc, val) => acc * val, 1);
+function _value<T>(value: T): ErrorOr<T> {
+    return { value };
 }
 
-function sum(...numbers: unknown[]) {
-    return (numbers as number[]).reduce((acc, val) => acc + val, 0);
+function concat(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unknown>[]) {
+    const strings = args.map(arg => resolve(arg));
+    for (const string of strings) {
+        if (string.error) {
+            return _error(string.error);
+        }
+    }
+    return _value(String.prototype.concat(...strings.map(string => string.value as string)));
 }
 
-function if_(condition: unknown, success: unknown, failure?: unknown) {
-    if (condition) {
-        return success;
+function product(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unknown>[]) {
+    const numbers = args.map(arg => resolve(arg));
+    for (const number of numbers) {
+        if (number.error) {
+            return _error(number.error);
+        }
+    }
+    return _value(numbers.map(number => number.value as number).reduce((acc, val) => acc * val, 1));
+}
+
+function sum(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unknown>[]) {
+    const numbers = args.map(arg => resolve(arg));
+    for (const number of numbers) {
+        if (number.error) {
+            return _error(number.error);
+        }
+    }
+    return _value(numbers.map(number => number.value as number).reduce((acc, val) => acc + val, 0));
+}
+
+function if_(resolve: BlueprintFunctionResolveArgs, condition: BlueprintValue<unknown>, success: BlueprintValue<unknown>, failure?: BlueprintValue<unknown>) {
+    const predicate = resolve(condition);
+    if (predicate.error) {
+        return _error(predicate.error);
+    }
+    if (predicate.value) {
+        return resolve(success);
+    }
+    else if (failure != undefined) {
+        return resolve(failure);
     }
     else {
-        return failure;
+        return _value(undefined);
     }
 }
 
-function greater_than(arg1: unknown, arg2: unknown) {
-    return (arg1 as number) > (arg2 as number);
+function equals(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return _error(left.error);
+    }
+    if (right.error) {
+        return _error(right.error);
+    }
+    return _value(left.value === right.value);
 }
 
-function lesser_than(arg1: unknown, arg2: unknown) {
-    return (arg1 as number) < (arg2 as number);
+function greater_than(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return _error(left.error);
+    }
+    if (right.error) {
+        return _error(right.error);
+    }
+    return _value((left.value as number) > (right.value as number));
 }
 
-function rotation(source: unknown, destination: unknown) {
-    const deltaX = (destination as Vector2).x - (source as Vector2).x;
-    const deltaY = (destination as Vector2).y - (source as Vector2).y;
+function lesser_than(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return _error(left.error);
+    }
+    if (right.error) {
+        return _error(right.error);
+    }
+    return _value((left.value as number) < (right.value as number));
+}
+
+function rotation(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [source, destination] = [resolve(arg1), resolve(arg2)];
+    if (source.error) {
+        return _error(source.error);
+    }
+    if (destination.error) {
+        return _error(destination.error);
+    }
+    const deltaX = (destination.value as Vector2).x - (source.value as Vector2).x;
+    const deltaY = (destination.value as Vector2).y - (source.value as Vector2).y;
     const angleRadians = Math.atan2(deltaY, deltaX);
     const angleDegrees = angleRadians * (180 / Math.PI);
-    return angleDegrees;
+    return _value(angleDegrees);
 }
 
 export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {
@@ -44,6 +110,7 @@ export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {
     sum,
     if: if_,
     rotation,
+    equals,
     greater_than,
     lesser_than
 };

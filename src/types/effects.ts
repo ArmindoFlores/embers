@@ -1,4 +1,4 @@
-export type EffectType = "CIRCLE" | "CONE" | "TARGET";
+export type EffectType = "CIRCLE" | "CONE" | "TARGET" | "WALL";
 
 export interface EffectVariant {
     name: string[];

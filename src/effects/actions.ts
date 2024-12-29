@@ -1,6 +1,6 @@
 import OBR, { Vector2 } from "@owlbear-rodeo/sdk";
 
-import { BlueprintFunctionBuiltin } from "../types/blueprint";
+import { BlueprintActionBuiltin } from "../types/blueprint";
 
 function move(itemID: unknown, position: unknown) {
     OBR.scene.items.updateItems([itemID as string], items => {
@@ -26,7 +26,7 @@ function show(itemID: unknown) {
     });
 }
 
-export const actions: Record<string, BlueprintFunctionBuiltin> = {
+export const actions: Record<string, BlueprintActionBuiltin> = {
     move,
     show,
     hide

@@ -140,7 +140,6 @@ export function registerEffect(images: Image[], worker: Worker, duration: number
     else {
         Promise.all([getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE), OBR.player.getId(), OBR.player.getRole()]).then(([summonRule, id, role]) => {
             if ((summonRule === "caster" && id === spellCaster) || (summonRule === "gm-only" && role === "GM")) {
-                console.log(images);
                 OBR.scene.items.addItems(images);
             }
         });
@@ -246,7 +245,7 @@ export function doEffect(effectName: string, effect?: Effect) {
     getSortedTargets().then(targets => {
         OBR.scene.local.deleteItems(targets.map(item => item.id));
 
-        if (effect.type === "TARGET") {
+        if (effect.type === "TARGET" || effect.type === "WALL") {
             if (targets.length < 2) {
                 OBR.notification.show(`Embers: The effect "${effectName}" requires at least 2 targets`, "ERROR");
                 return;

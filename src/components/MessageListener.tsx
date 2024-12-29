@@ -53,7 +53,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                         log_error("Effect loops must be a number");
                         return;
                     }
-                    if (effect.type === "TARGET") {
+                    if (effect.type === "TARGET" || effect.type === "WALL") {
                         const projectileMessage = instruction.effectProperties as ProjectileMessage;
                         if (projectileMessage.copies == undefined) {
                             projectileMessage.copies = 1;

@@ -67,7 +67,7 @@ export function projectile(
             projectileInfo.name,
             effect,
             distance,
-            { x: 0.5, y: 0.5 },
+            effect.type === "TARGET" ? { x: 0.5, y: 0.5 } : { x: 0, y: 0.5 },
             position,
             rotation,
             variant,

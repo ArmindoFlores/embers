@@ -2148,7 +2148,7 @@
         "transparent": {
             "basename": "3rd_Level/Wind_Wall/WindWall_01_75OPA",
             "thumbnail": "3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
-            "type": "TARGET",
+            "type": "WALL",
             "dpi": 100,
             "variants": {
                 "100": {
@@ -2176,7 +2176,7 @@
         "opaque": {
             "basename": "3rd_Level/Wind_Wall/WindWall_01",
             "thumbnail": "3rd_Level/Wind_Wall/WindWall_01_Thumb.webp",
-            "type": "TARGET",
+            "type": "WALL",
             "dpi": 100,
             "variants": {
                 "100": {
@@ -2221,7 +2221,7 @@
                 "blue": {
                     "basename": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue_Thumb.webp",
-                    "type": "LINE",
+                    "type": "WALL",
                     "dpi": 100,
                     "variants": {
                         "100": {
@@ -2249,7 +2249,7 @@
                 "yellow": {
                     "basename": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Thumb.webp",
-                    "type": "LINE",
+                    "type": "WALL",
                     "dpi": 100,
                     "variants": {
                         "100": {
@@ -2309,7 +2309,7 @@
                 "blue": {
                     "basename": "4th_Level/Wall_Of_Fire/Opacities/WallOfFire_01_Blue_75OPA",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Blue_Thumb.webp",
-                    "type": "LINE",
+                    "type": "WALL",
                     "dpi": 100,
                     "variants": {
                         "100": {
@@ -2337,7 +2337,7 @@
                 "yellow": {
                     "basename": "4th_Level/Wall_Of_Fire/Opacities/WallOfFire_01_Yellow_75OPA",
                     "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Thumb.webp",
-                    "type": "LINE",
+                    "type": "WALL",
                     "dpi": 100,
                     "variants": {
                         "100": {

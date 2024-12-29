@@ -60,4 +60,6 @@ export interface ErrorOr<T> {
 
 export type Variables = Record<string, unknown>;
 
-export type BlueprintFunctionBuiltin = (...args: unknown[]) => unknown;
+export type BlueprintFunctionResolveArgs = (argument: BlueprintValue<unknown>) => ErrorOr<unknown>;
+export type BlueprintFunctionBuiltin = (resolve: BlueprintFunctionResolveArgs,...args: BlueprintValue<unknown>[]) => ErrorOr<unknown>;
+export type BlueprintActionBuiltin = (...args: unknown[]) => void;

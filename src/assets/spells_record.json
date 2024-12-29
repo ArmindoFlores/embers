@@ -59,7 +59,7 @@
                 },
                 "effectProperties": {
                     "position": "$targets[0].position",
-                    "size": "$size"
+                    "size": "$radius"
                 }
             }
         ]
@@ -382,6 +382,7 @@
                 "id": "entangle.transparent.loop",
                 "duration": -1,
                 "delay": 6000,
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
@@ -1277,6 +1278,104 @@
                 "type": "effect",
                 "id": "black_tentacles",
                 "duration": -1,
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "wall_of_fire": {
+        "name": "Wall of Fire",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "4th_Level/Wall_Of_Fire/WallOfFire_01_Yellow_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "yellow",
+                "content": [
+                    { "value": "blue", "label": "Blue" },
+                    { "value": "yellow", "label": "Yellow" }
+                ]
+            },
+            {
+                "name": "Mode",
+                "id": "mode",
+                "type": "options",
+                "defaultValue": "line",
+                "content": [
+                    { "value": "line", "label": "Line" },
+                    { "value": "ring", "label": "Ring" }
+                ]
+            },
+            {
+                "name": "Ring radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 6,
+                "content": {
+                    "min": 1
+                }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": true
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": [
+                        "wall_of_fire.",
+                        {
+                            "name": "if",
+                            "arguments": ["$transparent", "transparent", "opaque"]
+                        },
+                        ".line.",
+                        "$color"
+                    ]
+                },
+                "disabled": {
+                    "name": "equals",
+                    "arguments": ["$mode", "ring"]
+                },
+                "duration": -1,
+                "disableHit": true,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": [
+                        "wall_of_fire.",
+                        {
+                            "name": "if",
+                            "arguments": ["$transparent", "transparent", "opaque"]
+                        },
+                        ".ring.",
+                        "$color"
+                    ]
+                },
+                "disabled": {
+                    "name": "equals",
+                    "arguments": ["$mode", "line"]
+                },
+                "duration": -1,
+                "disableHit": true,
                 "effectProperties": {
                     "position": "$targets[0].position",
                     "size": "$radius"
