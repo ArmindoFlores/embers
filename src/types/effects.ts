@@ -2,7 +2,7 @@ export type EffectType = "CIRCLE" | "CONE" | "TARGET" | "WALL";
 
 export interface EffectVariant {
     name: string[];
-    duration: number;
+    duration: number[];
     size: [number, number];
 }
 

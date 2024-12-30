@@ -148,6 +148,10 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             log_error(`The size of an AOE effect must be a number, not a ${typeof aoeEffectMessage.size}`);
                             return;
                         }
+                        if (aoeEffectMessage.rotation != undefined && typeof aoeEffectMessage.rotation !== "number") {
+                            log_error(`The rotation of an AOE effect must be a number, not a ${typeof aoeEffectMessage.rotation}`);
+                            return;
+                        }
                         if (
                             typeof aoeEffectMessage.position !== "object" ||
                             typeof aoeEffectMessage.position.x !== "number" ||
@@ -173,6 +177,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                                 doMoreWork(instruction.instructions);
                             },
                             variant,
+                            instruction.forceVariant,
                             spellName,
                             spellCaster
                         );

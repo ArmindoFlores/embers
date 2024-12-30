@@ -1610,6 +1610,81 @@
             }
         ]
     },
+    "melee_weapon_attack": {
+        "name": "Melee Weapon Attack",
+        "minTargets": 1,
+        "maxTargets": 2,
+        "thumbnail": "Generic/Weapon_Attacks/Melee/Sword01_01_Regular_White_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Weapon variant",
+                "id": "weapon_variant",
+                "type": "options",
+                "defaultValue": "sword",
+                "content": [
+                    { "value": "club", "label": "Club" },
+                    { "value": "dagger", "label": "Dagger" },
+                    { "value": "falchion", "label": "Falchion" },
+                    { "value": "generic_slash", "label": "Generic Slash" },
+                    { "value": "generic_whirlwind", "label": "Generic Whirlwind" },
+                    { "value": "glaive", "label": "Glaive" },
+                    { "value": "great_axe", "label": "Greataxe" },
+                    { "value": "great_club", "label": "Greatclub" },
+                    { "value": "great_sword", "label": "Greatsword" },
+                    { "value": "halberd", "label": "Halberd" },
+                    { "value": "hammer", "label": "Hammer" },
+                    { "value": "hand_axe", "label": "Handaxe" },
+                    { "value": "laser_sword", "label": "Laser Sword" },
+                    { "value": "mace", "label": "Mace" },
+                    { "value": "maul", "label": "Maul" },
+                    { "value": "quarterstaff", "label": "Quarterstaff" },
+                    { "value": "rapier", "label": "Rapier" },
+                    { "value": "scimitar", "label": "Scimitar" },
+                    { "value": "shortsword", "label": "Shortsword" },
+                    { "value": "spear", "label": "Spear" },
+                    { "value": "sword", "label": "Sword" },
+                    { "value": "warhammer", "label": "Warhammer" },
+                    { "value": "wrench", "label": "Wrench" }
+                ]
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["generic.weapon_attacks.melee.single.", "$weapon_variant"]
+                },
+                "forceVariant": {
+                    "name": "random_int",
+                    "arguments": [0, 6]
+                },
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 2]
+                    },
+                    "rotation": {
+                        "name": "if",
+                        "arguments": [
+                            {
+                                "name": "greater_than",
+                                "arguments": ["$targets.length", 1]
+                            },
+                            {
+                                "name": "rotation",
+                                "arguments": ["$targets[0].position", "$targets[1].position"]
+                            },
+                            0
+                        ]
+                    }
+                }
+            }
+        ]
+    },
     "sneak_attack": {
         "name": "Sneak Attack",
         "minTargets": 1,
