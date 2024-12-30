@@ -3164,6 +3164,994 @@
                         }
                     }
                 }
+            },
+            "ranged": {
+                "arrow": {
+                    "green": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Arrow01_01_Regular_Green",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Arrow01_01_Regular_Green_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [1730],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1870],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1870],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2070],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [2400],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "white": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Arrow01_01_Regular_White",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Arrow01_01_Regular_White_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [1730],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1870],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1870],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2070],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [2400],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "blue": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Arrow02_01_Regular_Blue_Physical",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Arrow02_01_Regular_Blue_Physical_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [1730],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1870],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1870],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2070],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [2400],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "bolt": {
+                    "basename": "Generic/Weapon_Attacks/Ranged/Bolt01_01_Regular_Orange_Physical",
+                    "thumbnail": "Generic/Weapon_Attacks/Ranged/Bolt01_01_Regular_Orange_Physical_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [1400],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1400],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1500],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [1670],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [1830],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "boulder_toss": {
+                    "basename": "Generic/Weapon_Attacks/Ranged/BoulderToss02_01_Regular_Brown",
+                    "thumbnail": "Generic/Weapon_Attacks/Ranged/BoulderToss02_01_Regular_Brown_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [930],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1200],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1600],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [2430],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [3270],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "bullet": {
+                    "orange": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Bullet_01_Regular_Orange",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Bullet_01_Regular_Orange_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [530],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [530],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [630],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [830],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [970],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "large_orange": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Bullet_02_Regular_Orange",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Bullet_02_Regular_Orange_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [930],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [930],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [930],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [930],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [930],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "blue": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Bullet_03_Regular_Blue",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Bullet_03_Regular_Blue_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [1030],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1300],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1300],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1230],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1370],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "dagger": {
+                    "throw": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Dagger01_01_Regular_White",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Dagger01_01_Regular_White_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1500],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1600],
+                                "size": [1600, 400]
+                            },
+                            "1800": {
+                                "name": ["45ft_2200x400"],
+                                "duration": [1630],
+                                "size": [2200, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1770],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1930],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "return": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Dagger01_01_Regular_White_Return",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Dagger01_01_Regular_White_Return_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1500],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1600],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1770],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1930],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "laser_shot": {
+                    "blue": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Blue",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Blue_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [500],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [630],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [670],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [900],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1030],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "green": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Green",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Green_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [500],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [630],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [670],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [900],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1030],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "orange": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Orange",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Orange_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [500],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [630],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [670],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [900],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1030],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "red": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Red",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Red_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [500],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [630],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [670],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [900],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1030],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "laser_sword": {
+                    "blue": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/LaserSword01_01_Regular_Blue",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/LaserSword01_01_Regular_Blue_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x600"],
+                                "duration": [2370],
+                                "size": [1000, 600]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x600"],
+                                "duration": [2770],
+                                "size": [1600, 600]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x600"],
+                                "duration": [3270],
+                                "size": [2800, 600]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x600"],
+                                "duration": [3370],
+                                "size": [4000, 600]
+                            }
+                        }
+                    },
+                    "red": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/LaserSwordDB01_01_Regular_Red",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/LaserSwordDB01_01_Regular_Red_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x600"],
+                                "duration": [2430],
+                                "size": [1000, 600]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x600"],
+                                "duration": [2770],
+                                "size": [1600, 600]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x600"],
+                                "duration": [3170],
+                                "size": [2800, 600]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x600"],
+                                "duration": [3730],
+                                "size": [4000, 600]
+                            }
+                        }
+                    }
+                },
+                "cannon_ball": {
+                    "basename": "Generic/Weapon_Attacks/Ranged/LaunchCannonBall01_01_Regular_Black",
+                    "thumbnail": "Generic/Weapon_Attacks/Ranged/LaunchCannonBall01_01_Regular_Black_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [470],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [770],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1170],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [2070],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [2430],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "barrel_toss": {
+                    "metal": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/MetalBarrelToss01_01_Regular_Red",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/MetalBarrelToss01_01_Regular_Red_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [930],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1200],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1600],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2430],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [3270],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "wooden": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/WoodenBarrelToss01_01_Regular_Brown",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/WoodenBarrelToss01_01_Regular_Brown_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [930],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1200],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1600],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2430],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [3270],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "missile": {
+                    "blue": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [670],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [930],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1370],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1830],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "white": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Missile02_01_Regular_White",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile02_01_Regular_White_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [670],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [930],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1370],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1830],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "wide_white": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Missile03_01_Regular_White",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile03_01_Regular_White_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [670],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [930],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1370],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1830],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "purple_pink": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Missile04_01_Regular_PurplePink",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile04_01_Regular_PurplePink_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [670],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [930],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1370],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1830],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "packhound_missile": {
+                    "basename": "Generic/Weapon_Attacks/Ranged/PackhoundMissile01",
+                    "thumbnail": "Generic/Weapon_Attacks/Ranged/PackhoundMissile01_Regular_Blue_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["01_Regular_Blue_15ft_1000x400", "02_Regular_Blue_15ft_1000x400", "03_Regular_Blue_15ft_1000x400", "04_Regular_Blue_15ft_1000x400"],
+                            "duration": [3630],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["01_Regular_Blue_30ft_1600x400", "02_Regular_Blue_30ft_1600x400", "03_Regular_Blue_30ft_1600x400", "04_Regular_Blue_30ft_1600x400"],
+                            "duration": [4030],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["01_Regular_Blue_60ft_2800x400", "02_Regular_Blue_60ft_2800x400", "03_Regular_Blue_60ft_2800x400", "04_Regular_Blue_60ft_2800x400"],
+                            "duration": [4870],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["01_Regular_Blue_90ft_4000x400", "02_Regular_Blue_90ft_4000x400", "03_Regular_Blue_90ft_4000x400", "04_Regular_Blue_90ft_4000x400"],
+                            "duration": [5700],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "shield": {
+                    "return": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Shield01_01_Regular_White_Return",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Shield01_01_Regular_White_Return_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1870],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1930],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2100],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [2270],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "throw": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Shield01_01_Regular_White",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Shield01_01_Regular_White_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1470],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [1600],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [1770],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [1930],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "complete": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/Shield01_02_Regular_White",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/Shield01_02_Regular_White_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [2530],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [2630],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2900],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [3170],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "snipe": {
+                    "basename": "Generic/Weapon_Attacks/Ranged/Snipe_01_Regular_Blue",
+                    "thumbnail": "Generic/Weapon_Attacks/Ranged/Snipe_01_Regular_Blue_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [1100],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1370],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1170],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [1200],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [2570],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "snowball": {
+                    "basename": "Generic/Weapon_Attacks/Ranged/SnowballToss_01_Regular_White",
+                    "thumbnail": "Generic/Weapon_Attacks/Ranged/SnowballToss_01_Regular_White_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x500"],
+                            "duration": [2870],
+                            "size": [600, 500]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x500"],
+                            "duration": [2870],
+                            "size": [1000, 500]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x500"],
+                            "duration": [2870],
+                            "size": [1600, 500]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x500"],
+                            "duration": [3370],
+                            "size": [2800, 500]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x500"],
+                            "duration": [3570],
+                            "size": [4000, 500]
+                        }
+                    }
+                },
+                "throw": {
+                    "bomb": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/ThrowBomb01_01_Regular_Black",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/ThrowBomb01_01_Regular_Black_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [1470],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1800],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [2200],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [3070],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [3530],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "flask": {
+                        "basename": "Generic/Weapon_Attacks/Ranged/ThrowFlask01_01_Regular_Orange",
+                        "thumbnail": "Generic/Weapon_Attacks/Ranged/ThrowFlask01_01_Regular_Orange_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [1470],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [1800],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [2200],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [3070],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [3530],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                }
             }
         }
     }
