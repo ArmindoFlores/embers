@@ -535,6 +535,16 @@
                     }
                 }
             }
+        ],
+        "onDestroyBlueprints": [
+            {
+                "type": "effect",
+                "id": "shield.outro.fade",
+                "effectProperties": {
+                    "position": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
         ]
     },
     "sleep": {

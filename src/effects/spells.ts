@@ -115,6 +115,42 @@ export function getSpell(spellID: string): Spell|undefined {
     return spells[spellID];
 }
 
+export function destroySpell(spellID: string, playerID: string, items: Item[]) {
+    const spell = getSpell(spellID);
+    if (spell == undefined) {
+        log_error(`Unknown spell "${spellID}"`);
+        return;
+    }
+
+    const instructions: EffectInstruction[] = [];
+    // FIXME: this should probably work more similarly to doSpell
+    const variables: Variables = {
+        targets: items.map(item => ({
+            id: item.id,
+            attachedId: item.attachedTo,
+            position: item.position,
+            size: getItemSize(item),
+            count: 1
+        }))
+    };
+
+    const { value, error } = resolveBlueprint(spell.onDestroyBlueprints ?? [], variables);
+    if (error) {
+        OBR.notification.show(`Blueprint error: ${error}`, "ERROR");
+        return;
+    }
+    instructions.push(...value?.instructions ?? []);
+
+    const message = {
+        instructions,
+        spellData: {
+            name: spellID,
+            caster: playerID
+        }
+    };
+    OBR.broadcast.sendMessage(MESSAGE_CHANNEL, message, { destination: "ALL" });
+}
+
 export function doSpell(spellID: string, playerID: string) {
     const spell = getSpell(spellID);
     if (spell == undefined) {
