@@ -42,6 +42,9 @@ export interface Spell {
 
     // Blueprint for the effect to play
     blueprints?: EffectBlueprint[];
+
+    // Blueprint for the effect to play when it is destroyed
+    onDestroyBlueprints?: EffectBlueprint[];
 }
 
 export interface Spells {

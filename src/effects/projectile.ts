@@ -84,7 +84,7 @@ export function projectile(
             return;
         }
         const { image, effectDuration } = result;
-        realDuration = effectDuration;
+        realDuration = Math.max(realDuration, effectDuration);
         images.push(image.build());
     }
 

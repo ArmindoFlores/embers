@@ -12,6 +12,7 @@ export function aoe(
     metadata?: Metadata,
     onComplete?: () => void,
     variant?: number,
+    forcedVariant?: number,
     spellName?: string,
     spellCaster?: string
 ) {
@@ -31,9 +32,9 @@ export function aoe(
         aoeEffectProperties.size,
         { x: 0.5, y: 0.5 },
         aoeEffectProperties.position,
-        0,
+        aoeEffectProperties.rotation ?? 0,
         variant,
-        undefined,
+        forcedVariant,
         aoeEffectProperties.disableHit,
         aoeEffectProperties.attachedTo,
         duration,

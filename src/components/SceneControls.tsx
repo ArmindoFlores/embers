@@ -2,15 +2,15 @@ import "./SceneControls.css";
 
 import { FaArrowPointer, FaEye, FaEyeSlash, FaLink, FaLinkSlash, FaSquareMinus } from "react-icons/fa6";
 import OBR, { Item, Player } from "@owlbear-rodeo/sdk";
+import { destroySpell, getSpell } from "../effects/spells";
 import { effectMetadataKey, spellMetadataKey } from "../effects/effects";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { MessageType } from "../types/messageListener";
 import { Spell } from "../types/spells";
-import { getSpell } from "../effects/spells";
 import { useOBR } from "../react-obr/providers";
 
-function SpellDisplay({ spellID, item }: { spellID?: string, item: Item }) {
+function SpellDisplay({ spellID, item, caster }: { spellID?: string, item: Item, caster: Player }) {
     const [spell, setSpell] = useState<Spell>();
 
     const selectItem = useCallback(() => {
@@ -34,8 +34,11 @@ function SpellDisplay({ spellID, item }: { spellID?: string, item: Item }) {
     }, [item]);
 
     const deleteItem = useCallback(() => {
+        if (spellID != undefined && spell?.onDestroyBlueprints && spell.onDestroyBlueprints.length > 0) {
+            destroySpell(spellID, caster.id, [item]);
+        }
         OBR.scene.items.deleteItems([item.id]);
-    }, [item]);
+    }, [item, spellID, spell?.onDestroyBlueprints, caster.id]);
 
     useEffect(() => {
         if (spellID == undefined) {
@@ -111,7 +114,7 @@ export default function SceneControls() {
             <ul className="scene-spell-list">
                 {
                     playerItems.map(item => (
-                        <SpellDisplay key={item.id} spellID={(item.metadata[spellMetadataKey] as MessageType["spellData"])?.name} item={item} />
+                        <SpellDisplay key={item.id} spellID={(item.metadata[spellMetadataKey] as MessageType["spellData"])?.name} item={item} caster={player} />
                     ))
                 }
             </ul>

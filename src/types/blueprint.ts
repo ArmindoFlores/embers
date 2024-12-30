@@ -18,6 +18,7 @@ export interface ProjectileBlueprint {
 export interface AOEEffectBlueprint {
     position: BlueprintValue<Vector2>;
     size: BlueprintValue<number>;
+    rotation?: BlueprintValue<number>;
 }
 
 export interface ConeBlueprint {
@@ -51,6 +52,8 @@ export interface EffectBlueprint {
     arguments?: BlueprintValue<unknown>[];
     // Whether to disregard this blueprint
     disabled?: BlueprintValue<boolean>;
+    // If specified, the chosen effect variant will always be this one, if it exists
+    forceVariant?: BlueprintValue<number>;
 }
 
 export interface ErrorOr<T> {

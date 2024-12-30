@@ -121,159 +121,90 @@ function parseExpression<T = unknown>(expression: BlueprintValueUnresolved, vari
     return parseBlueprintFunction<T>(expression, variables);
 }
 
+function resolveSimpleValue<T>(value: BlueprintValue<T> | undefined, variableName: string, variableType: string, variables: Variables) {
+    let resolvedValue: T|undefined;
+    if (value != undefined) {
+        if (typeof value === variableType && (typeof value !== "string" || value[0] !== "$")) {
+            resolvedValue = value as T;
+        }
+        else if (isUnresolvedBlueprint(value)) {
+            const maybeDisabled = parseExpression<T>(value, variables);
+            if (isError(maybeDisabled)) {
+                return _error(maybeDisabled.error);
+            }
+            resolvedValue = maybeDisabled.value;
+        }
+        else {
+            log_error(`Invalid blueprint: ${variableName} must be a ${variableType}`);
+            return _error(`${variableName} must be a ${variableType}`);
+        }
+    }
+    return _value(resolvedValue);
+}
+
 function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], variables: Variables): ErrorOr<EffectBlueprint> {
     if (element.type === "spell") {
         log_error("Invalid blueprint: type spell is not supported");
         return _error("type spell is not supported");
     }
 
-    let disabled: boolean|undefined;
-    if (element.disabled != undefined) {
-        if (typeof element.disabled === "boolean") {
-            disabled = element.disabled;
-        }
-        else if (isUnresolvedBlueprint(element.disabled)) {
-            const maybeDisabled = parseExpression<boolean>(element.disabled, variables);
-            if (isError(maybeDisabled)) {
-                return _error(maybeDisabled.error);
-            }
-            disabled = maybeDisabled.value;
-        }
-        else {
-            log_error("Invalid blueprint: disabled must be a boolean");
-            return _error("disabled must be a boolean");
-        }
+    const maybeDisabled = resolveSimpleValue<boolean>(element.disabled, "disabled", "boolean", variables);
+    if (isError(maybeDisabled)) {
+        return maybeDisabled;
     }
+    const disabled = maybeDisabled.value;
 
     if (disabled === true) {
         return _value(element);
     }
 
-    let id: string|undefined;
-    if (element.id != undefined) {
-        if (typeof element.id === "string" && element.id[0] !== "$") {
-            id = element.id;
-        }
-        else if (isUnresolvedBlueprint(element.id)) {
-            const maybeId = parseExpression<string>(element.id, variables);
-            if (isError(maybeId)) {
-                return _error(maybeId.error);
-            }
-            id = maybeId.value;
-        }
-        else {
-            log_error("Invalid blueprint: ID must be a string");
-            return _error("ID must be a string");
-        }
+    const maybeID = resolveSimpleValue<string>(element.id, "ID", "string", variables);
+    if (isError(maybeID)) {
+        return maybeID;
     }
+    const id = maybeID.value;
 
-    let delay: number|undefined;
-    if (element.delay != undefined) {
-        if (typeof element.delay === "number") {
-            delay = element.delay;
-        }
-        else if (isUnresolvedBlueprint(element.delay)) {
-            const maybeDelay = parseExpression<number>(element.delay, variables);
-            if (isError(maybeDelay)) {
-                return _error(maybeDelay.error);
-            }
-            delay = maybeDelay.value;
-        }
-        else {
-            log_error("Invalid blueprint: delay must be a number");
-            return _error("delay must be a number");
-        }
+    const maybeDelay = resolveSimpleValue<number>(element.delay, "delay", "number", variables);
+    if (isError(maybeDelay)) {
+        return maybeDelay;
     }
+    const delay = maybeDelay.value;
 
-    let duration: number|undefined;
-    if (element.duration != undefined) {
-        if (typeof element.duration === "number") {
-            duration = element.duration;
-        }
-        else if (isUnresolvedBlueprint(element.duration)) {
-            const maybeDuration = parseExpression<number>(element.duration, variables);
-            if (isError(maybeDuration)) {
-                return _error(maybeDuration.error);
-            }
-            duration = maybeDuration.value;
-        }
-        else {
-            log_error("Invalid blueprint: duration must be a number");
-            return _error("duration must be a number");
-        }
+    const maybeDuration = resolveSimpleValue<number>(element.duration, "duration", "number", variables);
+    if (isError(maybeDuration)) {
+        return maybeDuration;
     }
+    const duration = maybeDuration.value;
 
-    let loops: number|undefined;
-    if (element.loops != undefined) {
-        if (typeof element.loops === "number") {
-            loops = element.loops;
-        }
-        else if (isUnresolvedBlueprint(element.loops)) {
-            const maybeLoops = parseExpression<number>(element.loops, variables);
-            if (isError(maybeLoops)) {
-                return _error(maybeLoops.error);
-            }
-            loops = maybeLoops.value;
-        }
-        else {
-            log_error("Invalid blueprint: loops must be a number");
-            return _error("loops must be a number");
-        }
+    const maybeLoops = resolveSimpleValue<number>(element.loops, "loops", "number", variables);
+    if (isError(maybeLoops)) {
+        return maybeLoops;
     }
+    const loops = maybeLoops.value;
 
-    let attachedTo: string|undefined;
-    if (element.attachedTo != undefined) {
-        if (isUnresolvedBlueprint(element.attachedTo)) {
-            const maybeAttachedTo = parseExpression<string>(element.attachedTo, variables);
-            if (isError(maybeAttachedTo)) {
-                return _error(maybeAttachedTo.error);
-            }
-            attachedTo = maybeAttachedTo.value;
-        }
-        else if (typeof element.attachedTo === "string") {
-            attachedTo = element.attachedTo;
-        }
-        else {
-            log_error("Invalid blueprint: attachedTo must be a string");
-            return _error("attachedTo must be a string");
-        }
+    const maybeForceVariant = resolveSimpleValue<number>(element.forceVariant, "forceVariant", "number", variables);
+    if (isError(maybeForceVariant)) {
+        return maybeForceVariant;
     }
+    const forceVariant = maybeForceVariant.value;
 
-    let disableHit: boolean|undefined;
-    if (element.disableHit != undefined) {
-        if (isUnresolvedBlueprint(element.disableHit)) {
-            const maybeDisableHit = parseExpression<boolean>(element.disableHit, variables);
-            if (isError(maybeDisableHit)) {
-                return _error(maybeDisableHit.error);
-            }
-            disableHit = maybeDisableHit.value;
-        }
-        else if (typeof element.disableHit === "boolean") {
-            disableHit = element.disableHit;
-        }
-        else {
-            log_error("Invalid blueprint: disableHit must be a boolean");
-            return _error("disableHit must be a boolean");
-        }
+    const maybeAttachedTo = resolveSimpleValue<string>(element.attachedTo, "attachedTo", "number", variables);
+    if (isError(maybeAttachedTo)) {
+        return maybeAttachedTo;
     }
+    const attachedTo = maybeAttachedTo.value;
 
-    let metadata: Metadata|undefined;
-    if (element.metadata != undefined) {
-        if (isUnresolvedBlueprint(element.metadata)) {
-            const maybeMetadata = parseExpression<Metadata>(element.metadata, variables);
-            if (isError(maybeMetadata)) {
-                return _error(maybeMetadata.error);
-            }
-            metadata = maybeMetadata.value;
-        }
-        else if (typeof element.metadata === "object") {
-            metadata = element.metadata;
-        }
-        else {
-            log_error("Invalid blueprint: metadata must be an object");
-            return _error("metadata must be an object");
-        }
+    const maybeDisableHit = resolveSimpleValue<boolean>(element.disableHit, "disableHit", "boolean", variables);
+    if (isError(maybeDisableHit)) {
+        return maybeDisableHit;
     }
+    const disableHit = maybeDisableHit.value;
+
+    const maybeMetadata = resolveSimpleValue<Metadata>(element.metadata, "metadata", "object", variables);
+    if (isError(maybeMetadata)) {
+        return maybeMetadata;
+    }
+    const metadata = maybeMetadata.value;
 
     let actionArguments: unknown[]|undefined;
     if (element.arguments != undefined) {
@@ -482,9 +413,26 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
                 return _error("size must be a number");
             }
 
+            let rotation: number|undefined = undefined;
+            if (typeof abEffectProperties.rotation === "number" || abEffectProperties.rotation == undefined) {
+                rotation = abEffectProperties.rotation;
+            }
+            else if (isUnresolvedBlueprint(abEffectProperties.rotation)) {
+                const maybeRotation = parseExpression<number>(abEffectProperties.rotation, variables);
+                if (isError(maybeRotation)) {
+                    return _error(maybeRotation.error);
+                }
+                rotation = maybeRotation.value!;
+            }
+            else {
+                log_error(`Invalid blueprint: effectProperties.rotation must be a number, not "${typeof abEffectProperties.rotation}"`);
+                return _error("rotation must be a number");
+            }
+
             effectProperties = {
                 position,
-                size
+                size,
+                rotation
             };
         }
         else {
@@ -520,6 +468,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         instructions,
         duration,
         loops,
+        forceVariant,
         metadata,
         arguments: actionArguments
     };

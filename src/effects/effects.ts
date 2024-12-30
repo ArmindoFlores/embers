@@ -174,7 +174,8 @@ export function buildEffectImage(
         x: scale,
         y: scale
     };
-    const effectDuration = duration ?? (loops != undefined ? loops * effect.variants[effectVariantName].duration : effect.variants[effectVariantName].duration);
+    const effectDurationArray = duration ? [duration] : effect.variants[effectVariantName].duration;
+    const effectDuration = (loops ?? 1) * (variantIndex ? (effectDurationArray.length > variantIndex ? effectDurationArray[variantIndex] : effectDurationArray[0]): effectDurationArray[0]);
 
     const url = getEffectURL(effectName, effectVariantName, variantIndex ? variantIndex % (effect.variants[effectVariantName].name.length) : undefined);
     if (url == undefined) {

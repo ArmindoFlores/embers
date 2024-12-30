@@ -104,6 +104,30 @@ function rotation(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<un
     return _value(angleDegrees);
 }
 
+function random_choice(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unknown>[]) {
+    const resolvedArgs = [];
+    for (const arg of args) {
+        const resolved = resolve(arg);
+        if (resolved.error != undefined) {
+            return _error(resolved.error);
+        }
+        resolvedArgs.push(resolved.value);
+    }
+    const index = Math.floor(Math.random() * args.length);
+    return _value(resolvedArgs[index]);
+}
+
+function random_int(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [min, max] = [resolve(arg1), resolve(arg2)];
+    if (min.error) {
+        return _error(min.error);
+    }
+    if (max.error) {
+        return _error(max.error);
+    }
+    return _value(Math.floor(Math.random() * (max.value as number - (min.value as number))) + (min.value as number));
+}
+
 export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {
     concat,
     product,
@@ -112,5 +136,7 @@ export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {
     rotation,
     equals,
     greater_than,
-    lesser_than
+    lesser_than,
+    random_choice,
+    random_int,
 };

@@ -18,6 +18,8 @@ export interface EffectInstruction {
     loops?: number;
     // Custom metadata to add to this effect
     metadata?: Metadata;
+    // If specified, the chosen effect variant will always be this one, if it exists
+    forceVariant?: number;
     // Arguments if this instruction is an action
     arguments?: unknown[];
     // Instructions to execute after this effect is done

@@ -32,7 +32,7 @@ These are some features that are on Embers' backlog:
 - [x] Support basic projectiles/AOE effects
 - [x] Support all spell effects from JB2A
 - [ ] Support all generic effects from JB2A
-- [ ] Implement all spells from D&D 5e's Player Handbook (20/361 - 5.5%)
+- [ ] Implement all spells from D&D 5e's Player Handbook (44/361 - 12.2%)
 - [x] Support permanent effects
 - [x] Support custom metadata
 - [x] Allow for custom spell parameters
@@ -43,7 +43,7 @@ These are some features that are on Embers' backlog:
 - [ ] Create the UI for creating custom spells
 - [x] Allow some simple actions like moving tokens (for spells like Misty Step)
 - [ ] Allow basic shader effects like changing colors, screen shake, etc
-- [ ] Allow effects to play when a spell ends manually
+- [x] Allow effects to play when a spell ends manually
 
 ## Contacts
 The easiest way to reach out to me about this extension is to join Owlbear Rodeo's [Discord Server](https://discord.gg/u5RYMkV98s) and message me at `armindoflores`.
