@@ -1685,6 +1685,65 @@
             }
         ]
     },
+    "ranged_weapon_attack": {
+        "name": "Ranged Weapon Attack",
+        "minTargets": 2,
+        "thumbnail": "Generic/Weapon_Attacks/Ranged/Arrow01_01_Regular_White_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": 200,
+        "parameters": [
+            {
+                "name": "Weapon variant",
+                "id": "weapon_variant",
+                "type": "options",
+                "defaultValue": "arrow.white",
+                "content": [
+                    { "value": "arrow.green", "label": "Green Arrow" },
+                    { "value": "arrow.white", "label": "White Arrow" },
+                    { "value": "arrow.blue", "label": "Blue Arrow" },
+                    { "value": "bolt", "label": "Bolt" },
+                    { "value": "boulder_toss", "label": "Boulder" },
+                    { "value": "bullet.orange", "label": "Orange Bullet" },
+                    { "value": "bullet.large_orange", "label": "Large Orange Bullet" },
+                    { "value": "bullet.blue", "label": "Blue Bullet" },
+                    { "value": "dagger.throw", "label": "Dagger" },
+                    { "value": "laser_shot.blue", "label": "Blue Laser" },
+                    { "value": "laser_shot.green", "label": "Green Laser" },
+                    { "value": "laser_shot.orange", "label": "Orange Laser" },
+                    { "value": "laser_shot.red", "label": "Red Laser" },
+                    { "value": "laser_sword.blue", "label": "Blue Laser Sword" },
+                    { "value": "laser_sword.red", "label": "Red Laser Sword" },
+                    { "value": "cannon_ball", "label": "Cannon Ball" },
+                    { "value": "barrel_toss.metal", "label": "Metal Barrel" },
+                    { "value": "barrel_toss.wooden", "label": "Wooden Barrel" },
+                    { "value": "missile.blue", "label": "Blue Missile" },
+                    { "value": "missile.white", "label": "White Missile" },
+                    { "value": "missile.wide_white", "label": "Wide White Missile" },
+                    { "value": "missile.purple_pink", "label": "Purple/Pink Missile" },
+                    { "value": "shield.throw", "label": "Shield" },
+                    { "value": "shield.complete", "label": "Shield (Returning)" },
+                    { "value": "snipe", "label": "Snipe" },
+                    { "value": "snowball", "label": "Snowball" },
+                    { "value": "throw.bomb", "label": "Thrown Bomb" },
+                    { "value": "throw.flask", "label": "Thrown Flask" }
+                ]
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["generic.weapon_attacks.ranged.", "$weapon_variant"]
+                },
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies":   "$targets[1].count"
+                }
+            }
+        ]
+    },
     "sneak_attack": {
         "name": "Sneak Attack",
         "minTargets": 1,

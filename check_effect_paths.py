@@ -6,6 +6,8 @@ CURRENT_DIR = os.path.dirname(__file__)
 
 def check_paths(effects, current_key=""):
     error_count = 0
+    if not isinstance(effects, dict):
+        return error_count
     for effect_id, effect_value in effects.items():
         if "basename" not in effect_value:
             error_count += check_paths(effect_value, (current_key + "." if len(current_key) else "") + effect_id)
