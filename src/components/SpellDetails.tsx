@@ -140,6 +140,19 @@ export default function SpellDetails() {
     const obr = useOBR();
     const [selectedSpellID, setSelectedSpellID] = useState<string>();
     const [selectedSpell, setSelectedSpell] = useState<Spell>();
+    const [isGM, setIsGM] = useState(false);
+
+    useEffect(() => {
+        if (!obr.ready || !obr.player?.role) {
+            return;
+        }
+        if (obr.player.role != "GM" && isGM) {
+            setIsGM(false);
+        }
+        else if (obr.player.role == "GM" && !isGM) {
+            setIsGM(true);
+        }
+    }, [obr.ready, obr.player?.role, isGM]);
 
     useEffect(() => {
         if (!obr.ready) {
@@ -149,7 +162,7 @@ export default function SpellDetails() {
         const setSelected = (metadata: Metadata) => {
             const selectedSpell = metadata?.[toolMetadataSelectedSpell];
             if (typeof selectedSpell == "string") {
-                const spell = getSpell(selectedSpell);
+                const spell = getSpell(selectedSpell, isGM);
                 setSelectedSpell(spell);
                 setSelectedSpellID(selectedSpell);
             }
@@ -158,7 +171,7 @@ export default function SpellDetails() {
         OBR.player.getMetadata().then(setSelected);
 
         return OBR.player.onChange(player => setSelected(player.metadata));
-    }, [obr.ready]);
+    }, [obr.ready, isGM]);
 
     if (!selectedSpell) {
         return <p>No spell selected.</p>

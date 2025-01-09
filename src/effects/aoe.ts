@@ -31,7 +31,7 @@ export function aoe(
         effect,
         aoeEffectProperties.size,
         { x: 0.5, y: 0.5 },
-        aoeEffectProperties.position,
+        aoeEffectProperties.source,
         aoeEffectProperties.rotation ?? 0,
         variant,
         forcedVariant,

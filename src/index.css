@@ -23,8 +23,27 @@ body {
 input {
     padding: 0.1rem 0.5rem;
     font-size: 1.2rem;
+    height: 1.4rem;
     border-radius: 0.75rem;
     border-width: 0;
+}
+
+button {
+    padding: 0.1rem 0.5rem;
+    font-size: 0.875rem;
+    color: white;
+    height: 1.4rem;
+    border-radius: 0.75rem;
+    border-width: 0;
+    background-color: rgb(187, 153, 255);
+    cursor: pointer;
+}
+
+select {
+    height: 1.7rem;
+    font-size: 1.2rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.75rem;
 }
 
 hr {
@@ -53,9 +72,24 @@ p {
     user-select: none;
 }
 
+.large {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.secondary {
+    color: black;
+    background-color: white;
+}
+
 .title {
     font-size: 1.125rem;
     font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .subtitle {
@@ -65,4 +99,15 @@ p {
 
 .bold {
     font-weight: 700;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.clickable {
+    cursor: pointer;
 }

@@ -20,15 +20,15 @@ function isError<T>(value: ErrorOr<T>): value is { error: string } {
     return value.error != undefined;
 }
 
-function isBlueprintFunction(value: unknown): value is BlueprintFunction {
-    return (value as BlueprintFunction).name != undefined && (value as BlueprintFunction).arguments != undefined;
+export function isBlueprintFunction(value: unknown): value is BlueprintFunction {
+    return value != undefined && (value as BlueprintFunction).name != undefined && (value as BlueprintFunction).arguments != undefined;
 }
 
-function isBlueprintVariable(value: unknown): value is string {
+export function isBlueprintVariable(value: unknown): value is string {
     return typeof value === "string" && value.startsWith("$");
 }
 
-function isUnresolvedBlueprint(value: unknown): value is BlueprintValueUnresolved {
+export function isUnresolvedBlueprint(value: unknown): value is BlueprintValueUnresolved {
     return isBlueprintFunction(value) || isBlueprintVariable(value);
 }
 
@@ -376,25 +376,25 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             };
         }
         else if (
-            (ukEffectProperties as AOEEffectBlueprint).position != undefined
+            (ukEffectProperties as AOEEffectBlueprint).source != undefined
         ) {
             const abEffectProperties = ukEffectProperties as AOEEffectBlueprint;
 
-            let position: Vector2|undefined =  { x: 0, y: 0 };
-            if (isUnresolvedBlueprint(abEffectProperties.position)) {
-                const maybePosition = parseExpression<Vector2>(abEffectProperties.position, variables);
+            let source: Vector2|undefined =  { x: 0, y: 0 };
+            if (isUnresolvedBlueprint(abEffectProperties.source)) {
+                const maybePosition = parseExpression<Vector2>(abEffectProperties.source, variables);
                 if (isError(maybePosition)) {
                     return _error(maybePosition.error);
                 }
-                position = maybePosition.value!;
+                source = maybePosition.value!;
             }
-            else if (typeof abEffectProperties.position.x === "number" && typeof abEffectProperties.position.y === "number") {
-                position.x = abEffectProperties.position.x;
-                position.y = abEffectProperties.position.y;
+            else if (typeof abEffectProperties.source.x === "number" && typeof abEffectProperties.source.y === "number") {
+                source.x = abEffectProperties.source.x;
+                source.y = abEffectProperties.source.y;
             }
             else {
-                log_error(`Invalid blueprint: effectProperties.position must be of the form { x: number, y: number }`);
-                return _error("position must be a 2D vector");
+                log_error(`Invalid blueprint: effectProperties.source must be of the form { x: number, y: number }`);
+                return _error("source must be a 2D vector");
             }
 
             let size: number = 0;
@@ -409,6 +409,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
                 size = maybeSize.value!;
             }
             else {
+                console.log(element);
                 log_error(`Invalid blueprint: effectProperties.size must be a number, not "${typeof abEffectProperties.size}"`);
                 return _error("size must be a number");
             }
@@ -430,7 +431,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             }
 
             effectProperties = {
-                position,
+                source,
                 size,
                 rotation
             };

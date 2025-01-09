@@ -153,7 +153,7 @@ export default function Settings() {
                             <label htmlFor="recent-spells-list-size">
                                 <p>Summoned entities rule</p>
                             </label>
-                            <select onChange={event => setSummonedEntities(event.target.value)} value={summonedEntities ?? ""} >
+                            <select className="settings-select" onChange={event => setSummonedEntities(event.target.value)} value={summonedEntities ?? ""} >
                                 <option value="gm-only">GM Only</option>
                                 <option value="caster">Caster</option>
                             </select>

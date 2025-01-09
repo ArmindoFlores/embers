@@ -7,6 +7,7 @@ import { toolID, toolMetadataSelectedSpell } from "../effectsTool";
 import { useEffect, useState } from "react";
 
 import OBR from "@owlbear-rodeo/sdk";
+import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
 
 export const spellPopoverId = `${APP_KEY}/spell-popover`;
@@ -54,15 +55,14 @@ async function getMostRecentSpells() {
     return mostRecentSpellsList as string[];
 }
 
-// async function getSortedEffectList() {
-//     const mostRecentEffectsList = await getMostRecentEffects();
-//     const effectNamesWithoutMostRecent = effectNames.filter(name => !mostRecentEffectsList.includes(name));
-//     return mostRecentEffectsList.concat(effectNamesWithoutMostRecent);
-// }
-
 async function getSortedSpellsList() {
-    const mostRecentSpellsList = await getMostRecentSpells();
-    const effectNamesWithoutMostRecent = spellIDs.filter(name => !mostRecentSpellsList.includes(name));
+    const [metadata, mostRecentSpellsList] = await Promise.all([
+        OBR.scene.getMetadata(),
+        getMostRecentSpells()
+    ]);
+    const localSpellIDs = Array.isArray(metadata[spellListMetadataKey]) ? metadata[spellListMetadataKey] as string[] : [];
+    const allSpellIDs = [...spellIDs, ...localSpellIDs.map(id => `$.${id}`)].sort((s1, s2) => s1.localeCompare(s2));
+    const effectNamesWithoutMostRecent = allSpellIDs.filter(name => !mostRecentSpellsList.includes(name));
     return mostRecentSpellsList.concat(effectNamesWithoutMostRecent);
 }
 
@@ -70,8 +70,8 @@ function normalizeSearch(str: string) {
     return str.toLowerCase().replaceAll("_", " ").replaceAll(".", " ");
 }
 
-function EffectsList({ searchString, sortedSpellsList } : { searchString: string, sortedSpellsList: string[] }) {
-    const mostRecentSpell = sortedSpellsList.length > 0 ? getSpell(sortedSpellsList[0]) : undefined;
+function EffectsList({ searchString, sortedSpellsList, isGM } : { searchString: string, sortedSpellsList: string[], isGM: boolean}) {
+    const mostRecentSpell = sortedSpellsList.length > 0 ? getSpell(sortedSpellsList[0], isGM) : undefined;
     return <ul className="results-list">
         {
             mostRecentSpell &&
@@ -82,8 +82,7 @@ function EffectsList({ searchString, sortedSpellsList } : { searchString: string
         }
         {
             sortedSpellsList.slice(1).filter(name => normalizeSearch(name).includes(normalizeSearch(searchString))).map(spellName => {
-                // const effect = getEffect(spellName);
-                const spell = getSpell(spellName);
+                const spell = getSpell(spellName, isGM);
                 return <li key={spellName} onClick={() => selectSpell(spellName)}>
                     <img src={`${ASSET_LOCATION}/${spell?.thumbnail}`} loading="lazy" />
                     <p className="spell-name">{ spell?.name || spellName }</p>
@@ -97,13 +96,25 @@ export default function SpellSelectionPopover() {
     const obr = useOBR();
     const [search, setSearch] = useState("");
     const [sortedSpellsList, setSortedSpellsList] = useState<string[]>([]);
+    const [isGM, setIsGM] = useState(false);
+
+    useEffect(() => {
+        if (!obr.ready || !obr.player?.role) {
+            return;
+        }
+        if (obr.player.role != "GM" && isGM) {
+            setIsGM(false);
+        }
+        else if (obr.player.role == "GM" && !isGM) {
+            setIsGM(true);
+        }
+    }, [obr.ready, obr.player?.role, isGM]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady) {
             return;
         }
 
-        // getSortedEffectList().then(list => setSortedSpellsList(list));
         getSortedSpellsList().then(list => setSortedSpellsList(list));
     }, [obr.ready, obr.sceneReady]);
 
@@ -115,7 +126,7 @@ export default function SpellSelectionPopover() {
         <div className="spell-popover blurry-background" onKeyDown={checkForEscape}>
             <div className="search-container">
                 <input type="text" className="search-input" placeholder="Type to search..." autoFocus value={search} onChange={event => setSearch(event.target.value)} />
-                <EffectsList sortedSpellsList={sortedSpellsList} searchString={search} />
+                <EffectsList sortedSpellsList={sortedSpellsList} searchString={search} isGM={isGM} />
             </div>
         </div>
         <div className="filler" onClick={() => OBR.popover.close(spellPopoverId)} />

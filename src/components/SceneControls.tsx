@@ -11,7 +11,9 @@ import { Spell } from "../types/spells";
 import { useOBR } from "../react-obr/providers";
 
 function SpellDisplay({ spellID, item, caster }: { spellID?: string, item: Item, caster: Player }) {
+    const obr = useOBR();
     const [spell, setSpell] = useState<Spell>();
+    const [isGM, setIsGM] = useState<boolean>(false);
 
     const selectItem = useCallback(() => {
         OBR.player.select([item.id], false);
@@ -41,11 +43,23 @@ function SpellDisplay({ spellID, item, caster }: { spellID?: string, item: Item,
     }, [item, spellID, spell?.onDestroyBlueprints, caster.id]);
 
     useEffect(() => {
+        if (!obr.ready || !obr.player?.role) {
+            return;
+        }
+        if (obr.player.role != "GM" && isGM) {
+            setIsGM(false);
+        }
+        else if (obr.player.role == "GM" && !isGM) {
+            setIsGM(true);
+        }
+    }, [obr.ready, obr.player?.role, isGM]);
+
+    useEffect(() => {
         if (spellID == undefined) {
             return;
         }
-        setSpell(getSpell(spellID));
-    }, [spellID]);
+        setSpell(getSpell(spellID, isGM));
+    }, [spellID, isGM]);
 
     if (spell == undefined) {
         return null;

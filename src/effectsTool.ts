@@ -189,7 +189,7 @@ async function setupToolActions(playerRole: "GM" | "PLAYER", playerID: string) {
                     OBR.notification.show(`Embers: Invalid spell selected ("${metadata?.[toolMetadataSelectedSpell]}")`, "ERROR");
                     return;
                 }
-                doSpell(metadata[toolMetadataSelectedSpell], playerID);
+                doSpell(metadata[toolMetadataSelectedSpell], playerID, playerRole === "GM");
             });
         }
     });

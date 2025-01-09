@@ -16,7 +16,7 @@ export interface ProjectileBlueprint {
 }
 
 export interface AOEEffectBlueprint {
-    position: BlueprintValue<Vector2>;
+    source: BlueprintValue<Vector2>;
     size: BlueprintValue<number>;
     rotation?: BlueprintValue<number>;
 }
