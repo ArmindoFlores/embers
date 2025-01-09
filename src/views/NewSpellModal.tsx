@@ -1,6 +1,7 @@
 import "./NewSpellModal.css";
 
 import { AOEEffectBlueprint, BlueprintFunction, BlueprintType, BlueprintValue, EffectBlueprint, ProjectileBlueprint } from "../types/blueprint";
+import { APP_KEY, ASSET_LOCATION } from "../config";
 import { Effect, EffectType } from "../types/effects";
 import { FaArrowLeft, FaCirclePlus, FaFloppyDisk, FaPencil, FaTrash } from "react-icons/fa6";
 import { ReplicationType, Spell } from "../types/spells";
@@ -8,7 +9,6 @@ import { effectNames, getEffect } from "../effects";
 import { isBlueprintVariable, isUnresolvedBlueprint } from "../effects/blueprint";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { APP_KEY } from "../config";
 import OBR from "@owlbear-rodeo/sdk";
 import { blueprintFunctions } from "../effects/blueprintFunctions";
 import { getSpell } from "../effects/spells";
@@ -616,7 +616,7 @@ function EditThumbnail({ value, setValue, close }: { value: string|undefined, se
         </div>
         <br></br>
         <div className="edit-thumbnail-preview">
-            <img src={`/Library/${value}`} />
+            <img src={`${ASSET_LOCATION}/${value}`} />
         </div>
     </div>;
 }
@@ -762,7 +762,7 @@ export default function NewSpellModal() {
                         <input className="medium" placeholder="Spell Name" value={spellName ?? ""} onChange={event => setSpellName(event.target.value)} title="The name of this spell, like 'Magic Missiles'" />
                         <input className="medium" placeholder="spell_id" value={spellID ?? ""} onChange={event => setSpellID(event.target.value)} title="The unique identifier for this spell, like 'magic_missiles'" />
                     </div>
-                    <img className="spell-creation-thumbnail" src={`/Library/${thumbnail}`} onClick={() => setSelectingThumbnail(true)} />
+                    <img className="spell-creation-thumbnail" src={`${ASSET_LOCATION}/${thumbnail}`} onClick={() => setSelectingThumbnail(true)} />
                 </div>
                 <div className="row spell-creation-targets">
                     <label htmlFor="min-targets" title="The minimum number of selected targets this spell requires">
