@@ -111,12 +111,23 @@ function copySpellInstructions(instructions: EffectInstruction[], copyDelay: num
     }
 }
 
-export function getSpell(spellID: string): Spell|undefined {
+export function getSpell(spellID: string, isGM: boolean = false): Spell|undefined {
+    if (spellID.startsWith("$.")) {
+        const localSpellID = spellID.substring(2);
+        const spellJSON = localStorage.getItem(
+            isGM ? `${APP_KEY}/spells/${localSpellID}` : `${APP_KEY}/spells/${OBR.room.id}/${localSpellID}`
+        );
+        if (spellJSON == undefined) {
+            return undefined;
+        }
+        const spell = JSON.parse(spellJSON);
+        return spell;
+    }
     return spells[spellID];
 }
 
-export function destroySpell(spellID: string, playerID: string, items: Item[]) {
-    const spell = getSpell(spellID);
+export function destroySpell(spellID: string, playerID: string, items: Item[], isGM: boolean = false) {
+    const spell = getSpell(spellID, isGM);
     if (spell == undefined) {
         log_error(`Unknown spell "${spellID}"`);
         return;
@@ -151,8 +162,8 @@ export function destroySpell(spellID: string, playerID: string, items: Item[]) {
     OBR.broadcast.sendMessage(MESSAGE_CHANNEL, message, { destination: "ALL" });
 }
 
-export function doSpell(spellID: string, playerID: string) {
-    const spell = getSpell(spellID);
+export function doSpell(spellID: string, playerID: string, isGM: boolean) {
+    const spell = getSpell(spellID, isGM);
     if (spell == undefined) {
         log_error(`Unknown spell "${spellID}"`);
         return;

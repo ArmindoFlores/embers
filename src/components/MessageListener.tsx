@@ -153,11 +153,11 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             return;
                         }
                         if (
-                            typeof aoeEffectMessage.position !== "object" ||
-                            typeof aoeEffectMessage.position.x !== "number" ||
-                            typeof aoeEffectMessage.position.y !== "number"
+                            typeof aoeEffectMessage.source !== "object" ||
+                            typeof aoeEffectMessage.source.x !== "number" ||
+                            typeof aoeEffectMessage.source.y !== "number"
                         ) {
-                            log_error("The position of an AOE effect must be a Vector2, not", aoeEffectMessage.position);
+                            log_error("The source of an AOE effect must be a Vector2, not", aoeEffectMessage.source);
                             return;
                         }
 
