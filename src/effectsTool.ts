@@ -88,6 +88,17 @@ async function removeTarget(target: Image, targets: Image[]) {
     OBR.scene.local.deleteItems([target.id]);
 }
 
+export function setSelectedSpell(spellName: string) {
+    // Set selected spell
+    OBR.player.setMetadata(
+        { [toolMetadataSelectedSpell]: spellName }
+    );
+    OBR.tool.setMetadata(
+        toolID,
+        { [toolMetadataSelectedSpell]: spellName }
+    );
+}
+
 export function getTargetHighlightMetadata(item: Item): TargetHighlightMetadata|undefined {
     const highlightMetadata = item.metadata[targetHighlightMetadataKey];
     if (highlightMetadata == undefined) {

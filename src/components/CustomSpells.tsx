@@ -13,6 +13,8 @@ import ReactModal from "react-modal";
 import { Spells } from "../types/spells";
 import { useOBR } from "../react-obr/providers";
 
+type ModalType = "choose-spell" | "remove-all-spells";
+
 const newSpellModal: Modal = {
     id: newSpellModalID,
     url: "/new-spell-modal",
@@ -111,9 +113,8 @@ function importCustomSpells(event: React.ChangeEvent<HTMLInputElement>) {
 export default function CustomSpells() {
     const obr = useOBR();
     const [customSpells, setCustomSpells] = useState<string[]>([]);
-    const [choosingSpell, setChoosingSpell] = useState<boolean>(false);
-    const [isClosing, setIsClosing] = useState<boolean>(false);
-    const [removeAllSpellsModal, setRemoveAllSpellsModal] = useState<boolean>(false);
+    const [isModalClosing, setIsModalClosing] = useState<boolean>(false);
+    const [modalOpened, setModalOpened] = useState<ModalType|null>(null);
     const [selectedSpellID, setSelectedSpellID] = useState("");
     const mainDiv = useRef<HTMLDivElement>(null);
     const fileInputRef = useRef<HTMLInputElement|null>(null);
@@ -148,16 +149,16 @@ export default function CustomSpells() {
         });
     }, []);
 
-    const openModal = (modalFunc: (v: boolean) => void) => {
-        setIsClosing(false);
-        modalFunc(true);
+    const openModal = (modalName: ModalType) => {
+        setIsModalClosing(false);
+        setModalOpened(modalName);
     };
 
-    const closeModal = (modalFunc: (v: boolean) => void) => {
-        setIsClosing(true);
+    const closeModal = () => {
+        setIsModalClosing(true);
         setTimeout(() => {
-            modalFunc(false);
-            setIsClosing(false);
+            setModalOpened(null);
+            setIsModalClosing(false);
         }, 300);
     };
 
@@ -187,7 +188,7 @@ export default function CustomSpells() {
                 <FaCopy
                     title="Add a new custom spell based off of an existing one"
                     style={{marginLeft: "0.5rem", cursor: "pointer"}}
-                    onClick={() => openModal(setChoosingSpell)}
+                    onClick={() => openModal("choose-spell")}
                 />
                 <FaUpload
                     title="Import a list of spells"
@@ -202,7 +203,7 @@ export default function CustomSpells() {
                 <FaTrash
                     title="Delete all custom spells"
                     style={{marginLeft: "0.5rem", cursor: "pointer"}}
-                    onClick={() => setRemoveAllSpellsModal(true)}
+                    onClick={() => openModal("remove-all-spells")}
                 />
             </p>
             {
@@ -233,10 +234,10 @@ export default function CustomSpells() {
             </ul>
         </div>
         <ReactModal
-            isOpen={choosingSpell}
-            onRequestClose={() => closeModal(setChoosingSpell)}
-            overlayClassName={`modal-overlay ${isClosing ? 'fade-out' : ''}`}
-            className={`modal-content ${isClosing ? 'fade-out' : ''}`}
+            isOpen={modalOpened === "choose-spell"}
+            onRequestClose={closeModal}
+            overlayClassName={`modal-overlay ${isModalClosing ? 'fade-out' : ''}`}
+            className={`modal-content ${isModalClosing ? 'fade-out' : ''}`}
             appElement={mainDiv.current!}
         >
             <p className="large">Choose the spell to copy:</p>
@@ -253,23 +254,23 @@ export default function CustomSpells() {
             </select>
             <div style={{height: "1rem"}}></div>
             <div className="row" style={{justifyContent: "space-evenly"}}>
-                <button onClick={() => { closeModal(setChoosingSpell); openOBRModal(selectedSpellID) }}>Edit</button>
-                <button className="secondary" onClick={() => closeModal(setChoosingSpell)}>Cancel</button>
+                <button onClick={() => { closeModal(); openOBRModal(selectedSpellID) }}>Edit</button>
+                <button className="secondary" onClick={() => closeModal()}>Cancel</button>
             </div>
         </ReactModal>
         <ReactModal
-            isOpen={removeAllSpellsModal}
-            onRequestClose={() => closeModal(setRemoveAllSpellsModal)}
-            overlayClassName={`modal-overlay ${isClosing ? 'fade-out' : ''}`}
-            className={`modal-content ${isClosing ? 'fade-out' : ''}`}
+            isOpen={modalOpened === "remove-all-spells"}
+            onRequestClose={closeModal}
+            overlayClassName={`modal-overlay ${isModalClosing ? 'fade-out' : ''}`}
+            className={`modal-content ${isModalClosing ? 'fade-out' : ''}`}
             appElement={mainDiv.current!}
         >
             <p className="large" style={{display: "block"}}>Are you sure you want to delete <b>all</b> your custom spells?</p>
             <p style={{textAlign: "left"}}>This action is irreversible unless you have previously exported this list of spells.</p>
             <div style={{height: "1rem"}}></div>
             <div className="row" style={{justifyContent: "space-evenly"}}>
-                <button onClick={() => { closeModal(setRemoveAllSpellsModal); removeAllSpells(); }}>Yes, delete all spells</button>
-                <button className="secondary" onClick={() => closeModal(setRemoveAllSpellsModal)}>Cancel</button>
+                <button onClick={() => { closeModal(); removeAllSpells(); }}>Yes, delete all spells</button>
+                <button className="secondary" onClick={() => closeModal()}>Cancel</button>
             </div>
         </ReactModal>
     </div>;

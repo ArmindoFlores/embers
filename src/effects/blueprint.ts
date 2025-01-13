@@ -317,7 +317,6 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             (ukEffectProperties as ConeBlueprint).rotation != undefined &&
             (ukEffectProperties as ConeBlueprint).size != undefined
         ) {
-            console.log("im a cone");
             const cbEffectProperties = ukEffectProperties as ConeBlueprint;
 
             let source: Vector2|undefined =  { x: 0, y: 0 };
@@ -409,7 +408,6 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
                 size = maybeSize.value!;
             }
             else {
-                console.log(element);
                 log_error(`Invalid blueprint: effectProperties.size must be a number, not "${typeof abEffectProperties.size}"`);
                 return _error("size must be a number");
             }

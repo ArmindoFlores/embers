@@ -76,3 +76,9 @@
 li.selected {
     border: 1px solid white;
 }
+
+.spell-selection-thumbnail {
+    object-fit: contain;
+    width: 3rem;
+    height: 3rem;
+}

@@ -72,6 +72,10 @@ p {
     user-select: none;
 }
 
+.underlined {
+    text-decoration: underline;
+}
+
 .large {
     font-size: 1rem;
     display: flex;

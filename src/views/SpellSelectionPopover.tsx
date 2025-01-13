@@ -3,10 +3,10 @@ import "./SpellSelectionPopover.css";
 import { APP_KEY, ASSET_LOCATION } from "../config";
 import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
 import { getSpell, spellIDs } from "../effects/spells";
-import { toolID, toolMetadataSelectedSpell } from "../effectsTool";
 import { useEffect, useState } from "react";
 
 import OBR from "@owlbear-rodeo/sdk";
+import { setSelectedSpell } from "../effectsTool";
 import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
 
@@ -24,14 +24,7 @@ async function selectSpell(spellName: string) {
     }
     await OBR.player.setMetadata({ [mostRecentEffectsMetadataKey]: mostRecentSpellsList });
 
-    // Set selected effect
-    OBR.player.setMetadata(
-        { [toolMetadataSelectedSpell]: spellName }
-    );
-    OBR.tool.setMetadata(
-        toolID,
-        { [toolMetadataSelectedSpell]: spellName }
-    );
+    setSelectedSpell(spellName);
 
     // Close this popover
     await OBR.popover.close(spellPopoverId);
@@ -76,7 +69,7 @@ function EffectsList({ searchString, sortedSpellsList, isGM } : { searchString: 
         {
             mostRecentSpell &&
             <li onClick={() => selectSpell(sortedSpellsList[0])} className="selected">
-                <img src={`${ASSET_LOCATION}/${mostRecentSpell.thumbnail}`} loading="lazy" />
+                <img className="spell-selection-thumbnail" src={`${ASSET_LOCATION}/${mostRecentSpell.thumbnail}`} loading="lazy" />
                 <p className="spell-name">{ mostRecentSpell.name }</p>
             </li>
         }
@@ -84,7 +77,7 @@ function EffectsList({ searchString, sortedSpellsList, isGM } : { searchString: 
             sortedSpellsList.slice(1).filter(name => normalizeSearch(name).includes(normalizeSearch(searchString))).map(spellName => {
                 const spell = getSpell(spellName, isGM);
                 return <li key={spellName} onClick={() => selectSpell(spellName)}>
-                    <img src={`${ASSET_LOCATION}/${spell?.thumbnail}`} loading="lazy" />
+                    <img className="spell-selection-thumbnail" src={`${ASSET_LOCATION}/${spell?.thumbnail}`} loading="lazy" />
                     <p className="spell-name">{ spell?.name || spellName }</p>
                 </li>;
             })

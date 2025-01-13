@@ -8,6 +8,7 @@
 .spell-details-thumbnail {
     width: 3rem;
     height: 3rem;
+    object-fit: contain;
 }
 
 .spell-details-divider {
