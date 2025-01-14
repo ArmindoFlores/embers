@@ -15,7 +15,7 @@ export const playerMetadataSpellbookKey = `${APP_KEY}/spellbook`;
 
 export default function SpellBook() {
     const obr = useOBR();
-    const [groups, setGroups] = useState<Record<string, string[]>>({});
+    const [groups, _setGroups] = useState<Record<string, string[]>>({});
     const [isModalClosing, setIsModalClosing] = useState<boolean>(false);
     const [modalOpened, setModalOpened] = useState<ModalType|null>(null);
     const [groupName, setGroupName] = useState<string>("");
@@ -39,59 +39,52 @@ export default function SpellBook() {
         }, 300);
     };
 
+    const setGroups = useCallback((value: Record<string, string[]>) => {
+        localStorage.setItem(`${playerMetadataSpellbookKey}/${OBR.room.id}`, JSON.stringify(value));
+        _setGroups(value);
+    }, []);
+
     const confirmGroupName = useCallback((groupName: string) => {
         if (groupName.length == 0 || Object.keys(groups).includes(groupName)) {
             return;
         }
-        OBR.player.setMetadata({
-            [playerMetadataSpellbookKey]: {
+        setGroups({
                 ...groups,
                 [groupName]: []
-            }
         });
         closeModal();
-    }, [groups]);
+    }, [groups, setGroups]);
 
     const editGroupName = useCallback((groupName: string, newGroupName: string) => {
         if (newGroupName.length == 0 || Object.keys(groups).includes(newGroupName)) {
             return;
         }
-        OBR.player.setMetadata({
-            [playerMetadataSpellbookKey]: {
-                ...Object.fromEntries(Object.entries(groups).filter(([oldGroupName]) => oldGroupName != groupName)),
-                [newGroupName]: groups[groupName] ?? []
-            }
+        setGroups({
+            ...Object.fromEntries(Object.entries(groups).filter(([oldGroupName]) => oldGroupName != groupName)),
+            [newGroupName]: groups[groupName] ?? []
         });
         closeModal();
-    }, [groups]);
+    }, [groups, setGroups]);
 
     const deleteSpellGroup = useCallback((groupName: string) => {
-        OBR.player.setMetadata({
-            [playerMetadataSpellbookKey]: {
-                ...Object.fromEntries(Object.entries(groups).filter(([oldGroupName]) => oldGroupName != groupName)),
-            }
-        });
+        setGroups(Object.fromEntries(Object.entries(groups).filter(([oldGroupName]) => oldGroupName != groupName)));
         closeModal();
-    }, [groups]);
+    }, [groups, setGroups]);
 
     const addSpellToGroup = useCallback((groupName: string, spellID: string) => {
-        OBR.player.setMetadata({
-            [playerMetadataSpellbookKey]: {
-                ...groups,
-                [groupName]: [...(groups[groupName] ?? []), spellID]
-            }
+        setGroups({
+            ...groups,
+            [groupName]: [...(groups[groupName] ?? []), spellID]
         });
         closeModal();
-    }, [groups]);
+    }, [groups, setGroups]);
 
     const deleteSpellFromGroup = useCallback((groupName: string, spellID: string) => {
-        OBR.player.setMetadata({
-            [playerMetadataSpellbookKey]: {
-                ...groups,
-                [groupName]: [...(groups[groupName] ?? []).filter(spell => spellID != spell)]
-            }
+        setGroups({
+            ...groups,
+            [groupName]: [...(groups[groupName] ?? []).filter(spell => spellID != spell)]
         });
-    }, [groups]);
+    }, [groups, setGroups]);
 
     const moveSpellGroup = useCallback((oldIndex: number, newIndex: number) => {
         const entries = Object.entries(groups);
@@ -99,12 +92,8 @@ export default function SpellBook() {
         newEntries.splice(oldIndex, 1, entries[newIndex]);
         newEntries.splice(newIndex, 1, entries[oldIndex]);
 
-        OBR.player.setMetadata({
-            [playerMetadataSpellbookKey]: {
-                ...Object.fromEntries(newEntries),
-            }
-        });
-    }, [groups]);
+        setGroups(Object.fromEntries(newEntries));
+    }, [groups, setGroups]);
 
     const castSpell = useCallback((spellID: string) => {
         OBR.tool.activateTool(toolID);
@@ -116,27 +105,11 @@ export default function SpellBook() {
             return;
         }
 
-        OBR.player.getMetadata().then(metadata => {
-            const spellBook = metadata[playerMetadataSpellbookKey];
-            if (spellBook != undefined && typeof spellBook == "object") {
-                setGroups(spellBook as Record<string, string[]>);
-            }
-            else {
-                setGroups({});
-            }
-        });
+        const spellbookJSON = localStorage.getItem(`${playerMetadataSpellbookKey}/${OBR.room.id}`);
+        const spellBook = JSON.parse(spellbookJSON ?? "{}");
+        _setGroups(spellBook);
 
-        return OBR.player.onChange(player => {
-            const spellBook = player.metadata[playerMetadataSpellbookKey];
-            if (spellBook != undefined && typeof spellBook == "object") {
-                setGroups(spellBook as Record<string, string[]>);
-            }
-            else {
-                setGroups({});
-            }
-        });
-
-    }, [obr.ready]);
+    }, [obr.ready, setGroups]);
 
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
@@ -151,7 +124,6 @@ export default function SpellBook() {
         if (!obr.ready || !obr.sceneReady) {
             return;
         }
-
 
         getAllSpellNames().then(names => setAllSpellIDs(names));
         return OBR.scene.onMetadataChange(() => {
