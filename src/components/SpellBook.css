@@ -1,0 +1,58 @@
+.modal-input {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.spellbook-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.spellgroup-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.spellgroup-list > li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.spellgroup-item-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.spellbook-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spellgroup-item-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.spellgroup-thumbnail {
+    object-fit: contain;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.up-down-arrows {
+    display: flex;
+    flex-direction: column;
+}

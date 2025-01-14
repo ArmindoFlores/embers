@@ -9,6 +9,7 @@ import { Variables } from "../types/blueprint";
 import { getItemSize } from "../utils";
 import { log_error } from "../logging";
 import { resolveBlueprint } from "./blueprint";
+import { spellListMetadataKey } from "../views/NewSpellModal";
 import spellsJSON from "../assets/spells_record.json";
 
 export const spells = spellsJSON as Spells;
@@ -41,11 +42,22 @@ function replicateSpell(variables: Variables[], targets: Item[], parameterValues
     }
     else if (replicationType === "first_to_all") {
         const firstTarget = targets[0];
+        if (targets.length === 1) {
+            variables.push({
+                targets: [{
+                    id: firstTarget.attachedTo,
+                    position: firstTarget.position,
+                    size: getItemSize(firstTarget),
+                    count: getTargetCount(firstTarget)
+                }],
+                ...parameterValues
+            });
+        }
         for (const target of targets.slice(1)) {
             variables.push({
                 targets: [
                     {
-                        id: target.attachedTo,
+                        id: firstTarget.attachedTo,
                         position: firstTarget.position,
                         size: getItemSize(firstTarget),
                         count: getTargetCount(firstTarget)
@@ -124,6 +136,12 @@ export function getSpell(spellID: string, isGM: boolean = false): Spell|undefine
         return spell;
     }
     return spells[spellID];
+}
+
+export async function getAllSpellNames(): Promise<string[]> {
+    const metadata = await OBR.scene.getMetadata();
+    const spellList = (metadata[spellListMetadataKey] ?? []) as string[];
+    return [...spellIDs, ...spellList.map(spell => `$.${spell}`)];
 }
 
 export function destroySpell(spellID: string, playerID: string, items: Item[], isGM: boolean = false) {

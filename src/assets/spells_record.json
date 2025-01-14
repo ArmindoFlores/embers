@@ -1069,7 +1069,7 @@
     },
     "fireball": {
         "name": "Fireball",
-        "minTargets": 2,
+        "minTargets": 1,
         "thumbnail": "3rd_Level/Fireball/FireballExplosion_01_Orange_Thumb.webp",
         "replicate": "first_to_all",
         "copy": -1,
@@ -1088,6 +1088,10 @@
             {
                 "type": "effect",
                 "id": "fireball.beam",
+                "disabled": {
+                    "name": "lesser_than",
+                    "arguments": ["$targets.length", 2]
+                },
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "destination": "$targets[1].position",
@@ -1097,9 +1101,29 @@
             {
                 "type": "effect",
                 "id": "fireball.explosion",
-                "delay": 3000,
+                "delay": {
+                    "name": "if",
+                    "arguments": [
+                        {
+                            "name": "lesser_than",
+                            "arguments": ["$targets.length", 2]
+                        },
+                        null,
+                        3000
+                    ]
+                },
                 "effectProperties": {
-                    "source": "$targets[1].position",
+                    "source": {
+                        "name": "if",
+                        "arguments": [
+                            {
+                                "name": "lesser_than",
+                                "arguments": ["$targets.length", 2]
+                            },
+                            "$targets[0].position",
+                            "$targets[1].position"
+                        ]
+                    },
                     "size": "$radius"
                 }
             }
