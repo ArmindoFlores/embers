@@ -117,9 +117,9 @@ export default function Settings() {
     return <div>
         <div className="settings-menu">
             <div>
-                <p className="subtitle">Local Settings</p>
+                <p className="subtitle" title="These settings apply to you only.">Local Settings</p>
                 <div className="settings-item">
-                    <label htmlFor="recent-spells-list-size">
+                    <label htmlFor="recent-spells-list-size" title="The size of the recent spells list.">
                         <p>Recent spells list size</p>
                     </label>
                     <input
@@ -131,7 +131,7 @@ export default function Settings() {
                         onChange={event => setMostRecentSize(parseInt(event.target.value))}
                     />
                 </div>
-                <div className="settings-item">
+                <div className="settings-item" title="Whether to keep the selected targets the same after a spell is cast/the tool is de-selected.">
                     <label htmlFor="recent-spells-list-size">
                         <p>Keep selected targets</p>
                     </label>
@@ -142,14 +142,14 @@ export default function Settings() {
                 obr.player?.role === "GM" && <>
                     <hr style={{margin: "0.5rem 0"}}></hr>
                     <div>
-                        <p className="subtitle">GM Settings</p>
+                        <p className="subtitle" title="These settings apply to all players and can only be set by the GM.">GM Settings</p>
                         <div className="settings-item">
-                            <label htmlFor="recent-spells-list-size">
+                            <label htmlFor="recent-spells-list-size" title="If set to false, only the GM can cast spells.">
                                 <p>Players can cast spells</p>
                             </label>
                             <Checkbox checked={playersCastSpells ?? false} setChecked={setPlayersCastSpells} />
                         </div>
-                        <div className="settings-item">
+                        <div className="settings-item" title={"Who should own items summoned by Embers. \"Caster\" means the player who cast the spell will own them, while \"GM\" means that the GM will own them regardless of who cast it."}>
                             <label htmlFor="recent-spells-list-size">
                                 <p>Summoned entities rule</p>
                             </label>

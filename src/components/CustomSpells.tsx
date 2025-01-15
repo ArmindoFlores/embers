@@ -61,7 +61,6 @@ function removeAllSpells() {
 }
 
 function addSpells(spells: Spells) {
-    log_info("Adding spells");
     let added = 0, overridden = 0;
     const spellListJSON = localStorage.getItem(spellListMetadataKey) ?? "[]";
     const spellList = JSON.parse(spellListJSON) as string[];

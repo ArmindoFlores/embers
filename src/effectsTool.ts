@@ -1,4 +1,4 @@
-import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "./components/Settings";
+import { GLOBAL_STORAGE_KEYS, LOCAL_STORAGE_KEYS, getGlobalSettingsValue, getSettingsValue } from "./components/Settings";
 import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 
 import { APP_KEY } from "./config";
@@ -16,6 +16,7 @@ export const settingsToolActionID = `${APP_KEY}/settings-tool-action`;
 export const selectSpellToolActionID = `${APP_KEY}/select-spell-tool-action`;
 export const targetHighlightMetadataKey = `${APP_KEY}/target-highlight`;
 export const previousToolMetadataKey = `${APP_KEY}/previous-tool`;
+export const playerSelectedTargetsMetadataKey = `${APP_KEY}/selected-targets`;
 
 export interface TargetHighlightMetadata {
     id: number;
@@ -24,13 +25,19 @@ export interface TargetHighlightMetadata {
 
 function deactivateTool() {
     OBR.scene.local.getItems().then(items => {
-        OBR.scene.local.deleteItems(
-            items.filter(item => item.metadata[targetHighlightMetadataKey] != undefined).map(item => item.id)
-        );
-    })
+        const targets = items.filter(item => item.metadata[targetHighlightMetadataKey] != undefined);
+        OBR.scene.local.deleteItems(targets.map(item => item.id));
+        OBR.player.setMetadata({
+            [playerSelectedTargetsMetadataKey]: targets.map(target => ({
+                item: target,
+                count: getTargetCount(target),
+                id: getTargetID(target)
+            }))
+        });
+    });
 }
 
-function buildTarget(id: number, scale: number, position: Vector2, isFirst: boolean, attachedTo?: string) {
+function buildTarget(id: number, scale: number, position: Vector2, isFirst: boolean, attachedTo?: string, count?: number) {
     const target = buildImage(
         {
             url: `${window.location.origin}/${isFirst ? "first-" : ""}target.webm`,
@@ -53,11 +60,14 @@ function buildTarget(id: number, scale: number, position: Vector2, isFirst: bool
     ).metadata({
         [targetHighlightMetadataKey]: {
             id,
-            count: 1
+            count: count ?? 1
         }
     });
     if (attachedTo != undefined) {
         target.attachedTo(attachedTo);
+    }
+    if (count != undefined && count != 1) {
+        target.plainText(count.toString());
     }
     return target.build();
 }
@@ -168,6 +178,28 @@ export function setupEffectsTool(playerRole: "GM" | "PLAYER", playerID: string) 
         });
         setupToolActions(playerRole, playerID);
         setupTargetToolModes();
+    });
+    return OBR.tool.onToolChange(tool => {
+        if (tool == toolID && getSettingsValue(LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS)) {
+            OBR.player.getMetadata().then(metadata => {
+                const oldTargets = metadata[playerSelectedTargetsMetadataKey] as { item: Item, count: number, id: number }[];
+                if (oldTargets == undefined) {
+                    return;
+                }
+                const minTargetId = Math.min(...oldTargets.map(target => target.id));
+                for (const target of oldTargets) {
+                    const targetHighlight = buildTarget(
+                        target.id,
+                        target.item.scale.x,
+                        target.item.position,
+                        target.id === minTargetId,
+                        target.item.attachedTo,
+                        target.count
+                    );
+                    OBR.scene.local.addItems([targetHighlight]);
+                }
+            });
+        }
     });
 }
 

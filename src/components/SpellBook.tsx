@@ -1,7 +1,7 @@
 import "./SpellBook.css";
 
 import { APP_KEY, ASSET_LOCATION } from "../config";
-import { FaCaretDown, FaCaretUp, FaCirclePlus, FaFloppyDisk, FaPencil, FaTrash } from "react-icons/fa6";
+import { FaCaretDown, FaCaretUp, FaCirclePlus, FaDownload, FaFloppyDisk, FaPencil, FaTrash, FaUpload } from "react-icons/fa6";
 import { getAllSpellNames, getSpell, spellIDs } from "../effects/spells";
 import { setSelectedSpell, toolID } from "../effectsTool";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -140,6 +140,16 @@ export default function SpellBook() {
                     style={{marginLeft: "0.5rem", cursor: "pointer", display: editing ? undefined : "none"}}
                     onClick={() => { setGroupName(""); openModal("create-spell-group") }}
                     title="Add a new spell group"
+                />
+                <FaUpload
+                    style={{marginLeft: "0.5rem", cursor: "pointer", display: editing ? undefined : "none"}}
+                    onClick={() => { setGroupName(""); openModal("create-spell-group") }}
+                    title="Import your spellbook"
+                    />
+                <FaDownload
+                    style={{marginLeft: "0.5rem", cursor: "pointer", display: editing ? undefined : "none"}}
+                    onClick={() => { setGroupName(""); openModal("create-spell-group") }}
+                    title="Download your spellbook"
                 />
             </p>
             {

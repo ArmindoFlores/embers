@@ -14,7 +14,6 @@ import Settings from "../components/Settings";
 import SpellBook from "../components/SpellBook";
 import SpellDetails from "../components/SpellDetails";
 import effectsWorkerScript from "../effects/worker";
-import { setupContextMenu } from "../castSpellMenu";
 import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
 
@@ -83,15 +82,16 @@ export default function Main() {
         const worker = new Worker(effectsWorkerScript);
         setEffectsWorker(worker);
         // - setup the context menu
-        setupContextMenu(obr.player.role);
+        // setupContextMenu(obr.player.role);
         // - setup tool
-        setupEffectsTool(obr.player.role, obr.player.id);
+        const unmount = setupEffectsTool(obr.player.role, obr.player.id);
         // - setup the effects register
         setEffectRegister(new Map());
 
         // When the app unmounts, reverse both of those operations
         return () => {
             worker.terminate();
+            unmount();
         };
     }, [obr.ready, obr.sceneReady, obr.player?.role, obr.player?.id]);
 
