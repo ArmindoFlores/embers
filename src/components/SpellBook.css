@@ -25,6 +25,10 @@
     width: 100%;
 }
 
+.spellgroup-list > li:hover {
+    background-color: rgb(34, 38, 57, 0.6);
+}
+
 .spellgroup-item-actions {
     display: flex;
     flex-direction: row;

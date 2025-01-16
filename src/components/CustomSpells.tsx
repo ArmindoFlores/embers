@@ -1,8 +1,8 @@
 import "./CustomSpells.css";
 
 import { FaCirclePlus, FaCopy, FaDownload, FaPencil, FaTrash, FaUpload } from "react-icons/fa6";
+import { downloadFileFromString, loadJSONFile } from "../utils";
 import { getSpell, spellIDs } from "../effects/spells";
-import { log_error, log_info } from "../logging";
 import { newSpellModalID, spellListMetadataKey } from "../views/NewSpellModal";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -11,6 +11,7 @@ import { Modal } from "@owlbear-rodeo/sdk/lib/types/Modal";
 import OBR from "@owlbear-rodeo/sdk";
 import ReactModal from "react-modal";
 import { Spells } from "../types/spells";
+import { log_info } from "../logging";
 import { useOBR } from "../react-obr/providers";
 
 type ModalType = "choose-spell" | "remove-all-spells";
@@ -26,18 +27,6 @@ function getSpellModalSize(viewWidth: number, viewHeight: number): [number, numb
     const width = Math.min(800, viewWidth - 100);
     const height = width / aspectRatio;
     return [width, height];
-}
-
-function downloadFileFromString(content: string, filename: string, MIMEType: string = "text/plain") {
-    const blob = new Blob([content], { type: MIMEType });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
 }
 
 function removeSpells(spells: string[]) {
@@ -61,7 +50,6 @@ function removeAllSpells() {
 }
 
 function addSpells(spells: Spells) {
-    log_info("Adding spells");
     let added = 0, overridden = 0;
     const spellListJSON = localStorage.getItem(spellListMetadataKey) ?? "[]";
     const spellList = JSON.parse(spellListJSON) as string[];
@@ -78,36 +66,6 @@ function addSpells(spells: Spells) {
     localStorage.setItem(spellListMetadataKey, JSON.stringify(spellList));
     OBR.scene.setMetadata({ [spellListMetadataKey]: spellList });
     log_info(`Added ${added} new spell(s) from file (${overridden} overridden)`);
-}
-
-function importCustomSpells(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-    try {
-        const content = e.target?.result as string;
-        const json = JSON.parse(content);
-        addSpells(json);
-
-    } catch (error) {
-        OBR.notification.show("Error parsing file", "ERROR");
-        log_error("Error parsing JSON:", error);
-    } finally {
-        if (event.target) {
-            event.target.value = "";
-        }
-    }
-    };
-
-    reader.onerror = () => {
-        OBR.notification.show("Error parsing file", "ERROR");
-        log_error("Error loading spells file");
-    };
-
-    reader.readAsText(file);
 }
 
 export default function CustomSpells() {
@@ -177,7 +135,7 @@ export default function CustomSpells() {
 
     return <div className="custom-spells" ref={mainDiv}>
         <div className="custom-spells-section">
-            <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={importCustomSpells} />
+            <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={event => loadJSONFile(event, addSpells)} />
             <p className="subtitle add-custom-spell">
                 Custom Spells
                 <FaCirclePlus

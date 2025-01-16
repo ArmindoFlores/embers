@@ -1,3 +1,4 @@
+import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
 import OBR, { Item } from "@owlbear-rodeo/sdk";
 import { ReplicationType, Spell, Spells } from "../types/spells";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
@@ -187,7 +188,9 @@ export function doSpell(spellID: string, playerID: string, isGM: boolean) {
         return;
     }
     getSortedTargets().then(targets => {
-        OBR.scene.local.deleteItems(targets.map(item => item.id));
+        if (!getSettingsValue(LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS)) {
+            OBR.scene.local.deleteItems(targets.map(item => item.id));
+        }
 
         const replicationType = spell.replicate ?? "no";
         const copyDelay = spell.copy ?? 150;
