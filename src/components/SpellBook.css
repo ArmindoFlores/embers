@@ -5,6 +5,11 @@
     text-align: center;
 }
 
+.spellbook-container {
+    overflow: auto;
+    padding-right: 1rem;
+}
+
 .spellbook-group {
     display: flex;
     flex-direction: row;
