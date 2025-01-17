@@ -85,7 +85,7 @@ function parseBlueprintFunction<T>(func: BlueprintFunction, variables: Variables
     const functionName = func.name;
     const functionArguments = func.arguments;
 
-    const builtinFunction = blueprintFunctions[functionName];
+    const builtinFunction = blueprintFunctions[functionName].func;
     if (builtinFunction == undefined) {
         log_error(`Invalid blueprint: undefined function "${functionName}"`);
         return _error("undefined function");

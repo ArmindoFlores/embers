@@ -184,7 +184,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                     }
                 }
                 else if (instruction.type === "action") {
-                    const action = actions[instruction.id];
+                    const action = actions[instruction.id].action;
                     if (action == undefined) {
                         log_error(`Invalid blueprint: undefined action "${instruction.id}"`);
                         return;

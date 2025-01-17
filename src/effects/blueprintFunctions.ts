@@ -1,4 +1,4 @@
-import { BlueprintFunctionBuiltin, BlueprintFunctionResolveArgs, BlueprintValue, ErrorOr } from "../types/blueprint";
+import { BlueprintFunctionBuiltin, BlueprintFunctionDescription, BlueprintFunctionResolveArgs, BlueprintValue, ErrorOr } from "../types/blueprint";
 
 import { Vector2 } from "@owlbear-rodeo/sdk";
 
@@ -128,15 +128,101 @@ function random_int(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<
     return _value(Math.floor(Math.random() * (max.value as number - (min.value as number))) + (min.value as number));
 }
 
-export const blueprintFunctions: Record<string, BlueprintFunctionBuiltin> = {
-    concat,
-    product,
-    sum,
-    if: if_,
-    rotation,
-    equals,
-    greater_than,
-    lesser_than,
-    random_choice,
-    random_int,
+export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin, desc: BlueprintFunctionDescription }> = {
+    concat: {
+        func: concat,
+        desc: {
+            minArgs: 1,
+            description: "Concatenate one or more strings",
+            argumentType: "string",
+            returnType: "string"
+        }
+    },
+    product: {
+        func: product,
+        desc: {
+            minArgs: 1,
+            description: "Multiply all arguments together",
+            argumentType: "number",
+            returnType: "number"
+        }
+    },
+    sum: {
+        func: sum,
+        desc: {
+            minArgs: 1,
+            description: "Add all arguments together",
+            argumentType: "number",
+            returnType: "number"
+        }
+    },
+    if: {
+        func: if_,
+        desc: {
+            minArgs: 2,
+            maxArgs: 3,
+            description: "Returns the second argument if the first argument is truthy, otherwise returns the third argument",
+            argumentType: "any",
+            returnType: "any"
+        }
+    },
+    rotation: {
+        func: rotation,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Computes the angle of a vector connecting the first and the second arguments",
+            argumentType: "vector",
+            returnType: "number"
+        }
+    },
+    equals: {
+        func: equals,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Returns \"true\" if the first argument is equal to the second argument, otherwise returns \"false\"",
+            argumentType: "any",
+            returnType: "boolean"
+        }
+    },
+    greater_than: {
+        func: greater_than,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Returns \"true\" if the first argument is greater than the second argument, otherwise returns \"false\"",
+            argumentType: "number",
+            returnType: "boolean"
+        }
+    },
+    lesser_than: {
+        func: lesser_than,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Returns \"true\" if the first argument is lesser than the second argument, otherwise returns \"false\"",
+            argumentType: "number",
+            returnType: "boolean"
+        }
+    },
+    random_choice: {
+        func: random_choice,
+        desc: {
+            minArgs: 1,
+            description: "Randomly returns one of the provided arguments",
+            argumentType: "any",
+            returnType: "any"
+        }
+    },
+    random_int: {
+        func: random_int,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Returns a random integer between the first and the second arguments",
+            argumentType: "number",
+            returnType: "number"
+        }
+    },
 };
