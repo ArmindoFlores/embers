@@ -14,6 +14,7 @@ export const removeTargetToolModeID = `${APP_KEY}/remove-effects-tool-mode`;
 export const effectsToolActionID = `${APP_KEY}/effects-tool-action`;
 export const settingsToolActionID = `${APP_KEY}/settings-tool-action`;
 export const selectSpellToolActionID = `${APP_KEY}/select-spell-tool-action`;
+export const clearTargetSelectionToolActionID = `${APP_KEY}/clear-target-selection-tool-action`;
 export const targetHighlightMetadataKey = `${APP_KEY}/target-highlight`;
 export const previousToolMetadataKey = `${APP_KEY}/previous-tool`;
 export const playerSelectedTargetsMetadataKey = `${APP_KEY}/selected-targets`;
@@ -256,6 +257,25 @@ async function setupToolActions(playerRole: "GM" | "PLAYER", playerID: string) {
                 height: 300,
                 url: `${window.location.origin}/spell-selection-popover`,
                 hidePaper: true
+            });
+        }
+    });
+
+    // Clear target selection action
+    await OBR.tool.createAction({
+        id: clearTargetSelectionToolActionID,
+        icons: [{
+            icon: `${window.location.origin}/remove-selection.svg`,
+            label: "Clear Target Selection",
+            filter: {
+                activeTools: [toolID]
+            }
+        }],
+        shortcut: "x",
+        onClick() {
+            OBR.scene.local.getItems().then(items => {
+                const targets = items.filter(item => item.metadata[targetHighlightMetadataKey] != undefined);
+                OBR.scene.local.deleteItems(targets.map(item => item.id));
             });
         }
     });
