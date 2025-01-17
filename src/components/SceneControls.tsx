@@ -68,20 +68,20 @@ function SpellDisplay({ spellID, item, caster }: { spellID?: string, item: Item,
     return <div className="scene-spell-display-item">
         <p> { spell.name }</p>
         <div className="scene-spell-display-controls">
-            <div className="scene-spell-display-control-button" onClick={selectItem}>
+            <div className="scene-spell-display-control-button" onClick={selectItem} title="Select this effect">
                 <FaArrowPointer />
             </div>
-            <div className="scene-spell-display-control-button" onClick={toggleItemDisableHit}>
+            <div className="scene-spell-display-control-button" onClick={toggleItemDisableHit} title={item.disableHit ? "Enable hit" : "Disable hit"}>
                 {
                     item.disableHit ? <FaLinkSlash /> : <FaLink />
                 }
             </div>
-            <div className="scene-spell-display-control-button" onClick={toggleItemVisibility}>
+            <div className="scene-spell-display-control-button" onClick={toggleItemVisibility} title={item.visible ? "Hide effect" : "Show effect"}>
                 {
                     item.visible ? <FaEye /> : <FaEyeSlash />
                 }
             </div>
-            <div className="scene-spell-display-control-button" onClick={deleteItem}>
+            <div className="scene-spell-display-control-button" onClick={deleteItem} title="Delete this effect">
                 <FaSquareMinus />
             </div>
         </div>

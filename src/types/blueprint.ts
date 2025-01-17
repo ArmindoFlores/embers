@@ -65,4 +65,18 @@ export type Variables = Record<string, unknown>;
 
 export type BlueprintFunctionResolveArgs = (argument: BlueprintValue<unknown>) => ErrorOr<unknown>;
 export type BlueprintFunctionBuiltin = (resolve: BlueprintFunctionResolveArgs,...args: BlueprintValue<unknown>[]) => ErrorOr<unknown>;
+export interface BlueprintFunctionDescription {
+    minArgs?: number;
+    maxArgs?: number;
+    description?: string;
+    returnType?: string;
+    argumentType?: string;
+}
+
 export type BlueprintActionBuiltin = (...args: unknown[]) => void;
+export interface BlueprintActionDescription {
+    minArgs?: number;
+    maxArgs?: number;
+    description?: string;
+    argumentType?: string;
+}
