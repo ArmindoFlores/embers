@@ -134,7 +134,7 @@ export default function SpellBook() {
 
     }, [obr.ready, obr.sceneReady]);
 
-    return <div ref={mainDiv}>
+    return <div ref={mainDiv} className="spellbook-container">
         <div className="spellbook-header">
             <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={event => loadJSONFile(event, setGroups)} />
             <p className="title spellbook-options">
