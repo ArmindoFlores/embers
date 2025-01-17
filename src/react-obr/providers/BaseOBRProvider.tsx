@@ -3,6 +3,8 @@
 import OBR, { Metadata, Permission, Player } from "@owlbear-rodeo/sdk";
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 
+import { log_error } from "../../logging";
+
 export interface BaseOBRContextType {
     party: Player[];
     player: Player|null;
@@ -64,11 +66,6 @@ export function BaseOBRProvider({ children }: { children: React.ReactNode }) {
             });
         }
     }, [ready]);
-    useEffect(() => {
-        if (ready && player === null) {
-            setPlayer(party.find(player => player.id === OBR.player.id) ?? null);
-        }
-    }, [ready, party, player]);
 
     // Subscribe to metadata changes
     useEffect(() => {
@@ -112,15 +109,40 @@ export function BaseOBRProvider({ children }: { children: React.ReactNode }) {
         if (ready) {
             const initPromises = [
                 OBR.party.getPlayers().then(setParty),
+                Promise.all([
+                    OBR.player.getId(),
+                    OBR.player.getConnectionId(),
+                    OBR.player.getRole(),
+                    OBR.player.getSelection(),
+                    OBR.player.getName(),
+                    OBR.player.getColor(),
+                    OBR.player.getSyncView(),
+                    OBR.player.getMetadata(),
+                ]).then(player => setPlayer({
+                    id: player[0],
+                    connectionId: player[1],
+                    role: player[2],
+                    selection: player[3],
+                    name: player[4],
+                    color: player[5],
+                    syncView: player[6],
+                    metadata: player[7]
+                })),
                 OBR.room.getPermissions().then(setRoomPermissions),
                 OBR.room.getMetadata().then(_setRoomMetadata),
-                OBR.scene.getMetadata().then(_setSceneMetadata),
                 OBR.scene.isReady().then(setSceneReady),
-                OBR.player.getMetadata().then(metadata => OBR.player.setMetadata(metadata)), // Horrible, but only way to trigger Player.onChange?
             ]
-            Promise.all(initPromises).catch(() => null);
+            Promise.all(initPromises).catch(e => log_error("Unknown error:", e));
         }
     }, [ready]);
+    useEffect(() => {
+        if (ready && sceneReady) {
+            const initPromises = [
+                OBR.scene.getMetadata().then(_setSceneMetadata),
+            ];
+            Promise.all(initPromises).catch(e => log_error("Unknown error:", e))
+        }
+    }, [ready, sceneReady])
 
     const setRoomMetadata = useCallback((metadata: Partial<Metadata>) => {
         OBR.room.setMetadata(metadata);
