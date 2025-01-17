@@ -84,7 +84,12 @@ export function projectile(
             return;
         }
         const { image, effectDuration } = result;
-        realDuration = Math.max(realDuration, effectDuration);
+        if (realDuration == -1 || effectDuration == -1) {
+            realDuration = -1;
+        }
+        else {
+            realDuration = Math.max(realDuration, effectDuration);
+        }
         images.push(image.build());
     }
 

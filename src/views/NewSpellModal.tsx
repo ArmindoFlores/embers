@@ -10,6 +10,7 @@ import { isBlueprintVariable, isUnresolvedBlueprint } from "../effects/blueprint
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import OBR from "@owlbear-rodeo/sdk";
+import { actions } from "../effects/actions";
 import { blueprintFunctions } from "../effects/blueprintFunctions";
 import { getSpell } from "../effects/spells";
 import { useOBR } from "../react-obr/providers";
@@ -18,7 +19,7 @@ import { useParams } from "react-router";
 export const newSpellModalID = `${APP_KEY}/new-spell`;
 export const spellListMetadataKey = `${APP_KEY}/spell-list`;
 
-type ValueType = "string" | "number" | "boolean" | "vector";
+type ValueType = "string" | "number" | "boolean" | "vector" | "effect" | "action";
 
 interface Editable<T = unknown> {
     type: "effect" | "action" | "value" | "spell";
@@ -73,7 +74,7 @@ function BlueprintValueInput<T>({
     return <div className="blueprint-value-cell" onClick={onClick}>
         <p>
             {
-                type === "string" ?
+                (type === "string" || type === "effect" || type === "action") ?
                 value == null ? "null" : `"${value}"` :
                 type === "number" ?
                 (value as number) ?? "null" :
@@ -96,7 +97,7 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
 
     const onClose = useCallback(() => {
         if (valueType === "value") {
-            if (datatype === "string") {
+            if (datatype === "string" || datatype === "effect" || datatype === "action") {
                 setValue(currentValue);
             }
             else if (datatype === "number") {
@@ -132,7 +133,7 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
         }
         else {
             setValueType("value");
-            if (type === "string") {
+            if (type === "string" || type === "effect" || type === "action") {
                 setCurrentValue(value as string|null ?? "");
             }
             else if (type === "number") {
@@ -194,8 +195,26 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
                 <label htmlFor="value" className="row" title="The value for this field">
                     <p>Value </p>
                     {
-                        datatype !== "boolean" &&
+                        datatype !== "boolean" && datatype !== "effect" && datatype !== "action" &&
                         <input value={currentValue ?? ""} onChange={event => setCurrentValue(event.target.value)} type={datatype == "number" ? "number": "text"} />
+                    }
+                    {
+                        datatype === "effect" &&
+                        <select value={currentValue ?? ""} onChange={event => setCurrentValue(event.target.value)}>
+                            <option value="" disabled>Select an effect</option>
+                            {
+                                effectNames.map(effect => <option key={effect} value={effect}>{ effect }</option>)
+                            }
+                        </select>
+                    }
+                    {
+                        datatype === "action" &&
+                        <select value={currentValue ?? ""} onChange={event => setCurrentValue(event.target.value)}>
+                            <option value="" disabled>Select an action</option>
+                            {
+                                Object.keys(actions).map(action => <option key={action} value={action}>{ action }</option>)
+                            }
+                        </select>
                     }
                     {
                         datatype === "boolean" &&
@@ -352,7 +371,7 @@ function EditAction({ action, setAction, close }: { action: EffectBlueprint, set
         <p className="title">Details</p>
         <label htmlFor="action-id">
             <p>Action ID</p>
-            <BlueprintValueInput value={actionID} setValue={setActionID} setEditing={setEditing} type="string" />
+            <BlueprintValueInput value={actionID} setValue={setActionID} setEditing={setEditing} type="action" />
         </label>
         <p className="subtitle add-custom-spell" title="Add a new argument to this action">
             Arguments
@@ -475,7 +494,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
         <div className="row">
             <label htmlFor="effect-id">
                 <p>Effect ID</p>
-                <BlueprintValueInput value={effectID} setValue={setEffectID} setEditing={setEditing} type="string" />
+                <BlueprintValueInput value={effectID} setValue={setEffectID} setEditing={setEditing} type="effect" />
             </label>
             <label htmlFor="delay" title="How long to wait before starting to play this effect">
                 <p>Delay (ms)</p>

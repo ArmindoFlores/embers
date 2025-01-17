@@ -106,7 +106,7 @@ function ParameterRow({ spellID, parameter }: { spellID: string, parameter: Para
         <p className="label">{ parameter.name }</p>
         {
             parameter.type === "options" && (
-                <select value={parameterValue ?? parameter.defaultValue as string} onChange={e => setParameterValue(e.target.value)}>
+                <select className="small-select" value={parameterValue ?? parameter.defaultValue as string} onChange={e => setParameterValue(e.target.value)}>
                     {
                         (parameter.content as OptionsContent).map(option => <option key={option.label} value={option.value}>
                             { option.label }
