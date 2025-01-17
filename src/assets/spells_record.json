@@ -330,7 +330,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 4,
+                "defaultValue": 12,
                 "content": {
                     "min": 1
                 }
@@ -404,7 +404,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 4,
+                "defaultValue": 8,
                 "content": {
                     "min": 1
                 }
@@ -433,7 +433,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 4,
+                "defaultValue": 2,
                 "content": {
                     "min": 1
                 }
@@ -610,7 +610,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 2,
+                "defaultValue": 1,
                 "content": {
                     "min": 1
                 }
@@ -643,7 +643,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 5,
+                "defaultValue": 6,
                 "content": {
                     "min": 1
                 }
@@ -976,7 +976,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 5,
+                "defaultValue": 4,
                 "content": {
                     "min": 1
                 }
@@ -1036,7 +1036,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 5,
+                "defaultValue": 25,
                 "content": {
                     "min": 1
                 }
@@ -1308,7 +1308,7 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 5,
+                "defaultValue": 4,
                 "content": {
                     "min": 1
                 }
