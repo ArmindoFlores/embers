@@ -34,7 +34,7 @@ function gatherEffectNames() {
             if (isEffect(effects[key])) {
                 names.push(`${prefix}${key}`);
             }
-            else {
+            else if (effects[key] != undefined) {
                 gatherNames(effects[key], `${prefix}${key}.`);
             }
         }
