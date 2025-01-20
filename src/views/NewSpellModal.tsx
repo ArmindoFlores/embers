@@ -799,7 +799,7 @@ export default function NewSpellModal() {
                         <select value={replicate ?? ""} onChange={event => setReplicate(event.target.value)}>
                             <option value="no">No</option>
                             <option value="all">All</option>
-                            <option value="first-to-all">Origin to others</option>
+                            <option value="first_to_all">Origin to others</option>
                         </select>
                     </label>
                     <label htmlFor="copy" title="The delay between each copy of the projectile. For example, if sending 3 eldritch blasts at one target, you might want them to be separated by 200 milliseconds. If negative, copies beyond the first are ignored">

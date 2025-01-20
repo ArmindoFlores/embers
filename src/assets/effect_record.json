@@ -3405,6 +3405,399 @@
                 }
             }
         },
+        "lightning": {
+            "electric_arc": {
+                "basename": "Generic/Lightning/ElectricArc01_01_Regular_Blue",
+                "thumbnail": "Generic/Lightning/ElectricArc_01_Regular_Blue_Thumb.webp",
+                "type": "TARGET",
+                "dpi": 200,
+                "variants": {
+                    "1200": {
+                        "name": ["1600x500"],
+                        "duration": [6000],
+                        "size": [1600, 500]
+                    }
+                }
+            },
+            "lightning_ball": {
+                "basename": "Generic/Lightning/LightningBall_01_Regular_Blue",
+                "thumbnail": "Generic/Lightning/LightningBall_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [2030],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "lightning_orb": {
+                "basename": "Generic/Lightning/LightningOrb01_01_BluePurple_Loop",
+                "thumbnail": "Generic/Lightning/LightningOrb01_01_BluePurple_Loop_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [2930],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "lightning_strike": {
+                "basename": "Generic/Lightning/LightningStrike01",
+                "thumbnail": "Generic/Lightning/LightningStrike01_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["01_Regular_Blue_800x800", "02_Regular_Blue_800x800"],
+                        "duration": [2000, 2000],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "static_electricity": {
+                "1": {
+                    "basename": "Generic/Lightning/StaticElectricity_01_Regular_Blue",
+                    "thumbnail": "Generic/Lightning/StaticElectricity_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [1970],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Lightning/StaticElectricity_02_Regular_Blue",
+                    "thumbnail": "Generic/Lightning/StaticElectricity_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [3370],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Lightning/StaticElectricity_03_Regular_Blue",
+                    "thumbnail": "Generic/Lightning/StaticElectricity_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [2670],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            }
+        },
+        "ranged_spell": {
+            "overcharged_sphere": {
+                "purple": {
+                    "basename": "Generic/RangedSpell/OverchargedSphere01_01_Dark_Purple",
+                    "thumbnail": "Generic/RangedSpell/OverchargedSphere01_01_Dark_Purple_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [930],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1200],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1600],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [2430],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [3270],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "green": {
+                    "basename": "Generic/RangedSpell/OverchargedSphere01_01_Green",
+                    "thumbnail": "Generic/RangedSpell/OverchargedSphere01_01_Green_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [930],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1200],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1600],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [2430],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [3270],
+                            "size": [4000, 400]
+                        }
+                    }
+                }
+            },
+            "ice_shard": {
+                "basename": "Generic/RangedSpell/ProjectileIceShard01_01_Regular_Blue",
+                "thumbnail": "Generic/RangedSpell/ProjectileIceShard01_01_Regular_Blue_Thumb.webp",
+                "type": "TARGET",
+                "dpi": 200,
+                "variants": {
+                    "200": {
+                        "name": ["05ft_600x400"],
+                        "duration": [2400],
+                        "size": [600, 400]
+                    },
+                    "600": {
+                        "name": ["15ft_1000x400"],
+                        "duration": [2570],
+                        "size": [1000, 400]
+                    },
+                    "1200": {
+                        "name": ["30ft_1600x400"],
+                        "duration": [2730],
+                        "size": [1600, 400]
+                    },
+                    "2400": {
+                        "name": ["60ft_2800x400"],
+                        "duration": [2930],
+                        "size": [2800, 400]
+                    },
+                    "3600": {
+                        "name": ["90ft_4000x400"],
+                        "duration": [3230],
+                        "size": [4000, 400]
+                    }
+                }
+            },
+            "card": {
+                "basename": "Generic/RangedSpell/Card/ProjectileCard01_01_Regular_Blue",
+                "thumbnail": "Generic/RangedSpell/Card/ProjectileCard01_01_Regular_Blue_Thumb.webp",
+                "type": "TARGET",
+                "dpi": 200,
+                "variants": {
+                    "600": {
+                        "name": ["15ft_1000x400"],
+                        "duration": [2200],
+                        "size": [1000, 400]
+                    },
+                    "1200": {
+                        "name": ["30ft_1600x400"],
+                        "duration": [2200],
+                        "size": [1600, 400]
+                    },
+                    "2400": {
+                        "name": ["60ft_2800x400"],
+                        "duration": [2700],
+                        "size": [2800, 400]
+                    },
+                    "3600": {
+                        "name": ["90ft_4000x400"],
+                        "duration": [3230],
+                        "size": [4000, 400]
+                    }
+                }
+            },
+            "instant": {
+                "dark_orange": {
+                    "basename": "Generic/RangedSpell/01/RangedInstant01_01_Dark_Orange",
+                    "thumbnail": "Generic/RangedSpell/01/RangedInstant01_01_Dark_Orange_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [930],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1470],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1730],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [1630],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [1830],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "yellow": {
+                    "basename": "Generic/RangedSpell/02/RangedInstant02_01_Regular_Yellow",
+                    "thumbnail": "Generic/RangedSpell/02/RangedInstant02_01_Regular_Yellow_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [930],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1470],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1730],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [1630],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [1830],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "blue": {
+                    "basename": "Generic/RangedSpell/03/RangedInstant03_01_Regular_BlueGreen",
+                    "thumbnail": "Generic/RangedSpell/03/RangedInstant03_01_Regular_BlueGreen_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [930],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1470],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1730],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [1630],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [1830],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "green": {
+                    "basename": "Generic/RangedSpell/04/RangedInstant04_01_Regular_Green",
+                    "thumbnail": "Generic/RangedSpell/04/RangedInstant04_01_Regular_Green_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["05ft_600x400"],
+                            "duration": [930],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [1470],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [1730],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [1630],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [1830],
+                            "size": [4000, 400]
+                        }
+                    }
+                }
+            },
+            "beam": {
+                "basename": "Generic/RangedSpell/Beam/Beam001_01_Regular_Orange",
+                "thumbnail": "Generic/RangedSpell/Beam/Beam001_01_Regular_Orange_Thumb.webp",
+                "type": "TARGET",
+                "dpi": 200,
+                "variants": {
+                    "200": {
+                        "name": ["05ft_600x400"],
+                        "duration": [3030],
+                        "size": [600, 400]
+                    },
+                    "600": {
+                        "name": ["15ft_1000x400"],
+                        "duration": [3030],
+                        "size": [1000, 400]
+                    },
+                    "1200": {
+                        "name": ["30ft_1600x400"],
+                        "duration": [3030],
+                        "size": [1600, 400]
+                    },
+                    "2400": {
+                        "name": ["60ft_2800x400"],
+                        "duration": [3030],
+                        "size": [2800, 400]
+                    },
+                    "3600": {
+                        "name": ["90ft_4000x400"],
+                        "duration": [3030],
+                        "size": [4000, 400]
+                    }
+                }
+            }
+        },
         "weapon_attacks": {
             "melee": {
                 "single": {
