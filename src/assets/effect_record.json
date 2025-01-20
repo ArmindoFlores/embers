@@ -2757,6 +2757,155 @@
                 }
             }
         },
+        "cast": {
+            "earth": {
+                "basename": "Generic/Cast/CastEarth01_01_Regular_BrownGreen",
+                "thumbnail": "Generic/Cast/CastEarth01_01_Regular_BrownGreen_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [1900],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "fire": {
+                "basename": "Generic/Cast/CastFire01_01_Regular_Orange",
+                "thumbnail": "Generic/Cast/CastFire01_01_Regular_Orange_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [2070],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "side_fire": {
+                "basename": "Generic/Cast/CastSideFire01_01_Regular_Orange",
+                "thumbnail": "Generic/Cast/CastSideFire01_01_Regular_Orange_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["800x600"],
+                        "duration": [1900],
+                        "size": [800, 600]
+                    }
+                }
+            },
+            "sound": {
+                "basename": "Generic/Cast/CastSound01_01_Regular_PinkTeal",
+                "thumbnail": "Generic/Cast/CastSound01_01_Regular_PinkTeal_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [2070],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "water": {
+                "basename": "Generic/Cast/CastWater02_01_Regular_Blue",
+                "thumbnail": "Generic/Cast/CastWater02_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4330],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "generic": {
+                "yellow": {
+                    "basename": "Generic/Cast/GenericCast01_01_Regular_Yellow",
+                    "thumbnail": "Generic/Cast/GenericCast01_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [700],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "blue": {
+                    "basename": "Generic/Cast/GenericCast02_01_Regular_Blue",
+                    "thumbnail": "Generic/Cast/GenericCast02_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [700],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "shape": {
+                "circle": {
+                    "basename": "Generic/Cast/CastShapeCircle01_01_Regular_Blue",
+                    "thumbnail": "Generic/Cast/CastShapeCircle01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2330],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "circle_single": {
+                    "basename": "Generic/Cast/CastShapeCircleSingle01_01_Regular_Blue",
+                    "thumbnail": "Generic/Cast/CastShapeCircleSingle01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2330],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "square": {
+                    "basename": "Generic/Cast/CastShapeSquare01_01_Regular_Blue",
+                    "thumbnail": "Generic/Cast/CastShapeSquare01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2330],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "square_single": {
+                    "basename": "Generic/Cast/CastShapeSquareSingle01_01_Regular_Blue",
+                    "thumbnail": "Generic/Cast/CastShapeSquareSingle01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2330],
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            }
+        },
         "conditions": {
             "boons": {
                 "1": {
