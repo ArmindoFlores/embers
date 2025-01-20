@@ -1536,6 +1536,73 @@
             }
         ]
     },
+    "wall_of_force": {
+        "name": "Wall of Force",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_V_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Mode",
+                "id": "mode",
+                "type": "options",
+                "defaultValue": "line",
+                "content": [
+                    { "value": "line", "label": "Line" },
+                    { "value": "square", "label": "Square" },
+                    { "value": "ring", "label": "Ring" }
+                ]
+            },
+            {
+                "name": "Ring radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 6,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "wall_of_force.line",
+                "disabled": {
+                    "name": "not_equals",
+                    "arguments": ["$mode", "line"]
+                },
+                "duration": -1,
+                "disableHit": true,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": [
+                        "wall_of_force.",
+                        "$mode"
+                    ]
+                },
+                "disabled": {
+                    "name": "equals",
+                    "arguments": ["$mode", "line"]
+                },
+                "duration": -1,
+                "disableHit": true,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
     "chain_lightning": {
         "name": "Chain Lightning",
         "minTargets": 2,

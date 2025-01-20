@@ -2502,7 +2502,7 @@
                 }
             }
         },
-        "circle": {
+        "ring": {
             "basename": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_Sphere",
             "thumbnail": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_Sphere_Thumb.webp",
             "type": "CIRCLE",
@@ -2518,7 +2518,7 @@
         "line": {
             "basename": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_V",
             "thumbnail": "5th_Level/Wall_Of_Force/WallOfForce_01_Grey_V_Thumb.webp",
-            "type": "CIRCLE",
+            "type": "WALL",
             "dpi": 100,
             "variants": {
                 "200": {

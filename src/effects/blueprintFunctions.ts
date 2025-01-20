@@ -67,6 +67,17 @@ function equals(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unkn
     return _value(left.value === right.value);
 }
 
+function not_equals(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return _error(left.error);
+    }
+    if (right.error) {
+        return _error(right.error);
+    }
+    return _value(left.value !== right.value);
+}
+
 function greater_than(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
     const [left, right] = [resolve(arg1), resolve(arg2)];
     if (left.error) {
@@ -182,6 +193,16 @@ export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin
             minArgs: 2,
             maxArgs: 2,
             description: "Returns \"true\" if the first argument is equal to the second argument, otherwise returns \"false\"",
+            argumentType: "any",
+            returnType: "boolean"
+        }
+    },
+    not_equals: {
+        func: not_equals,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Returns \"true\" if the first argument is different from the second argument, otherwise returns \"false\"",
             argumentType: "any",
             returnType: "boolean"
         }
