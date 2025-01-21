@@ -56,6 +56,40 @@ function if_(resolve: BlueprintFunctionResolveArgs, condition: BlueprintValue<un
     }
 }
 
+function and(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unknown>[]) {
+    for (const arg of args) {
+        const expr = resolve(arg);
+        if (expr.error) {
+            return _error(expr.error);
+        }
+        if (!expr.value) {
+            return _value(false);
+        }
+    }
+    return _value(true);
+}
+
+function or(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unknown>[]) {
+    for (const arg of args) {
+        const expr = resolve(arg);
+        if (expr.error) {
+            return _error(expr.error);
+        }
+        if (expr.value) {
+            return _value(true);
+        }
+    }
+    return _value(false);
+}
+
+function not(resolve: BlueprintFunctionResolveArgs, arg: BlueprintValue<unknown>) {
+    const expr = resolve(arg);
+    if (expr.error) {
+        return _error(expr.error);
+    }
+    return _value(!expr.value);
+}
+
 function equals(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
     const [left, right] = [resolve(arg1), resolve(arg2)];
     if (left.error) {
@@ -139,6 +173,21 @@ function random_int(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<
     return _value(Math.floor(Math.random() * (max.value as number - (min.value as number))) + (min.value as number));
 }
 
+function index_of(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [obj, array] = [resolve(arg1), resolve(arg2)];
+    if (obj.error) {
+        return _error(obj.error);
+    }
+    if (array.error) {
+        return _error(array.error);
+    }
+    if (!Array.isArray(array.value)) {
+        return _error("the second argument of index_of must be an array");
+    }
+    const index = (array.value as unknown[]).findIndex(possibleObj => JSON.stringify(possibleObj) === JSON.stringify(obj.value));
+    return _value(index != -1 ? index : undefined);
+}
+
 export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin, desc: BlueprintFunctionDescription }> = {
     concat: {
         func: concat,
@@ -165,6 +214,34 @@ export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin
             description: "Add all arguments together",
             argumentType: "number",
             returnType: "number"
+        }
+    },
+    and: {
+        func: and,
+        desc: {
+            minArgs: 1,
+            description: "Return \"true\" if all arguments are truthy, otherwise return \"false\"",
+            argumentType: "any",
+            returnType: "boolean"
+        }
+    },
+    or: {
+        func: or,
+        desc: {
+            minArgs: 1,
+            description: "Return \"true\" if any argument is truthy, otherwise return \"false\"",
+            argumentType: "any",
+            returnType: "boolean"
+        }
+    },
+    not: {
+        func: not,
+        desc: {
+            minArgs: 1,
+            maxArgs: 1,
+            description: "Return \"true\" if the argument is falsy, otherwise return \"false\"",
+            argumentType: "any",
+            returnType: "boolean"
         }
     },
     if: {
@@ -246,4 +323,14 @@ export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin
             returnType: "number"
         }
     },
+    index_of: {
+        func: index_of,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Returns the index of the first argument in the second argument, or undefined if it's not found",
+            argumentType: "any",
+            returnType: "number|undefined"
+        }
+    }
 };

@@ -16,27 +16,26 @@ import spellsJSON from "../assets/spells_record.json";
 export const spells = spellsJSON as Spells;
 export const spellIDs = Object.keys(spells);
 
+function itemToTarget(item: Item) {
+    return {
+        id: item.attachedTo,
+        position: item.position,
+        size: getItemSize(item),
+        count: getTargetCount(item)
+    }
+}
+
 function replicateSpell(variables: Variables[], targets: Item[], parameterValues: object, replicationType: ReplicationType) {
     if (replicationType === "no") {
         variables.push({
-            targets: targets.map(target => ({
-                id: target.attachedTo,
-                position: target.position,
-                size: getItemSize(target),
-                count: getTargetCount(target),
-            })),
+            targets: targets.map(target => itemToTarget(target)),
             ...parameterValues
         });
     }
     else if (replicationType === "all") {
         for (const target of targets) {
             variables.push({
-                targets: [{
-                    id: target.attachedTo,
-                    position: target.position,
-                    size: getItemSize(target),
-                    count: getTargetCount(target),
-                }],
+                targets: [itemToTarget(target)],
                 ...parameterValues
             });
         }
@@ -45,30 +44,15 @@ function replicateSpell(variables: Variables[], targets: Item[], parameterValues
         const firstTarget = targets[0];
         if (targets.length === 1) {
             variables.push({
-                targets: [{
-                    id: firstTarget.attachedTo,
-                    position: firstTarget.position,
-                    size: getItemSize(firstTarget),
-                    count: getTargetCount(firstTarget)
-                }],
+                targets: [itemToTarget(firstTarget)],
                 ...parameterValues
             });
         }
         for (const target of targets.slice(1)) {
             variables.push({
                 targets: [
-                    {
-                        id: firstTarget.attachedTo,
-                        position: firstTarget.position,
-                        size: getItemSize(firstTarget),
-                        count: getTargetCount(firstTarget)
-                    },
-                    {
-                        id: target.attachedTo,
-                        position: target.position,
-                        size: getItemSize(target),
-                        count: getTargetCount(target),
-                    }
+                    itemToTarget(firstTarget),
+                    itemToTarget(target)
                 ],
                 ...parameterValues
             });
@@ -208,6 +192,8 @@ export function doSpell(spellID: string, playerID: string, isGM: boolean) {
         copySpellVariables(variables, copyDelay);
 
         for (const variableSet of variables) {
+            // Add all targets back into variableSet
+            variableSet.globalTargets = targets.map(target => itemToTarget(target));
             const { value, error } = resolveBlueprint(spell.blueprints ?? [], variableSet);
             if (error) {
                 OBR.notification.show(`Blueprint error: ${error}`, "ERROR");
