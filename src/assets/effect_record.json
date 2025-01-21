@@ -3450,6 +3450,613 @@
                 }
             }
         },
+        "energy": {
+            "teleport": {
+                "basename": "Generic/Energy/Teleport/Teleport01_01_Regular_Blue",
+                "thumbnail": "Generic/Energy/Teleport/Teleport01_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "300": {
+                        "name": ["500x300"],
+                        "duration": [900],
+                        "size": [500, 300]
+                    }
+                }
+            },
+            "energy_attack": {
+                "1": {
+                    "basename": "Generic/Energy/EnergyAttack_01_01_Regular_Blue",
+                    "thumbnail": "Generic/Energy/EnergyAttack_01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "1000": {
+                            "name": ["1000x1000"],
+                            "duration": [2800],
+                            "size": [1000, 1000]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Energy/EnergyAttack_01_02_Regular_Blue",
+                    "thumbnail": "Generic/Energy/EnergyAttack_01_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "1000": {
+                            "name": ["1000x1000"],
+                            "duration": [2500],
+                            "size": [1000, 1000]
+                        }
+                    }
+                }
+            },
+            "energy_beam": {
+                "blue": {
+                    "basename": "Generic/Energy/EnergyBeam_01_Regular_Blue",
+                    "thumbnail": "Generic/Energy/EnergyBeam_01_Regular_Blue_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [4040],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [4040],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [4040],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [4040],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "blue_pink1": {
+                    "basename": "Generic/Energy/EnergyBeam_02_Regular_BluePink",
+                    "thumbnail": "Generic/Energy/EnergyBeam_02_Regular_BluePink_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [4040],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [4040],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [4040],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [4040],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "blue_pink2": {
+                    "basename": "Generic/Energy/EnergyBeam_03_Regular_BluePink",
+                    "thumbnail": "Generic/Energy/EnergyBeam_03_Regular_BluePink_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["15ft_1000x400"],
+                            "duration": [4040],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["30ft_1600x400"],
+                            "duration": [4040],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["60ft_2800x400"],
+                            "duration": [4040],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["90ft_4000x400"],
+                            "duration": [4040],
+                            "size": [4000, 400]
+                        }
+                    }
+                }
+            },
+            "energy_conduit": {
+                "basename": "Generic/Energy/EnergyConduitCircle_01_Regular_BluePurple",
+                "thumbnail": "Generic/Energy/EnergyConduitCircle_01_Regular_BluePurple_Thumb.webp",
+                "type": "TARGET",
+                "dpi": 200,
+                "variants": {
+                    "200": {
+                        "name": ["05ft_600x400"],
+                        "duration": [5040],
+                        "size": [600, 400]
+                    },
+                    "600": {
+                        "name": ["15ft_1000x400"],
+                        "duration": [5040],
+                        "size": [1000, 400]
+                    },
+                    "1200": {
+                        "name": ["30ft_1600x400"],
+                        "duration": [5040],
+                        "size": [1600, 400]
+                    },
+                    "2400": {
+                        "name": ["60ft_2800x400"],
+                        "duration": [5040],
+                        "size": [2800, 400]
+                    },
+                    "3600": {
+                        "name": ["90ft_4000x400"],
+                        "duration": [5040],
+                        "size": [4000, 400]
+                    }
+                }
+            },
+            "energy_field": {
+                "normal": {
+                    "basename": "Generic/Energy/EnergyField_01_Regular_Blue",
+                    "thumbnail": "Generic/Energy/EnergyField_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [5040],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "bot": {
+                    "basename": "Generic/Energy/EnergyFieldBot_02_Regular_Blue",
+                    "thumbnail": "Generic/Energy/EnergyFieldBot_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "top": {
+                    "basename": "Generic/Energy/EnergyFieldTop_02_Regular_Blue",
+                    "thumbnail": "Generic/Energy/EnergyFieldTop_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "energy_strand": {
+                "normal": {
+                    "basename": "Generic/Energy/EnergyStrand",
+                    "thumbnail": "Generic/Energy/EnergyStrand_01_Regular_Purple_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": ["01_Regular_Purple_05ft_600x400", "02_Regular_Purple_05ft_600x400", "03_Regular_Purple_05ft_600x400", "04_Regular_Purple_05ft_600x400"],
+                            "duration": [2030, 2030, 2030, 2030],
+                            "size": [600, 400]
+                        },
+                        "600": {
+                            "name": ["01_Regular_Purple_15ft_1000x400", "02_Regular_Purple_15ft_1000x400", "03_Regular_Purple_15ft_1000x400", "04_Regular_Purple_15ft_1000x400"],
+                            "duration": [2030, 2030, 2030, 2030],
+                            "size": [1000, 400]
+                        },
+                        "1200": {
+                            "name": ["01_Regular_Purple_30ft_1600x400", "03_Regular_Purple_30ft_1600x400", "04_Regular_Purple_30ft_1600x400"],
+                            "duration": [2030, 2030, 2030],
+                            "size": [1600, 400]
+                        },
+                        "2400": {
+                            "name": ["01_Regular_Purple_60ft_2800x400", "02_Regular_Purple_60ft_2800x400", "03_Regular_Purple_60ft_2800x400", "04_Regular_Purple_60ft_2800x400"],
+                            "duration": [2030, 2030, 2030, 2030],
+                            "size": [2800, 400]
+                        },
+                        "3600": {
+                            "name": ["01_Regular_Purple_90ft_4000x400", "02_Regular_Purple_90ft_4000x400", "03_Regular_Purple_90ft_4000x400", "04_Regular_Purple_90ft_4000x400"],
+                            "duration": [2030, 2030, 2030, 2030],
+                            "size": [4000, 400]
+                        }
+                    }
+                },
+                "multiple": {
+                    "purple": {
+                        "basename": "Generic/Energy/EnergyStrand_Multiple01_Regular_Purple",
+                        "thumbnail": "Generic/Energy/EnergyStrand_Multiple01_Regular_Purple_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [2400],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [2030],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [2070],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [2630],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [3330],
+                                "size": [4000, 400]
+                            }
+                        }
+                    },
+                    "blue_pink": {
+                        "basename": "Generic/Energy/EnergyStrand_Multiple02_Regular_BluePink",
+                        "thumbnail": "Generic/Energy/EnergyStrand_Multiple02_Regular_BluePink_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05ft_600x400"],
+                                "duration": [700],
+                                "size": [600, 400]
+                            },
+                            "600": {
+                                "name": ["15ft_1000x400"],
+                                "duration": [730],
+                                "size": [1000, 400]
+                            },
+                            "1200": {
+                                "name": ["30ft_1600x400"],
+                                "duration": [800],
+                                "size": [1600, 400]
+                            },
+                            "2400": {
+                                "name": ["60ft_2800x400"],
+                                "duration": [830],
+                                "size": [2800, 400]
+                            },
+                            "3600": {
+                                "name": ["90ft_4000x400"],
+                                "duration": [970],
+                                "size": [4000, 400]
+                            }
+                        }
+                    }
+                },
+                "in": {
+                    "1": {
+                        "basename": "Generic/Energy/EnergyStrandIN01_01_Regular_Green",
+                        "thumbnail": "Generic/Energy/EnergyStrandIN01_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [1230],
+                                "size": [600, 600]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Energy/EnergyStrandIN01_02_Regular_Green",
+                        "thumbnail": "Generic/Energy/EnergyStrandIN01_02_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [1830],
+                                "size": [600, 600]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/Energy/EnergyStrandIN01_03_Regular_Green",
+                        "thumbnail": "Generic/Energy/EnergyStrandIN01_03_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [2000],
+                                "size": [600, 600]
+                            }
+                        }
+                    }
+                }
+            },
+            "energy_wall": {
+                "line": {
+                    "complete": {
+                        "basename": "Generic/Energy/EnergyWall01_01_Regular_Orange",
+                        "thumbnail": "Generic/Energy/EnergyWall01_01_Regular_Orange_05x05ft_Complete_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05x05ft_Complete_400x400"],
+                                "duration": [4000],
+                                "size": [400, 400]
+                            },
+                            "400": {
+                                "name": ["10x05ft_Complete_800x400"],
+                                "duration": [4000],
+                                "size": [800, 400]
+                            },
+                            "600": {
+                                "name": ["15x05ft_Complete_1000x400"],
+                                "duration": [4000],
+                                "size": [1000, 400]
+                            },
+                            "1000": {
+                                "name": ["25x05ft_Complete_1400x400"],
+                                "duration": [4000],
+                                "size": [1400, 400]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Energy/EnergyWall01_01_Regular_Orange",
+                        "thumbnail": "Generic/Energy/EnergyWall01_01_Regular_Orange_05x05ft_Complete_Thumb.webp",
+                        "type": "TARGET",
+                        "dpi": 200,
+                        "variants": {
+                            "200": {
+                                "name": ["05x05ft_Loop_400x400"],
+                                "duration": [4000],
+                                "size": [400, 400]
+                            },
+                            "400": {
+                                "name": ["10x05ft_Loop_800x400"],
+                                "duration": [4000],
+                                "size": [800, 400]
+                            },
+                            "600": {
+                                "name": ["15x05ft_Loop_1000x400"],
+                                "duration": [4000],
+                                "size": [1000, 400]
+                            },
+                            "1000": {
+                                "name": ["25x05ft_Loop_1400x400"],
+                                "duration": [4000],
+                                "size": [1400, 400]
+                            }
+                        }
+                    }
+                },
+                "ring": {
+                    "complete": {
+                        "basename": "Generic/Energy/EnergyWall01_01_Regular_Orange_Circle_Complete",
+                        "thumbnail": "Generic/Energy/EnergyWall01_01_Regular_Orange_Circle_Complete_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "500": {
+                                "name": ["500x500"],
+                                "duration": [4000],
+                                "size": [500, 500]
+                            },
+                            "900": {
+                                "name": ["900x900"],
+                                "duration": [4000],
+                                "size": [900, 900]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Energy/EnergyWall01_01_Regular_Orange_Circle_Loop",
+                        "thumbnail": "Generic/Energy/EnergyWall01_01_Regular_Orange_Circle_Complete_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "500": {
+                                "name": ["500x500"],
+                                "duration": [2670],
+                                "size": [500, 500]
+                            },
+                            "900": {
+                                "name": ["900x900"],
+                                "duration": [2670],
+                                "size": [900, 900]
+                            }
+                        }
+                    }
+                }
+            },
+            "icosahedron": {
+                "normal": {
+                    "basename": "Generic/Energy/Icosahedron_01_Regular_Blue",
+                    "thumbnail": "Generic/Energy/Icosahedron_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [6000],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "roll": {
+                    "basename": "Generic/Energy/IcosahedronRoll_01_Regular_Blue",
+                    "thumbnail": "Generic/Energy/IcosahedronRoll_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4040],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "rune_above": {
+                    "basename": "Generic/Energy/IcosahedronRuneAbove_01_Regular_BlueYellow",
+                    "thumbnail": "Generic/Energy/IcosahedronRuneAbove_01_Regular_BlueYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [6000],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "rune_below": {
+                    "basename": "Generic/Energy/IcosahedronRuneBelow_01_Regular_BlueYellow",
+                    "thumbnail": "Generic/Energy/IcosahedronRuneBelow_01_Regular_BlueYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [6000],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "star_above": {
+                    "basename": "Generic/Energy/IcosahedronStarAbove_01_Regular_BlueYellow",
+                    "thumbnail": "Generic/Energy/IcosahedronStarAbove_01_Regular_BlueYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [6000],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "star_below": {
+                    "basename": "Generic/Energy/IcosahedronStarBelow_01_Regular_BlueYellow",
+                    "thumbnail": "Generic/Energy/IcosahedronStarBelow_01_Regular_BlueYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [6000],
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            },
+            "shield_eldritch_web": {
+                "above": {
+                    "basename": "Generic/Energy/ShieldEldritchWebAbove01_01_Dark_Purple",
+                    "thumbnail": "Generic/Energy/ShieldEldritchWebAbove01_01_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5000],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "below": {
+                    "basename": "Generic/Energy/ShieldEldritchWebBelow01_01_Dark_Purple",
+                    "thumbnail": "Generic/Energy/ShieldEldritchWebBelow01_01_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [10400],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "shimmer": {
+                "basename": "Generic/Energy/Shimmer01_01_Regular_Blue",
+                "thumbnail": "Generic/Energy/Shimmer01_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [580],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "soundwave": {
+                "smooth": {
+                    "basename": "Generic/Energy/Soundwave01_01_Regular_Blue",
+                    "thumbnail": "Generic/Energy/Soundwave01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2580],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "jagged": {
+                    "basename": "Generic/Energy/Soundwave01_02_Regular_Blue",
+                    "thumbnail": "Generic/Energy/Soundwave01_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2580],
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            },
+            "swirling_sparkles": {
+                "basename": "Generic/Energy/SwirlingSparkles_01_Regular_Blue",
+                "thumbnail": "Generic/Energy/SwirlingSparkles_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [3300],
+                        "size": [400, 400]
+                    }
+                }
+            }
+        },
         "ice": {
             "snowflake_burst": {
                 "complete": {

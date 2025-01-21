@@ -1,7 +1,7 @@
 import { APP_KEY, ASSET_LOCATION } from "../config";
 import { Effect, Effects } from "../types/effects";
 import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "../components/Settings";
-import OBR, { Image, Metadata, Vector2, buildImage } from "@owlbear-rodeo/sdk";
+import OBR, { Image, Layer, Metadata, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { log_error, log_info } from "../logging";
 
@@ -160,6 +160,7 @@ export function buildEffectImage(
     duration?: number,
     loops?: number,
     metadata?: Metadata,
+    layer?: Layer,
     spellName?: string,
     spellCaster?: string
 ) {
@@ -214,7 +215,7 @@ export function buildEffectImage(
     ).metadata(
         gatheredMetadata
     ).layer(
-        isCompanion ? "CHARACTER" : "ATTACHMENT"
+        layer ?? (isCompanion ? "CHARACTER" : "ATTACHMENT")
     );
     if (attachedTo != undefined) {
         // Maybe change the item this attaches to's metadata

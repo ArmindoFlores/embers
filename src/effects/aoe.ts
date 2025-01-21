@@ -1,7 +1,7 @@
+import { Layer, Metadata } from "@owlbear-rodeo/sdk";
 import { buildEffectImage, getEffect, getVariantName, registerEffect } from "./effects";
 
 import { AOEEffectProperties } from "../types/aoe";
-import { Metadata } from "@owlbear-rodeo/sdk";
 import { log_error } from "../logging";
 
 export function aoe(
@@ -10,6 +10,7 @@ export function aoe(
     duration?: number,
     loops?: number,
     metadata?: Metadata,
+    layer?: Layer,
     onComplete?: () => void,
     variant?: number,
     forcedVariant?: number,
@@ -40,6 +41,7 @@ export function aoe(
         duration,
         loops,
         metadata,
+        layer,
         spellName,
         spellCaster
     );

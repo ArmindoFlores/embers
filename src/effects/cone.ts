@@ -1,7 +1,7 @@
+import { Layer, Metadata } from "@owlbear-rodeo/sdk";
 import { buildEffectImage, getEffect, registerEffect } from "./effects";
 
 import { ConeProperties } from "../types/cone";
-import { Metadata } from "@owlbear-rodeo/sdk";
 import { log_error } from "../logging";
 
 export function cone(
@@ -10,6 +10,7 @@ export function cone(
     duration?: number,
     loops?: number,
     metadata?: Metadata,
+    layer?: Layer,
     onComplete?: () => void,
     variant?: number,
     spellName?: string,
@@ -44,6 +45,7 @@ export function cone(
         duration,
         loops,
         metadata,
+        layer,
         spellName,
         spellCaster
     );

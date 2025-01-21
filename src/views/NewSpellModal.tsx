@@ -4,12 +4,12 @@ import { AOEEffectBlueprint, BlueprintFunction, BlueprintType, BlueprintValue, E
 import { APP_KEY, ASSET_LOCATION } from "../config";
 import { Effect, EffectType } from "../types/effects";
 import { FaArrowLeft, FaCirclePlus, FaFloppyDisk, FaPencil, FaTrash } from "react-icons/fa6";
+import OBR, { Layer } from "@owlbear-rodeo/sdk";
 import { ReplicationType, Spell } from "../types/spells";
 import { effectNames, getEffect } from "../effects";
 import { isBlueprintVariable, isUnresolvedBlueprint } from "../effects/blueprint";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import OBR from "@owlbear-rodeo/sdk";
 import { actions } from "../effects/actions";
 import { blueprintFunctions } from "../effects/blueprintFunctions";
 import { getSpell } from "../effects/spells";
@@ -18,8 +18,9 @@ import { useParams } from "react-router";
 
 export const newSpellModalID = `${APP_KEY}/new-spell`;
 export const spellListMetadataKey = `${APP_KEY}/spell-list`;
+const LAYERS: Layer[] = ["ATTACHMENT", "CHARACTER", "CONTROL", "DRAWING", "FOG", "GRID", "MAP", "MOUNT", "NOTE", "POINTER", "POPOVER", "POST_PROCESS", "PROP", "RULER", "TEXT"];
 
-type ValueType = "string" | "number" | "boolean" | "vector" | "effect" | "action";
+type ValueType = "string" | "number" | "boolean" | "vector" | "effect" | "action" | "layer";
 
 interface Editable<T = unknown> {
     type: "effect" | "action" | "value" | "spell";
@@ -74,7 +75,7 @@ function BlueprintValueInput<T>({
     return <div className="blueprint-value-cell" onClick={onClick}>
         <p>
             {
-                (type === "string" || type === "effect" || type === "action") ?
+                (type === "string" || type === "effect" || type === "action" || type === "layer") ?
                 value == null ? "null" : `"${value}"` :
                 type === "number" ?
                 (value as number) ?? "null" :
@@ -97,12 +98,12 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
 
     const onClose = useCallback(() => {
         if (valueType === "value") {
-            if (datatype === "string" || datatype === "effect" || datatype === "action") {
+            if (datatype === "string" || datatype === "effect" || datatype === "action" || datatype === "layer") {
                 setValue(currentValue);
             }
             else if (datatype === "number") {
-                const intValue = parseInt(currentValue ?? "");
-                setValue(currentValue && !isNaN(intValue) ? intValue : null);
+                const numberValue = parseFloat(currentValue ?? "");
+                setValue(currentValue && !isNaN(numberValue) ? numberValue : null);
             }
             else if (datatype === "boolean") {
                 setValue(currentBooleanValue === "null" ? null : currentBooleanValue === "true");
@@ -133,7 +134,7 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
         }
         else {
             setValueType("value");
-            if (type === "string" || type === "effect" || type === "action") {
+            if (type === "string" || type === "effect" || type === "action" || type === "layer") {
                 setCurrentValue(value as string|null ?? "");
             }
             else if (type === "number") {
@@ -195,7 +196,7 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
                 <label htmlFor="value" className="row" title="The value for this field">
                     <p>Value </p>
                     {
-                        datatype !== "boolean" && datatype !== "effect" && datatype !== "action" &&
+                        datatype !== "boolean" && datatype !== "effect" && datatype !== "action" && datatype !== "layer" &&
                         <input value={currentValue ?? ""} onChange={event => setCurrentValue(event.target.value)} type={datatype == "number" ? "number": "text"} />
                     }
                     {
@@ -213,6 +214,15 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
                             <option value="" disabled>Select an action</option>
                             {
                                 Object.keys(actions).map(action => <option key={action} value={action}>{ action }</option>)
+                            }
+                        </select>
+                    }
+                    {
+                        datatype === "layer" &&
+                        <select value={currentValue ?? ""} onChange={event => setCurrentValue(event.target.value)}>
+                            <option value="" disabled>Select a layer</option>
+                            {
+                                LAYERS.map(layer => <option key={layer} value={layer}>{ layer }</option>)
                             }
                         </select>
                     }
@@ -430,6 +440,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
     const [disableHit, setDisableHit] = useState<BlueprintValue<boolean>|null>(null);
     const [disabled, setDisabled] = useState<BlueprintValue<boolean>|null>(null);
     const [forceVariant, setForceVariant] = useState<BlueprintValue<boolean>|null>(null);
+    const [layer, setLayer] = useState<BlueprintValue<Layer|null>>(null);
     const [loops, setLoops] = useState<BlueprintValue<number>|null>(null);
     const [blueprints, setBlueprints] = useState<EffectBlueprint[]>([]);
     const [effectType, setEffectType] = useState<EffectType>();
@@ -448,13 +459,14 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
             duration: duration ?? undefined,
             loops: loops ?? undefined,
             disableHit: disableHit ?? undefined,
+            layer: layer ?? undefined,
             blueprints,
             type: "effect",
             effectProperties: effectProperties ?? undefined
         });
 
         close();
-    }, [close, attachedTo, blueprints, effectProperties, delay, duration, effectID, loops, disableHit, setEffect]);
+    }, [close, attachedTo, blueprints, effectProperties, delay, duration, effectID, loops, disableHit, layer, setEffect]);
 
     useEffect(() => {
         setEffectID(effect.id ?? null);
@@ -464,6 +476,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
         setLoops(effect.loops ?? null);
         setDisableHit(effect.disableHit ?? null);
         setBlueprints(effect.blueprints ?? []);
+        setLayer(effect.layer ?? null);
         setEffectProperties(effect.effectProperties ?? null);
         if (effect.id && ! isUnresolvedBlueprint(effect.id)) {
             const effectDetails = getEffect(effect.id);
@@ -529,6 +542,14 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
             <label htmlFor="force-variant" title="For effects like magic missiles, where there are multiple variants, you can set this to a number to ensure the same one is always used">
                 <p>Force variant</p>
                 <BlueprintValueInput value={forceVariant} setValue={setForceVariant} setEditing={setEditing} type="boolean" />
+            </label>
+        </div>
+        <div className="row">
+            <label htmlFor="layer" title="The layer where this effect will be played">
+                <p>Layer</p>
+                <BlueprintValueInput value={layer} setValue={setLayer} setEditing={setEditing} type="layer" />
+            </label>
+            <label>
             </label>
         </div>
         <hr style={{margin: "0.5rem 0px"}}></hr>
