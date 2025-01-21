@@ -340,6 +340,7 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
 function EditAction({ action, setAction, close }: { action: EffectBlueprint, setAction: (v: EffectBlueprint) => void, close: () => void }) {
     const [actionID, setActionID] = useState<BlueprintValue<string>|null>(null);
     const [disabled, setDisabled] = useState<BlueprintValue<boolean>|null>(null);
+    const [delay, setDelay] = useState<BlueprintValue<number>|null>(null);
     const [actionArguments, setArguments] = useState<BlueprintValue<unknown>[]>([]);
     const [editing, setEditing] = useState<Editable<EffectBlueprint|BlueprintValue<unknown>>>();
 
@@ -352,15 +353,17 @@ function EditAction({ action, setAction, close }: { action: EffectBlueprint, set
             id: actionID,
             type: "action",
             arguments: actionArguments,
-            disabled: disabled != null ? disabled : undefined
+            disabled: disabled != null ? disabled : undefined,
+            delay: delay ?? undefined
         });
 
         close();
-    }, [close, actionArguments, setAction, actionID, disabled]);
+    }, [close, actionArguments, setAction, actionID, disabled, delay]);
 
     useEffect(() => {
         setActionID(action.id ?? null);
         setDisabled(action.disabled ?? null);
+        setDelay(action.delay ?? null);
         setArguments(action.arguments ?? []);
     }, [action, setAction]);
 
@@ -392,6 +395,10 @@ function EditAction({ action, setAction, close }: { action: EffectBlueprint, set
                 <BlueprintValueInput value={disabled} setValue={setDisabled} setEditing={setEditing} type="boolean" />
             </label>
         </div>
+        <label htmlFor="action-id">
+            <p>Delay</p>
+            <BlueprintValueInput value={delay} setValue={setDelay} setEditing={setEditing} type="number" />
+        </label>
         <p className="subtitle add-custom-spell" title="Add a new argument to this action">
             Arguments
             <FaCirclePlus
