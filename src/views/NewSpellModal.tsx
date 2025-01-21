@@ -339,6 +339,7 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
 
 function EditAction({ action, setAction, close }: { action: EffectBlueprint, setAction: (v: EffectBlueprint) => void, close: () => void }) {
     const [actionID, setActionID] = useState<BlueprintValue<string>|null>(null);
+    const [disabled, setDisabled] = useState<BlueprintValue<boolean>|null>(null);
     const [actionArguments, setArguments] = useState<BlueprintValue<unknown>[]>([]);
     const [editing, setEditing] = useState<Editable<EffectBlueprint|BlueprintValue<unknown>>>();
 
@@ -350,14 +351,16 @@ function EditAction({ action, setAction, close }: { action: EffectBlueprint, set
         setAction({
             id: actionID,
             type: "action",
-            arguments: actionArguments
+            arguments: actionArguments,
+            disabled: disabled != null ? disabled : undefined
         });
 
         close();
-    }, [close, actionArguments, setAction, actionID]);
+    }, [close, actionArguments, setAction, actionID, disabled]);
 
     useEffect(() => {
         setActionID(action.id ?? null);
+        setDisabled(action.disabled ?? null);
         setArguments(action.arguments ?? []);
     }, [action, setAction]);
 
@@ -379,10 +382,16 @@ function EditAction({ action, setAction, close }: { action: EffectBlueprint, set
             Edit Action
         </p>
         <p className="title">Details</p>
-        <label htmlFor="action-id">
-            <p>Action ID</p>
-            <BlueprintValueInput value={actionID} setValue={setActionID} setEditing={setEditing} type="action" />
-        </label>
+        <div className="row">
+            <label htmlFor="action-id">
+                <p>Action ID</p>
+                <BlueprintValueInput value={actionID} setValue={setActionID} setEditing={setEditing} type="action" />
+            </label>
+            <label htmlFor="action-id">
+                <p>Disabled</p>
+                <BlueprintValueInput value={disabled} setValue={setDisabled} setEditing={setEditing} type="boolean" />
+            </label>
+        </div>
         <p className="subtitle add-custom-spell" title="Add a new argument to this action">
             Arguments
             <FaCirclePlus
