@@ -467,6 +467,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
             delay: delay ?? undefined,
             duration: duration ?? undefined,
             loops: loops ?? undefined,
+            disabled: disabled ?? undefined,
             disableHit: disableHit ?? undefined,
             layer: layer ?? undefined,
             blueprints,
@@ -475,7 +476,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
         });
 
         close();
-    }, [close, attachedTo, blueprints, effectProperties, delay, duration, effectID, loops, disableHit, layer, setEffect]);
+    }, [close, attachedTo, blueprints, effectProperties, delay, duration, effectID, loops, disableHit, layer, setEffect, disabled]);
 
     useEffect(() => {
         setEffectID(effect.id ?? null);
@@ -483,6 +484,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
         setDelay(effect.delay ?? null);
         setDuration(effect.duration ?? null);
         setLoops(effect.loops ?? null);
+        setDisabled(effect.disabled ?? null);
         setDisableHit(effect.disableHit ?? null);
         setBlueprints(effect.blueprints ?? []);
         setLayer(effect.layer ?? null);
