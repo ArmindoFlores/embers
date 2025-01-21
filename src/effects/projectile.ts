@@ -1,4 +1,4 @@
-import { Image, Metadata } from "@owlbear-rodeo/sdk";
+import { Image, Layer, Metadata } from "@owlbear-rodeo/sdk";
 import { buildEffectImage, getDistance, getEffect, getEffectURL, getRotation, getVariantName, registerEffect, urlVariant } from "./effects";
 
 import { ProjectileProperties } from "../types/projectile";
@@ -39,6 +39,7 @@ export function projectile(
     duration?: number,
     loops?: number,
     metadata?: Metadata,
+    layer?: Layer,
     onComplete?: () => void,
     variant?: number,
     spellName?: string,
@@ -77,6 +78,7 @@ export function projectile(
             duration,
             loops,
             metadata,
+            layer,
             spellName,
             spellCaster
         );

@@ -1,6 +1,7 @@
+import { Layer, Metadata } from "@owlbear-rodeo/sdk";
+
 import { AOEEffectMessage } from "./aoe";
 import { ConeMessage } from "./cone";
-import { Metadata } from "@owlbear-rodeo/sdk";
 import { ProjectileMessage } from "./projectile";
 
 export interface EffectInstruction {
@@ -18,6 +19,8 @@ export interface EffectInstruction {
     loops?: number;
     // Custom metadata to add to this effect
     metadata?: Metadata;
+    // Which layer to play this effect on
+    layer?: Layer;
     // If specified, the chosen effect variant will always be this one, if it exists
     forceVariant?: number;
     // Arguments if this instruction is an action

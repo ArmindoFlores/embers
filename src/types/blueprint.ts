@@ -1,4 +1,4 @@
-import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
+import { Layer, Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 export type BlueprintValueUnresolved = string | BlueprintFunction;
 export type BlueprintValue<T> = T | BlueprintValueUnresolved;
@@ -44,6 +44,8 @@ export interface EffectBlueprint {
     disableHit?: BlueprintValue<boolean>;
     // Custom metadata to add to this effect
     metadata?: BlueprintValue<Metadata>;
+    // What layer this effect goes in
+    layer?: BlueprintValue<Layer>;
     // Details about how to play this effect
     effectProperties?: ProjectileBlueprint | AOEEffectBlueprint | ConeBlueprint;
     // Instructions to execute after this effect is done

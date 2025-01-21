@@ -1,6 +1,6 @@
 import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
 import { EffectInstruction, MessageType } from "../types/messageListener";
-import { Metadata, Vector2 } from "@owlbear-rodeo/sdk";
+import { Layer, Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 import { AOEEffectMessage } from "../types/aoe";
 import { ConeMessage } from "../types/cone";
@@ -205,6 +205,12 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         return maybeMetadata;
     }
     const metadata = maybeMetadata.value;
+
+    const maybeLayer = resolveSimpleValue<Layer>(element.layer, "layer", "string", variables);
+    if (isError(maybeLayer)) {
+        return maybeLayer;
+    }
+    const layer = maybeLayer.value;
 
     let actionArguments: unknown[]|undefined;
     if (element.arguments != undefined) {
@@ -469,6 +475,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         loops,
         forceVariant,
         metadata,
+        layer,
         arguments: actionArguments
     };
     message.push(newInstruction);
