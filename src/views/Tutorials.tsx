@@ -106,6 +106,9 @@ export default function Tutorials() {
                 <li><p className="docs-p">
                     Attached To - the ID of the item to attach this to; leave blank if it is not supposed to be attached
                 </p></li>
+                <li><p className="docs-p">
+                    Layer - the layer where this effect will be played
+                </p></li>
             </ul>
             <p className="docs-p">
                 There are also additional properties you'll have to define depending on the type of effect you're using.
@@ -115,7 +118,8 @@ export default function Tutorials() {
                 One of the most important things is to understand how editing values works.
                 When you click on a value, you will be able to edit it, and can choose either a literal value, a variable, or a function.
                 When you choose a literal value, you will be able to detail exactly what value you want, like "3", or "true".
-                When you choose a variable, you will be able to access the array of targets. It has 4 properties:
+                When you choose a variable, you will be able to access two arrays, targets and globalTargets;
+                globalTargets always includes all selected targets. Their elements have 4 properties:
             </p>
             <ul>
                 <li><p className="docs-p">id - the ID of the targeted item</p></li>

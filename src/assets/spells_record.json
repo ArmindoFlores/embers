@@ -1608,15 +1608,25 @@
         "minTargets": 2,
         "maxTargets": 5,
         "thumbnail": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue_Primary_Thumb.webp",
-        "replicate": "no",
+        "replicate": "all",
         "copy": -1,
         "blueprints": [
             {
                 "type": "effect",
                 "id": "chain_lightning.primary",
+                "disabled": {
+                    "name": "not_equals",
+                    "arguments": [
+                        {
+                            "name": "index_of",
+                            "arguments": ["$targets[0]", "$globalTargets"]
+                        },
+                        1
+                    ]
+                },
                 "effectProperties": {
-                    "source": "$targets[0].position",
-                    "destination": "$targets[1].position",
+                    "source": "$globalTargets[0].position",
+                    "destination": "$targets[0].position",
                     "copies": 1
                 }
             },
@@ -1626,39 +1636,17 @@
                 "delay": 1000,
                 "disabled": {
                     "name": "lesser_than",
-                    "arguments": ["$targets.length", 3]
+                    "arguments": [
+                        {
+                            "name": "index_of",
+                            "arguments": ["$targets[0]", "$globalTargets"]
+                        },
+                        1
+                    ]
                 },
                 "effectProperties": {
-                    "source": "$targets[1].position",
-                    "destination": "$targets[2].position",
-                    "copies": 1
-                }
-            },
-            {
-                "type": "effect",
-                "id": "chain_lightning.secondary",
-                "delay": 1000,
-                "disabled": {
-                    "name": "lesser_than",
-                    "arguments": ["$targets.length", 4]
-                },
-                "effectProperties": {
-                    "source": "$targets[1].position",
-                    "destination": "$targets[3].position",
-                    "copies": 1
-                }
-            },
-            {
-                "type": "effect",
-                "id": "chain_lightning.secondary",
-                "delay": 1000,
-                "disabled": {
-                    "name": "lesser_than",
-                    "arguments": ["$targets.length", 5]
-                },
-                "effectProperties": {
-                    "source": "$targets[1].position",
-                    "destination": "$targets[4].position",
+                    "source": "$globalTargets[1].position",
+                    "destination": "$targets[0].position",
                     "copies": 1
                 }
             }
