@@ -101,8 +101,8 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
                 setValue(currentValue);
             }
             else if (datatype === "number") {
-                const intValue = parseInt(currentValue ?? "");
-                setValue(currentValue && !isNaN(intValue) ? intValue : null);
+                const numberValue = parseFloat(currentValue ?? "");
+                setValue(currentValue && !isNaN(numberValue) ? numberValue : null);
             }
             else if (datatype === "boolean") {
                 setValue(currentBooleanValue === "null" ? null : currentBooleanValue === "true");
