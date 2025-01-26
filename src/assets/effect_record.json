@@ -4256,6 +4256,1248 @@
                 }
             }
         },
+        "marker": {
+            "simple": {
+                "blue": {
+                    "complete": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Blue",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [5000],
+                                "size": [600, 600]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleLoop001_001_Blue",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [2000],
+                                "size": [600, 600]
+                            }
+                        }
+                    }
+                },
+                "green": {
+                    "complete": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Green",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [5000],
+                                "size": [600, 600]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleLoop001_001_Green",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [2000],
+                                "size": [600, 600]
+                            }
+                        }
+                    }
+                },
+                "purple": {
+                    "complete": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Purple",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [5000],
+                                "size": [600, 600]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleLoop001_001_Purple",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [2000],
+                                "size": [600, 600]
+                            }
+                        }
+                    }
+                },
+                "red": {
+                    "complete": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Red",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [5000],
+                                "size": [600, 600]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleLoop001_001_Red",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [2000],
+                                "size": [600, 600]
+                            }
+                        }
+                    }
+                },
+                "yellow": {
+                    "complete": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Yellow",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [5000],
+                                "size": [600, 600]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Marker/Simple/MarkerSimpleLoop001_001_Yellow",
+                        "thumbnail": "Generic/Marker/Simple/MarkerSimpleComplete001_001_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 200,
+                        "variants": {
+                            "600": {
+                                "name": ["600x600"],
+                                "duration": [2000],
+                                "size": [600, 600]
+                            }
+                        }
+                    }
+                }
+            },
+            "energy_strands": {
+                "single": {
+                    "basename": "Generic/Marker/EnergyStrands_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/EnergyStrands_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2030],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "multiple": {
+                    "basename": "Generic/Marker/EnergyStrands02_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Marker/EnergyStrands02_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5000],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "overlay": {
+                    "basename": "Generic/Marker/EnergyStrandsOverlay_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/EnergyStrandsOverlay_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2030],
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            },
+            "default": {
+                "basename": "Generic/Marker/Marker_01_Regular_BlueYellow",
+                "thumbnail": "Generic/Marker/Marker_01_Regular_BlueYellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [6040],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "bubble": {
+                "big": {
+                    "complete": {
+                        "basename": "Generic/Marker/MarkerBubbleComplete_01_Regular_Blue",
+                        "thumbnail": "Generic/Marker/MarkerBubble_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [10040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Marker/MarkerBubbleIntro_01_Regular_Blue",
+                        "thumbnail": "Generic/Marker/MarkerBubbleIntro_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [3290],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Marker/MarkerBubble_01_Regular_Blue",
+                        "thumbnail": "Generic/Marker/MarkerBubble_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [5040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Marker/MarkerBubbleOutro_01_Regular_Blue",
+                        "thumbnail": "Generic/Marker/MarkerBubbleOutro_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [2460],
+                                "size": [400, 400]
+                            }
+                        }
+                    }
+                },
+                "small": {
+                    "1": {
+                        "complete": {
+                            "basename": "Generic/Marker/MarkerBubbleComplete_02_01_Regular_Blue",
+                            "thumbnail": "Generic/Marker/MarkerBubbleComplete_02_01_Regular_Blue_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": ["400x400"],
+                                    "duration": [5040],
+                                    "size": [400, 400]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Marker/MarkerBubbleLoop_02_01_Regular_Blue",
+                            "thumbnail": "Generic/Marker/MarkerBubbleComplete_02_01_Regular_Blue_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": ["400x400"],
+                                    "duration": [1670],
+                                    "size": [400, 400]
+                                }
+                            }
+                        }
+                    },
+                    "2": {
+                        "complete": {
+                            "basename": "Generic/Marker/MarkerBubbleComplete_02_02_Regular_Blue",
+                            "thumbnail": "Generic/Marker/MarkerBubbleComplete_02_02_Regular_Blue_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": ["400x400"],
+                                    "duration": [5040],
+                                    "size": [400, 400]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Marker/MarkerBubbleLoop_02_02_Regular_Blue",
+                            "thumbnail": "Generic/Marker/MarkerBubbleComplete_02_02_Regular_Blue_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": ["400x400"],
+                                    "duration": [1670],
+                                    "size": [400, 400]
+                                }
+                            }
+                        }
+                    },
+                    "3": {
+                        "complete": {
+                            "basename": "Generic/Marker/MarkerBubbleComplete_02_03_Regular_Blue",
+                            "thumbnail": "Generic/Marker/MarkerBubbleComplete_02_03_Regular_Blue_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": ["400x400"],
+                                    "duration": [5040],
+                                    "size": [400, 400]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Marker/MarkerBubbleLoop_02_03_Regular_Blue",
+                            "thumbnail": "Generic/Marker/MarkerBubbleComplete_02_03_Regular_Blue_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": ["400x400"],
+                                    "duration": [1670],
+                                    "size": [400, 400]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "spectral_chain": {
+                "complete": {
+                    "basename": "Generic/Marker/MarkerChainSpectralStandard01_02_Regular_Blue_Complete",
+                    "thumbnail": "Generic/Marker/MarkerChainSpectralStandard01_02_Regular_Blue_Complete_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [8330],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Marker/MarkerChainSpectralStandard01_02_Regular_Blue_Loop",
+                    "thumbnail": "Generic/Marker/MarkerChainSpectralStandard01_02_Regular_Blue_Loop_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [8330],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "red_chain_ground": {
+                "basename": "Generic/Marker/MarkerChainStandard01_01_Regular_Red_Loop",
+                "thumbnail": "Generic/Marker/MarkerChainStandard01_01_Regular_Red_Loop_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [5000],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "red_chain": {
+                "complete": {
+                    "basename": "Generic/Marker/MarkerChainStandard01_02_Regular_Red_Complete",
+                    "thumbnail": "Generic/Marker/MarkerChainStandard01_02_Regular_Red_Complete_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [8330],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Marker/MarkerChainStandard01_02_Regular_Red_Loop",
+                    "thumbnail": "Generic/Marker/MarkerChainStandard01_02_Regular_Red_Loop_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5000],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "circle_of_stars": {
+                "basename": "Generic/Marker/MarkerCircleOfStars_Regular_Blue",
+                "thumbnail": "Generic/Marker/MarkerCircleOfStars_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4000],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "drop": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerDrop_01_Regular_Red",
+                    "thumbnail": "Generic/Marker/MarkerDrop_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerDrop_02_Regular_Red",
+                    "thumbnail": "Generic/Marker/MarkerDrop_02_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerDrop_03_Regular_Red",
+                    "thumbnail": "Generic/Marker/MarkerDrop_03_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "fear": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerFear_01_Dark_Purple",
+                    "thumbnail": "Generic/Marker/MarkerFear_01_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerFear_02_Dark_Purple",
+                    "thumbnail": "Generic/Marker/MarkerFear_02_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerFear_03_Dark_Purple",
+                    "thumbnail": "Generic/Marker/MarkerFear_03_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "heart": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerHeart_01_Regular_Pink",
+                    "thumbnail": "Generic/Marker/MarkerHeart_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerHeart_02_Regular_Pink",
+                    "thumbnail": "Generic/Marker/MarkerHeart_02_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerHeart_03_Regular_Pink",
+                    "thumbnail": "Generic/Marker/MarkerHeart_03_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "horror": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerHorror_01_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerHorror_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerHorror_02_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerHorror_02_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerHorror_03_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerHorror_03_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "light": {
+                "intro": {
+                    "basename": "Generic/Marker/MarkerLightIntro_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerLightIntro_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Marker/MarkerLight_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerLight_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Marker/MarkerLightOutro_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerLightOutro_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4920],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "complete": {
+                    "basename": "Generic/Marker/MarkerLightComplete_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerLight_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [13170],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "no_pulse": {
+                    "basename": "Generic/Marker/MarkerLightNoPulse_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerLightNoPulse_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "light_orb": {
+                "complete": {
+                    "basename": "Generic/Marker/MarkerLightOrbComplete_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerLightOrbComplete_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [13130],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Marker/MarkerLightOrbLoop_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerLightOrbLoop_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [5040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "music_note": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerMusicNote_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerMusicNote_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6000],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerMusicNote_02_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerMusicNote_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerMusicNote_03_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerMusicNote_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "mute": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerMute_01_Dark_Red",
+                    "thumbnail": "Generic/Marker/MarkerMute_01_Dark_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6000],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerMute_02_Dark_Red",
+                    "thumbnail": "Generic/Marker/MarkerMute_02_Dark_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerMute_03_Dark_Red",
+                    "thumbnail": "Generic/Marker/MarkerMute_03_Dark_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "poison": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerPoison_01_Dark_Green",
+                    "thumbnail": "Generic/Marker/MarkerPoison_01_Dark_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerPoison_02_Dark_Green",
+                    "thumbnail": "Generic/Marker/MarkerPoison_02_Dark_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerPoison_03_Dark_Green",
+                    "thumbnail": "Generic/Marker/MarkerPoison_03_Dark_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "runes": {
+                "1": {
+                    "1": {
+                        "basename": "Generic/Marker/MarkerRunes_01_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes_01_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Marker/MarkerRunes_02_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes_02_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/Marker/MarkerRunes_03_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes_03_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    }
+                },
+                "2": {
+                    "1": {
+                        "basename": "Generic/Marker/MarkerRunes02_01_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes02_01_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Marker/MarkerRunes02_02_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes02_02_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/Marker/MarkerRunes02_03_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes02_03_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    }
+                },
+                "3": {
+                    "1": {
+                        "basename": "Generic/Marker/MarkerRunes03_01_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes03_01_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Marker/MarkerRunes03_02_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes03_02_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/Marker/MarkerRunes03_03_Dark_Orange",
+                        "thumbnail": "Generic/Marker/MarkerRunes03_03_Dark_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": ["400x400"],
+                                "duration": [6040],
+                                "size": [400, 400]
+                            }
+                        }
+                    }
+                }
+            },
+            "shield": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerShield_01_Regular_Green",
+                    "thumbnail": "Generic/Marker/MarkerShield_01_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerShield_02_Regular_Green",
+                    "thumbnail": "Generic/Marker/MarkerShield_02_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerShield_03_Regular_Green",
+                    "thumbnail": "Generic/Marker/MarkerShield_03_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "shield_cracked": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerShieldCracked_01_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerShieldCracked_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerShieldCracked_02_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerShieldCracked_02_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerShieldCracked_03_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerShieldCracked_03_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "shield_rampart": {
+                "complete": {
+                    "basename": "Generic/Marker/MarkerShieldRampart01_01_Regular_Orange",
+                    "thumbnail": "Generic/Marker/MarkerShieldRampart01_01_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [7500],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Marker/MarkerShieldRampartLoop01_01_Regular_Orange",
+                    "thumbnail": "Generic/Marker/MarkerShieldRampartLoop01_01_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4330],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "skull": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerSkull_01_Dark_Orange",
+                    "thumbnail": "Generic/Marker/MarkerSkull_01_Dark_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerSkull_02_Dark_Orange",
+                    "thumbnail": "Generic/Marker/MarkerSkull_02_Dark_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerSkull_03_Dark_Orange",
+                    "thumbnail": "Generic/Marker/MarkerSkull_03_Dark_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "smoke_ring": {
+                "basename": "Generic/Marker/MarkerSmokeRingLoop01_Regular_BluePurple",
+                "thumbnail": "Generic/Marker/MarkerSmokeRingLoop01_Regular_BluePurple_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [5070],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "snowflake": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerSnowflake_01_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerSnowflake_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6000],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerSnowflake_02_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerSnowflake_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerSnowflake_03_Regular_Blue",
+                    "thumbnail": "Generic/Marker/MarkerSnowflake_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "stun": {
+                "1": {
+                    "basename": "Generic/Marker/MarkerStun_01_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerStun_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Marker/MarkerStun_02_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerStun_02_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Marker/MarkerStun_03_Regular_Purple",
+                    "thumbnail": "Generic/Marker/MarkerStun_03_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [6040],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "music": {
+                "basename": "Generic/Marker/MusicMarker_01_Regular_GreenOrange",
+                "thumbnail": "Generic/Marker/MusicMarker_01_Regular_GreenOrange_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [5040],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "on_token_mask": {
+                "loop": {
+                    "basename": "Generic/Marker/OnTokenMask01_01_Regular_Orange_Loop",
+                    "thumbnail": "Generic/Marker/OnTokenMask01_01_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "300": {
+                            "name": ["300x300"],
+                            "duration": [5000],
+                            "size": [300, 300]
+                        }
+                    }
+                },
+                "complete": {
+                    "basename": "Generic/Marker/OnTokenMask01_01_Regular_Orange_Complete",
+                    "thumbnail": "Generic/Marker/OnTokenMask01_01_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "300": {
+                            "name": ["300x300"],
+                            "duration": [7770],
+                            "size": [300, 300]
+                        }
+                    }
+                }
+            },
+            "ward_rune": {
+                "basename": "Generic/Marker/WardRune_01_Regular_Yellow",
+                "thumbnail": "Generic/Marker/WardRune_01_Regular_Yellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [6000],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "ward_star": {
+                "basename": "Generic/Marker/WardStar_01_Regular_Yellow",
+                "thumbnail": "Generic/Marker/WardStar_01_Regular_Yellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [6000],
+                        "size": [600, 600]
+                    }
+                }
+            }
+        },
         "ranged_spell": {
             "overcharged_sphere": {
                 "purple": {
