@@ -14,6 +14,7 @@ export default defineConfig({
     server: {
         headers: {
             "Cache-Control": "public, max-age=60"
-        }
+        },
+        cors: true
     }
 });
