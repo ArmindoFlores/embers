@@ -150,16 +150,18 @@ export function setupGMLocalSpells(playerConnections: Record<string, string>) {
             ])));
             log_info(`Client[${playerConnections[message.connectionId]}] asked to get`, data.payload);
             log_info("Replying with", localSpells);
-            OBR.broadcast.sendMessage(
-                SETUP_MESSAGE_CHANNEL,
-                {
-                    type: "LOCAL_SPELLS",
-                    destination: playerConnections[message.connectionId],
-                    localSpells,
-                    localSpellsList: []
-                },
-                { destination: "REMOTE" }
-            );
+            for (const [spellID, spell] of Object.entries(localSpells)) {
+                OBR.broadcast.sendMessage(
+                    SETUP_MESSAGE_CHANNEL,
+                    {
+                        type: "LOCAL_SPELLS",
+                        destination: playerConnections[message.connectionId],
+                        localSpells: { [spellID]: spell },
+                        localSpellsList: []
+                    },
+                    { destination: "REMOTE" }
+                );
+            }
         }
         else {
             log_error(`Invalid message type "${data.type}"`);
