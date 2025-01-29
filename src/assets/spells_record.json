@@ -472,7 +472,7 @@
                 "delay": 3500,
                 "duration": -1,
                 "disableHit": true,
-                "blueprints": [],
+                "attachedTo": "$targets[1].id",
                 "type": "effect",
                 "effectProperties": {
                     "source": "$targets[1].position",
