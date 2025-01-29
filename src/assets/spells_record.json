@@ -466,6 +466,18 @@
                     "destination": "$targets[1].position",
                     "copies": 1
                 }
+            },
+            {
+                "id": "generic.marker.circle_of_stars",
+                "delay": 3500,
+                "duration": -1,
+                "disableHit": true,
+                "attachedTo": "$targets[1].id",
+                "type": "effect",
+                "effectProperties": {
+                    "source": "$targets[1].position",
+                    "size": "$targets[1].size"
+                }
             }
         ]
     },
@@ -543,6 +555,38 @@
             {
                 "type": "effect",
                 "id": "shield.outro.fade",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
+    "shield_of_faith": {
+        "name": "Shield of Faith",
+        "thumbnail": "Generic/Marker/MarkerShieldRampart01_01_Regular_Orange_Thumb.webp",
+        "minTargets": 1,
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "id": "generic.marker.shield_rampart.complete",
+                "attachedTo": "$targets[0].id",
+                "blueprints": [],
+                "type": "effect",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            },
+            {
+                "id": "generic.marker.shield_rampart.loop",
+                "attachedTo": "$targets[0].id",
+                "delay": 6200,
+                "duration": -1,
+                "disableHit": true,
+                "blueprints": [],
+                "type": "effect",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -1832,6 +1876,36 @@
                 }
             }
         ]
+    },
+    "bardic_inspiration": {
+        "name": "Bardic Inspiration",
+        "minTargets": 1,
+        "replicate": "first_to_all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "id": "bardic_inspiration",
+                "blueprints": [],
+                "type": "effect",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            },
+            {
+                "id": "generic.marker.music_note.3",
+                "delay": 1000,
+                "duration": -1,
+                "disableHit": true,
+                "blueprints": [],
+                "type": "effect",
+                "effectProperties": {
+                    "source": "$targets[1].position",
+                    "size": "$targets[1].size"
+                }
+            }
+        ],
+        "thumbnail": "1st_Level/Bardic_Inspiration/BardicInspiration_01_Regular_GreenOrange_Thumb.webp"
     },
     "sneak_attack": {
         "name": "Sneak Attack",

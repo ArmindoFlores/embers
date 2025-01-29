@@ -455,7 +455,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
     const [duration, setDuration] = useState<BlueprintValue<number>|null>(null);
     const [disableHit, setDisableHit] = useState<BlueprintValue<boolean>|null>(null);
     const [disabled, setDisabled] = useState<BlueprintValue<boolean>|null>(null);
-    const [forceVariant, setForceVariant] = useState<BlueprintValue<boolean>|null>(null);
+    const [forceVariant, setForceVariant] = useState<BlueprintValue<number>|null>(null);
     const [layer, setLayer] = useState<BlueprintValue<Layer|null>>(null);
     const [loops, setLoops] = useState<BlueprintValue<number>|null>(null);
     const [blueprints, setBlueprints] = useState<EffectBlueprint[]>([]);
@@ -479,11 +479,12 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
             layer: layer ?? undefined,
             blueprints,
             type: "effect",
+            forceVariant: forceVariant ?? undefined,
             effectProperties: effectProperties ?? undefined
         });
 
         close();
-    }, [close, attachedTo, blueprints, effectProperties, delay, duration, effectID, loops, disableHit, layer, setEffect, disabled]);
+    }, [close, attachedTo, blueprints, effectProperties, delay, duration, effectID, loops, disableHit, layer, setEffect, disabled, forceVariant]);
 
     useEffect(() => {
         setEffectID(effect.id ?? null);
@@ -495,6 +496,7 @@ function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, set
         setDisableHit(effect.disableHit ?? null);
         setBlueprints(effect.blueprints ?? []);
         setLayer(effect.layer ?? null);
+        setForceVariant(effect.forceVariant ?? null);
         setEffectProperties(effect.effectProperties ?? null);
         if (effect.id && ! isUnresolvedBlueprint(effect.id)) {
             const effectDetails = getEffect(effect.id);

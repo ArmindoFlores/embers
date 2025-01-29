@@ -10,9 +10,10 @@ import { MessageType } from "../types/messageListener";
 import { Spell } from "../types/spells";
 import { useOBR } from "../react-obr/providers";
 
-function SpellDisplay({ spellID, item, caster }: { spellID?: string, item: Item, caster: Player }) {
+function SpellDisplay({ spellID, effectID, item, caster }: { spellID?: string, effectID?: string, item: Item, caster: Player }) {
     const obr = useOBR();
     const [spell, setSpell] = useState<Spell>();
+    const [attachedToName, setAttachedToName] = useState<string>();
     const [isGM, setIsGM] = useState<boolean>(false);
 
     const selectItem = useCallback(() => {
@@ -61,12 +62,18 @@ function SpellDisplay({ spellID, item, caster }: { spellID?: string, item: Item,
         setSpell(getSpell(spellID, isGM));
     }, [spellID, isGM]);
 
+    useEffect(() => {
+        if (item.attachedTo != undefined) {
+            OBR.scene.items.getItems([item.attachedTo]).then(item => setAttachedToName(item[0]?.name));
+        }
+    }, [item.attachedTo]);
+
     if (spell == undefined) {
         return null;
     }
 
     return <div className="scene-spell-display-item">
-        <p> { spell.name }</p>
+        <p title={`Spell name: ${spell.name}\nEffect ID: ${effectID}\nAttached to: ${attachedToName ?? "nothing"}\nCaster: ${caster.name}`}> { spell.name }</p>
         <div className="scene-spell-display-controls">
             <div className="scene-spell-display-control-button" onClick={selectItem} title="Select this effect">
                 <FaArrowPointer />
@@ -128,7 +135,13 @@ export default function SceneControls() {
             <ul className="scene-spell-list">
                 {
                     playerItems.map(item => (
-                        <SpellDisplay key={item.id} spellID={(item.metadata[spellMetadataKey] as MessageType["spellData"])?.name} item={item} caster={player} />
+                        <SpellDisplay
+                            key={item.id}
+                            spellID={(item.metadata[spellMetadataKey] as MessageType["spellData"])?.name}
+                            effectID={item.metadata[effectMetadataKey] as string}
+                            item={item}
+                            caster={player}
+                        />
                     ))
                 }
             </ul>
