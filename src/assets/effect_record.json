@@ -3450,6 +3450,236 @@
                 }
             }
         },
+        "creature": {
+            "claw": {
+                "1": {
+                    "basename": "Generic/Creature/Claw/CreatureAttackClaw_001",
+                    "thumbnail": "Generic/Creature/Claw/CreatureAttackClaw_001_001_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "duration": [1170, 1170, 1170, 1170],
+                            "size": [800, 600]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Creature/Claw/CreatureAttackClaw_002",
+                    "thumbnail": "Generic/Creature/Claw/CreatureAttackClaw_002_001_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "duration": [1170, 1170, 1170, 1170],
+                            "size": [800, 600]
+                        }
+                    }
+                }
+            },
+            "fist": {
+                "red": {
+                    "basename": "Generic/Creature/Fist/CreatureAttackFist_001",
+                    "thumbnail": "Generic/Creature/Fist/CreatureAttackFist_001_001_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "duration": [1130, 1130, 1130, 1170],
+                            "size": [800, 600]
+                        }
+                    }
+                },
+                "blue": {
+                    "basename": "Generic/Creature/Fist/CreatureAttackFist_002",
+                    "thumbnail": "Generic/Creature/Fist/CreatureAttackFist_002_001_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["001_Blue_800x600", "002_Blue_800x600", "003_Blue_800x600", "004_Blue_800x600"],
+                            "duration": [1130, 1130, 1130, 1170],
+                            "size": [800, 600]
+                        }
+                    }
+                }
+            },
+            "pincer": {
+                "red": {
+                    "basename": "Generic/Creature/Pincer/CreatureAttackPincer_001",
+                    "thumbnail": "Generic/Creature/Pincer/CreatureAttackPincer_001_001_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "duration": [1130, 1130, 1130, 1170],
+                            "size": [800, 600]
+                        }
+                    }
+                },
+                "blue": {
+                    "basename": "Generic/Creature/Pincer/CreatureAttackPincer_002",
+                    "thumbnail": "Generic/Creature/Pincer/CreatureAttackPincer_002_001_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["001_Blue_800x600", "002_Blue_800x600", "003_Blue_800x600", "004_Blue_800x600"],
+                            "duration": [1130, 1130, 1130, 1170],
+                            "size": [800, 600]
+                        }
+                    }
+                }
+            },
+            "bats": {
+                "complete": {
+                    "basename": "Generic/Creature/BatsComplete01_01_Regular_Red",
+                    "thumbnail": "Generic/Creature/BatsComplete01_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [8830],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Creature/BatsLoop01_01_Regular_Red",
+                    "thumbnail": "Generic/Creature/BatsLoop01_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [3000],
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            },
+            "bite": {
+                "basename": "Generic/Creature/Bite_01_Regular_Red",
+                "thumbnail": "Generic/Creature/Bite_01_Regular_Red_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": [1030],
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1030],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "claws": {
+                "basename": "Generic/Creature/Claws_01_Regular_Red",
+                "thumbnail": "Generic/Creature/Claws_01_Regular_Red_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": [2000],
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [2000],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "fairies": {
+                "complete": {
+                    "basename": "Generic/Creature/FairiesComplete01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Creature/FairiesComplete01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [8830],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Creature/FairiesLoop01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Creature/FairiesLoop01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [3000],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "inward": {
+                    "basename": "Generic/Creature/FairiesInward01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Creature/FairiesInward01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2330],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "inward_burst": {
+                    "basename": "Generic/Creature/FairiesInwardBurst01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Creature/FairiesInwardBurst01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [1500],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "outward": {
+                    "basename": "Generic/Creature/FairiesOutward01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Creature/FairiesOutward01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [2330],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "outward_burst": {
+                    "basename": "Generic/Creature/FairiesOutwardBurst01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Creature/FairiesOutwardBurst01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 200,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [1330],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            }
+        },
         "energy": {
             "teleport": {
                 "basename": "Generic/Energy/Teleport/Teleport01_01_Regular_Blue",
