@@ -4287,6 +4287,168 @@
                 }
             }
         },
+        "explosion": {
+            "orange1": {
+                "basename": "Generic/Explosion/Explosion_01_Orange",
+                "thumbnail": "Generic/Explosion/Explosion_01_Orange_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1370],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "orange2": {
+                "basename": "Generic/Explosion/Explosion_05_Regular_Orange",
+                "thumbnail": "Generic/Explosion/Explosion_05_Regular_Orange_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [3040],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "blue1": {
+                "basename": "Generic/Explosion/Explosion_02_Blue",
+                "thumbnail": "Generic/Explosion/Explosion_02_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1370],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "blue2": {
+                "basename": "Generic/Explosion/Explosion_04_Regular_Blue",
+                "thumbnail": "Generic/Explosion/Explosion_04_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1030],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "blue_yellow": {
+                "basename": "Generic/Explosion/Explosion_03_Regular_BlueYellow",
+                "thumbnail": "Generic/Explosion/Explosion_03_Regular_BlueYellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [2030],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "shrapnel_bomb": {
+                "basename": "Generic/Explosion/ShrapnelBomb01_01_Regular_Black",
+                "thumbnail": "Generic/Explosion/ShrapnelBomb01_01_Regular_Black_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [700],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "side_explosion": {
+                "1": {
+                    "basename": "Generic/Explosion/SideExplosion01_01_Regular_Orange",
+                    "thumbnail": "Generic/Explosion/SideExplosion01_01_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [5000],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Explosion/SideExplosion01_02_Regular_Orange",
+                    "thumbnail": "Generic/Explosion/SideExplosion01_02_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [5000],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Explosion/SideExplosion01_03_Regular_Orange",
+                    "thumbnail": "Generic/Explosion/SideExplosion01_03_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [5000],
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            },
+            "side_fracture_flask": {
+                "1": {
+                    "basename": "Generic/Explosion/SideFractureFlask01_01",
+                    "thumbnail": "Generic/Explosion/SideFractureFlask01_01_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["800x400"],
+                            "duration": [4800],
+                            "size": [800, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Explosion/SideFractureFlask01_02",
+                    "thumbnail": "Generic/Explosion/SideFractureFlask01_02_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4800],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "top_fracture_flask": {
+                "basename": "Generic/Explosion/TopFractureFlask01_01",
+                "thumbnail": "Generic/Explosion/TopFractureFlask01_01_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4800],
+                        "size": [400, 400]
+                    }
+                }
+            }
+        },
         "ice": {
             "snowflake_burst": {
                 "complete": {
