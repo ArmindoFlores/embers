@@ -1,9 +1,19 @@
 import "./Main.css";
 
-import { FaBook, FaDisplay, FaGear, FaHatWizard, FaPlus } from "react-icons/fa6";
+import {
+    FaBook,
+    FaDisplay,
+    FaGear,
+    FaHatWizard,
+    FaPlus,
+} from "react-icons/fa6";
 import OBR, { Player } from "@owlbear-rodeo/sdk";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { sendSpellsUpdate, setupGMLocalSpells, setupPlayerLocalSpells } from "../effects/localSpells";
+import {
+    sendSpellsUpdate,
+    setupGMLocalSpells,
+    setupPlayerLocalSpells,
+} from "../effects/localSpells";
 import { setupEffectsTool, toolID } from "../effectsTool";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -32,16 +42,21 @@ function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
     }
 
     return false;
-};
+}
 
 export default function Main() {
     const obr = useOBR();
     const [effectsWorker, setEffectsWorker] = useState<Worker>();
-    const [effectRegister, setEffectRegister] = useState<Map<string, number>>(new Map());
+    const [effectRegister, setEffectRegister] = useState<Map<string, number>>(
+        new Map()
+    );
     const [toolSelected, setToolSelected] = useState(false);
     const [selectedTab, setSelectedTab] = useState(0);
     const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
-    const previousPartyRef = useRef<{ players: Player[], connections: Record<string, string> }>({ players: [], connections: {} });
+    const previousPartyRef = useRef<{
+        players: Player[];
+        connections: Record<string, string>;
+    }>({ players: [], connections: {} });
     const playerConnections = useMemo(() => {
         if (!obr.ready) {
             return {};
@@ -51,10 +66,12 @@ export default function Main() {
             return previousPartyRef.current.connections;
         }
 
-        const newConnections = Object.fromEntries(obr.party.map(player => [player.connectionId, player.id]));
+        const newConnections = Object.fromEntries(
+            obr.party.map((player) => [player.connectionId, player.id])
+        );
         previousPartyRef.current = {
             connections: newConnections,
-            players: obr.party
+            players: obr.party,
         };
         return newConnections;
     }, [obr.ready, obr.party]);
@@ -67,14 +84,18 @@ export default function Main() {
         }
         if (obr.player.role != "GM" && isGM) {
             setIsGM(false);
-        }
-        else if (obr.player.role == "GM" && !isGM) {
+        } else if (obr.player.role == "GM" && !isGM) {
             setIsGM(true);
         }
     }, [obr.ready, obr.player?.role, isGM]);
 
     useEffect(() => {
-        if (!obr.ready || !obr.sceneReady || !obr.player?.role || !obr.player?.id) {
+        if (
+            !obr.ready ||
+            !obr.sceneReady ||
+            !obr.player?.role ||
+            !obr.player?.id
+        ) {
             return;
         }
         // When the app mounts:
@@ -103,8 +124,7 @@ export default function Main() {
         const hooks: (() => void)[] = [];
         if (obr.player.role !== "GM") {
             hooks.push(setupPlayerLocalSpells(OBR.room.id, obr.player.id));
-        }
-        else {
+        } else {
             hooks.push(setupGMLocalSpells(playerConnections));
         }
 
@@ -113,14 +133,14 @@ export default function Main() {
                 hook();
             }
         };
-    }, [obr.ready, playerConnections, obr.player?.id, obr.player?.role])
+    }, [obr.ready, playerConnections, obr.player?.id, obr.player?.role]);
 
     useEffect(() => {
         if (!obr.ready) {
             return;
         }
 
-        return OBR.tool.onToolChange(tool => {
+        return OBR.tool.onToolChange((tool) => {
             const selectedOurTool = tool === toolID;
             setToolSelected(selectedOurTool);
             setPreviouslySelectedTab(selectedTab);
@@ -152,41 +172,47 @@ export default function Main() {
         }, 30000);
 
         return () => clearInterval(interval);
-
     }, [obr.ready, obr.sceneReady, obr.player?.role]);
 
     return (
         <div className="main-container">
-            <Tabs selectedIndex={selectedTab} onSelect={tab => setSelectedTab(tab)}>
+            <Tabs
+                selectedIndex={selectedTab}
+                onSelect={(tab) => setSelectedTab(tab)}
+            >
                 <TabList>
                     <Tab>
                         <p className="title no-margin non-selectable">
-                            <FaBook className="tab-icon" />{selectedTab === 0 ? "Spellbook" : null}
+                            <FaBook className="tab-icon" />
+                            {selectedTab === 0 ? "Spellbook" : null}
                         </p>
                     </Tab>
                     <Tab>
                         <p className="title no-margin non-selectable">
-                            <FaGear className="tab-icon" />{selectedTab === 1 ? "Settings" : null}
+                            <FaGear className="tab-icon" />
+                            {selectedTab === 1 ? "Settings" : null}
                         </p>
                     </Tab>
                     <Tab disabled={!obr.sceneReady}>
                         <p className="title no-margin non-selectable">
-                            <FaDisplay className="tab-icon" />{selectedTab === 2 ? "Scene" : null}
+                            <FaDisplay className="tab-icon" />
+                            {selectedTab === 2 ? "Scene" : null}
                         </p>
                     </Tab>
                     <Tab disabled={!toolSelected}>
                         <p className="title no-margin non-selectable">
-                            <FaHatWizard className="tab-icon" />{selectedTab === 3 ? "Current Spell" : null}
+                            <FaHatWizard className="tab-icon" />
+                            {selectedTab === 3 ? "Current Spell" : null}
                         </p>
                     </Tab>
-                    {
-                        isGM &&
+                    {isGM && (
                         <Tab>
                             <p className="title no-margin non-selectable">
-                                <FaPlus className="tab-icon" />{selectedTab === 4 ? "Custom Spells" : null}
+                                <FaPlus className="tab-icon" />
+                                {selectedTab === 4 ? "Custom Spells" : null}
                             </p>
                         </Tab>
-                    }
+                    )}
                 </TabList>
                 <TabPanel>
                     <SpellBook />
@@ -200,17 +226,18 @@ export default function Main() {
                 <TabPanel>
                     <SpellDetails />
                 </TabPanel>
-                {
-                    isGM &&
+                {isGM && (
                     <TabPanel>
                         <CustomSpells />
                     </TabPanel>
-                }
+                )}
             </Tabs>
-            {
-                effectsWorker &&
-                <MessageListener worker={effectsWorker} effectRegister={effectRegister} />
-            }
+            {effectsWorker && (
+                <MessageListener
+                    worker={effectsWorker}
+                    effectRegister={effectRegister}
+                />
+            )}
         </div>
-    )
+    );
 }
