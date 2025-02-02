@@ -8,7 +8,7 @@ import {
     FaPlus,
 } from "react-icons/fa6";
 import OBR, { Player } from "@owlbear-rodeo/sdk";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+
 import {
     sendSpellsUpdate,
     setupGMLocalSpells,
@@ -26,6 +26,15 @@ import SpellDetails from "../components/SpellDetails";
 import effectsWorkerScript from "../effects/worker";
 import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
+import {
+    Box,
+    Card,
+    CardContent,
+    CardMedia,
+    Tab,
+    Tabs,
+    Typography,
+} from "@mui/material";
 
 function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
     if (!prevParty || prevParty.length !== currentParty.length) {
@@ -43,6 +52,39 @@ function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
 
     return false;
 }
+
+const MENU_OPTIONS = [
+    {
+        label: "Spellbook",
+        icon: <FaBook className="tab-icon" />,
+        component: <SpellBook />,
+        role: "PLAYER",
+    },
+    {
+        label: "Scene",
+        icon: <FaDisplay className="tab-icon" />,
+        component: <SceneControls />,
+        role: "PLAYER",
+    },
+    {
+        label: "Current Spell",
+        icon: <FaHatWizard className="tab-icon" />,
+        component: <SpellDetails />,
+        role: "PLAYER",
+    },
+    {
+        label: "Custom Spells",
+        icon: <FaPlus className="tab-icon" />,
+        component: <CustomSpells />,
+        role: "GM",
+    },
+    {
+        label: "Settings",
+        icon: <FaGear className="tab-icon" />,
+        component: <Settings />,
+        role: "PLAYER",
+    },
+];
 
 export default function Main() {
     const obr = useOBR();
@@ -175,69 +217,76 @@ export default function Main() {
     }, [obr.ready, obr.sceneReady, obr.player?.role]);
 
     return (
-        <div className="main-container">
+        <Box>
             <Tabs
-                selectedIndex={selectedTab}
-                onSelect={(tab) => setSelectedTab(tab)}
+                value={selectedTab}
+                sx={{
+                    width: "100%",
+                    minHeight: 0,
+                    "& .MuiTabs-flexContainer": {
+                        justifyContent: "space-between",
+                        px: 2,
+                    },
+                    pt: 2,
+                }}
+                onChange={(_, value) => setSelectedTab(value)}
             >
-                <TabList>
-                    <Tab>
-                        <p className="title no-margin non-selectable">
-                            <FaBook className="tab-icon" />
-                            {selectedTab === 0 ? "Spellbook" : null}
-                        </p>
-                    </Tab>
-                    <Tab>
-                        <p className="title no-margin non-selectable">
-                            <FaGear className="tab-icon" />
-                            {selectedTab === 1 ? "Settings" : null}
-                        </p>
-                    </Tab>
-                    <Tab disabled={!obr.sceneReady}>
-                        <p className="title no-margin non-selectable">
-                            <FaDisplay className="tab-icon" />
-                            {selectedTab === 2 ? "Scene" : null}
-                        </p>
-                    </Tab>
-                    <Tab disabled={!toolSelected}>
-                        <p className="title no-margin non-selectable">
-                            <FaHatWizard className="tab-icon" />
-                            {selectedTab === 3 ? "Current Spell" : null}
-                        </p>
-                    </Tab>
-                    {isGM && (
-                        <Tab>
-                            <p className="title no-margin non-selectable">
-                                <FaPlus className="tab-icon" />
-                                {selectedTab === 4 ? "Custom Spells" : null}
-                            </p>
-                        </Tab>
-                    )}
-                </TabList>
-                <TabPanel>
-                    <SpellBook />
-                </TabPanel>
-                <TabPanel>
-                    <Settings />
-                </TabPanel>
-                <TabPanel>
-                    <SceneControls />
-                </TabPanel>
-                <TabPanel>
-                    <SpellDetails />
-                </TabPanel>
-                {isGM && (
-                    <TabPanel>
-                        <CustomSpells />
-                    </TabPanel>
-                )}
+                {MENU_OPTIONS.map((option, index) => {
+                    if (option.role == "GM" && !isGM) return;
+                    return (
+                        <Tab
+                            key={index + "-option"}
+                            value={index}
+                            icon={option.icon}
+                            iconPosition="start"
+                            sx={{
+                                minWidth: "2rem",
+                                minHeight: 0,
+                                p: 2.5,
+                            }}
+                        />
+                    );
+                })}
             </Tabs>
+            <Box sx={{ p: 1.5 }}>{MENU_OPTIONS[selectedTab].component}</Box>
+
+            <Box sx={{ mt: 34 }}>
+                <Card
+                    sx={{
+                        display: "flex",
+                        width: "100%",
+                        height: "90px",
+                        mb: 2,
+                    }}
+                >
+                    {/* <CardMedia
+                        component="img"
+                        sx={{ width: 100, height: 100 }}
+                        image="https://via.placeholder.com/100" // Replace with your image URL
+                        alt="Preview"
+                    /> */}
+                    <CardContent sx={{ flex: "1 0 auto", p: 1 }}>
+                        <Typography component="div" variant="overline">
+                            Current Spell
+                        </Typography>
+                        {/*
+                        <Typography
+                            variant="subtitle1"
+                            color="text.secondary"
+                            component="div"
+                        >
+                            Card description goes here.
+                        </Typography> */}
+                        {MENU_OPTIONS[2].component}
+                    </CardContent>
+                </Card>
+            </Box>
             {effectsWorker && (
                 <MessageListener
                     worker={effectsWorker}
                     effectRegister={effectRegister}
                 />
             )}
-        </div>
+        </Box>
     );
 }
