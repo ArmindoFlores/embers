@@ -67,12 +67,6 @@ const MENU_OPTIONS = [
         role: "PLAYER",
     },
     {
-        label: "Current Spell",
-        icon: <FaHatWizard className="tab-icon" />,
-        component: <SpellDetails />,
-        role: "PLAYER",
-    },
-    {
         label: "Custom Spells",
         icon: <FaPlus className="tab-icon" />,
         component: <CustomSpells />,
@@ -92,9 +86,9 @@ export default function Main() {
     const [effectRegister, setEffectRegister] = useState<Map<string, number>>(
         new Map()
     );
-    const [toolSelected, setToolSelected] = useState(false);
+    // const [toolSelected, setToolSelected] = useState(false);
+    // const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState(0);
-    const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
     const previousPartyRef = useRef<{
         players: Player[];
         connections: Record<string, string>;
@@ -177,18 +171,18 @@ export default function Main() {
         };
     }, [obr.ready, playerConnections, obr.player?.id, obr.player?.role]);
 
-    useEffect(() => {
-        if (!obr.ready) {
-            return;
-        }
+    // TODO: Clarify what is the purpose of these hooks
+    // useEffect(() => {
+    //     if (!obr.ready) {
+    //         return;
+    //     }
 
-        return OBR.tool.onToolChange((tool) => {
-            const selectedOurTool = tool === toolID;
-            setToolSelected(selectedOurTool);
-            setPreviouslySelectedTab(selectedTab);
-            setSelectedTab(selectedOurTool ? 3 : previouslySelectedTab);
-        });
-    }, [obr.ready, selectedTab, previouslySelectedTab]);
+    //     return OBR.tool.onToolChange((tool) => {
+    //         const selectedOurTool = tool === toolID;
+    //         setToolSelected(selectedOurTool);
+    //         setPreviouslySelectedTab(selectedTab);
+    //     });
+    // }, [obr.ready, selectedTab, previouslySelectedTab]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady || obr.player?.role != "GM") {
@@ -217,70 +211,49 @@ export default function Main() {
     }, [obr.ready, obr.sceneReady, obr.player?.role]);
 
     return (
-        <Box>
-            <Tabs
-                value={selectedTab}
-                sx={{
-                    width: "100%",
-                    minHeight: 0,
-                    "& .MuiTabs-flexContainer": {
-                        justifyContent: "space-between",
-                        px: 2,
-                    },
-                    pt: 2,
-                }}
-                onChange={(_, value) => setSelectedTab(value)}
-            >
-                {MENU_OPTIONS.map((option, index) => {
-                    if (option.role == "GM" && !isGM) return;
-                    return (
-                        <Tab
-                            key={index + "-option"}
-                            value={index}
-                            icon={option.icon}
-                            iconPosition="start"
-                            sx={{
-                                minWidth: "2rem",
-                                minHeight: 0,
-                                p: 2.5,
-                            }}
-                        />
-                    );
-                })}
-            </Tabs>
-            <Box sx={{ p: 1.5 }}>{MENU_OPTIONS[selectedTab].component}</Box>
-
-            <Box sx={{ mt: 34 }}>
-                <Card
+        <Box
+            sx={{
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+            }}
+        >
+            <Box>
+                <Tabs
+                    value={selectedTab}
                     sx={{
-                        display: "flex",
                         width: "100%",
-                        height: "90px",
-                        mb: 2,
+                        minHeight: 0,
+                        "& .MuiTabs-flexContainer": {
+                            justifyContent: "space-between",
+                            px: 2,
+                        },
+                        pt: 2,
                     }}
+                    onChange={(_, value) => setSelectedTab(value)}
                 >
-                    {/* <CardMedia
-                        component="img"
-                        sx={{ width: 100, height: 100 }}
-                        image="https://via.placeholder.com/100" // Replace with your image URL
-                        alt="Preview"
-                    /> */}
-                    <CardContent sx={{ flex: "1 0 auto", p: 1 }}>
-                        <Typography component="div" variant="overline">
-                            Current Spell
-                        </Typography>
-                        {/*
-                        <Typography
-                            variant="subtitle1"
-                            color="text.secondary"
-                            component="div"
-                        >
-                            Card description goes here.
-                        </Typography> */}
-                        {MENU_OPTIONS[2].component}
-                    </CardContent>
-                </Card>
+                    {MENU_OPTIONS.map((option, index) => {
+                        if (option.role == "GM" && !isGM) return;
+                        return (
+                            <Tab
+                                key={index + "-option"}
+                                value={index}
+                                icon={option.icon}
+                                iconPosition="start"
+                                sx={{
+                                    minWidth: "2rem",
+                                    minHeight: 0,
+                                    p: 2.5,
+                                }}
+                            />
+                        );
+                    })}
+                </Tabs>
+                <Box sx={{ p: 1.5 }}>{MENU_OPTIONS[selectedTab].component}</Box>
             </Box>
+
+            {selectedTab === 0 && <SpellDetails />}
             {effectsWorker && (
                 <MessageListener
                     worker={effectsWorker}

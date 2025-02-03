@@ -1,7 +1,13 @@
 import "./SpellDetails.css";
 
 import { APP_KEY, ASSET_LOCATION } from "../config";
-import { NumberContent, OptionsContent, Parameter, ReplicationType, Spell } from "../types/spells";
+import {
+    NumberContent,
+    OptionsContent,
+    Parameter,
+    ReplicationType,
+    Spell,
+} from "../types/spells";
 import OBR, { Metadata } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useState } from "react";
 
@@ -9,16 +15,16 @@ import Checkbox from "./Checkbox";
 import { getSpell } from "../effects/spells";
 import { toolMetadataSelectedSpell } from "../effectsTool";
 import { useOBR } from "../react-obr/providers";
+import { Box, Card, CardContent, Typography } from "@mui/material";
+import { FaCopy } from "react-icons/fa6";
 
 function replicationValue(replicationValue: ReplicationType) {
     if (replicationValue === "no") {
         return "None";
-    }
-    else if (replicationValue === "all") {
+    } else if (replicationValue === "all") {
         return "All";
-    }
-    else if (replicationValue === "first_to_all") {
-        return "Origin to others"
+    } else if (replicationValue === "first_to_all") {
+        return "Origin to others";
     }
     return "?";
 }
@@ -26,52 +32,64 @@ function replicationValue(replicationValue: ReplicationType) {
 function copyValue(copyDelay: number) {
     if (copyDelay < 0) {
         return "None";
-    }
-    else if (copyDelay === 0) {
+    } else if (copyDelay === 0) {
         return "Instant";
-    }
-    else if (copyDelay > 0) {
+    } else if (copyDelay > 0) {
         return `Delayed (${copyDelay}ms)`;
     }
     return "?";
 }
 
-function DetailRow({ label, value }: { label: string, value: string}) {
-    return <div className="spell-details-row">
-        <p className="label">{ label }</p>
-        <p>{ value }</p>
-    </div>;
+function DetailRow({ label, value }: { label: string; value: string }) {
+    return (
+        <div className="spell-details-row">
+            <p className="label">{label}</p>
+            <p>{value}</p>
+        </div>
+    );
 }
 
-function ParameterRow({ spellID, parameter }: { spellID: string, parameter: Parameter }) {
-    const [parameterValue, setParameterValue] = useState<string|null>(null);
-    const [inputValue, setInputValue] = useState<string|null>(null);
+function ParameterRow({
+    spellID,
+    parameter,
+}: {
+    spellID: string;
+    parameter: Parameter;
+}) {
+    const [parameterValue, setParameterValue] = useState<string | null>(null);
+    const [inputValue, setInputValue] = useState<string | null>(null);
 
-    const setValidatedParameterValue = useCallback((value: string) => {
-        const content = (parameter.content as NumberContent);
-        const intValue = parseInt(value ?? "0");
-        if (isNaN(intValue)) {
-            setInputValue(parameterValue);
-            return;
-        }
-        let realValue = intValue.toString();
-        if (content.min && intValue < content.min) {
-            realValue = content.min.toString();
-        }
-        else if (content.max && intValue > content.max) {
-            realValue = content.max.toString();
-        }
-        setParameterValue(realValue);
-        setInputValue(realValue);
-    }, [parameter.content, parameterValue]);
+    const setValidatedParameterValue = useCallback(
+        (value: string) => {
+            const content = parameter.content as NumberContent;
+            const intValue = parseInt(value ?? "0");
+            if (isNaN(intValue)) {
+                setInputValue(parameterValue);
+                return;
+            }
+            let realValue = intValue.toString();
+            if (content.min && intValue < content.min) {
+                realValue = content.min.toString();
+            } else if (content.max && intValue > content.max) {
+                realValue = content.max.toString();
+            }
+            setParameterValue(realValue);
+            setInputValue(realValue);
+        },
+        [parameter.content, parameterValue]
+    );
 
     useEffect(() => {
-        const spellParameters = localStorage.getItem(`${APP_KEY}/spell-parameters/${spellID}`);
+        const spellParameters = localStorage.getItem(
+            `${APP_KEY}/spell-parameters/${spellID}`
+        );
         if (spellParameters) {
             const parameters = JSON.parse(spellParameters);
             const value = parameters[parameter.id];
             if (value) {
-                setParameterValue(parameter.type === "options" ? value : value.toString());
+                setParameterValue(
+                    parameter.type === "options" ? value : value.toString()
+                );
                 if (parameter.type === "number") {
                     setInputValue(value.toString());
                 }
@@ -83,57 +101,74 @@ function ParameterRow({ spellID, parameter }: { spellID: string, parameter: Para
         if (parameterValue === null) {
             return;
         }
-        const spellParameters = localStorage.getItem(`${APP_KEY}/spell-parameters/${spellID}`);
+        const spellParameters = localStorage.getItem(
+            `${APP_KEY}/spell-parameters/${spellID}`
+        );
         if (spellParameters) {
             const parameters = JSON.parse(spellParameters);
             if (parameter.type === "options") {
                 parameters[parameter.id] = parameterValue;
-            }
-            else if (parameter.type === "number") {
-                parameters[parameter.id] = parseInt(parameterValue ?? parameter.defaultValue)
-            }
-            else if (parameter.type === "boolean") {
+            } else if (parameter.type === "number") {
+                parameters[parameter.id] = parseInt(
+                    parameterValue ?? parameter.defaultValue
+                );
+            } else if (parameter.type === "boolean") {
                 parameters[parameter.id] = parameterValue == "true";
             }
-            localStorage.setItem(`${APP_KEY}/spell-parameters/${spellID}`, JSON.stringify(parameters));
-        }
-        else {
-            localStorage.setItem(`${APP_KEY}/spell-parameters/${spellID}`, JSON.stringify({ [parameter.id]: parameterValue }));
+            localStorage.setItem(
+                `${APP_KEY}/spell-parameters/${spellID}`,
+                JSON.stringify(parameters)
+            );
+        } else {
+            localStorage.setItem(
+                `${APP_KEY}/spell-parameters/${spellID}`,
+                JSON.stringify({ [parameter.id]: parameterValue })
+            );
         }
     }, [parameter, spellID, parameterValue]);
 
-    return <div className="spell-details-row">
-        <p className="label">{ parameter.name }</p>
-        {
-            parameter.type === "options" && (
-                <select className="small-select" value={parameterValue ?? parameter.defaultValue as string} onChange={e => setParameterValue(e.target.value)}>
-                    {
-                        (parameter.content as OptionsContent).map(option => <option key={option.label} value={option.value}>
-                            { option.label }
-                        </option>)
-                    }
+    return (
+        <div className="spell-details-row">
+            <p className="label">{parameter.name}</p>
+            {parameter.type === "options" && (
+                <select
+                    className="small-select"
+                    value={parameterValue ?? (parameter.defaultValue as string)}
+                    onChange={(e) => setParameterValue(e.target.value)}
+                >
+                    {(parameter.content as OptionsContent).map((option) => (
+                        <option key={option.label} value={option.value}>
+                            {option.label}
+                        </option>
+                    ))}
                 </select>
-            )
-        }
-        {
-            parameter.type === "number" && (
+            )}
+            {parameter.type === "number" && (
                 <input
                     className="settings-input"
                     type="number"
-                    value={inputValue ?? (parameter.defaultValue as number).toString()}
+                    value={
+                        inputValue ??
+                        (parameter.defaultValue as number).toString()
+                    }
                     min={(parameter.content as NumberContent).min}
                     max={(parameter.content as NumberContent).max}
-                    onChange={e => setValidatedParameterValue(e.currentTarget.value)}
-                    onInput={e => setInputValue(e.currentTarget.value)}
+                    onChange={(e) =>
+                        setValidatedParameterValue(e.currentTarget.value)
+                    }
+                    onInput={(e) => setInputValue(e.currentTarget.value)}
                 />
-            )
-        }
-        {
-            parameter.type === "boolean" && (
-                <Checkbox checked={parameterValue == "true"} setChecked={value => setParameterValue(value ? "true" : "")} />
-            )
-        }
-    </div>;
+            )}
+            {parameter.type === "boolean" && (
+                <Checkbox
+                    checked={parameterValue == "true"}
+                    setChecked={(value) =>
+                        setParameterValue(value ? "true" : "")
+                    }
+                />
+            )}
+        </div>
+    );
 }
 
 export default function SpellDetails() {
@@ -148,8 +183,7 @@ export default function SpellDetails() {
         }
         if (obr.player.role != "GM" && isGM) {
             setIsGM(false);
-        }
-        else if (obr.player.role == "GM" && !isGM) {
+        } else if (obr.player.role == "GM" && !isGM) {
             setIsGM(true);
         }
     }, [obr.ready, obr.player?.role, isGM]);
@@ -166,42 +200,124 @@ export default function SpellDetails() {
                 setSelectedSpell(spell);
                 setSelectedSpellID(selectedSpell);
             }
-        }
+        };
 
         OBR.player.getMetadata().then(setSelected);
 
-        return OBR.player.onChange(player => setSelected(player.metadata));
+        return OBR.player.onChange((player) => setSelected(player.metadata));
     }, [obr.ready, isGM]);
 
-    if (!selectedSpell) {
-        return <p>No spell selected.</p>
-    }
-
-    return <div>
-        <div className="spell-details-header">
-            <div>
-                <p className="title">{ selectedSpell.name }</p>
-                <p>{ selectedSpellID }</p>
-            </div>
-            <img className="spell-details-thumbnail" src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`} />
-        </div>
-        <hr className="spell-details-divider" />
-        {
-            selectedSpell.minTargets != undefined && <DetailRow label="Minimum number of targets" value={selectedSpell.minTargets.toString()} />
-        }
-        {
-            selectedSpell.maxTargets != undefined && <DetailRow label="Maximum number of targets" value={selectedSpell.maxTargets.toString()} />
-        }
-        {
-            selectedSpell.replicate && <DetailRow label="Replication mode" value={replicationValue(selectedSpell.replicate)} />
-        }
-        {
-            selectedSpell.copy != undefined && <DetailRow label="Copy mode" value={copyValue(selectedSpell.copy)} />
-        }
-        {
-            selectedSpellID && selectedSpell.parameters && selectedSpell.parameters.map(
-                parameter => <ParameterRow key={parameter.id} parameter={parameter} spellID={selectedSpellID} />
-            )
-        }
-    </div>;
+    return (
+        <Card
+            sx={{
+                display: "flex",
+                width: "100%",
+                borderTopLeftRadius: 8,
+                borderTopRightRadius: 8,
+            }}
+        >
+            <CardContent sx={{ flex: "1 0 auto", p: 1 }}>
+                {!selectedSpell ? (
+                    <Typography variant="body2" sx={{ m: 1, mb: 0 }}>
+                        No active spells. Select or add one from above! 🧙‍♂️🔥
+                    </Typography>
+                ) : (
+                    <>
+                        <Typography component="div" variant="overline">
+                            Current Spell
+                        </Typography>
+                        <div>
+                            <div
+                                className="spell-details-header"
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    padding: "1rem",
+                                }}
+                            >
+                                <div>
+                                    <p
+                                        className="title"
+                                        style={{
+                                            backgroundColor:
+                                                "rgba(0, 0, 0, 0.75)", // Faded black background
+                                            color: "white",
+                                            padding: "0.5rem",
+                                            borderRadius: "4px",
+                                            display: "block",
+                                            // flexDirection: "column",
+                                        }}
+                                    >
+                                        {selectedSpell.name}
+                                        <Typography
+                                            variant="body2"
+                                            sx={{ ml: 0, textAlign: "start" }}
+                                            display={"block"}
+                                        >
+                                            {selectedSpellID}
+                                            <FaCopy
+                                                style={{
+                                                    marginLeft: "0.5rem",
+                                                    cursor: "pointer",
+                                                }}
+                                                onClick={() => {
+                                                    // TODO: Add copy functionality to this whole thing
+                                                }}
+                                            />
+                                        </Typography>
+                                    </p>
+                                </div>
+                                <img
+                                    className="spell-details-thumbnail"
+                                    src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
+                                />
+                            </div>
+                            <hr
+                                className="spell-details-divider"
+                                style={{ marginBottom: "0.5rem" }}
+                            />
+                            {selectedSpell.minTargets != undefined && (
+                                <DetailRow
+                                    label="Minimum number of targets"
+                                    value={selectedSpell.minTargets.toString()}
+                                />
+                            )}
+                            {selectedSpell.maxTargets != undefined && (
+                                <DetailRow
+                                    label="Maximum number of targets"
+                                    value={selectedSpell.maxTargets.toString()}
+                                />
+                            )}
+                            {selectedSpell.replicate && (
+                                <DetailRow
+                                    label="Replication mode"
+                                    value={replicationValue(
+                                        selectedSpell.replicate
+                                    )}
+                                />
+                            )}
+                            {selectedSpell.copy != undefined && (
+                                <DetailRow
+                                    label="Copy mode"
+                                    value={copyValue(selectedSpell.copy)}
+                                />
+                            )}
+                            {selectedSpellID &&
+                                selectedSpell.parameters &&
+                                selectedSpell.parameters.map((parameter) => (
+                                    <ParameterRow
+                                        key={parameter.id}
+                                        parameter={parameter}
+                                        spellID={selectedSpellID}
+                                    />
+                                ))}
+                        </div>
+                    </>
+                )}
+            </CardContent>
+        </Card>
+    );
 }
