@@ -1,21 +1,21 @@
 import "./SpellDetails.css";
 
-import { APP_KEY, ASSET_LOCATION } from "../config";
+import { APP_KEY, ASSET_LOCATION } from "../../config";
 import {
     NumberContent,
     OptionsContent,
     Parameter,
     ReplicationType,
     Spell,
-} from "../types/spells";
+} from "../../types/spells";
 import OBR, { Metadata } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useState } from "react";
 
-import Checkbox from "./Checkbox";
-import { getSpell } from "../effects/spells";
-import { toolMetadataSelectedSpell } from "../effectsTool";
-import { useOBR } from "../react-obr/providers";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import Checkbox from "../Checkbox";
+import { getSpell } from "../../effects/spells";
+import { toolMetadataSelectedSpell } from "../../effectsTool";
+import { useOBR } from "../../react-obr/providers";
+import { Card, CardContent, Typography } from "@mui/material";
 import { FaCopy } from "react-icons/fa6";
 
 function replicationValue(replicationValue: ReplicationType) {
@@ -170,8 +170,8 @@ function ParameterRow({
         </div>
     );
 }
-
-export default function SpellDetails() {
+// * This component is a summary of the currently selected spell. It displays the spell's name, thumbnail only. *
+export default function SpellBanner() {
     const obr = useOBR();
     const [selectedSpellID, setSelectedSpellID] = useState<string>();
     const [selectedSpell, setSelectedSpell] = useState<Spell>();
@@ -219,7 +219,8 @@ export default function SpellDetails() {
             <CardContent sx={{ flex: "1 0 auto", p: 1 }}>
                 {!selectedSpell ? (
                     <Typography variant="body2" sx={{ m: 1, mb: 0 }}>
-                        No active spells. Select or add one from above! 🧙‍♂️🔥
+                        No active spells. Select or add one from the spellbook!
+                        🧙‍♂️🔥
                     </Typography>
                 ) : (
                     <>
@@ -239,7 +240,7 @@ export default function SpellDetails() {
                                 }}
                             >
                                 <div>
-                                    <p
+                                    <span
                                         className="title"
                                         style={{
                                             backgroundColor:
@@ -268,7 +269,7 @@ export default function SpellDetails() {
                                                 }}
                                             />
                                         </Typography>
-                                    </p>
+                                    </span>
                                 </div>
                                 <img
                                     className="spell-details-thumbnail"

@@ -14,7 +14,7 @@ import {
     setupGMLocalSpells,
     setupPlayerLocalSpells,
 } from "../effects/localSpells";
-import { setupEffectsTool, toolID } from "../effectsTool";
+import { setupEffectsTool } from "../effectsTool";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import CustomSpells from "../components/CustomSpells";
@@ -22,19 +22,11 @@ import { MessageListener } from "../components/MessageListener";
 import SceneControls from "../components/SceneControls";
 import Settings from "../components/Settings";
 import SpellBook from "../components/SpellBook";
-import SpellDetails from "../components/SpellDetails";
 import effectsWorkerScript from "../effects/worker";
 import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
-import {
-    Box,
-    Card,
-    CardContent,
-    CardMedia,
-    Tab,
-    Tabs,
-    Typography,
-} from "@mui/material";
+import { Box, Tab, Tabs } from "@mui/material";
+import SpellDetails from "../components/SpellDetails";
 
 function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
     if (!prevParty || prevParty.length !== currentParty.length) {
@@ -64,6 +56,12 @@ const MENU_OPTIONS = [
         label: "Scene",
         icon: <FaDisplay className="tab-icon" />,
         component: <SceneControls />,
+        role: "PLAYER",
+    },
+    {
+        label: "Current Spell",
+        icon: <FaHatWizard className="tab-icon" />,
+        component: <SpellDetails />,
         role: "PLAYER",
     },
     {
@@ -224,7 +222,6 @@ export default function Main() {
                     value={selectedTab}
                     sx={{
                         width: "100%",
-                        minHeight: 0,
                         "& .MuiTabs-flexContainer": {
                             justifyContent: "space-between",
                             px: 2,
@@ -250,10 +247,26 @@ export default function Main() {
                         );
                     })}
                 </Tabs>
-                <Box sx={{ p: 1.5 }}>{MENU_OPTIONS[selectedTab].component}</Box>
+                <Box
+                    sx={{
+                        p: 1.5,
+                        overflow: "auto",
+                        height: "calc(100vh - 200px)", // Adjust the height as needed
+                        scrollbarWidth: "thin", // For Firefox
+                        "&::-webkit-scrollbar": {
+                            width: "8px", // For Chrome, Safari, and Opera
+                        },
+                    }}
+                >
+                    {MENU_OPTIONS[selectedTab].component}
+                </Box>
             </Box>
 
-            {selectedTab === 0 && <SpellDetails />}
+            {selectedTab === 0 && (
+                <Box sx={{ maxHeight: "110px", overflow: "hidden" }}>
+                    <SpellDetails />
+                </Box>
+            )}
             {effectsWorker && (
                 <MessageListener
                     worker={effectsWorker}
