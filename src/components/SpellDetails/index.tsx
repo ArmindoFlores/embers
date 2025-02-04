@@ -15,7 +15,7 @@ import Checkbox from ".././Checkbox";
 import { getSpell } from "../../effects/spells";
 import { toolMetadataSelectedSpell } from "../../effectsTool";
 import { useOBR } from "../../react-obr/providers";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import { FaCopy } from "react-icons/fa6";
 
 function replicationValue(replicationValue: ReplicationType) {
@@ -208,116 +208,104 @@ export default function SpellDetails() {
     }, [obr.ready, isGM]);
 
     return (
-        <Card
-            sx={{
-                display: "flex",
-                width: "100%",
-                borderTopLeftRadius: 8,
-                borderTopRightRadius: 8,
-            }}
-        >
-            <CardContent sx={{ flex: "1 0 auto", p: 1 }}>
-                {!selectedSpell ? (
-                    <Typography variant="body2" sx={{ m: 1, mb: 0 }}>
-                        No active spells. Select or add one from above! 🧙‍♂️🔥
-                    </Typography>
-                ) : (
-                    <>
-                        <Typography component="div" variant="overline">
-                            Current Spell
-                        </Typography>
-                        <div>
-                            <div
-                                className="spell-details-header"
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                    padding: "1rem",
-                                }}
-                            >
-                                <div>
-                                    <span
-                                        className="title"
-                                        style={{
-                                            backgroundColor:
-                                                "rgba(0, 0, 0, 0.75)", // Faded black background
-                                            color: "white",
-                                            padding: "0.5rem",
-                                            borderRadius: "4px",
-                                            display: "block",
-                                            // flexDirection: "column",
-                                        }}
+        <Box>
+            <p className="title">Spell Details</p>
+            {!selectedSpell ? (
+                <Typography variant="body2" sx={{ m: 1, mb: 0 }}>
+                    No active spells. Select or add one from above! 🧙‍♂️🔥
+                </Typography>
+            ) : (
+                <>
+                    <div>
+                        <div
+                            className="spell-details-header"
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                padding: "1rem",
+                            }}
+                        >
+                            <div>
+                                <span
+                                    className="title"
+                                    style={{
+                                        backgroundColor: "rgba(0, 0, 0, 0.75)", // Faded black background
+                                        color: "white",
+                                        padding: "0.5rem",
+                                        borderRadius: "4px",
+                                        display: "block",
+                                        // flexDirection: "column",
+                                    }}
+                                >
+                                    {selectedSpell.name}
+                                    <Typography
+                                        variant="body2"
+                                        sx={{ ml: 0, textAlign: "start" }}
+                                        display={"block"}
                                     >
-                                        {selectedSpell.name}
-                                        <Typography
-                                            variant="body2"
-                                            sx={{ ml: 0, textAlign: "start" }}
-                                            display={"block"}
-                                        >
-                                            {selectedSpellID}
-                                            <FaCopy
-                                                style={{
-                                                    marginLeft: "0.5rem",
-                                                    cursor: "pointer",
-                                                }}
-                                                onClick={() => {
-                                                    // TODO: Add copy functionality to this whole thing
-                                                }}
-                                            />
-                                        </Typography>
-                                    </span>
-                                </div>
-                                <img
-                                    className="spell-details-thumbnail"
-                                    src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
-                                />
+                                        {selectedSpellID}
+                                        <FaCopy
+                                            style={{
+                                                marginLeft: "0.5rem",
+                                                cursor: "pointer",
+                                            }}
+                                            onClick={() => {
+                                                // TODO: Add copy functionality to this whole thing
+                                            }}
+                                        />
+                                    </Typography>
+                                </span>
                             </div>
-                            <hr
-                                className="spell-details-divider"
-                                style={{ marginBottom: "0.5rem" }}
+                            <img
+                                className="spell-details-thumbnail"
+                                src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
                             />
-                            {selectedSpell.minTargets != undefined && (
-                                <DetailRow
-                                    label="Minimum number of targets"
-                                    value={selectedSpell.minTargets.toString()}
-                                />
-                            )}
-                            {selectedSpell.maxTargets != undefined && (
-                                <DetailRow
-                                    label="Maximum number of targets"
-                                    value={selectedSpell.maxTargets.toString()}
-                                />
-                            )}
-                            {selectedSpell.replicate && (
-                                <DetailRow
-                                    label="Replication mode"
-                                    value={replicationValue(
-                                        selectedSpell.replicate
-                                    )}
-                                />
-                            )}
-                            {selectedSpell.copy != undefined && (
-                                <DetailRow
-                                    label="Copy mode"
-                                    value={copyValue(selectedSpell.copy)}
-                                />
-                            )}
-                            {selectedSpellID &&
-                                selectedSpell.parameters &&
-                                selectedSpell.parameters.map((parameter) => (
-                                    <ParameterRow
-                                        key={parameter.id}
-                                        parameter={parameter}
-                                        spellID={selectedSpellID}
-                                    />
-                                ))}
                         </div>
-                    </>
-                )}
-            </CardContent>
-        </Card>
+                        <hr
+                            className="spell-details-divider"
+                            style={{ marginBottom: "0.5rem" }}
+                        />
+                        {selectedSpell.minTargets != undefined && (
+                            <DetailRow
+                                label="Minimum number of targets"
+                                value={selectedSpell.minTargets.toString()}
+                            />
+                        )}
+                        {selectedSpell.maxTargets != undefined && (
+                            <DetailRow
+                                label="Maximum number of targets"
+                                value={selectedSpell.maxTargets.toString()}
+                            />
+                        )}
+                        {selectedSpell.replicate && (
+                            <DetailRow
+                                label="Replication mode"
+                                value={replicationValue(
+                                    selectedSpell.replicate
+                                )}
+                            />
+                        )}
+                        {selectedSpell.copy != undefined && (
+                            <DetailRow
+                                label="Copy mode"
+                                value={copyValue(selectedSpell.copy)}
+                            />
+                        )}
+                        {selectedSpellID &&
+                            selectedSpell.parameters &&
+                            selectedSpell.parameters.map((parameter) => (
+                                <ParameterRow
+                                    key={parameter.id}
+                                    parameter={parameter}
+                                    spellID={selectedSpellID}
+                                />
+                            ))}
+                    </div>
+                </>
+            )}
+        </Box>
     );
 }

@@ -27,6 +27,7 @@ import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
 import { Box, Tab, Tabs } from "@mui/material";
 import SpellDetails from "../components/SpellDetails";
+import SpellBanner from "../components/SpellDetails/SpellBanner";
 
 function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
     if (!prevParty || prevParty.length !== currentParty.length) {
@@ -263,8 +264,8 @@ export default function Main() {
             </Box>
 
             {selectedTab === 0 && (
-                <Box sx={{ maxHeight: "110px", overflow: "hidden" }}>
-                    <SpellDetails />
+                <Box sx={{ maxHeight: "94px", overflow: "hidden" }}>
+                    <SpellBanner />
                 </Box>
             )}
             {effectsWorker && (
