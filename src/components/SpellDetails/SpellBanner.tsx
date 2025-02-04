@@ -1,179 +1,16 @@
 import "./SpellDetails.css";
 
-import { APP_KEY, ASSET_LOCATION } from "../../config";
-import {
-    NumberContent,
-    OptionsContent,
-    Parameter,
-    ReplicationType,
-    Spell,
-} from "../../types/spells";
+import { ASSET_LOCATION } from "../../config";
+import { Spell } from "../../types/spells";
 import OBR, { Metadata } from "@owlbear-rodeo/sdk";
-import { useCallback, useEffect, useState } from "react";
-
-import Checkbox from "../Checkbox";
+import { useEffect, useState } from "react";
 import { getSpell } from "../../effects/spells";
 import { toolMetadataSelectedSpell } from "../../effectsTool";
 import { useOBR } from "../../react-obr/providers";
-import { Card, CardContent, Typography } from "@mui/material";
-import { FaCopy } from "react-icons/fa6";
-
-function replicationValue(replicationValue: ReplicationType) {
-    if (replicationValue === "no") {
-        return "None";
-    } else if (replicationValue === "all") {
-        return "All";
-    } else if (replicationValue === "first_to_all") {
-        return "Origin to others";
-    }
-    return "?";
-}
-
-function copyValue(copyDelay: number) {
-    if (copyDelay < 0) {
-        return "None";
-    } else if (copyDelay === 0) {
-        return "Instant";
-    } else if (copyDelay > 0) {
-        return `Delayed (${copyDelay}ms)`;
-    }
-    return "?";
-}
-
-function DetailRow({ label, value }: { label: string; value: string }) {
-    return (
-        <div className="spell-details-row">
-            <p className="label">{label}</p>
-            <p>{value}</p>
-        </div>
-    );
-}
-
-function ParameterRow({
-    spellID,
-    parameter,
-}: {
-    spellID: string;
-    parameter: Parameter;
-}) {
-    const [parameterValue, setParameterValue] = useState<string | null>(null);
-    const [inputValue, setInputValue] = useState<string | null>(null);
-
-    const setValidatedParameterValue = useCallback(
-        (value: string) => {
-            const content = parameter.content as NumberContent;
-            const intValue = parseInt(value ?? "0");
-            if (isNaN(intValue)) {
-                setInputValue(parameterValue);
-                return;
-            }
-            let realValue = intValue.toString();
-            if (content.min && intValue < content.min) {
-                realValue = content.min.toString();
-            } else if (content.max && intValue > content.max) {
-                realValue = content.max.toString();
-            }
-            setParameterValue(realValue);
-            setInputValue(realValue);
-        },
-        [parameter.content, parameterValue]
-    );
-
-    useEffect(() => {
-        const spellParameters = localStorage.getItem(
-            `${APP_KEY}/spell-parameters/${spellID}`
-        );
-        if (spellParameters) {
-            const parameters = JSON.parse(spellParameters);
-            const value = parameters[parameter.id];
-            if (value) {
-                setParameterValue(
-                    parameter.type === "options" ? value : value.toString()
-                );
-                if (parameter.type === "number") {
-                    setInputValue(value.toString());
-                }
-            }
-        }
-    }, [parameter, spellID]);
-
-    useEffect(() => {
-        if (parameterValue === null) {
-            return;
-        }
-        const spellParameters = localStorage.getItem(
-            `${APP_KEY}/spell-parameters/${spellID}`
-        );
-        if (spellParameters) {
-            const parameters = JSON.parse(spellParameters);
-            if (parameter.type === "options") {
-                parameters[parameter.id] = parameterValue;
-            } else if (parameter.type === "number") {
-                parameters[parameter.id] = parseInt(
-                    parameterValue ?? parameter.defaultValue
-                );
-            } else if (parameter.type === "boolean") {
-                parameters[parameter.id] = parameterValue == "true";
-            }
-            localStorage.setItem(
-                `${APP_KEY}/spell-parameters/${spellID}`,
-                JSON.stringify(parameters)
-            );
-        } else {
-            localStorage.setItem(
-                `${APP_KEY}/spell-parameters/${spellID}`,
-                JSON.stringify({ [parameter.id]: parameterValue })
-            );
-        }
-    }, [parameter, spellID, parameterValue]);
-
-    return (
-        <div className="spell-details-row">
-            <p className="label">{parameter.name}</p>
-            {parameter.type === "options" && (
-                <select
-                    className="small-select"
-                    value={parameterValue ?? (parameter.defaultValue as string)}
-                    onChange={(e) => setParameterValue(e.target.value)}
-                >
-                    {(parameter.content as OptionsContent).map((option) => (
-                        <option key={option.label} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-            )}
-            {parameter.type === "number" && (
-                <input
-                    className="settings-input"
-                    type="number"
-                    value={
-                        inputValue ??
-                        (parameter.defaultValue as number).toString()
-                    }
-                    min={(parameter.content as NumberContent).min}
-                    max={(parameter.content as NumberContent).max}
-                    onChange={(e) =>
-                        setValidatedParameterValue(e.currentTarget.value)
-                    }
-                    onInput={(e) => setInputValue(e.currentTarget.value)}
-                />
-            )}
-            {parameter.type === "boolean" && (
-                <Checkbox
-                    checked={parameterValue == "true"}
-                    setChecked={(value) =>
-                        setParameterValue(value ? "true" : "")
-                    }
-                />
-            )}
-        </div>
-    );
-}
+import { Button, Card, CardContent, Typography } from "@mui/material";
 // * This component is a summary of the currently selected spell. It displays the spell's name, thumbnail only. *
 export default function SpellBanner() {
     const obr = useOBR();
-    const [selectedSpellID, setSelectedSpellID] = useState<string>();
     const [selectedSpell, setSelectedSpell] = useState<Spell>();
     const [isGM, setIsGM] = useState(false);
 
@@ -198,7 +35,6 @@ export default function SpellBanner() {
             if (typeof selectedSpell == "string") {
                 const spell = getSpell(selectedSpell, isGM);
                 setSelectedSpell(spell);
-                setSelectedSpellID(selectedSpell);
             }
         };
 
@@ -224,9 +60,6 @@ export default function SpellBanner() {
                     </Typography>
                 ) : (
                     <>
-                        <Typography component="div" variant="overline">
-                            Current Spell
-                        </Typography>
                         <div>
                             <div
                                 className="spell-details-header"
@@ -236,10 +69,16 @@ export default function SpellBanner() {
                                     backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
-                                    padding: "1rem",
+                                    padding: "0.5rem",
                                 }}
                             >
                                 <div>
+                                    <Typography
+                                        component="div"
+                                        variant="caption"
+                                    >
+                                        Current Spell
+                                    </Typography>
                                     <span
                                         className="title"
                                         style={{
@@ -253,68 +92,16 @@ export default function SpellBanner() {
                                         }}
                                     >
                                         {selectedSpell.name}
-                                        <Typography
-                                            variant="body2"
-                                            sx={{ ml: 0, textAlign: "start" }}
-                                            display={"block"}
-                                        >
-                                            {selectedSpellID}
-                                            <FaCopy
-                                                style={{
-                                                    marginLeft: "0.5rem",
-                                                    cursor: "pointer",
-                                                }}
-                                                onClick={() => {
-                                                    // TODO: Add copy functionality to this whole thing
-                                                }}
-                                            />
-                                        </Typography>
                                     </span>
                                 </div>
+                                <Button variant="outlined" sx={{ ml: 1 }}>
+                                    Cast!
+                                </Button>
                                 <img
                                     className="spell-details-thumbnail"
                                     src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
                                 />
                             </div>
-                            <hr
-                                className="spell-details-divider"
-                                style={{ marginBottom: "0.5rem" }}
-                            />
-                            {selectedSpell.minTargets != undefined && (
-                                <DetailRow
-                                    label="Minimum number of targets"
-                                    value={selectedSpell.minTargets.toString()}
-                                />
-                            )}
-                            {selectedSpell.maxTargets != undefined && (
-                                <DetailRow
-                                    label="Maximum number of targets"
-                                    value={selectedSpell.maxTargets.toString()}
-                                />
-                            )}
-                            {selectedSpell.replicate && (
-                                <DetailRow
-                                    label="Replication mode"
-                                    value={replicationValue(
-                                        selectedSpell.replicate
-                                    )}
-                                />
-                            )}
-                            {selectedSpell.copy != undefined && (
-                                <DetailRow
-                                    label="Copy mode"
-                                    value={copyValue(selectedSpell.copy)}
-                                />
-                            )}
-                            {selectedSpellID &&
-                                selectedSpell.parameters &&
-                                selectedSpell.parameters.map((parameter) => (
-                                    <ParameterRow
-                                        key={parameter.id}
-                                        parameter={parameter}
-                                        spellID={selectedSpellID}
-                                    />
-                                ))}
                         </div>
                     </>
                 )}
