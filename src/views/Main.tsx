@@ -1,10 +1,20 @@
 import "./Main.css";
 
-import { FaBook, FaDisplay, FaGear, FaHatWizard, FaPlus } from "react-icons/fa6";
+import {
+    FaBook,
+    FaDisplay,
+    FaGear,
+    FaHatWizard,
+    FaPlus,
+} from "react-icons/fa6";
 import OBR, { Player } from "@owlbear-rodeo/sdk";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { sendSpellsUpdate, setupGMLocalSpells, setupPlayerLocalSpells } from "../effects/localSpells";
-import { setupEffectsTool, toolID } from "../effectsTool";
+
+import {
+    sendSpellsUpdate,
+    setupGMLocalSpells,
+    setupPlayerLocalSpells,
+} from "../effects/localSpells";
+import { setupEffectsTool } from "../effectsTool";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import CustomSpells from "../components/CustomSpells";
@@ -12,10 +22,12 @@ import { MessageListener } from "../components/MessageListener";
 import SceneControls from "../components/SceneControls";
 import Settings from "../components/Settings";
 import SpellBook from "../components/SpellBook";
-import SpellDetails from "../components/SpellDetails";
 import effectsWorkerScript from "../effects/worker";
 import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
+import { Box, Tab, Tabs } from "@mui/material";
+import SpellDetails from "../components/SpellDetails";
+import SpellBanner from "../components/SpellDetails/SpellBanner";
 
 function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
     if (!prevParty || prevParty.length !== currentParty.length) {
@@ -32,16 +44,54 @@ function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
     }
 
     return false;
-};
+}
+
+const MENU_OPTIONS = [
+    {
+        label: "Spellbook",
+        icon: <FaBook className="tab-icon" />,
+        component: <SpellBook />,
+        role: "PLAYER",
+    },
+    {
+        label: "Scene",
+        icon: <FaDisplay className="tab-icon" />,
+        component: <SceneControls />,
+        role: "PLAYER",
+    },
+    {
+        label: "Current Spell",
+        icon: <FaHatWizard className="tab-icon" />,
+        component: <SpellDetails />,
+        role: "PLAYER",
+    },
+    {
+        label: "Custom Spells",
+        icon: <FaPlus className="tab-icon" />,
+        component: <CustomSpells />,
+        role: "GM",
+    },
+    {
+        label: "Settings",
+        icon: <FaGear className="tab-icon" />,
+        component: <Settings />,
+        role: "PLAYER",
+    },
+];
 
 export default function Main() {
     const obr = useOBR();
     const [effectsWorker, setEffectsWorker] = useState<Worker>();
-    const [effectRegister, setEffectRegister] = useState<Map<string, number>>(new Map());
-    const [toolSelected, setToolSelected] = useState(false);
+    const [effectRegister, setEffectRegister] = useState<Map<string, number>>(
+        new Map()
+    );
+    // const [toolSelected, setToolSelected] = useState(false);
+    // const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState(0);
-    const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
-    const previousPartyRef = useRef<{ players: Player[], connections: Record<string, string> }>({ players: [], connections: {} });
+    const previousPartyRef = useRef<{
+        players: Player[];
+        connections: Record<string, string>;
+    }>({ players: [], connections: {} });
     const playerConnections = useMemo(() => {
         if (!obr.ready) {
             return {};
@@ -51,10 +101,12 @@ export default function Main() {
             return previousPartyRef.current.connections;
         }
 
-        const newConnections = Object.fromEntries(obr.party.map(player => [player.connectionId, player.id]));
+        const newConnections = Object.fromEntries(
+            obr.party.map((player) => [player.connectionId, player.id])
+        );
         previousPartyRef.current = {
             connections: newConnections,
-            players: obr.party
+            players: obr.party,
         };
         return newConnections;
     }, [obr.ready, obr.party]);
@@ -67,14 +119,18 @@ export default function Main() {
         }
         if (obr.player.role != "GM" && isGM) {
             setIsGM(false);
-        }
-        else if (obr.player.role == "GM" && !isGM) {
+        } else if (obr.player.role == "GM" && !isGM) {
             setIsGM(true);
         }
     }, [obr.ready, obr.player?.role, isGM]);
 
     useEffect(() => {
-        if (!obr.ready || !obr.sceneReady || !obr.player?.role || !obr.player?.id) {
+        if (
+            !obr.ready ||
+            !obr.sceneReady ||
+            !obr.player?.role ||
+            !obr.player?.id
+        ) {
             return;
         }
         // When the app mounts:
@@ -103,8 +159,7 @@ export default function Main() {
         const hooks: (() => void)[] = [];
         if (obr.player.role !== "GM") {
             hooks.push(setupPlayerLocalSpells(OBR.room.id, obr.player.id));
-        }
-        else {
+        } else {
             hooks.push(setupGMLocalSpells(playerConnections));
         }
 
@@ -113,20 +168,20 @@ export default function Main() {
                 hook();
             }
         };
-    }, [obr.ready, playerConnections, obr.player?.id, obr.player?.role])
+    }, [obr.ready, playerConnections, obr.player?.id, obr.player?.role]);
 
-    useEffect(() => {
-        if (!obr.ready) {
-            return;
-        }
+    // TODO: Clarify what is the purpose of these hooks
+    // useEffect(() => {
+    //     if (!obr.ready) {
+    //         return;
+    //     }
 
-        return OBR.tool.onToolChange(tool => {
-            const selectedOurTool = tool === toolID;
-            setToolSelected(selectedOurTool);
-            setPreviouslySelectedTab(selectedTab);
-            setSelectedTab(selectedOurTool ? 3 : previouslySelectedTab);
-        });
-    }, [obr.ready, selectedTab, previouslySelectedTab]);
+    //     return OBR.tool.onToolChange((tool) => {
+    //         const selectedOurTool = tool === toolID;
+    //         setToolSelected(selectedOurTool);
+    //         setPreviouslySelectedTab(selectedTab);
+    //     });
+    // }, [obr.ready, selectedTab, previouslySelectedTab]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady || obr.player?.role != "GM") {
@@ -152,65 +207,73 @@ export default function Main() {
         }, 30000);
 
         return () => clearInterval(interval);
-
     }, [obr.ready, obr.sceneReady, obr.player?.role]);
 
     return (
-        <div className="main-container">
-            <Tabs selectedIndex={selectedTab} onSelect={tab => setSelectedTab(tab)}>
-                <TabList>
-                    <Tab>
-                        <p className="title no-margin non-selectable">
-                            <FaBook className="tab-icon" />{selectedTab === 0 ? "Spellbook" : null}
-                        </p>
-                    </Tab>
-                    <Tab>
-                        <p className="title no-margin non-selectable">
-                            <FaGear className="tab-icon" />{selectedTab === 1 ? "Settings" : null}
-                        </p>
-                    </Tab>
-                    <Tab disabled={!obr.sceneReady}>
-                        <p className="title no-margin non-selectable">
-                            <FaDisplay className="tab-icon" />{selectedTab === 2 ? "Scene" : null}
-                        </p>
-                    </Tab>
-                    <Tab disabled={!toolSelected}>
-                        <p className="title no-margin non-selectable">
-                            <FaHatWizard className="tab-icon" />{selectedTab === 3 ? "Current Spell" : null}
-                        </p>
-                    </Tab>
-                    {
-                        isGM &&
-                        <Tab>
-                            <p className="title no-margin non-selectable">
-                                <FaPlus className="tab-icon" />{selectedTab === 4 ? "Custom Spells" : null}
-                            </p>
-                        </Tab>
-                    }
-                </TabList>
-                <TabPanel>
-                    <SpellBook />
-                </TabPanel>
-                <TabPanel>
-                    <Settings />
-                </TabPanel>
-                <TabPanel>
-                    <SceneControls />
-                </TabPanel>
-                <TabPanel>
-                    <SpellDetails />
-                </TabPanel>
-                {
-                    isGM &&
-                    <TabPanel>
-                        <CustomSpells />
-                    </TabPanel>
-                }
-            </Tabs>
-            {
-                effectsWorker &&
-                <MessageListener worker={effectsWorker} effectRegister={effectRegister} />
-            }
-        </div>
-    )
+        <Box
+            sx={{
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+            }}
+        >
+            <Box>
+                <Tabs
+                    value={selectedTab}
+                    sx={{
+                        width: "100%",
+                        "& .MuiTabs-flexContainer": {
+                            justifyContent: "space-between",
+                            px: 2,
+                        },
+                        pt: 2,
+                    }}
+                    onChange={(_, value) => setSelectedTab(value)}
+                >
+                    {MENU_OPTIONS.map((option, index) => {
+                        if (option.role == "GM" && !isGM) return;
+                        return (
+                            <Tab
+                                key={index + "-option"}
+                                value={index}
+                                icon={option.icon}
+                                iconPosition="start"
+                                sx={{
+                                    minWidth: "2rem",
+                                    minHeight: 0,
+                                    p: 2.5,
+                                }}
+                            />
+                        );
+                    })}
+                </Tabs>
+                <Box
+                    sx={{
+                        p: 1.5,
+                        overflow: "auto",
+                        height: "calc(100vh - 200px)", // Adjust the height as needed
+                        scrollbarWidth: "thin", // For Firefox
+                        "&::-webkit-scrollbar": {
+                            width: "8px", // For Chrome, Safari, and Opera
+                        },
+                    }}
+                >
+                    {MENU_OPTIONS[selectedTab].component}
+                </Box>
+            </Box>
+
+            {selectedTab === 0 && (
+                <Box sx={{ maxHeight: "94px", overflow: "hidden" }}>
+                    <SpellBanner />
+                </Box>
+            )}
+            {effectsWorker && (
+                <MessageListener
+                    worker={effectsWorker}
+                    effectRegister={effectRegister}
+                />
+            )}
+        </Box>
+    );
 }

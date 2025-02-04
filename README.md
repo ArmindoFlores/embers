@@ -32,12 +32,12 @@ These are some features that are on Embers' backlog:
 - [x] Support basic projectiles/AOE effects
 - [x] Support all spell effects from JB2A
 - [ ] Support all generic effects from JB2A
-- [ ] Implement all spells from D&D 5e's Player Handbook (44/361 - 12.2%)
+- [ ] Implement all spells from D&D 5e's Player Handbook (48/361 - 13.2%)
 - [x] Support permanent effects
 - [x] Support custom metadata
 - [x] Allow for custom spell parameters
 - [x] Implement the settings menu
-- [ ] Save targets between castings (when option is enabled in settings)
+- [x] Save targets between castings (when option is enabled in settings)
 - [ ] Enforce maximum and minimum number of targets specified in the spell's description
 - [x] Allow players to control their own permanent effects (not just the GM)
 - [x] Create the UI for creating custom spells
