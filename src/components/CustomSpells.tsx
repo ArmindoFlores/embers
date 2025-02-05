@@ -49,7 +49,11 @@ function removeAllSpells() {
     OBR.scene.setMetadata({ [spellListMetadataKey]: [] });
 }
 
-function addSpells(spells: Spells) {
+function addSpells(spells: Spells|null) {
+    if (spells == null) {
+        OBR.notification.show("Invalid spell JSON", "ERROR");
+        return;
+    }
     let added = 0, overridden = 0;
     const spellListJSON = localStorage.getItem(spellListMetadataKey) ?? "[]";
     const spellList = JSON.parse(spellListJSON) as string[];
@@ -66,6 +70,19 @@ function addSpells(spells: Spells) {
     localStorage.setItem(spellListMetadataKey, JSON.stringify(spellList));
     OBR.scene.setMetadata({ [spellListMetadataKey]: spellList });
     log_info(`Added ${added} new spell(s) from file (${overridden} overridden)`);
+    OBR.notification.show(`Successfully added ${added} new spell(s)`, "SUCCESS");
+}
+
+function verifySpells(spells: unknown) {
+    if (spells == null || typeof spells !== "object" || Array.isArray(spells)) {
+        return null;
+    }
+    for (const [key, spell] of Object.entries(spells)) {
+        if (typeof key !== "string" || typeof spell !== "object" || Array.isArray(spell)) {
+            return null;
+        }
+    }
+    return spells as Spells;
 }
 
 export default function CustomSpells() {
@@ -135,7 +152,7 @@ export default function CustomSpells() {
 
     return <div className="custom-spells" ref={mainDiv}>
         <div className="custom-spells-section">
-            <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={event => loadJSONFile(event, addSpells)} />
+            <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={event => loadJSONFile(event, json => addSpells(verifySpells(json)))} />
             <p className="subtitle add-custom-spell">
                 Custom Spells
                 <FaCirclePlus

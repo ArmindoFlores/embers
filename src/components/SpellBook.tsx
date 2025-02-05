@@ -14,6 +14,23 @@ import { useOBR } from "../react-obr/providers";
 type ModalType = "create-spell-group" | "add-spell" | "delete-spell-group" | "delete-spell" | "change-group-name";
 export const playerMetadataSpellbookKey = `${APP_KEY}/spellbook`;
 
+function verifyGroups(json: unknown): Record<string, string[]>|null {
+    if (typeof json !== "object" || Array.isArray(json) || json == null) {
+        return null;
+    }
+    for (const [key, value] of Object.entries(json)) {
+        if (typeof key !== "string" || !Array.isArray(value)) {
+            return null;
+        }
+        for (const arrayValue of value) {
+            if (typeof arrayValue != "string") {
+                return null;
+            }
+        }
+    }
+    return json as Record<string, string[]>;
+}
+
 export default function SpellBook() {
     const obr = useOBR();
     const [groups, _setGroups] = useState<Record<string, string[]>>({});
@@ -41,9 +58,14 @@ export default function SpellBook() {
         }, 300);
     };
 
-    const setGroups = useCallback((value: Record<string, string[]>) => {
+    const setGroups = useCallback((value: Record<string, string[]>|null) => {
+        if (value == null) {
+            OBR.notification.show("Invalid spellbook json", "ERROR");
+            return;
+        }
         localStorage.setItem(`${playerMetadataSpellbookKey}/${OBR.room.id}`, JSON.stringify(value));
         _setGroups(value);
+        OBR.notification.show("Successfully imported spellbook", "SUCCESS");
     }, []);
 
     const confirmGroupName = useCallback((groupName: string) => {
@@ -136,7 +158,7 @@ export default function SpellBook() {
 
     return <div ref={mainDiv} className="spellbook-container">
         <div className="spellbook-header">
-            <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={event => loadJSONFile(event, setGroups)} />
+            <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={event => loadJSONFile(event, json => setGroups(verifyGroups(json)))} />
             <p className="title spellbook-options">
                 Spellbook
                 <FaCirclePlus
