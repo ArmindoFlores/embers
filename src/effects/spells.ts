@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
+import { LOCAL_STORAGE_KEYS, getDefaultGridScaleFactor, getSettingsValue } from "../components/Settings";
 import OBR, { Item } from "@owlbear-rodeo/sdk";
 import { ReplicationType, Spell, Spells } from "../types/spells";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
@@ -171,7 +171,9 @@ export function doSpell(spellID: string, playerID: string, isGM: boolean) {
         log_error(`Unknown spell "${spellID}"`);
         return;
     }
-    getSortedTargets().then(targets => {
+    const settingsGridScaleFactor = getSettingsValue(LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR);
+    const gridScaleFactorPromise = settingsGridScaleFactor != null ? new Promise(resolve => resolve(settingsGridScaleFactor)) : getDefaultGridScaleFactor();
+    Promise.all([getSortedTargets(), gridScaleFactorPromise]).then(([targets, gridScaleFactor]) => {
         if (!getSettingsValue(LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS)) {
             OBR.scene.local.deleteItems(targets.map(item => item.id));
         }
@@ -183,6 +185,10 @@ export function doSpell(spellID: string, playerID: string, isGM: boolean) {
         for (const parameter of spell.parameters ?? []) {
             if (parameterValues[parameter.id] == undefined) {
                 parameterValues[parameter.id] = parameter.defaultValue;
+            }
+            if (parameter.id === "radius" || parameter.id === "length" || parameter.id === "size") {
+                // FIXME: this doesn't seem like a clean way to do it
+                parameterValues[parameter.id] *= gridScaleFactor as number;
             }
         }
 
