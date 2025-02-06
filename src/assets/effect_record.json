@@ -588,27 +588,62 @@
         "dpi": 200,
         "variants": {
             "200": {
-                "name": ["05ft_01_600x400", "05ft_02_600x400", "05ft_03_600x400", "05ft_04_600x400"],
+                "name": [
+                    "05ft_01_600x400",
+                    "05ft_02_600x400",
+                    "05ft_03_600x400",
+                    "05ft_04_600x400"
+                ],
                 "duration": [1700],
                 "size": [600, 400]
             },
             "600": {
-                "name": ["15ft_01_1000x400", "15ft_02_1000x400", "15ft_03_1000x400", "15ft_04_1000x400"],
+                "name": [
+                    "15ft_01_1000x400",
+                    "15ft_02_1000x400",
+                    "15ft_03_1000x400",
+                    "15ft_04_1000x400"
+                ],
                 "duration": [1870],
                 "size": [1000, 400]
             },
             "1200": {
-                "name": ["30ft_01_1600x400", "30ft_02_1600x400", "30ft_03_1600x400", "30ft_04_1600x400", "30ft_05_1600x400", "30ft_06_1600x400", "30ft_07_1600x400", "30ft_08_1600x400", "30ft_09_1600x400"],
+                "name": [
+                    "30ft_01_1600x400",
+                    "30ft_02_1600x400",
+                    "30ft_03_1600x400",
+                    "30ft_04_1600x400",
+                    "30ft_05_1600x400",
+                    "30ft_06_1600x400",
+                    "30ft_07_1600x400",
+                    "30ft_08_1600x400",
+                    "30ft_09_1600x400"
+                ],
                 "duration": [1870],
                 "size": [1600, 400]
             },
             "2400": {
-                "name": ["60ft_01_2800x400", "60ft_02_2800x400", "60ft_03_2800x400", "60ft_04_2800x400", "60ft_05_2800x400", "60ft_06_2800x400", "60ft_07_2800x400", "60ft_08_2800x400", "60ft_09_2800x400"],
+                "name": [
+                    "60ft_01_2800x400",
+                    "60ft_02_2800x400",
+                    "60ft_03_2800x400",
+                    "60ft_04_2800x400",
+                    "60ft_05_2800x400",
+                    "60ft_06_2800x400",
+                    "60ft_07_2800x400",
+                    "60ft_08_2800x400",
+                    "60ft_09_2800x400"
+                ],
                 "duration": [2030],
                 "size": [2800, 400]
             },
             "3600": {
-                "name": ["90ft_01_4000x400", "90ft_02_4000x400", "90ft_03_4000x400", "90ft_04_4000x400"],
+                "name": [
+                    "90ft_01_4000x400",
+                    "90ft_02_4000x400",
+                    "90ft_03_4000x400",
+                    "90ft_04_4000x400"
+                ],
                 "duration": [2200],
                 "size": [4000, 400]
             }
@@ -3459,7 +3494,12 @@
                     "dpi": 200,
                     "variants": {
                         "600": {
-                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "name": [
+                                "001_Red_800x600",
+                                "002_Red_800x600",
+                                "003_Red_800x600",
+                                "004_Red_800x600"
+                            ],
                             "duration": [1170, 1170, 1170, 1170],
                             "size": [800, 600]
                         }
@@ -3472,7 +3512,12 @@
                     "dpi": 200,
                     "variants": {
                         "600": {
-                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "name": [
+                                "001_Red_800x600",
+                                "002_Red_800x600",
+                                "003_Red_800x600",
+                                "004_Red_800x600"
+                            ],
                             "duration": [1170, 1170, 1170, 1170],
                             "size": [800, 600]
                         }
@@ -3487,7 +3532,12 @@
                     "dpi": 200,
                     "variants": {
                         "600": {
-                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "name": [
+                                "001_Red_800x600",
+                                "002_Red_800x600",
+                                "003_Red_800x600",
+                                "004_Red_800x600"
+                            ],
                             "duration": [1130, 1130, 1130, 1170],
                             "size": [800, 600]
                         }
@@ -3500,7 +3550,12 @@
                     "dpi": 200,
                     "variants": {
                         "600": {
-                            "name": ["001_Blue_800x600", "002_Blue_800x600", "003_Blue_800x600", "004_Blue_800x600"],
+                            "name": [
+                                "001_Blue_800x600",
+                                "002_Blue_800x600",
+                                "003_Blue_800x600",
+                                "004_Blue_800x600"
+                            ],
                             "duration": [1130, 1130, 1130, 1170],
                             "size": [800, 600]
                         }
@@ -3515,7 +3570,12 @@
                     "dpi": 200,
                     "variants": {
                         "600": {
-                            "name": ["001_Red_800x600", "002_Red_800x600", "003_Red_800x600", "004_Red_800x600"],
+                            "name": [
+                                "001_Red_800x600",
+                                "002_Red_800x600",
+                                "003_Red_800x600",
+                                "004_Red_800x600"
+                            ],
                             "duration": [1130, 1130, 1130, 1170],
                             "size": [800, 600]
                         }
@@ -3528,7 +3588,12 @@
                     "dpi": 200,
                     "variants": {
                         "600": {
-                            "name": ["001_Blue_800x600", "002_Blue_800x600", "003_Blue_800x600", "004_Blue_800x600"],
+                            "name": [
+                                "001_Blue_800x600",
+                                "002_Blue_800x600",
+                                "003_Blue_800x600",
+                                "004_Blue_800x600"
+                            ],
                             "duration": [1130, 1130, 1130, 1170],
                             "size": [800, 600]
                         }
@@ -3890,27 +3955,51 @@
                     "dpi": 200,
                     "variants": {
                         "200": {
-                            "name": ["01_Regular_Purple_05ft_600x400", "02_Regular_Purple_05ft_600x400", "03_Regular_Purple_05ft_600x400", "04_Regular_Purple_05ft_600x400"],
+                            "name": [
+                                "01_Regular_Purple_05ft_600x400",
+                                "02_Regular_Purple_05ft_600x400",
+                                "03_Regular_Purple_05ft_600x400",
+                                "04_Regular_Purple_05ft_600x400"
+                            ],
                             "duration": [2030, 2030, 2030, 2030],
                             "size": [600, 400]
                         },
                         "600": {
-                            "name": ["01_Regular_Purple_15ft_1000x400", "02_Regular_Purple_15ft_1000x400", "03_Regular_Purple_15ft_1000x400", "04_Regular_Purple_15ft_1000x400"],
+                            "name": [
+                                "01_Regular_Purple_15ft_1000x400",
+                                "02_Regular_Purple_15ft_1000x400",
+                                "03_Regular_Purple_15ft_1000x400",
+                                "04_Regular_Purple_15ft_1000x400"
+                            ],
                             "duration": [2030, 2030, 2030, 2030],
                             "size": [1000, 400]
                         },
                         "1200": {
-                            "name": ["01_Regular_Purple_30ft_1600x400", "03_Regular_Purple_30ft_1600x400", "04_Regular_Purple_30ft_1600x400"],
+                            "name": [
+                                "01_Regular_Purple_30ft_1600x400",
+                                "03_Regular_Purple_30ft_1600x400",
+                                "04_Regular_Purple_30ft_1600x400"
+                            ],
                             "duration": [2030, 2030, 2030],
                             "size": [1600, 400]
                         },
                         "2400": {
-                            "name": ["01_Regular_Purple_60ft_2800x400", "02_Regular_Purple_60ft_2800x400", "03_Regular_Purple_60ft_2800x400", "04_Regular_Purple_60ft_2800x400"],
+                            "name": [
+                                "01_Regular_Purple_60ft_2800x400",
+                                "02_Regular_Purple_60ft_2800x400",
+                                "03_Regular_Purple_60ft_2800x400",
+                                "04_Regular_Purple_60ft_2800x400"
+                            ],
                             "duration": [2030, 2030, 2030, 2030],
                             "size": [2800, 400]
                         },
                         "3600": {
-                            "name": ["01_Regular_Purple_90ft_4000x400", "02_Regular_Purple_90ft_4000x400", "03_Regular_Purple_90ft_4000x400", "04_Regular_Purple_90ft_4000x400"],
+                            "name": [
+                                "01_Regular_Purple_90ft_4000x400",
+                                "02_Regular_Purple_90ft_4000x400",
+                                "03_Regular_Purple_90ft_4000x400",
+                                "04_Regular_Purple_90ft_4000x400"
+                            ],
                             "duration": [2030, 2030, 2030, 2030],
                             "size": [4000, 400]
                         }
@@ -4600,7 +4689,10 @@
                 "dpi": 100,
                 "variants": {
                     "800": {
-                        "name": ["01_Regular_Blue_800x800", "02_Regular_Blue_800x800"],
+                        "name": [
+                            "01_Regular_Blue_800x800",
+                            "02_Regular_Blue_800x800"
+                        ],
                         "duration": [2000, 2000],
                         "size": [800, 800]
                     }
@@ -6198,8 +6290,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6224,8 +6325,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6237,7 +6347,11 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_Orange_800x600", "02_Regular_Orange_800x600", "03_Regular_Orange_800x600"],
+                                "name": [
+                                    "01_Regular_Orange_800x600",
+                                    "02_Regular_Orange_800x600",
+                                    "03_Regular_Orange_800x600"
+                                ],
                                 "duration": [900, 1200, 1470],
                                 "size": [800, 600]
                             }
@@ -6250,7 +6364,10 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_Orange_800x600", "02_Regular_Orange_800x600"],
+                                "name": [
+                                    "01_Regular_Orange_800x600",
+                                    "02_Regular_Orange_800x600"
+                                ],
                                 "duration": [900, 1200, 1470],
                                 "size": [800, 600]
                             }
@@ -6263,8 +6380,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6315,8 +6441,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6328,8 +6463,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6354,7 +6498,10 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_Blue_800x600", "02_Regular_Blue_800x600"],
+                                "name": [
+                                    "01_Regular_Blue_800x600",
+                                    "02_Regular_Blue_800x600"
+                                ],
                                 "duration": [2330, 2570],
                                 "size": [800, 600]
                             }
@@ -6367,8 +6514,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6393,8 +6549,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6406,8 +6571,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6419,8 +6593,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6432,8 +6615,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6445,8 +6637,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6458,8 +6659,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6471,8 +6681,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -6484,8 +6703,17 @@
                         "dpi": 200,
                         "variants": {
                             "600": {
-                                "name": ["01_Regular_White_800x600", "02_Regular_White_800x600", "03_Regular_White_800x600", "04_Regular_White_800x600", "05_Regular_White_800x600", "06_Regular_White_800x600"],
-                                "duration": [2200, 2700, 2200, 2200, 2530, 2870],
+                                "name": [
+                                    "01_Regular_White_800x600",
+                                    "02_Regular_White_800x600",
+                                    "03_Regular_White_800x600",
+                                    "04_Regular_White_800x600",
+                                    "05_Regular_White_800x600",
+                                    "06_Regular_White_800x600"
+                                ],
+                                "duration": [
+                                    2200, 2700, 2200, 2200, 2530, 2870
+                                ],
                                 "size": [800, 600]
                             }
                         }
@@ -7238,22 +7466,42 @@
                     "dpi": 200,
                     "variants": {
                         "600": {
-                            "name": ["01_Regular_Blue_15ft_1000x400", "02_Regular_Blue_15ft_1000x400", "03_Regular_Blue_15ft_1000x400", "04_Regular_Blue_15ft_1000x400"],
+                            "name": [
+                                "01_Regular_Blue_15ft_1000x400",
+                                "02_Regular_Blue_15ft_1000x400",
+                                "03_Regular_Blue_15ft_1000x400",
+                                "04_Regular_Blue_15ft_1000x400"
+                            ],
                             "duration": [3630],
                             "size": [1000, 400]
                         },
                         "1200": {
-                            "name": ["01_Regular_Blue_30ft_1600x400", "02_Regular_Blue_30ft_1600x400", "03_Regular_Blue_30ft_1600x400", "04_Regular_Blue_30ft_1600x400"],
+                            "name": [
+                                "01_Regular_Blue_30ft_1600x400",
+                                "02_Regular_Blue_30ft_1600x400",
+                                "03_Regular_Blue_30ft_1600x400",
+                                "04_Regular_Blue_30ft_1600x400"
+                            ],
                             "duration": [4030],
                             "size": [1600, 400]
                         },
                         "2400": {
-                            "name": ["01_Regular_Blue_60ft_2800x400", "02_Regular_Blue_60ft_2800x400", "03_Regular_Blue_60ft_2800x400", "04_Regular_Blue_60ft_2800x400"],
+                            "name": [
+                                "01_Regular_Blue_60ft_2800x400",
+                                "02_Regular_Blue_60ft_2800x400",
+                                "03_Regular_Blue_60ft_2800x400",
+                                "04_Regular_Blue_60ft_2800x400"
+                            ],
                             "duration": [4870],
                             "size": [2800, 400]
                         },
                         "3600": {
-                            "name": ["01_Regular_Blue_90ft_4000x400", "02_Regular_Blue_90ft_4000x400", "03_Regular_Blue_90ft_4000x400", "04_Regular_Blue_90ft_4000x400"],
+                            "name": [
+                                "01_Regular_Blue_90ft_4000x400",
+                                "02_Regular_Blue_90ft_4000x400",
+                                "03_Regular_Blue_90ft_4000x400",
+                                "04_Regular_Blue_90ft_4000x400"
+                            ],
                             "duration": [5700],
                             "size": [4000, 400]
                         }
@@ -7477,6 +7725,47 @@
                                 "size": [4000, 400]
                             }
                         }
+                    }
+                }
+            }
+        },
+        "wind": {
+            "windlines": {
+                "basename": "Generic/Wind/WindLines01_01_Regular_White",
+                "thumbnail": "Generic/Wind/WindLines01_01_Regular_White_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": [5000],
+                        "size": [500, 500]
+                    }
+                }
+            },
+            "windlinesleaves": {
+                "basename": "Generic/Wind/WindLinesLeaves01_01_Regular_Green",
+                "thumbnail": "Generic/Wind/WindLinesLeaves01_01_Regular_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": [5000],
+                        "size": [500, 500]
+                    }
+                }
+            },
+            "windstreams": {
+                "basename": "Generic/Wind/WindStreams_01_White_20OPA",
+                "thumbnail": "Generic/Wind/WindStreams_01_White_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "1200": {
+                        "name": ["1200x1200"],
+                        "duration": [4030],
+                        "size": [1200, 1200]
                     }
                 }
             }
