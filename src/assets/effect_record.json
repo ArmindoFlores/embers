@@ -7736,9 +7736,9 @@
                 "type": "CIRCLE",
                 "dpi": 100,
                 "variants": {
-                    "400": {
+                    "500": {
                         "name": ["500x500"],
-                        "duration": [5040],
+                        "duration": [5000],
                         "size": [500, 500]
                     }
                 }
@@ -7749,9 +7749,9 @@
                 "type": "CIRCLE",
                 "dpi": 200,
                 "variants": {
-                    "400": {
+                    "500": {
                         "name": ["500x500"],
-                        "duration": [5040],
+                        "duration": [5000],
                         "size": [500, 500]
                     }
                 }
@@ -7762,9 +7762,9 @@
                 "type": "CIRCLE",
                 "dpi": 200,
                 "variants": {
-                    "400": {
+                    "1200": {
                         "name": ["1200x1200"],
-                        "duration": [2000],
+                        "duration": [4030],
                         "size": [1200, 1200]
                     }
                 }
