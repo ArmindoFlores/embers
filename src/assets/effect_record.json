@@ -7769,6 +7769,164 @@
                     }
                 }
             }
+        },
+        "twinkling_stars": {
+            "default": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_04",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "default_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_04_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_OrangeThumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "five": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_05",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "five_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_05_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "six": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_06",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "six_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_06_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "seven": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_07",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "seven_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_07_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "eight": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_08",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "eight_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_08_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "nine": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_09",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "nine_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_09_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            }
         }
     }
 }
