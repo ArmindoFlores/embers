@@ -7953,6 +7953,593 @@
                     }
                 }
             }
+        },
+        "token_stage": {
+            "tokenstagehex01s2_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S2_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex01s2_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S2_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex01s2_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S2_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex01s2_04_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S2_04_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_04_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex01s2_05_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S2_05_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_05_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex01s2_06_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S2_06_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_06_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex01s3_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S3_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex01s3_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S3_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex01s3_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S3_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex01s3_04_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S3_04_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_04_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex01s3_05_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S3_05_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_05_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex01s3_06_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01S3_06_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_06_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex01_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex01_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex01_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex01_04_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01_04_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01_04_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex01_05_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01_05_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01_05_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex01_06_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex01_06_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex01_06_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex02s2_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02S2_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex02s2_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02S2_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex02s2_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02S2_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [4042],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "tokenstagehex02s3_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02S3_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex02s3_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02S3_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex02s3_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02S3_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "800": {
+                        "name": ["800x800"],
+                        "duration": [4042],
+                        "size": [800, 800]
+                    }
+                }
+            },
+            "tokenstagehex02_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex02_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagehex02_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageHex02_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageHex02_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround01_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound01_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound01_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround01_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound01_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound01_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround01_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound01_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound01_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround01_04_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound01_04_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound01_04_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround01_05_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound01_05_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound01_05_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround01_06_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound01_06_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound01_06_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround02_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound02_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound02_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround02_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound02_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound02_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstageround02_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageRound02_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageRound02_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare01_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare01_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare01_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare01_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare01_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare01_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare01_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare01_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare01_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare01_04_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare01_04_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare01_04_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare01_05_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare01_05_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare01_05_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare01_06_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare01_06_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare01_06_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare02_01_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare02_01_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare02_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare02_02_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare02_02_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare02_02_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "tokenstagesquare02_03_regular_blue": {
+                "basename": "Generic/Token_Stage/TokenStageSquare02_03_Regular_Blue",
+                "thumbnail": "Generic/Token_Stage/TokenStageSquare02_03_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [4042],
+                        "size": [400, 400]
+                    }
+                }
+            }
         }
     }
 }
