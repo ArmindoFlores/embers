@@ -7730,7 +7730,7 @@
             }
         },
         "wind": {
-            "windlines": {
+            "windlines01_01_regular_white": {
                 "basename": "Generic/Wind/WindLines01_01_Regular_White",
                 "thumbnail": "Generic/Wind/WindLines01_01_Regular_White_Thumb.webp",
                 "type": "CIRCLE",
@@ -7743,11 +7743,11 @@
                     }
                 }
             },
-            "windlinesleaves": {
-                "basename": "Generic/Wind/WindLinesLeaves01_01_Regular_Green",
-                "thumbnail": "Generic/Wind/WindLinesLeaves01_01_Regular_Green_Thumb.webp",
+            "windlines01_02_regular_white": {
+                "basename": "Generic/Wind/WindLines01_02_Regular_White",
+                "thumbnail": "Generic/Wind/WindLines01_02_Regular_White_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "500": {
                         "name": ["500x500"],
@@ -7756,26 +7756,52 @@
                     }
                 }
             },
-            "windstreams": {
-                "basename": "Generic/Wind/WindStreams_01_White_20OPA",
-                "thumbnail": "Generic/Wind/WindStreams_01_White_Thumb.webp",
+            "windlinesleaves01_01_regular_green": {
+                "basename": "Generic/Wind/WindLinesLeaves01_01_Regular_Green",
+                "thumbnail": "Generic/Wind/WindLinesLeaves01_01_Regular_Green_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": [5000],
+                        "size": [500, 500]
+                    }
+                }
+            },
+            "windlinesleaves01_02_regular_green": {
+                "basename": "Generic/Wind/WindLinesLeaves01_02_Regular_Green",
+                "thumbnail": "Generic/Wind/WindLinesLeaves01_02_Regular_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "500": {
+                        "name": ["500x500"],
+                        "duration": [5000],
+                        "size": [500, 500]
+                    }
+                }
+            },
+            "windstreams_01_white_20opa": {
+                "basename": "Generic/Wind/WindStreams_01_White_20OPA",
+                "thumbnail": "Generic/Wind/WindStreams_01_White_20OPA_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
                 "variants": {
                     "1200": {
                         "name": ["1200x1200"],
-                        "duration": [4030],
+                        "duration": [4033],
                         "size": [1200, 1200]
                     }
                 }
             }
         },
         "twinkling_stars": {
-            "default": {
+            "twinklingstars_04": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_04",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7784,11 +7810,11 @@
                     }
                 }
             },
-            "default_orange": {
+            "twinklingstars_04_orange": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_04_Orange",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_OrangeThumb.webp",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7797,11 +7823,11 @@
                     }
                 }
             },
-            "five": {
+            "twinklingstars_05": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_05",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7810,11 +7836,11 @@
                     }
                 }
             },
-            "five_orange": {
+            "twinklingstars_05_orange": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_05_Orange",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7823,11 +7849,11 @@
                     }
                 }
             },
-            "six": {
+            "twinklingstars_06": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_06",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7836,11 +7862,11 @@
                     }
                 }
             },
-            "six_orange": {
+            "twinklingstars_06_orange": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_06_Orange",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7849,11 +7875,11 @@
                     }
                 }
             },
-            "seven": {
+            "twinklingstars_07": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_07",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7862,11 +7888,11 @@
                     }
                 }
             },
-            "seven_orange": {
+            "twinklingstars_07_orange": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_07_Orange",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7875,11 +7901,11 @@
                     }
                 }
             },
-            "eight": {
+            "twinklingstars_08": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_08",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7888,11 +7914,11 @@
                     }
                 }
             },
-            "eight_orange": {
+            "twinklingstars_08_orange": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_08_Orange",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7901,11 +7927,11 @@
                     }
                 }
             },
-            "nine": {
+            "twinklingstars_09": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_09",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
@@ -7914,11 +7940,11 @@
                     }
                 }
             },
-            "nine_orange": {
+            "twinklingstars_09_orange": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_09_Orange",
                 "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
                 "type": "CIRCLE",
-                "dpi": 200,
+                "dpi": 100,
                 "variants": {
                     "100": {
                         "name": ["100x100"],
