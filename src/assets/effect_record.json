@@ -5334,6 +5334,2052 @@
                 }
             }
         },
+        "magic_signs": {
+            "abjuration_circle": {
+                "regular_blue": {
+                    "simple": {
+                        "basename": "Generic/Magic_Signs/Abjuration_01_Blue_Circle",
+                        "thumbnail": "Generic/Magic_Signs/Abjuration_01_Blue_Circle_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    8033
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleComplete_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleLoop_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleIntro_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleIntro_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleLoop_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleLoop_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleOutro_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleOutro_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_blue": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleComplete_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleLoop_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleIntro_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleIntro_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleLoop_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleLoop_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/AbjurationCircleOutro_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/AbjurationCircleOutro_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "conjuration_circle": {
+                "regular_yellow": {
+                    "simple": {
+                        "basename": "Generic/Magic_Signs/Conjuration_01_Yellow_Circle",
+                        "thumbnail": "Generic/Magic_Signs/Conjuration_01_Yellow_Circle_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    8042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleComplete_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleLoop_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleIntro_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleIntro_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleLoop_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleLoop_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleOutro_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleOutro_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_yellow": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleComplete_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleLoop_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleIntro_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleIntro_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleLoop_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleLoop_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/ConjurationCircleOutro_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/ConjurationCircleOutro_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "divination_circle": {
+                "light_blue": {
+                    "simple": {
+                        "basename": "Generic/Magic_Signs/Divination_01_Light_Blue_Circle",
+                        "thumbnail": "Generic/Magic_Signs/Divination_01_Light_Blue_Circle_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    8083
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleComplete_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleLoop_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleIntro_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleIntro_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleLoop_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleLoop_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleOutro_02_Regular_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleOutro_02_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_blue": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleComplete_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleLoop_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleIntro_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleIntro_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleLoop_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleLoop_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/DivinationCircleOutro_02_Dark_Blue",
+                        "thumbnail": "Generic/Magic_Signs/DivinationCircleOutro_02_Dark_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "enchantment_circle": {
+                "regular_pink": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleComplete_02_Regular_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleLoop_02_Regular_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleIntro_02_Regular_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleIntro_02_Regular_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleLoop_02_Regular_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleLoop_02_Regular_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleOutro_02_Regular_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleOutro_02_Regular_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_pink": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleComplete_02_Dark_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleLoop_02_Dark_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleIntro_02_Dark_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleIntro_02_Dark_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleLoop_02_Dark_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleLoop_02_Dark_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/EnchantmentCircleOutro_02_Dark_Pink",
+                        "thumbnail": "Generic/Magic_Signs/EnchantmentCircleOutro_02_Dark_Pink_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "evocation_circle": {
+                "regular_red": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleComplete_02_Regular_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleLoop_02_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleIntro_02_Regular_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleIntro_02_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleLoop_02_Regular_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleLoop_02_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleOutro_02_Regular_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleOutro_02_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_red": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleComplete_02_Dark_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleLoop_02_Dark_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleIntro_02_Dark_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleIntro_02_Dark_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleLoop_02_Dark_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleLoop_02_Dark_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/EvocationCircleOutro_02_Dark_Red",
+                        "thumbnail": "Generic/Magic_Signs/EvocationCircleOutro_02_Dark_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "illusion_circle": {
+                "regular_purple": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleComplete_02_Regular_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleLoop_02_Regular_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleIntro_02_Regular_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleIntro_02_Regular_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleLoop_02_Regular_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleLoop_02_Regular_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleOutro_02_Regular_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleOutro_02_Regular_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_purple": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleComplete_02_Dark_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleLoop_02_Dark_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleIntro_02_Dark_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleIntro_02_Dark_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleLoop_02_Dark_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleLoop_02_Dark_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/IllusionCircleOutro_02_Dark_Purple",
+                        "thumbnail": "Generic/Magic_Signs/IllusionCircleOutro_02_Dark_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "necromancy_circle": {
+                "regular_green": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleComplete_02_Regular_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleLoop_02_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleIntro_02_Regular_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleIntro_02_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleLoop_02_Regular_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleLoop_02_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleOutro_02_Regular_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleOutro_02_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_green": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleComplete_02_Dark_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleLoop_02_Dark_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleIntro_02_Dark_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleIntro_02_Dark_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleLoop_02_Dark_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleLoop_02_Dark_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/NecromancyCircleOutro_02_Dark_Green",
+                        "thumbnail": "Generic/Magic_Signs/NecromancyCircleOutro_02_Dark_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "transmutation_circle": {
+                "regular_yellow": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleComplete_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleLoop_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleIntro_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleIntro_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleLoop_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleLoop_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleOutro_02_Regular_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleOutro_02_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "dark_yellow": {
+                    "complete": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleComplete_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleLoop_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    11042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleIntro_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleIntro_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleLoop_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleLoop_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Magic_Signs/TransmutationCircleOutro_02_Dark_Yellow",
+                        "thumbnail": "Generic/Magic_Signs/TransmutationCircleOutro_02_Dark_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    3542
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "abjuration_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/AbjurationRuneComplete_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/AbjurationRuneLoop_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/AbjurationRuneIntro_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/AbjurationRuneIntro_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/AbjurationRuneLoop_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/AbjurationRuneLoop_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/AbjurationRuneOutro_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/AbjurationRuneOutro_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "conjuration_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/ConjurationRuneComplete_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/ConjurationRuneLoop_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/ConjurationRuneIntro_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/ConjurationRuneIntro_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/ConjurationRuneLoop_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/ConjurationRuneLoop_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/ConjurationRuneOutro_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/ConjurationRuneOutro_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2542
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "divination_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/DivinationRuneComplete_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/DivinationRuneLoop_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/DivinationRuneIntro_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/DivinationRuneIntro_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2125
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/DivinationRuneLoop_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/DivinationRuneLoop_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/DivinationRuneOutro_01_Regular_Blue",
+                    "thumbnail": "Generic/Magic_Signs/Runes/DivinationRuneOutro_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2750
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "enchantment_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/EnchantmentRuneComplete_01_Regular_Pink",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EnchantmentRuneLoop_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/EnchantmentRuneIntro_01_Regular_Pink",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EnchantmentRuneIntro_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2125
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/EnchantmentRuneLoop_01_Regular_Pink",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EnchantmentRuneLoop_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/EnchantmentRuneOutro_01_Regular_Pink",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EnchantmentRuneOutro_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2833
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "evocation_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/EvocationRuneComplete_01_Regular_Red",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EvocationRuneLoop_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/EvocationRuneIntro_01_Regular_Red",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EvocationRuneIntro_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2083
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/EvocationRuneLoop_01_Regular_Red",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EvocationRuneLoop_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/EvocationRuneOutro_01_Regular_Red",
+                    "thumbnail": "Generic/Magic_Signs/Runes/EvocationRuneOutro_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2750
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "illusion_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/IllusionRuneComplete_01_Regular_Purple",
+                    "thumbnail": "Generic/Magic_Signs/Runes/IllusionRuneLoop_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/IllusionRuneIntro_01_Regular_Purple",
+                    "thumbnail": "Generic/Magic_Signs/Runes/IllusionRuneIntro_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2167
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/IllusionRuneLoop_01_Regular_Purple",
+                    "thumbnail": "Generic/Magic_Signs/Runes/IllusionRuneLoop_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/IllusionRuneOutro_01_Regular_Purple",
+                    "thumbnail": "Generic/Magic_Signs/Runes/IllusionRuneOutro_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2917
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "necromancy_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/NecromancyRuneComplete_01_Regular_Green",
+                    "thumbnail": "Generic/Magic_Signs/Runes/NecromancyRuneLoop_01_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/NecromancyRuneIntro_01_Regular_Green",
+                    "thumbnail": "Generic/Magic_Signs/Runes/NecromancyRuneIntro_01_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2083
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/NecromancyRuneLoop_01_Regular_Green",
+                    "thumbnail": "Generic/Magic_Signs/Runes/NecromancyRuneLoop_01_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/NecromancyRuneOutro_01_Regular_Green",
+                    "thumbnail": "Generic/Magic_Signs/Runes/NecromancyRuneOutro_01_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2750
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "transmutation_rune": {
+                "complete": {
+                    "basename": "Generic/Magic_Signs/Runes/TransmutationRuneComplete_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/TransmutationRuneLoop_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                8667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "intro": {
+                    "basename": "Generic/Magic_Signs/Runes/TransmutationRuneIntro_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/TransmutationRuneIntro_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Magic_Signs/Runes/TransmutationRuneLoop_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/TransmutationRuneLoop_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "outro": {
+                    "basename": "Generic/Magic_Signs/Runes/TransmutationRuneOutro_01_Regular_Yellow",
+                    "thumbnail": "Generic/Magic_Signs/Runes/TransmutationRuneOutro_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2625
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "marker": {
             "simple": {
                 "blue": {
