@@ -8622,6 +8622,516 @@
                 }
             }
         },
+        "particles": {
+            "burst": {
+                "circle": {
+                    "basename": "Generic/Particles/ParticleBurstCircle01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Particles/ParticleBurstCircle01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                2133
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "rune": {
+                    "basename": "Generic/Particles/ParticleBurstRune01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Particles/ParticleBurstRune01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                2133
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "star": {
+                    "basename": "Generic/Particles/ParticleBurstStar01_01_Regular_BluePurple",
+                    "thumbnail": "Generic/Particles/ParticleBurstStar01_01_Regular_BluePurple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                2133
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                }
+            },
+            "inwards": {
+                "1": {
+                    "basename": "Generic/Particles/ParticlesInward01_01_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward01_01_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Particles/ParticlesInward01_02_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward01_02_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Particles/ParticlesInward01_03_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward01_03_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Particles/ParticlesInward01_04_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward01_04_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Particles/ParticlesInward01_05_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward01_05_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Particles/ParticlesInward02_01_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward02_01_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "7": {
+                    "basename": "Generic/Particles/ParticlesInward02_02_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward02_02_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "8": {
+                    "basename": "Generic/Particles/ParticlesInward02_03_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward02_03_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "9": {
+                    "basename": "Generic/Particles/ParticlesInward02_04_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward02_04_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "10": {
+                    "basename": "Generic/Particles/ParticlesInward02_05_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesInward02_05_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "outwards": {
+                "1": {
+                    "basename": "Generic/Particles/ParticlesOutward01_01_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward01_01_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Particles/ParticlesOutward01_02_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward01_02_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Particles/ParticlesOutward01_03_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward01_03_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Particles/ParticlesOutward01_04_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward01_04_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Particles/ParticlesOutward01_05_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward01_05_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Particles/ParticlesOutward02_01_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward02_01_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "7": {
+                    "basename": "Generic/Particles/ParticlesOutward02_02_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward02_02_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "8": {
+                    "basename": "Generic/Particles/ParticlesOutward02_03_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward02_03_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "9": {
+                    "basename": "Generic/Particles/ParticlesOutward02_04_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward02_04_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "10": {
+                    "basename": "Generic/Particles/ParticlesOutward02_05_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesOutward02_05_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "swirl": {
+                "1": {
+                    "basename": "Generic/Particles/ParticlesSwirl01_01_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesSwirl01_01_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Particles/ParticlesSwirl02_01_Regular_GreenYellow",
+                    "thumbnail": "Generic/Particles/ParticlesSwirl02_01_Regular_GreenYellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "ranged_spell": {
             "overcharged_sphere": {
                 "purple": {
