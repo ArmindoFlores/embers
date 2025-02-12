@@ -7784,7 +7784,7 @@
             },
             "windstreams": {
                 "basename": "Generic/Wind/WindStreams_01_White_20OPA",
-                "thumbnail": "Generic/Wind/WindStreams_01_White_20OPA_Thumb.webp",
+                "thumbnail": "Generic/Wind/WindStreams_01_White_Thumb.webp",
                 "type": "CIRCLE",
                 "dpi": 100,
                 "variants": {
@@ -8550,6 +8550,158 @@
                             "name": ["400x400"],
                             "duration": [4042],
                             "size": [400, 400]
+                        }
+                    }
+                }
+            }
+        },
+        "unarmed_attacks": {
+            "flurry_of_blows": {
+                "magical": {
+                    "1": {
+                        "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical01",
+                        "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical01_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1800
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical02",
+                        "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical02_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1667
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                },
+                "physical": {
+                    "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Physical01",
+                    "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Physical01_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x600"
+                            ],
+                            "duration": [
+                                1200
+                            ],
+                            "size": [
+                                800,
+                                600
+                            ]
+                        }
+                    }
+                }
+            },
+            "unarmed_strikes": {
+                "magical": {
+                    "1": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical01",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical01_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical02",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical02_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                },
+                "physical": {
+                    "1": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical01",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical01_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1033
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical02",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical02_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1033
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
                         }
                     }
                 }
