@@ -6,7 +6,7 @@ import { Effect, EffectType } from "../types/effects";
 import { FaArrowLeft, FaCirclePlus, FaFloppyDisk, FaPencil, FaTrash } from "react-icons/fa6";
 import OBR, { Layer } from "@owlbear-rodeo/sdk";
 import { ReplicationType, Spell } from "../types/spells";
-import { effectNames, getEffect } from "../effects";
+import { effectNames, getEffect, getEffectURL, getVariantName } from "../effects";
 import { isBlueprintVariable, isUnresolvedBlueprint } from "../effects/blueprint";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
@@ -90,6 +90,7 @@ function BlueprintValueInput<T>({
 function EditEffectValue({ value, setValue, close, type }: { value: BlueprintValue<unknown>, setValue: (v: BlueprintValue<unknown>) => void, close: () => void, type?: ValueType }) {
     const [valueType, setValueType] = useState<"value" | "variable" | "function">();
     const [currentValue, setCurrentValue] = useState<string|null>(null);
+    const [currentUrl, setCurrentUrl] = useState<string|null>(null);
     const [currentBooleanValue, setCurrentBooleanValue] = useState<string>("null");
     const [currentVectorValue, setCurrentVectorValue] = useState<{ x: number, y: number }|null>(null);
     const [currentFunction, setCurrentFunction] = useState<BlueprintFunction>({ name: "", arguments: [] });
@@ -154,6 +155,10 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
         setDatatype(type);
     }, [type]);
 
+    useEffect(() => {
+        setCurrentUrl(getEffectURL(currentValue+'', getVariantName(currentValue+'', 0)+'')+'')
+    },[currentValue])
+
     if (editing != undefined) {
         if (editing.type === "value") {
             return <EditEffectValue value={editing.value} setValue={editing.setValue} close={() => setEditing(undefined)} type={editing.valueType} />;
@@ -201,12 +206,17 @@ function EditEffectValue({ value, setValue, close, type }: { value: BlueprintVal
                     }
                     {
                         datatype === "effect" &&
+                        <>
                         <select value={currentValue ?? ""} onChange={event => setCurrentValue(event.target.value)}>
                             <option value="" disabled>Select an effect</option>
                             {
                                 effectNames.map(effect => <option key={effect} value={effect}>{ effect }</option>)
                             }
                         </select>
+                        <div className="edit-thumbnail-preview">
+                            <video src={`${currentUrl}`} autoPlay loop muted />
+                        </div>
+                        </>
                     }
                     {
                         datatype === "action" &&

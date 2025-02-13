@@ -1,5 +1,6 @@
 import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
 import { EffectInstruction, MessageType } from "../types/messageListener";
+import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
 import { Layer, Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 import { AOEEffectMessage } from "../types/aoe";
@@ -384,7 +385,6 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
             (ukEffectProperties as AOEEffectBlueprint).source != undefined
         ) {
             const abEffectProperties = ukEffectProperties as AOEEffectBlueprint;
-
             let source: Vector2|undefined =  { x: 0, y: 0 };
             if (isUnresolvedBlueprint(abEffectProperties.source)) {
                 const maybePosition = parseExpression<Vector2>(abEffectProperties.source, variables);
@@ -404,7 +404,8 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
 
             let size: number = 0;
             if (typeof abEffectProperties.size === "number") {
-                size = abEffectProperties.size;
+                // FIXME: What if this value is a variable/function? Should we not multiply it?
+                size = abEffectProperties.size * getSettingsValue(LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR);
             }
             else if (isUnresolvedBlueprint(abEffectProperties.size)) {
                 const maybeSize = parseExpression<number>(abEffectProperties.size, variables);
