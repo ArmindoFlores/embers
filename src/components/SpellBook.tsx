@@ -210,7 +210,7 @@ export default function SpellBook() {
                     variant="h6"
                     className="title spellbook-options"
                 >
-                    Spellbooks
+                    Spell Books
                     <FaCirclePlus
                         style={{
                             marginLeft: "0.5rem",
@@ -359,7 +359,7 @@ export default function SpellBook() {
                         </span>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <ul className="spellgroup-list">
+                        <ul style={{ margin: 0 }} className="spellgroup-list">
                             {spells.map((spellID, index) => {
                                 const spell = getSpell(spellID, isGM);
                                 if (spell == undefined) {

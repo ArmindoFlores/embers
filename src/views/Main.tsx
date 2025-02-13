@@ -259,6 +259,8 @@ export default function Main() {
                         height:
                             selectedTab === 0
                                 ? "calc(100vh - 154px)"
+                                : selectedTab === 3
+                                ? "calc(100vh - 100px)"
                                 : "100vh-88px", // Adjust the height as needed
                         scrollbarWidth: "thin", // For Firefox
                         "&::-webkit-scrollbar": {
