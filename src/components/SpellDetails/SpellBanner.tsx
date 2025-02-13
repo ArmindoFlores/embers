@@ -69,7 +69,7 @@ export default function SpellBanner({
                             onButtonClick();
                         }}
                     >
-                        Wall Targets
+                        Wall Target
                     </Button>
                 );
             }
