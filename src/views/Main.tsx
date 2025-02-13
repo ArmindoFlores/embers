@@ -14,7 +14,7 @@ import {
     setupGMLocalSpells,
     setupPlayerLocalSpells,
 } from "../effects/localSpells";
-import { setupEffectsTool } from "../effectsTool";
+import { setupEffectsTool, toolID } from "../effectsTool";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import CustomSpells from "../components/CustomSpells";
@@ -85,8 +85,8 @@ export default function Main() {
     const [effectRegister, setEffectRegister] = useState<Map<string, number>>(
         new Map()
     );
-    // const [toolSelected, setToolSelected] = useState(false);
-    // const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
+    const [toolSelected, setToolSelected] = useState(false);
+    const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState(0);
     const previousPartyRef = useRef<{
         players: Player[];
@@ -170,18 +170,18 @@ export default function Main() {
         };
     }, [obr.ready, playerConnections, obr.player?.id, obr.player?.role]);
 
-    // TODO: Clarify what is the purpose of these hooks
-    // useEffect(() => {
-    //     if (!obr.ready) {
-    //         return;
-    //     }
+    useEffect(() => {
+        if (!obr.ready) {
+            return;
+        }
 
-    //     return OBR.tool.onToolChange((tool) => {
-    //         const selectedOurTool = tool === toolID;
-    //         setToolSelected(selectedOurTool);
-    //         setPreviouslySelectedTab(selectedTab);
-    //     });
-    // }, [obr.ready, selectedTab, previouslySelectedTab]);
+        return OBR.tool.onToolChange((tool) => {
+            const selectedOurTool = tool === toolID;
+            setToolSelected(selectedOurTool);
+            setPreviouslySelectedTab(selectedTab);
+            setSelectedTab(selectedOurTool ? 3 : previouslySelectedTab);
+        });
+    }, [obr.ready, selectedTab, previouslySelectedTab]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady || obr.player?.role != "GM") {
@@ -244,6 +244,7 @@ export default function Main() {
                                     minHeight: 0,
                                     p: 2.5,
                                 }}
+                                disabled={toolSelected && index !== 2}
                             />
                         );
                     })}
@@ -252,7 +253,10 @@ export default function Main() {
                     sx={{
                         p: 1.5,
                         overflow: "auto",
-                        height: "calc(100vh - 200px)", // Adjust the height as needed
+                        height:
+                            selectedTab === 0
+                                ? "calc(100vh - 154px)"
+                                : "100vh-88px", // Adjust the height as needed
                         scrollbarWidth: "thin", // For Firefox
                         "&::-webkit-scrollbar": {
                             width: "8px", // For Chrome, Safari, and Opera
@@ -264,8 +268,12 @@ export default function Main() {
             </Box>
 
             {selectedTab === 0 && (
-                <Box sx={{ maxHeight: "94px", overflow: "hidden" }}>
-                    <SpellBanner />
+                <Box sx={{ maxHeight: "64px", overflow: "hidden" }}>
+                    <SpellBanner
+                        onButtonClick={() => {
+                            setSelectedTab(2);
+                        }}
+                    />
                 </Box>
             )}
             {effectsWorker && (

@@ -7,9 +7,22 @@ import { useEffect, useState } from "react";
 import { getSpell } from "../../effects/spells";
 import { toolMetadataSelectedSpell } from "../../effectsTool";
 import { useOBR } from "../../react-obr/providers";
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import {
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Tooltip,
+    Typography,
+} from "@mui/material";
+import { FaBullseye, FaCrosshairs, FaLink } from "react-icons/fa6";
+import { FaProjectDiagram } from "react-icons/fa";
 // * This component is a summary of the currently selected spell. It displays the spell's name, thumbnail only. *
-export default function SpellBanner() {
+export default function SpellBanner({
+    onButtonClick,
+}: {
+    onButtonClick: () => void;
+}) {
     const obr = useOBR();
     const [selectedSpell, setSelectedSpell] = useState<Spell>();
     const [isGM, setIsGM] = useState(false);
@@ -43,6 +56,68 @@ export default function SpellBanner() {
         return OBR.player.onChange((player) => setSelected(player.metadata));
     }, [obr.ready, isGM]);
 
+    const renderSpellMode = (replicate: string, minimum: number = 0) => {
+        if (replicate === "no") {
+            if (minimum > 1) {
+                return (
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        size="small"
+                        startIcon={<FaLink />}
+                        onClick={() => {
+                            onButtonClick();
+                        }}
+                    >
+                        Wall Targets
+                    </Button>
+                );
+            }
+
+            return (
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    size="small"
+                    startIcon={<FaBullseye />}
+                    onClick={() => {
+                        onButtonClick();
+                    }}
+                >
+                    Single Target
+                </Button>
+            );
+        } else if (replicate === "all") {
+            return (
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    size="small"
+                    startIcon={<FaCrosshairs />}
+                    onClick={() => {
+                        onButtonClick();
+                    }}
+                >
+                    All Targets
+                </Button>
+            );
+        } else {
+            return (
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    size="small"
+                    startIcon={<FaProjectDiagram />}
+                    onClick={() => {
+                        onButtonClick();
+                    }}
+                >
+                    First Target to All
+                </Button>
+            );
+        }
+    };
+
     return (
         <Card
             sx={{
@@ -50,40 +125,44 @@ export default function SpellBanner() {
                 width: "100%",
                 borderTopLeftRadius: 8,
                 borderTopRightRadius: 8,
+                backgroundColor: "transparent",
             }}
         >
-            <CardContent sx={{ flex: "1 0 auto", p: 1 }}>
+            <CardContent sx={{ flex: "1 0 auto", p: 0 }}>
                 {!selectedSpell ? (
                     <Typography variant="body2" sx={{ m: 1, mb: 0 }}>
-                        No active spells. Select or add one from the spellbook!
-                        🧙‍♂️🔥
+                        No active spells. Select one from the spellbook! 🧙‍♂️🔥
                     </Typography>
                 ) : (
                     <>
                         <div>
-                            <div
-                                className="spell-details-header"
+                            <Box
                                 style={{
                                     display: "flex",
                                     alignItems: "center",
-                                    backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
+                                    // backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                     padding: "0.5rem",
+                                    justifyContent: "space-between",
                                 }}
                             >
-                                <div>
-                                    <Typography
-                                        component="div"
-                                        variant="caption"
-                                    >
-                                        Current Spell
-                                    </Typography>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <img
+                                        src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
+                                        style={{
+                                            width: "42px",
+                                            height: "42px",
+                                        }}
+                                    />
                                     <span
                                         className="title"
                                         style={{
-                                            backgroundColor:
-                                                "rgba(0, 0, 0, 0.75)", // Faded black background
                                             color: "white",
                                             padding: "0.5rem",
                                             borderRadius: "4px",
@@ -93,15 +172,26 @@ export default function SpellBanner() {
                                     >
                                         {selectedSpell.name}
                                     </span>
-                                </div>
-                                <Button variant="outlined" sx={{ ml: 1 }}>
-                                    Cast!
-                                </Button>
-                                <img
-                                    className="spell-details-thumbnail"
-                                    src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
-                                />
-                            </div>
+                                </Box>
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        // flexDirection: "column",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        gap: "0.25rem",
+                                        ml: "0.5rem",
+                                        mr: "1rem",
+                                    }}
+                                >
+                                    <Tooltip title="Click for more spell details">
+                                        {renderSpellMode(
+                                            selectedSpell.replicate!,
+                                            selectedSpell.minTargets
+                                        )}
+                                    </Tooltip>
+                                </Box>
+                            </Box>
                         </div>
                     </>
                 )}
