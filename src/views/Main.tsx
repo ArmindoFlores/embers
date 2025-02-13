@@ -54,12 +54,6 @@ const MENU_OPTIONS = [
         role: "PLAYER",
     },
     {
-        label: "Scene",
-        icon: <FaDisplay className="tab-icon" />,
-        component: <SceneControls />,
-        role: "PLAYER",
-    },
-    {
         label: "Current Spell",
         icon: <FaHatWizard className="tab-icon" />,
         component: <SpellDetails />,
@@ -72,12 +66,20 @@ const MENU_OPTIONS = [
         role: "GM",
     },
     {
+        label: "Scene",
+        icon: <FaDisplay className="tab-icon" />,
+        component: <SceneControls />,
+        role: "PLAYER",
+    },
+    {
         label: "Settings",
         icon: <FaGear className="tab-icon" />,
         component: <Settings />,
         role: "PLAYER",
     },
 ];
+
+const SPELL_DETAIL_TAB = 1;
 
 export default function Main() {
     const obr = useOBR();
@@ -244,7 +246,9 @@ export default function Main() {
                                     minHeight: 0,
                                     p: 2.5,
                                 }}
-                                disabled={toolSelected && index !== 2}
+                                disabled={
+                                    toolSelected && index !== SPELL_DETAIL_TAB
+                                }
                             />
                         );
                     })}
@@ -271,7 +275,7 @@ export default function Main() {
                 <Box sx={{ maxHeight: "64px", overflow: "hidden" }}>
                     <SpellBanner
                         onButtonClick={() => {
-                            setSelectedTab(2);
+                            setSelectedTab(SPELL_DETAIL_TAB);
                         }}
                     />
                 </Box>
