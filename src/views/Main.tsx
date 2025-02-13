@@ -181,7 +181,9 @@ export default function Main() {
             const selectedOurTool = tool === toolID;
             setToolSelected(selectedOurTool);
             setPreviouslySelectedTab(selectedTab);
-            setSelectedTab(selectedOurTool ? 3 : previouslySelectedTab);
+            setSelectedTab(
+                selectedOurTool ? SPELL_DETAIL_TAB : previouslySelectedTab
+            );
         });
     }, [obr.ready, selectedTab, previouslySelectedTab]);
 
@@ -246,9 +248,6 @@ export default function Main() {
                                     minHeight: 0,
                                     p: 2.5,
                                 }}
-                                disabled={
-                                    toolSelected && index !== SPELL_DETAIL_TAB
-                                }
                             />
                         );
                     })}

@@ -5,6 +5,7 @@ import { APP_KEY } from "../config";
 import Checkbox from "./Checkbox";
 import OBR from "@owlbear-rodeo/sdk";
 import { useOBR } from "../react-obr/providers";
+import { Typography } from "@mui/material";
 
 export const LOCAL_STORAGE_KEYS = {
     MOST_RECENT_SPELLS_LIST_SIZE: "most-recent-list",
@@ -115,6 +116,13 @@ export default function Settings() {
     }, [summonedEntities]);
 
     return <div>
+        <Typography
+            mb={"0.5rem"}
+            variant="h6"
+            className="title spellbook-options"
+        >
+            Settings
+        </Typography>
         <div className="settings-menu">
             <div>
                 <p className="subtitle" title="These settings apply to you only.">Local Settings</p>

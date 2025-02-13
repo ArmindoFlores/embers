@@ -13,6 +13,7 @@ import ReactModal from "react-modal";
 import { Spells } from "../types/spells";
 import { log_info } from "../logging";
 import { useOBR } from "../react-obr/providers";
+import { Typography } from "@mui/material";
 
 type ModalType = "choose-spell" | "remove-all-spells";
 
@@ -136,8 +137,10 @@ export default function CustomSpells() {
     return <div className="custom-spells" ref={mainDiv}>
         <div className="custom-spells-section">
             <input ref={fileInputRef} style={{ display: "none" }} accept=".json" type="file" onChange={event => loadJSONFile(event, addSpells)} />
-            <p className="subtitle add-custom-spell">
-                Custom Spells
+            <Typography
+                variant="h6"
+                className="title spellbook-options">
+                    Custom Spells
                 <FaCirclePlus
                     style={{marginLeft: "0.5rem", cursor: "pointer"}}
                     onClick={() => openOBRModal()}
@@ -163,7 +166,7 @@ export default function CustomSpells() {
                     style={{marginLeft: "0.5rem", cursor: "pointer"}}
                     onClick={() => openModal("remove-all-spells")}
                 />
-            </p>
+            </Typography>
             {
                 customSpells.length == 0 &&
                 <p>No custom spells yet.</p>

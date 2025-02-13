@@ -15,7 +15,7 @@ import Checkbox from ".././Checkbox";
 import { getSpell } from "../../effects/spells";
 import { toolMetadataSelectedSpell } from "../../effectsTool";
 import { useOBR } from "../../react-obr/providers";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FaCopy } from "react-icons/fa6";
 
 function replicationValue(replicationValue: ReplicationType) {
@@ -209,7 +209,13 @@ export default function SpellDetails() {
 
     return (
         <Box>
-            <p className="title">Spell Details</p>
+            <Typography
+                mb={"0.5rem"}
+                variant="h6"
+                className="title spellbook-options"
+            >
+                Spell Details
+            </Typography>
             {!selectedSpell ? (
                 <Typography variant="body2" sx={{ m: 1, mb: 0 }}>
                     No active spells. Select or add one from above! 🧙‍♂️🔥
