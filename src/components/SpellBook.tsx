@@ -19,6 +19,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import OBR from "@owlbear-rodeo/sdk";
 import ReactModal from "react-modal";
 import { useOBR } from "../react-obr/providers";
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    Box,
+    Typography,
+} from "@mui/material";
 
 type ModalType =
     | "create-spell-group"
@@ -190,7 +197,7 @@ export default function SpellBook() {
 
     return (
         <div ref={mainDiv} className="spellbook-container">
-            <div className="spellbook-header">
+            <Box className="spellbook-header">
                 <input
                     ref={fileInputRef}
                     style={{ display: "none" }}
@@ -198,8 +205,12 @@ export default function SpellBook() {
                     type="file"
                     onChange={(event) => loadJSONFile(event, setGroups)}
                 />
-                <p className="title spellbook-options">
-                    Spellbook
+                <Typography
+                    mb={"0.5rem"}
+                    variant="h6"
+                    className="title spellbook-options"
+                >
+                    Spellbooks
                     <FaCirclePlus
                         style={{
                             marginLeft: "0.5rem",
@@ -235,7 +246,7 @@ export default function SpellBook() {
                         }
                         title="Download your spellbook"
                     />
-                </p>
+                </Typography>
                 {editing && (
                     <FaFloppyDisk
                         className="clickable"
@@ -250,10 +261,26 @@ export default function SpellBook() {
                         onClick={() => setEditing(true)}
                     />
                 )}
-            </div>
+            </Box>
             {Object.entries(groups).map(([groupName, spells], index) => (
-                <div key={index}>
-                    <p className="subtitle spellbook-group">
+                <Accordion
+                    variant="outlined"
+                    defaultExpanded
+                    sx={{ backgroundColor: "transparent" }}
+                    key={index}
+                >
+                    <AccordionSummary
+                        sx={{
+                            "&.Mui-expanded": {
+                                mt: "0.5rem",
+                                minHeight: 0,
+                            },
+                            "& > .Mui-expanded": {
+                                m: 0,
+                            },
+                        }}
+                        className="subtitle spellbook-group"
+                    >
                         {groupName}
                         <FaCirclePlus
                             style={{
@@ -261,7 +288,8 @@ export default function SpellBook() {
                                 cursor: "pointer",
                                 display: editing ? undefined : "none",
                             }}
-                            onClick={() => {
+                            onClick={(event) => {
+                                event.stopPropagation();
                                 setGroupName(groupName);
                                 openModal("add-spell");
                             }}
@@ -273,7 +301,8 @@ export default function SpellBook() {
                                 cursor: "pointer",
                                 display: editing ? undefined : "none",
                             }}
-                            onClick={() => {
+                            onClick={(event) => {
+                                event.stopPropagation();
                                 setGroupName(groupName);
                                 setNewGroupName(groupName);
                                 openModal("change-group-name");
@@ -286,7 +315,8 @@ export default function SpellBook() {
                                 cursor: "pointer",
                                 display: editing ? undefined : "none",
                             }}
-                            onClick={() => {
+                            onClick={(event) => {
+                                event.stopPropagation();
                                 if (
                                     groups[groupName] == undefined ||
                                     groups[groupName].length == 0
@@ -307,9 +337,10 @@ export default function SpellBook() {
                                         cursor: "pointer",
                                         display: editing ? undefined : "none",
                                     }}
-                                    onClick={() =>
-                                        moveSpellGroup(index, index - 1)
-                                    }
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        moveSpellGroup(index, index - 1);
+                                    }}
                                 />
                             )}
                             {index != Object.keys(groups).length - 1 && (
@@ -319,67 +350,72 @@ export default function SpellBook() {
                                         cursor: "pointer",
                                         display: editing ? undefined : "none",
                                     }}
-                                    onClick={() =>
-                                        moveSpellGroup(index, index + 1)
-                                    }
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        moveSpellGroup(index, index + 1);
+                                    }}
                                 />
                             )}
                         </span>
-                    </p>
-                    <ul className="spellgroup-list">
-                        {spells.map((spellID, index) => {
-                            const spell = getSpell(spellID, isGM);
-                            if (spell == undefined) {
-                                return null;
-                            }
-                            return (
-                                <li
-                                    key={index}
-                                    className={editing ? "" : "clickable"}
-                                    onClick={() =>
-                                        editing ? null : castSpell(spellID)
-                                    }
-                                >
-                                    <div className="spellgroup-item-header">
-                                        <img
-                                            className="spellgroup-thumbnail"
-                                            src={`${ASSET_LOCATION}/${spell.thumbnail}`}
-                                        />
-                                        <p>{spell.name}</p>
-                                    </div>
-                                    <div className="spellgroup-item-actions">
-                                        <FaTrash
-                                            style={{
-                                                marginLeft: "0.5rem",
-                                                cursor: "pointer",
-                                                display: editing
-                                                    ? undefined
-                                                    : "none",
-                                            }}
-                                            onClick={() =>
-                                                deleteSpellFromGroup(
-                                                    groupName,
-                                                    spellID
-                                                )
-                                            }
-                                        />
-                                    </div>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ul className="spellgroup-list">
+                            {spells.map((spellID, index) => {
+                                const spell = getSpell(spellID, isGM);
+                                if (spell == undefined) {
+                                    return null;
+                                }
+                                return (
+                                    <li
+                                        key={index}
+                                        className={editing ? "" : "clickable"}
+                                        onClick={() =>
+                                            editing ? null : castSpell(spellID)
+                                        }
+                                    >
+                                        <div className="spellgroup-item-header">
+                                            <img
+                                                className="spellgroup-thumbnail"
+                                                src={`${ASSET_LOCATION}/${spell.thumbnail}`}
+                                            />
+                                            <p>{spell.name}</p>
+                                        </div>
+                                        <div className="spellgroup-item-actions">
+                                            <FaTrash
+                                                style={{
+                                                    marginLeft: "0.5rem",
+                                                    cursor: "pointer",
+                                                    display: editing
+                                                        ? undefined
+                                                        : "none",
+                                                }}
+                                                onClick={() =>
+                                                    deleteSpellFromGroup(
+                                                        groupName,
+                                                        spellID
+                                                    )
+                                                }
+                                            />
+                                        </div>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </AccordionDetails>
+                </Accordion>
             ))}
-            {Object.keys(groups).length == 0 && (
-                <p>
-                    No spell groups. Perhaps start by{" "}
+
+            {Object.keys(groups).length < 1 && (
+                <Typography variant="body2" textAlign={"center"}>
+                    No spell groups found.
+                    <br />
                     <span
                         className="underlined clickable"
                         onClick={() => openModal("create-spell-group")}
                     >
-                        creating one?
+                        Add a new spell group.
                     </span>
-                </p>
+                </Typography>
             )}
 
             <ReactModal
