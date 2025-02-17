@@ -1,5 +1,6 @@
 import "./Main.css";
 
+import { Box, Tab, Tabs } from "@mui/material";
 import {
     FaBook,
     FaDisplay,
@@ -8,7 +9,6 @@ import {
     FaPlus,
 } from "react-icons/fa6";
 import OBR, { Player } from "@owlbear-rodeo/sdk";
-
 import {
     sendSpellsUpdate,
     setupGMLocalSpells,
@@ -21,13 +21,12 @@ import CustomSpells from "../components/CustomSpells";
 import { MessageListener } from "../components/MessageListener";
 import SceneControls from "../components/SceneControls";
 import Settings from "../components/Settings";
+import SpellBanner from "../components/SpellDetails/SpellBanner";
 import SpellBook from "../components/SpellBook";
+import SpellDetails from "../components/SpellDetails";
 import effectsWorkerScript from "../effects/worker";
 import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
-import { Box, Tab, Tabs } from "@mui/material";
-import SpellDetails from "../components/SpellDetails";
-import SpellBanner from "../components/SpellDetails/SpellBanner";
 
 function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
     if (!prevParty || prevParty.length !== currentParty.length) {
@@ -261,7 +260,7 @@ export default function Main() {
                                 ? "calc(100vh - 154px)"
                                 : selectedTab === 3
                                 ? "calc(100vh - 100px)"
-                                : "100vh-88px", // Adjust the height as needed
+                                : "calc(100vh - 88px)", // Adjust the height as needed
                         scrollbarWidth: "thin", // For Firefox
                         "&::-webkit-scrollbar": {
                             width: "8px", // For Chrome, Safari, and Opera

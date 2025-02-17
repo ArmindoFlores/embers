@@ -2,6 +2,13 @@ import "./SpellBook.css";
 
 import { APP_KEY, ASSET_LOCATION } from "../config";
 import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    Box,
+    Typography,
+} from "@mui/material";
+import {
     FaCaretDown,
     FaCaretUp,
     FaCirclePlus,
@@ -19,13 +26,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import OBR from "@owlbear-rodeo/sdk";
 import ReactModal from "react-modal";
 import { useOBR } from "../react-obr/providers";
-import {
-    Accordion,
-    AccordionDetails,
-    AccordionSummary,
-    Box,
-    Typography,
-} from "@mui/material";
 
 type ModalType =
     | "create-spell-group"
