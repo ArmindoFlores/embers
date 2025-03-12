@@ -982,6 +982,15 @@
                     { "value": "spectral_green_warhammer", "label": "Spectral Green Warhammer" },
                     { "value": "spectral_green_wrench", "label": "Spectral Green Wrench" }
                 ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 1,
+                "content": {
+                    "min": 1
+                }
             }
         ],
         "blueprints": [
@@ -993,7 +1002,7 @@
                 },
                 "duration": -1,
                 "effectProperties": {
-                    "size": 1,
+                    "size": "$radius",
                     "source": "$targets[0].position"
                 }
             }
@@ -1529,6 +1538,15 @@
                     { "value": "purple", "label": "Purple" },
                     { "value": "red", "label": "Red" }
                 ]
+            },
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 2,
+                "content": {
+                    "min": 1
+                }
             }
         ],
         "blueprints": [
@@ -1540,7 +1558,7 @@
                 },
                 "duration": -1,
                 "effectProperties": {
-                    "size": 2,
+                    "size": "$radius",
                     "source": "$targets[0].position"
                 }
             }
