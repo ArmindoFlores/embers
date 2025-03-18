@@ -629,6 +629,29 @@
             }
         ]
     },
+    "witch_bolt": {
+        "name": "Witch Bolt",
+        "minTargets": 2,
+        "maxTargets": 2,
+        "thumbnail": "1st_Level/Witch_Bolt/WitchBolt_01_Regular_Blue_Thumb.webp",
+        "replicate": "no",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "witch_bolt",
+                "duration": -1,
+                "disableHit": true,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "sourceId": "$targets[0].id",
+                    "destination": "$targets[1].position",
+                    "destinationId": "$targets[1].id",
+                    "copies": 1
+                }
+            }
+        ]
+    },
     "cloud_of_daggers": {
         "name": "Cloud of Daggers",
         "minTargets": 1,

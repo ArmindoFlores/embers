@@ -1,5 +1,5 @@
-import { Image, Layer, Metadata } from "@owlbear-rodeo/sdk";
-import { buildEffectImage, getDistance, getEffect, getEffectURL, getRotation, getVariantName, registerEffect, urlVariant } from "./effects";
+import { Image, Layer, Metadata, Vector2 } from "@owlbear-rodeo/sdk";
+import { buildEffectImage, getDistance, getEffect, getEffectURL, getRotation, getVariantName, registerEffect, spellMetadataKey, urlVariant } from "./effects";
 
 import { ProjectileProperties } from "../types/projectile";
 import { log_error } from "../logging";
@@ -33,6 +33,16 @@ export function precomputeProjectileAssets(projectileInfo: ProjectileProperties,
     return assets;
 }
 
+export function getProjectilePose(source: Vector2, destination: Vector2, dpi: number) {
+    const distance = getDistance(source, destination) / dpi;
+    const rotation = getRotation(source, destination);
+    const position = {
+        x: source.x,
+        y: source.y,
+    };
+    return { distance, rotation, position };
+}
+
 export function projectile(
     projectileInfo: ProjectileProperties,
     worker: Worker,
@@ -51,14 +61,13 @@ export function projectile(
         return;
     }
 
-    // We need to compute the distance and andle between the source and destination of the projectile
+    // We need to compute the distance and angle between the source and destination of the projectile
     // to choose an appropriate variant and to rotate and scale it properly.
-    const distance = getDistance(projectileInfo.source, projectileInfo.destination) / projectileInfo.dpi;
-    const rotation = getRotation(projectileInfo.source, projectileInfo.destination);
-    const position = {
-        x: projectileInfo.source.x,
-        y: projectileInfo.source.y,
-    };
+    const { distance, rotation, position } = getProjectilePose(
+        projectileInfo.source,
+        projectileInfo.destination,
+        projectileInfo.dpi
+    );
 
     // For each copy, create a new Image object based on a variant of our chosen effect
     let realDuration = 0;
@@ -92,7 +101,12 @@ export function projectile(
         else {
             realDuration = Math.max(realDuration, effectDuration);
         }
-        images.push(image.build());
+        // FIXME: do this another way
+        const builtImage = image.build();
+        if (projectileInfo.sourceId || projectileInfo.destinationId) {
+            builtImage.metadata[spellMetadataKey] = { ...builtImage.metadata[spellMetadataKey] ?? {}, sourceId: projectileInfo.sourceId, destinationId: projectileInfo.destinationId };
+        }
+        images.push(builtImage);
     }
 
     // Add all items to the local scene

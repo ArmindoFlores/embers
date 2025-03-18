@@ -313,10 +313,24 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
                 return _error("destination must be a 2D vector");
             }
 
+            const maybeSourceId = resolveSimpleValue<string>(pbEffectProperties.sourceId, "sourceId", "string", variables);
+            if (isError(maybeSourceId)) {
+                return maybeSourceId;
+            }
+            const sourceId = maybeSourceId.value;
+
+            const maybeDestinationId = resolveSimpleValue<string>(pbEffectProperties.destinationId, "destinationId", "string", variables);
+            if (isError(maybeDestinationId)) {
+                return maybeDestinationId;
+            }
+            const destinationId = maybeDestinationId.value;
+
             effectProperties = {
                 copies,
                 source,
                 destination,
+                sourceId,
+                destinationId
             };
         }
         else if (
