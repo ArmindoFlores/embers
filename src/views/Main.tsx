@@ -87,7 +87,7 @@ export default function Main() {
     const [effectRegister, setEffectRegister] = useState<Map<string, number>>(
         new Map()
     );
-    const [toolSelected, setToolSelected] = useState(false);
+    // const [toolSelected, setToolSelected] = useState(false);
     const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState(0);
     const previousPartyRef = useRef<{
@@ -179,7 +179,7 @@ export default function Main() {
 
         return OBR.tool.onToolChange((tool) => {
             const selectedOurTool = tool === toolID;
-            setToolSelected(selectedOurTool);
+            // setToolSelected(selectedOurTool);
             setPreviouslySelectedTab(selectedTab);
             setSelectedTab(
                 selectedOurTool ? SPELL_DETAIL_TAB : previouslySelectedTab
