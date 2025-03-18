@@ -1920,6 +1920,7 @@
                 "delay": 1000,
                 "duration": -1,
                 "disableHit": true,
+                "attachedTo": "$targets[1].id",
                 "blueprints": [],
                 "type": "effect",
                 "effectProperties": {
