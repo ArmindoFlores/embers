@@ -19,6 +19,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import CustomSpells from "../components/CustomSpells";
 import { MessageListener } from "../components/MessageListener";
+import MovementHandler from "../components/MovementHandler";
 import SceneControls from "../components/SceneControls";
 import Settings from "../components/Settings";
 import SpellBanner from "../components/SpellDetails/SpellBanner";
@@ -286,6 +287,7 @@ export default function Main() {
                     effectRegister={effectRegister}
                 />
             )}
+            <MovementHandler />
         </Box>
     );
 }

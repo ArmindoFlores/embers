@@ -13,6 +13,8 @@ export interface ProjectileBlueprint {
     copies: BlueprintValue<number>;
     source: BlueprintValue<Vector2>;
     destination: BlueprintValue<Vector2>;
+    sourceId?: BlueprintValue<string>;
+    destinationId?: BlueprintValue<string>;
 }
 
 export interface AOEEffectBlueprint {

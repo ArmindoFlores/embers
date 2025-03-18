@@ -6,10 +6,14 @@ export interface ProjectileMessage extends BaseEffectMessage {
     copies: number;
     source: Vector2;
     destination: Vector2;
+    sourceId?: string;
+    destinationId?: string;
 }
 
 export interface ProjectileProperties extends BaseEffectProperties {
     copies: number;
     source: Vector2;
     destination: Vector2;
+    sourceId?: string;
+    destinationId?: string;
 }
