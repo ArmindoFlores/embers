@@ -9336,6 +9336,48 @@
                 }
             }
         },
+        "portals": {
+            "horizontal": {
+                "basename": "Generic/Portals/Portal_Bright_Yellow_H",
+                "thumbnail": "Generic/Portals/Portal_Bright_Yellow_H_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "400x400"
+                        ],
+                        "duration": [
+                            8042
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    }
+                }
+            },
+            "vertical": {
+                "basename": "Generic/Portals/Portal_Bright_Yellow_V",
+                "thumbnail": "Generic/Portals/Portal_Bright_Yellow_V_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "400x250"
+                        ],
+                        "duration": [
+                            8042
+                        ],
+                        "size": [
+                            400,
+                            250
+                        ]
+                    }
+                }
+            }
+        },
         "ranged_spell": {
             "overcharged_sphere": {
                 "purple": {
