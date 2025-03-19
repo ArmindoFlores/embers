@@ -4538,6 +4538,142 @@
                 }
             }
         },
+        "eyes": {
+            "few": {
+                "basename": "Generic/Eyes/Eyes_Few01",
+                "thumbnail": "Generic/Eyes/Eyes_Few01_01_Dark_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": [
+                            "01_Dark_Green_600x600", "02_Dark_Green_600x600", "03_Dark_Green_600x600"
+                        ],
+                        "duration": [
+                            5042, 3333, 2833
+                        ],
+                        "size": [
+                            600,
+                            600
+                        ]
+                    }
+                }
+            },
+            "many": {
+                "basename": "Generic/Eyes/Eyes_Many01",
+                "thumbnail": "Generic/Eyes/Eyes_Many01_01_Dark_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": [
+                            "01_Dark_Green_600x600", "02_Dark_Green_600x600", "03_Dark_Green_600x600"
+                        ],
+                        "duration": [
+                            4958, 4958, 4958
+                        ],
+                        "size": [
+                            600,
+                            600
+                        ]
+                    }
+                }
+            },
+            "single": {
+                "basename": "Generic/Eyes/Eyes_Single01",
+                "thumbnail": "Generic/Eyes/Eyes_Single01_01_Dark_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "300": {
+                        "name": [
+                            "01_Dark_Green_300x300", "02_Dark_Green_300x300", "03_Dark_Green_300x300"
+                        ],
+                        "duration": [
+                            4542, 3750, 4625
+                        ],
+                        "size": [
+                            300,
+                            300
+                        ]
+                    }
+                }
+            }
+        },
+        "healing": {
+            "blue": {
+                "basename": "Generic/Healing/HealingAbility_01_Blue",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": [1700],
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1700],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "green": {
+                "basename": "Generic/Healing/HealingAbility_01_Green",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": [1700],
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1700],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "purple": {
+                "basename": "Generic/Healing/HealingAbility_01_Purple",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Purple_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": [1700],
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1700],
+                        "size": [400, 400]
+                    }
+                }
+            },
+            "yellow": {
+                "basename": "Generic/Healing/HealingAbility_01_Yellow",
+                "thumbnail": "Generic/Healing/HealingAbility_01_Yellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": ["200x200"],
+                        "duration": [1700],
+                        "size": [200, 200]
+                    },
+                    "400": {
+                        "name": ["400x400"],
+                        "duration": [1700],
+                        "size": [400, 400]
+                    }
+                }
+            }
+        },
         "ice": {
             "snowflake_burst": {
                 "complete": {
@@ -5158,80 +5294,6 @@
                             600,
                             600
                         ]
-                    }
-                }
-            }
-        },
-        "healing": {
-            "blue": {
-                "basename": "Generic/Healing/HealingAbility_01_Blue",
-                "thumbnail": "Generic/Healing/HealingAbility_01_Blue_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "200": {
-                        "name": ["200x200"],
-                        "duration": [1700],
-                        "size": [200, 200]
-                    },
-                    "400": {
-                        "name": ["400x400"],
-                        "duration": [1700],
-                        "size": [400, 400]
-                    }
-                }
-            },
-            "green": {
-                "basename": "Generic/Healing/HealingAbility_01_Green",
-                "thumbnail": "Generic/Healing/HealingAbility_01_Green_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "200": {
-                        "name": ["200x200"],
-                        "duration": [1700],
-                        "size": [200, 200]
-                    },
-                    "400": {
-                        "name": ["400x400"],
-                        "duration": [1700],
-                        "size": [400, 400]
-                    }
-                }
-            },
-            "purple": {
-                "basename": "Generic/Healing/HealingAbility_01_Purple",
-                "thumbnail": "Generic/Healing/HealingAbility_01_Purple_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "200": {
-                        "name": ["200x200"],
-                        "duration": [1700],
-                        "size": [200, 200]
-                    },
-                    "400": {
-                        "name": ["400x400"],
-                        "duration": [1700],
-                        "size": [400, 400]
-                    }
-                }
-            },
-            "yellow": {
-                "basename": "Generic/Healing/HealingAbility_01_Yellow",
-                "thumbnail": "Generic/Healing/HealingAbility_01_Yellow_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "200": {
-                        "name": ["200x200"],
-                        "duration": [1700],
-                        "size": [200, 200]
-                    },
-                    "400": {
-                        "name": ["400x400"],
-                        "duration": [1700],
-                        "size": [400, 400]
                     }
                 }
             }
@@ -8622,6 +8684,148 @@
                 }
             }
         },
+        "music_notation": {
+            "bass_clef": {
+                "basename": "Generic/Music_Notation/BassClef_01_Regular_Blue",
+                "thumbnail": "Generic/Music_Notation/BassClef_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2000
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "beamed_quavers": {
+                "basename": "Generic/Music_Notation/BeamedQuavers_01_Regular_Blue",
+                "thumbnail": "Generic/Music_Notation/BeamedQuavers_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2000
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "crotchet": {
+                "basename": "Generic/Music_Notation/Crotchet_01_Regular_Blue",
+                "thumbnail": "Generic/Music_Notation/Crotchet_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2000
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "flat": {
+                "basename": "Generic/Music_Notation/Flat_01_Regular_Blue",
+                "thumbnail": "Generic/Music_Notation/Flat_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2000
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "quaver": {
+                "basename": "Generic/Music_Notation/Quaver_01_Regular_Blue",
+                "thumbnail": "Generic/Music_Notation/Quaver_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2000
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "sharp": {
+                "basename": "Generic/Music_Notation/Sharp_01_Regular_Blue",
+                "thumbnail": "Generic/Music_Notation/Sharp_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2000
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "treble_clef": {
+                "basename": "Generic/Music_Notation/TrebleClef_01_Regular_Blue",
+                "thumbnail": "Generic/Music_Notation/TrebleClef_01_Regular_Blue_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2000
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            }
+        },
         "particles": {
             "burst": {
                 "circle": {
@@ -9132,6 +9336,48 @@
                 }
             }
         },
+        "portals": {
+            "horizontal": {
+                "basename": "Generic/Portals/Portal_Bright_Yellow_H",
+                "thumbnail": "Generic/Portals/Portal_Bright_Yellow_H_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "400x400"
+                        ],
+                        "duration": [
+                            8042
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    }
+                }
+            },
+            "vertical": {
+                "basename": "Generic/Portals/Portal_Bright_Yellow_V",
+                "thumbnail": "Generic/Portals/Portal_Bright_Yellow_V_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "400x250"
+                        ],
+                        "duration": [
+                            8042
+                        ],
+                        "size": [
+                            400,
+                            250
+                        ]
+                    }
+                }
+            }
+        },
         "ranged_spell": {
             "overcharged_sphere": {
                 "purple": {
@@ -9426,6 +9672,1203 @@
                         "name": ["90ft_4000x400"],
                         "duration": [3030],
                         "size": [4000, 400]
+                    }
+                }
+            }
+        },
+        "twinkling_stars": {
+            "twinklingstars_04": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_04",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_04_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_04_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_05": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_05",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_05_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_05_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_06": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_06",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_06_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_06_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_07": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_07",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_07_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_07_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_08": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_08",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_08_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_08_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_09": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_09",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            },
+            "twinklingstars_09_orange": {
+                "basename": "Generic/Twinkling_Stars/TwinklingStars_09_Orange",
+                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "100": {
+                        "name": ["100x100"],
+                        "duration": [4042],
+                        "size": [100, 100]
+                    }
+                }
+            }
+        },
+        "token_border": {
+            "circle": {
+                "1": {
+                    "basename": "Generic/Token_Border/TokenBorderCircle_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircle_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Border/TokenBorderCircle_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircle_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Border/TokenBorderCircle_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircle_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Token_Border/TokenBorderCircle_04_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircle_04_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Token_Border/TokenBorderCircle_05_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircle_05_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Token_Border/TokenBorderCircle_06_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircle_06_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "7": {
+                    "basename": "Generic/Token_Border/TokenBorderCircle_07_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircle_07_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "circle_spin": {
+                "1": {
+                    "basename": "Generic/Token_Border/TokenBorderCircleSpin_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircleSpin_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Border/TokenBorderCircleSpin_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircleSpin_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Border/TokenBorderCircleSpin_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircleSpin_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Token_Border/TokenBorderCircleSpin_04_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircleSpin_04_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Token_Border/TokenBorderCircleSpin_05_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircleSpin_05_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Token_Border/TokenBorderCircleSpin_06_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircleSpin_06_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "7": {
+                    "basename": "Generic/Token_Border/TokenBorderCircleSpin_07_Regular_Blue",
+                    "thumbnail": "Generic/Token_Border/TokenBorderCircleSpin_07_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "token_stage": {
+            "hex_s1_blue": {
+                "1": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01_04_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_04_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01_05_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_05_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01_06_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_06_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "1_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "hex_s2_blue": {
+                "1": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S2_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S2_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S2_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S2_04_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_04_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S2_05_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_05_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S2_06_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_06_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "1_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02S2_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "2_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02S2_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                },
+                "3_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02S2_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": ["600x600"],
+                            "duration": [4042],
+                            "size": [600, 600]
+                        }
+                    }
+                }
+            },
+            "hex_s3_blue": {
+                "1": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S3_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S3_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S3_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S3_04_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_04_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S3_05_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_05_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Token_Stage/TokenStageHex01S3_06_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_06_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "blue_01_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02S3_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "blue_02_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02S3_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                },
+                "blue_03_v2": {
+                    "basename": "Generic/Token_Stage/TokenStageHex02S3_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": ["800x800"],
+                            "duration": [4042],
+                            "size": [800, 800]
+                        }
+                    }
+                }
+            },
+            "round_s1_blue": {
+                "1": {
+                    "basename": "Generic/Token_Stage/TokenStageRound01_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Stage/TokenStageRound01_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Stage/TokenStageRound01_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Token_Stage/TokenStageRound01_04_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_04_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Token_Stage/TokenStageRound01_05_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_05_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Token_Stage/TokenStageRound01_06_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_06_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "round_s2_blue": {
+                "1": {
+                    "basename": "Generic/Token_Stage/TokenStageRound02_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound02_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Stage/TokenStageRound02_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound02_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Stage/TokenStageRound02_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageRound02_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "square_s1_blue": {
+                "1": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare01_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare01_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare01_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "4": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare01_04_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_04_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "5": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare01_05_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_05_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "6": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare01_06_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_06_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            },
+            "square_s2_blue": {
+                "1": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare02_01_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare02_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare02_02_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare02_02_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Token_Stage/TokenStageSquare02_03_Regular_Blue",
+                    "thumbnail": "Generic/Token_Stage/TokenStageSquare02_03_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": ["400x400"],
+                            "duration": [4042],
+                            "size": [400, 400]
+                        }
+                    }
+                }
+            }
+        },
+        "unarmed_attacks": {
+            "flurry_of_blows": {
+                "magical": {
+                    "1": {
+                        "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical01",
+                        "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical01_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1800
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical02",
+                        "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical02_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1667
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                },
+                "physical": {
+                    "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Physical01",
+                    "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Physical01_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x600"
+                            ],
+                            "duration": [
+                                1200
+                            ],
+                            "size": [
+                                800,
+                                600
+                            ]
+                        }
+                    }
+                }
+            },
+            "unarmed_strikes": {
+                "magical": {
+                    "1": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical01",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical01_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical02",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical02_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                },
+                "physical": {
+                    "1": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical01",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical01_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1033
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical02",
+                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical02_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x600"
+                                ],
+                                "duration": [
+                                    1033
+                                ],
+                                "size": [
+                                    800,
+                                    600
+                                ]
+                            }
+                        }
                     }
                 }
             }
@@ -10942,917 +12385,6 @@
                         "name": ["1200x1200"],
                         "duration": [4033],
                         "size": [1200, 1200]
-                    }
-                }
-            }
-        },
-        "twinkling_stars": {
-            "twinklingstars_04": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_04",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_04_orange": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_04_Orange",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_04_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_05": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_05",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_05_orange": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_05_Orange",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_05_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_06": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_06",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_06_orange": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_06_Orange",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_06_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_07": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_07",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_07_orange": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_07_Orange",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_07_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_08": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_08",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_08_orange": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_08_Orange",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_08_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_09": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_09",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            },
-            "twinklingstars_09_orange": {
-                "basename": "Generic/Twinkling_Stars/TwinklingStars_09_Orange",
-                "thumbnail": "Generic/Twinkling_Stars/TwinklingStars_09_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
-                "variants": {
-                    "100": {
-                        "name": ["100x100"],
-                        "duration": [4042],
-                        "size": [100, 100]
-                    }
-                }
-            }
-        },
-        "token_stage": {
-            "hex_s1_blue": {
-                "1": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "3": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "4": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01_04_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_04_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "5": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01_05_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_05_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "6": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01_06_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01_06_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "1_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "2_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "3_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                }
-            },
-            "hex_s2_blue": {
-                "1": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S2_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S2_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "3": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S2_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "4": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S2_04_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_04_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "5": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S2_05_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_05_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "6": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S2_06_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S2_06_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "1_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02S2_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "2_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02S2_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                },
-                "3_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02S2_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S2_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "600": {
-                            "name": ["600x600"],
-                            "duration": [4042],
-                            "size": [600, 600]
-                        }
-                    }
-                }
-            },
-            "hex_s3_blue": {
-                "1": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S3_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S3_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "3": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S3_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "4": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S3_04_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_04_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "5": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S3_05_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_05_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "6": {
-                    "basename": "Generic/Token_Stage/TokenStageHex01S3_06_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex01S3_06_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "blue_01_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02S3_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "blue_02_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02S3_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                },
-                "blue_03_v2": {
-                    "basename": "Generic/Token_Stage/TokenStageHex02S3_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageHex02S3_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": ["800x800"],
-                            "duration": [4042],
-                            "size": [800, 800]
-                        }
-                    }
-                }
-            },
-            "round_s1_blue": {
-                "1": {
-                    "basename": "Generic/Token_Stage/TokenStageRound01_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "2": {
-                    "basename": "Generic/Token_Stage/TokenStageRound01_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "3": {
-                    "basename": "Generic/Token_Stage/TokenStageRound01_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "4": {
-                    "basename": "Generic/Token_Stage/TokenStageRound01_04_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_04_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "5": {
-                    "basename": "Generic/Token_Stage/TokenStageRound01_05_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_05_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "6": {
-                    "basename": "Generic/Token_Stage/TokenStageRound01_06_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound01_06_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                }
-            },
-            "round_s2_blue": {
-                "1": {
-                    "basename": "Generic/Token_Stage/TokenStageRound02_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound02_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "2": {
-                    "basename": "Generic/Token_Stage/TokenStageRound02_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound02_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "3": {
-                    "basename": "Generic/Token_Stage/TokenStageRound02_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageRound02_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                }
-            },
-            "square_s1_blue": {
-                "1": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare01_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "2": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare01_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "3": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare01_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "4": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare01_04_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_04_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "5": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare01_05_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_05_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "6": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare01_06_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare01_06_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                }
-            },
-            "square_s2_blue": {
-                "1": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare02_01_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare02_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "2": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare02_02_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare02_02_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                },
-                "3": {
-                    "basename": "Generic/Token_Stage/TokenStageSquare02_03_Regular_Blue",
-                    "thumbnail": "Generic/Token_Stage/TokenStageSquare02_03_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "400": {
-                            "name": ["400x400"],
-                            "duration": [4042],
-                            "size": [400, 400]
-                        }
-                    }
-                }
-            }
-        },
-        "unarmed_attacks": {
-            "flurry_of_blows": {
-                "magical": {
-                    "1": {
-                        "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical01",
-                        "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical01_Thumb.webp",
-                        "type": "CIRCLE",
-                        "dpi": 100,
-                        "variants": {
-                            "800": {
-                                "name": [
-                                    "800x600"
-                                ],
-                                "duration": [
-                                    1800
-                                ],
-                                "size": [
-                                    800,
-                                    600
-                                ]
-                            }
-                        }
-                    },
-                    "2": {
-                        "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical02",
-                        "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Magical02_Thumb.webp",
-                        "type": "CIRCLE",
-                        "dpi": 100,
-                        "variants": {
-                            "800": {
-                                "name": [
-                                    "800x600"
-                                ],
-                                "duration": [
-                                    1667
-                                ],
-                                "size": [
-                                    800,
-                                    600
-                                ]
-                            }
-                        }
-                    }
-                },
-                "physical": {
-                    "basename": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Physical01",
-                    "thumbnail": "Generic/Unarmed_Attacks/Flurry_Of_Blows/FlurryOfBlows_01_Regular_Blue_Physical01_Thumb.webp",
-                    "type": "CIRCLE",
-                    "dpi": 100,
-                    "variants": {
-                        "800": {
-                            "name": [
-                                "800x600"
-                            ],
-                            "duration": [
-                                1200
-                            ],
-                            "size": [
-                                800,
-                                600
-                            ]
-                        }
-                    }
-                }
-            },
-            "unarmed_strikes": {
-                "magical": {
-                    "1": {
-                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical01",
-                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical01_Thumb.webp",
-                        "type": "CIRCLE",
-                        "dpi": 100,
-                        "variants": {
-                            "800": {
-                                "name": [
-                                    "800x600"
-                                ],
-                                "duration": [
-                                    1700
-                                ],
-                                "size": [
-                                    800,
-                                    600
-                                ]
-                            }
-                        }
-                    },
-                    "2": {
-                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical02",
-                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Magical02_Thumb.webp",
-                        "type": "CIRCLE",
-                        "dpi": 100,
-                        "variants": {
-                            "800": {
-                                "name": [
-                                    "800x600"
-                                ],
-                                "duration": [
-                                    1700
-                                ],
-                                "size": [
-                                    800,
-                                    600
-                                ]
-                            }
-                        }
-                    }
-                },
-                "physical": {
-                    "1": {
-                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical01",
-                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical01_Thumb.webp",
-                        "type": "CIRCLE",
-                        "dpi": 100,
-                        "variants": {
-                            "800": {
-                                "name": [
-                                    "800x600"
-                                ],
-                                "duration": [
-                                    1033
-                                ],
-                                "size": [
-                                    800,
-                                    600
-                                ]
-                            }
-                        }
-                    },
-                    "2": {
-                        "basename": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical02",
-                        "thumbnail": "Generic/Unarmed_Attacks/Unarmed_Strike/UnarmedStrike_01_Regular_Blue_Physical02_Thumb.webp",
-                        "type": "CIRCLE",
-                        "dpi": 100,
-                        "variants": {
-                            "800": {
-                                "name": [
-                                    "800x600"
-                                ],
-                                "duration": [
-                                    1033
-                                ],
-                                "size": [
-                                    800,
-                                    600
-                                ]
-                            }
-                        }
                     }
                 }
             }
