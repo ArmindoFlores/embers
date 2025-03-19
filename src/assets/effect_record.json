@@ -4538,6 +4538,68 @@
                 }
             }
         },
+        "eyes": {
+            "few": {
+                "basename": "Generic/Eyes/Eyes_Few01",
+                "thumbnail": "Generic/Eyes/Eyes_Few01_01_Dark_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": [
+                            "01_Dark_Green_600x600", "02_Dark_Green_600x600", "03_Dark_Green_600x600"
+                        ],
+                        "duration": [
+                            5042, 3333, 2833
+                        ],
+                        "size": [
+                            600,
+                            600
+                        ]
+                    }
+                }
+            },
+            "many": {
+                "basename": "Generic/Eyes/Eyes_Many01",
+                "thumbnail": "Generic/Eyes/Eyes_Many01_01_Dark_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": [
+                            "01_Dark_Green_600x600", "02_Dark_Green_600x600", "03_Dark_Green_600x600"
+                        ],
+                        "duration": [
+                            4958, 4958, 4958
+                        ],
+                        "size": [
+                            600,
+                            600
+                        ]
+                    }
+                }
+            },
+            "single": {
+                "basename": "Generic/Eyes/Eyes_Single01",
+                "thumbnail": "Generic/Eyes/Eyes_Single01_01_Dark_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "300": {
+                        "name": [
+                            "01_Dark_Green_300x300", "02_Dark_Green_300x300", "03_Dark_Green_300x300"
+                        ],
+                        "duration": [
+                            4542, 3750, 4625
+                        ],
+                        "size": [
+                            300,
+                            300
+                        ]
+                    }
+                }
+            }
+        },
         "ice": {
             "snowflake_burst": {
                 "complete": {
