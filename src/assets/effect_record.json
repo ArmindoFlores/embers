@@ -9676,6 +9676,296 @@
                 }
             }
         },
+        "smoke": {
+            "fumes": {
+                "grey": {
+                    "1": {
+                        "complete": {
+                            "basename": "Generic/Smoke/Fumes04_01_Grey_Complete",
+                            "thumbnail": "Generic/Smoke/Fumes04_01_Grey_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x600"
+                                    ],
+                                    "duration": [
+                                        9533
+                                    ],
+                                    "size": [
+                                        400,
+                                        600
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Smoke/Fumes04_01_Grey_Loop",
+                            "thumbnail": "Generic/Smoke/Fumes04_01_Grey_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x600"
+                                    ],
+                                    "duration": [
+                                        5000
+                                    ],
+                                    "size": [
+                                        400,
+                                        600
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2": {
+                        "complete": {
+                            "basename": "Generic/Smoke/Fumes04_02_Grey_Complete",
+                            "thumbnail": "Generic/Smoke/Fumes04_02_Grey_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x600"
+                                    ],
+                                    "duration": [
+                                        11000
+                                    ],
+                                    "size": [
+                                        400,
+                                        600
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Smoke/Fumes04_02_Grey_Loop",
+                            "thumbnail": "Generic/Smoke/Fumes04_02_Grey_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x600"
+                                    ],
+                                    "duration": [
+                                        5000
+                                    ],
+                                    "size": [
+                                        400,
+                                        600
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "white": {
+                    "basename": "Generic/Smoke/Fumes_02_Steam_White",
+                    "thumbnail": "Generic/Smoke/Fumes_02_Steam_White_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "line": {
+                "basename": "Generic/Smoke/SmokeLine_01_Regular_LightBlue",
+                "thumbnail": "Generic/Smoke/SmokeLine_01_Regular_LightBlue_05x05ft_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "05x05ft_400x400"
+                        ],
+                        "duration": [
+                            5000
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    },
+                    "800": {
+                        "name": [
+                            "10x05ft_800x400"
+                        ],
+                        "duration": [
+                            5000
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    },
+                    "1000": {
+                        "name": [
+                            "15x05ft_1000x400"
+                        ],
+                        "duration": [
+                            5000
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    },
+                    "1400": {
+                        "name": [
+                            "25x05ft_1400x400"
+                        ],
+                        "duration": [
+                            5000
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    }
+                }
+            },
+            "plumes": {
+                "complete": {
+                    "basename": "Generic/Smoke/SmokePlumes01",
+                    "thumbnail": "Generic/Smoke/SmokePlumes01_01_Regular_Grey_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "01_Regular_Grey_400x400", "02_Regular_Grey_400x400", "03_Regular_Grey_400x400"
+                            ],
+                            "duration": [
+                                8533, 8533, 8533
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "loop": {
+                    "basename": "Generic/Smoke/SmokePlumesLoop01",
+                    "thumbnail": "Generic/Smoke/SmokePlumes01_01_Regular_Grey_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "01_Regular_Grey_400x400", "02_Regular_Grey_400x400", "03_Regular_Grey_400x400"
+                            ],
+                            "duration": [
+                                2000, 2000, 2000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "puff": {
+                "basename": "Generic/Smoke/SmokePuff01",
+                "thumbnail": "Generic/Smoke/SmokePuff01_01_Regular_Grey_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "01_Regular_Grey_400x400", "02_Regular_Grey_400x400", "03_Regular_Grey_400x400"
+                        ],
+                        "duration": [
+                            2300, 2433, 2400
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    }
+                }
+            },
+            "puff_ring": {
+                "basename": "Generic/Smoke/SmokePuffRing01",
+                "thumbnail": "Generic/Smoke/SmokePuffRing01_01_Regular_White_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "01_Regular_White_400x400", "02_Regular_White_400x400", "03_Regular_White_400x400"
+                        ],
+                        "duration": [
+                            1067, 1067, 1067
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    }
+                }
+            },
+            "puff_side": {
+                "grey": {
+                    "basename": "Generic/Smoke/SmokePuffSide01",
+                    "thumbnail": "Generic/Smoke/SmokePuffSide01_01_Regular_Grey_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "01_Regular_Grey_400x400", "02_Regular_Grey_400x400", "03_Regular_Grey_400x400", "04_Regular_Grey_400x400", "05_Regular_Grey_400x400"
+                            ],
+                            "duration": [
+                                1100, 1100, 1200, 1067, 1900
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "white": {
+                    "basename": "Generic/Smoke/SmokePuffSide02",
+                    "thumbnail": "Generic/Smoke/SmokePuffSide02_01_Regular_White_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "01_Regular_White_400x400", "02_Regular_White_400x400", "03_Regular_White_400x400"
+                            ],
+                            "duration": [
+                                1067, 767, 900
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "twinkling_stars": {
             "twinklingstars_04": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_04",
