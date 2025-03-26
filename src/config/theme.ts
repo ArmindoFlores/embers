@@ -15,5 +15,8 @@ export const darkTheme = createTheme({
         primary: {
             main: "#BB99FF",
         },
+        text: {
+            primary: "#FFFFFF",
+        },
     },
 });
