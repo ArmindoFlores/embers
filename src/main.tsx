@@ -1,7 +1,7 @@
 import "./index.css";
 
 import { BrowserRouter, Route, Routes, useSearchParams } from "react-router";
-import { StrictMode, useMemo } from "react";
+import { StrictMode, useEffect, useMemo, useState } from "react";
 
 import { BaseOBRProvider } from "./react-obr/providers/BaseOBRProvider.tsx";
 import Docs from "./views/Docs.tsx";
@@ -13,17 +13,26 @@ import Tutorials from "./views/Tutorials.tsx";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider, useMediaQuery } from "@mui/material";
 import { darkTheme, lightTheme } from "./config/theme.ts";
+import OBR from "@owlbear-rodeo/sdk";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function ExtensionMultiplexer() {
     const [searchParams] = useSearchParams();
-    const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+    const [themeMode, setThemeMode] = useState<"DARK" | "LIGHT">("LIGHT");
+
+    useEffect(() => {
+        // Fetch the theme mode from OBR and set it
+        OBR.theme.getTheme().then((theme) => {
+            setThemeMode(theme.mode);
+        });
+    }, []);
+
     const children = useMemo(() => {
         if (searchParams.get("obrref")) {
             return (
                 <BaseOBRProvider>
                     <ThemeProvider
-                        theme={prefersDarkMode ? darkTheme : lightTheme}
+                        theme={themeMode === "DARK" ? darkTheme : lightTheme}
                     >
                         <Routes>
                             <Route index element={<Main />} />
@@ -47,7 +56,8 @@ function ExtensionMultiplexer() {
                 <Route path="listings" element={<Listings />} />
             </Routes>
         );
-    }, [prefersDarkMode, searchParams]);
+    }, [searchParams, themeMode]);
+
     return children;
 }
 
