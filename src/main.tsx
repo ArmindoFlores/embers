@@ -1,7 +1,7 @@
 import "./index.css";
 
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { BrowserRouter, Route, Routes, useSearchParams } from "react-router";
-import { Paper, ThemeProvider } from "@mui/material";
 import { StrictMode, useEffect, useMemo, useState } from "react";
 import { darkTheme, lightTheme } from "./config/theme.ts";
 
@@ -18,18 +18,30 @@ import { createRoot } from "react-dom/client";
 // eslint-disable-next-line react-refresh/only-export-components
 function ExtensionMultiplexer() {
     const [searchParams] = useSearchParams();
+    const [ready, setReady] = useState(false);
     const [themeMode, setThemeMode] = useState<"DARK" | "LIGHT">("DARK");
 
     useEffect(() => {
-        // Fetch the theme mode from OBR and set it
-        OBR.theme.getTheme().then((theme) => {
-            setThemeMode(theme.mode);
-        });
+        try {
+            OBR.theme.getTheme().then((theme) => {
+                setThemeMode(theme.mode);
+            });
+            OBR.theme.onChange((theme) => {
+                setThemeMode(theme.mode);
+            });
+        } catch (error) {
+            console.log(error);
+            // TODO: Handle the error gracefully
+            // current error: "Uncaught (in promise) Error: Unable to send message: not ready"
+            setReady(false);
+        }
+    }, [searchParams, ready]);
 
-        OBR.theme.onChange((theme) => {
-            setThemeMode(theme.mode);
+    useEffect(() => {
+        return OBR.onReady(() => {
+            setReady(true);
         });
-    }, [searchParams]);
+    })
 
     const children = useMemo(() => {
         if (searchParams.get("obrref")) {
@@ -38,7 +50,8 @@ function ExtensionMultiplexer() {
                     <ThemeProvider
                         theme={themeMode === "DARK" ? darkTheme : lightTheme}
                     >
-                        <Paper sx={{ backgroundColor: "transparent" }}>
+                        <CssBaseline />
+                        <Box sx={{ height: "100vh" }}>
                             <Routes>
                                 <Route index element={<Main />} />
                                 <Route
@@ -50,7 +63,7 @@ function ExtensionMultiplexer() {
                                     element={<NewSpellModal />}
                                 />
                             </Routes>
-                        </Paper>
+                        </Box>
                     </ThemeProvider>
                 </BaseOBRProvider>
             );

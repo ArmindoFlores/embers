@@ -222,7 +222,7 @@ export default function Main() {
                 justifyContent: "space-between",
             }}
         >
-            <Box>
+            <Box sx={{ flexGrow: 1 }}>
                 <Tabs
                     value={selectedTab}
                     sx={{
@@ -258,10 +258,8 @@ export default function Main() {
                         overflow: "auto",
                         height:
                             selectedTab === 0
-                                ? "calc(100vh - 154px)"
-                                : selectedTab === 3
-                                ? "calc(100vh - 100px)"
-                                : "calc(100vh - 88px)", // Adjust the height as needed
+                                ? "calc(100vh - 7.5rem)"
+                                : "calc(100vh - 4rem)", // Adjust the height as needed
                         scrollbarWidth: "thin", // For Firefox
                         "&::-webkit-scrollbar": {
                             width: "8px", // For Chrome, Safari, and Opera
@@ -273,7 +271,7 @@ export default function Main() {
             </Box>
 
             {selectedTab === 0 && (
-                <Box sx={{ maxHeight: "64px", overflow: "hidden" }}>
+                <Box sx={{ overflow: "hidden" }}>
                     <SpellBanner
                         onButtonClick={() => {
                             setSelectedTab(SPELL_DETAIL_TAB);
