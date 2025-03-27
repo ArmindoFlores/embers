@@ -164,7 +164,6 @@ export default function SpellBanner({
                             <span
                                 className="title"
                                 style={{
-                                    color: "white",
                                     padding: "0.5rem",
                                     borderRadius: "4px",
                                     display: "block",
