@@ -80,6 +80,10 @@
     background-color: rgb(30, 34, 49);
 }
 
+.spell-creation-blueprint-container svg {
+    color: white
+ }
+
 .spell-creation-blueprint-controls > * {
     margin-left: 1rem;
 }
@@ -107,8 +111,6 @@
     min-width: 10rem;
     border-radius: 1rem;
     border: thin solid white;
-
-    background-color: rgb(30, 34, 49);
 
     cursor: pointer;
 }
