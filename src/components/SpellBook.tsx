@@ -289,12 +289,7 @@ export default function SpellBook() {
                 )}
             </Box>
             {Object.entries(groups).map(([groupName, spells], index) => (
-                <Accordion
-                    variant="outlined"
-                    defaultExpanded
-                    sx={{ backgroundColor: "transparent" }}
-                    key={index}
-                >
+                <Accordion variant="outlined" defaultExpanded key={index}>
                     <AccordionSummary
                         sx={{
                             "&.Mui-expanded": {
@@ -443,7 +438,6 @@ export default function SpellBook() {
                     </span>
                 </Typography>
             )}
-
             <ReactModal
                 isOpen={modalOpened === "create-spell-group"}
                 onRequestClose={closeModal}
@@ -481,9 +475,13 @@ export default function SpellBook() {
                 className={`modal-content ${isModalClosing ? "fade-out" : ""}`}
                 appElement={mainDiv.current!}
             >
-                <p className="title" style={{ display: "block" }}>
+                <Typography
+                    variant="h6"
+                    className="title"
+                    style={{ display: "block" }}
+                >
                     Edit spell group name
-                </p>
+                </Typography>
                 <p style={{ textAlign: "left" }}>
                     Please choose a new name for this spell group:
                 </p>

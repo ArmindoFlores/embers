@@ -11,7 +11,7 @@ import NewSpellModal from "./views/NewSpellModal.tsx";
 import SpellSelectionPopover from "./views/SpellSelectionPopover.tsx";
 import Tutorials from "./views/Tutorials.tsx";
 import { createRoot } from "react-dom/client";
-import { Paper, ThemeProvider, useMediaQuery } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme, lightTheme } from "./config/theme.ts";
 import OBR from "@owlbear-rodeo/sdk";
 
@@ -21,14 +21,18 @@ function ExtensionMultiplexer() {
     const [themeMode, setThemeMode] = useState<"DARK" | "LIGHT">("DARK");
 
     useEffect(() => {
-        // Fetch the theme mode from OBR and set it
-        OBR.theme.getTheme().then((theme) => {
-            setThemeMode(theme.mode);
-        });
-
-        OBR.theme.onChange((theme) => {
-            setThemeMode(theme.mode);
-        });
+        try {
+            OBR.theme.getTheme().then((theme) => {
+                setThemeMode(theme.mode);
+            });
+            OBR.theme.onChange((theme) => {
+                setThemeMode(theme.mode);
+            });
+        } catch (error) {
+            console.log(error);
+            // TODO: Handle the error gracefully
+            // current error: "Uncaught (in promise) Error: Unable to send message: not ready"
+        }
     }, [searchParams]);
 
     const children = useMemo(() => {
@@ -38,7 +42,8 @@ function ExtensionMultiplexer() {
                     <ThemeProvider
                         theme={themeMode === "DARK" ? darkTheme : lightTheme}
                     >
-                        <Paper sx={{ backgroundColor: "transparent" }}>
+                        <CssBaseline />
+                        <Box sx={{ height: "100vh" }}>
                             <Routes>
                                 <Route index element={<Main />} />
                                 <Route
@@ -50,7 +55,7 @@ function ExtensionMultiplexer() {
                                     element={<NewSpellModal />}
                                 />
                             </Routes>
-                        </Paper>
+                        </Box>
                     </ThemeProvider>
                 </BaseOBRProvider>
             );
