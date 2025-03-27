@@ -128,74 +128,72 @@ export default function SpellBanner({
                 backgroundColor: "transparent",
             }}
         >
-            <CardContent sx={{ flex: "1 0 auto", p: 0 }}>
-                {!selectedSpell ? (
+            {!selectedSpell ? (
+                <CardContent sx={{ p: 0, pt: 1.5 }}>
                     <Typography variant="body2" sx={{ m: 1, mb: 0 }}>
                         No active spells. Select one from the spellbook! 🧙‍♂️🔥
                     </Typography>
-                ) : (
-                    <>
-                        <div>
-                            <Box
+                </CardContent>
+            ) : (
+                <>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            // backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            padding: "0.5rem",
+                            justifyContent: "space-between",
+                            width: "100%",
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                        >
+                            <img
+                                src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
                                 style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    // backgroundImage: `url(${ASSET_LOCATION}/${selectedSpell.thumbnail})`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
+                                    width: "42px",
+                                    height: "42px",
+                                }}
+                            />
+                            <span
+                                className="title"
+                                style={{
                                     padding: "0.5rem",
-                                    justifyContent: "space-between",
+                                    borderRadius: "4px",
+                                    display: "block",
+                                    // flexDirection: "column",
                                 }}
                             >
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <img
-                                        src={`${ASSET_LOCATION}/${selectedSpell.thumbnail}`}
-                                        style={{
-                                            width: "42px",
-                                            height: "42px",
-                                        }}
-                                    />
-                                    <span
-                                        className="title"
-                                        style={{
-                                            color: "white",
-                                            padding: "0.5rem",
-                                            borderRadius: "4px",
-                                            display: "block",
-                                            // flexDirection: "column",
-                                        }}
-                                    >
-                                        {selectedSpell.name}
-                                    </span>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        // flexDirection: "column",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        gap: "0.25rem",
-                                        ml: "0.5rem",
-                                        mr: "1rem",
-                                    }}
-                                >
-                                    <Tooltip title="Click for more spell details">
-                                        {renderSpellMode(
-                                            selectedSpell.replicate!,
-                                            selectedSpell.minTargets
-                                        )}
-                                    </Tooltip>
-                                </Box>
-                            </Box>
-                        </div>
-                    </>
-                )}
-            </CardContent>
+                                {selectedSpell.name}
+                            </span>
+                        </Box>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                // flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                gap: "0.25rem",
+                                ml: "0.5rem",
+                                mr: "1rem",
+                            }}
+                        >
+                            <Tooltip title="Click for more spell details">
+                                {renderSpellMode(
+                                    selectedSpell.replicate!,
+                                    selectedSpell.minTargets
+                                )}
+                            </Tooltip>
+                        </Box>
+                    </Box>
+                </>
+            )}
         </Card>
     );
 }

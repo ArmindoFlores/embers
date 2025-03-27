@@ -71,10 +71,19 @@
     width: 60vw;
 }
 
+
 .modal-content.fade-out {
     animation: fadeOut 0.3s ease-in forwards;
 }
 
+/* TODO: Update the modal-content text color once modal component has been migrated to MUI */
+.modal-content p{
+    color: white;
+}
+
+.modal-content .MuiTypography-root {
+    color: white
+}
 /* Fade-in animation */
 @keyframes fadeIn {
     from {
