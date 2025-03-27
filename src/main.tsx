@@ -1,7 +1,7 @@
 import "./index.css";
 
-import { BrowserRouter, Route, Routes, useSearchParams } from "react-router";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
+import { BrowserRouter, Route, Routes, useSearchParams } from "react-router";
 import { StrictMode, useEffect, useMemo, useState } from "react";
 import { darkTheme, lightTheme } from "./config/theme.ts";
 
@@ -14,9 +14,11 @@ import OBR from "@owlbear-rodeo/sdk";
 import SpellSelectionPopover from "./views/SpellSelectionPopover.tsx";
 import Tutorials from "./views/Tutorials.tsx";
 import { createRoot } from "react-dom/client";
+
 // eslint-disable-next-line react-refresh/only-export-components
 function ExtensionMultiplexer() {
     const [searchParams] = useSearchParams();
+    const [ready, setReady] = useState(false);
     const [themeMode, setThemeMode] = useState<"DARK" | "LIGHT">("DARK");
 
     useEffect(() => {
@@ -31,8 +33,15 @@ function ExtensionMultiplexer() {
             console.log(error);
             // TODO: Handle the error gracefully
             // current error: "Uncaught (in promise) Error: Unable to send message: not ready"
+            setReady(false);
         }
-    }, [searchParams]);
+    }, [searchParams, ready]);
+
+    useEffect(() => {
+        return OBR.onReady(() => {
+            setReady(true);
+        });
+    })
 
     const children = useMemo(() => {
         if (searchParams.get("obrref")) {
