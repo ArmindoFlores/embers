@@ -1,20 +1,19 @@
 import "./index.css";
 
 import { BrowserRouter, Route, Routes, useSearchParams } from "react-router";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { StrictMode, useEffect, useMemo, useState } from "react";
+import { darkTheme, lightTheme } from "./config/theme.ts";
 
 import { BaseOBRProvider } from "./react-obr/providers/BaseOBRProvider.tsx";
 import Docs from "./views/Docs.tsx";
 import Listings from "./views/Listings.tsx";
 import Main from "./views/Main.tsx";
 import NewSpellModal from "./views/NewSpellModal.tsx";
+import OBR from "@owlbear-rodeo/sdk";
 import SpellSelectionPopover from "./views/SpellSelectionPopover.tsx";
 import Tutorials from "./views/Tutorials.tsx";
 import { createRoot } from "react-dom/client";
-import { Box, CssBaseline, ThemeProvider } from "@mui/material";
-import { darkTheme, lightTheme } from "./config/theme.ts";
-import OBR from "@owlbear-rodeo/sdk";
-
 // eslint-disable-next-line react-refresh/only-export-components
 function ExtensionMultiplexer() {
     const [searchParams] = useSearchParams();
