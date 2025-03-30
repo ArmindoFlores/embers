@@ -95,6 +95,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             instruction.loops,
                             instruction.metadata,
                             instruction.layer,
+                            instruction.zIndex,
                             () => {
                                 effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                                 doMoreWork(instruction.instructions);
@@ -139,6 +140,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             instruction.loops,
                             instruction.metadata,
                             instruction.layer,
+                            instruction.zIndex,
                             () => {
                                 effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                                 doMoreWork(instruction.instructions);
@@ -179,6 +181,7 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                             instruction.loops,
                             instruction.metadata,
                             instruction.layer,
+                            instruction.zIndex,
                             () => {
                                 effectRegister.set(instruction.id!, (effectRegister.get(instruction.id!) ?? 1) - 1)
                                 doMoreWork(instruction.instructions);

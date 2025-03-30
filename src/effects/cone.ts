@@ -11,6 +11,7 @@ export function cone(
     loops?: number,
     metadata?: Metadata,
     layer?: Layer,
+    zIndex?: number,
     onComplete?: () => void,
     variant?: number,
     spellName?: string,
@@ -46,6 +47,7 @@ export function cone(
         loops,
         metadata,
         layer,
+        zIndex,
         spellName,
         spellCaster
     );

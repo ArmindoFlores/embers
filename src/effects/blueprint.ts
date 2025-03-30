@@ -219,6 +219,12 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
     }
     const layer = maybeLayer.value;
 
+    const maybeZIndex = resolveSimpleValue<number>(element.zIndex, "zIndex", "number", variables);
+    if (isError(maybeZIndex)) {
+        return maybeZIndex;
+    }
+    const zIndex = maybeZIndex.value;
+
     let actionArguments: unknown[]|undefined;
     if (element.arguments != undefined) {
         if (isUnresolvedBlueprint(element.arguments)) {
@@ -498,6 +504,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         forceVariant,
         metadata,
         layer,
+        zIndex,
         arguments: actionArguments
     };
     message.push(newInstruction);

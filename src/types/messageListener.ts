@@ -26,6 +26,8 @@ export interface EffectInstruction {
     metadata?: Metadata;
     // Which layer to play this effect on
     layer?: Layer;
+    // z-ordering
+    zIndex?: number;
     // If specified, the chosen effect variant will always be this one, if it exists
     forceVariant?: number;
     // Arguments if this instruction is an action
