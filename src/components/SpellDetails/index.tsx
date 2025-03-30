@@ -1,6 +1,7 @@
 import "./SpellDetails.css";
 
 import { APP_KEY, ASSET_LOCATION } from "../../config";
+import { Box, Typography } from "@mui/material";
 import {
     NumberContent,
     OptionsContent,
@@ -8,15 +9,15 @@ import {
     ReplicationType,
     Spell,
 } from "../../types/spells";
-import OBR, { Metadata } from "@owlbear-rodeo/sdk";
+import OBR, { ImageDownload, Metadata } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useState } from "react";
 
-import Checkbox from ".././Checkbox";
+import AssetPicker from "../AssetPicker";
+import Checkbox from "../Checkbox";
+import { FaCopy } from "react-icons/fa6";
 import { getSpell } from "../../effects/spells";
 import { toolMetadataSelectedSpell } from "../../effectsTool";
 import { useOBR } from "../../react-obr/providers";
-import { Box, Typography } from "@mui/material";
-import { FaCopy } from "react-icons/fa6";
 
 function replicationValue(replicationValue: ReplicationType) {
     if (replicationValue === "no") {
@@ -56,15 +57,16 @@ function ParameterRow({
     spellID: string;
     parameter: Parameter;
 }) {
-    const [parameterValue, setParameterValue] = useState<string | null>(null);
+    const [optionsValue, setOptionsValue] = useState<string | null>(null);
     const [inputValue, setInputValue] = useState<string | null>(null);
+    const [booleanValue, setBooleanValue] = useState<boolean | null>(null);
+    const [assetValue, setAssetValue] = useState<ImageDownload[] | null>(null);
 
     const setValidatedParameterValue = useCallback(
         (value: string) => {
             const content = parameter.content as NumberContent;
             const intValue = parseInt(value ?? "0");
             if (isNaN(intValue)) {
-                setInputValue(parameterValue);
                 return;
             }
             let realValue = intValue.toString();
@@ -73,10 +75,9 @@ function ParameterRow({
             } else if (content.max && intValue > content.max) {
                 realValue = content.max.toString();
             }
-            setParameterValue(realValue);
             setInputValue(realValue);
         },
-        [parameter.content, parameterValue]
+        [parameter.content]
     );
 
     useEffect(() => {
@@ -86,46 +87,63 @@ function ParameterRow({
         if (spellParameters) {
             const parameters = JSON.parse(spellParameters);
             const value = parameters[parameter.id];
-            if (value) {
-                setParameterValue(
-                    parameter.type === "options" ? value : value.toString()
-                );
-                if (parameter.type === "number") {
-                    setInputValue(value.toString());
+            if (value != undefined) {
+                switch (parameter.type) {
+                    case "options":
+                        setOptionsValue(value);
+                        break;
+                    case "number":
+                        setInputValue(value.toString());
+                        break;
+                    case "asset":
+                        setAssetValue(value ?? []);
+                        break;
+                    case "boolean":
+                        setBooleanValue(value);
+                        break;
+                    default:
+                        setOptionsValue(value.toString());
+                        break;
                 }
             }
         }
     }, [parameter, spellID]);
 
     useEffect(() => {
-        if (parameterValue === null) {
-            return;
-        }
         const spellParameters = localStorage.getItem(
             `${APP_KEY}/spell-parameters/${spellID}`
         );
-        if (spellParameters) {
-            const parameters = JSON.parse(spellParameters);
-            if (parameter.type === "options") {
-                parameters[parameter.id] = parameterValue;
-            } else if (parameter.type === "number") {
-                parameters[parameter.id] = parseInt(
-                    parameterValue ?? parameter.defaultValue
-                );
-            } else if (parameter.type === "boolean") {
-                parameters[parameter.id] = parameterValue == "true";
-            }
+        const parameters = spellParameters ? JSON.parse(spellParameters) : {};
+        let update = true;
+        switch (parameter.type) {
+            case "options":
+                update = optionsValue != null;
+                parameters[parameter.id] = optionsValue;
+                break;
+            case "asset":
+                update = assetValue != null;
+                parameters[parameter.id] = assetValue;
+                break;
+            case "number":
+                update = inputValue != null;
+                parameters[parameter.id] = parseInt(inputValue ?? parameter.defaultValue as string);
+                break;
+            case "boolean":
+                update = booleanValue != null;
+                parameters[parameter.id] = booleanValue;
+                break;
+            default:
+                update = optionsValue != null;
+                parameters[parameter.id] = optionsValue;
+                break;
+        }
+        if (update) {
             localStorage.setItem(
                 `${APP_KEY}/spell-parameters/${spellID}`,
                 JSON.stringify(parameters)
             );
-        } else {
-            localStorage.setItem(
-                `${APP_KEY}/spell-parameters/${spellID}`,
-                JSON.stringify({ [parameter.id]: parameterValue })
-            );
         }
-    }, [parameter, spellID, parameterValue]);
+    }, [parameter, spellID, optionsValue, assetValue, inputValue, booleanValue]);
 
     return (
         <div className="spell-details-row">
@@ -133,8 +151,8 @@ function ParameterRow({
             {parameter.type === "options" && (
                 <select
                     className="small-select"
-                    value={parameterValue ?? (parameter.defaultValue as string)}
-                    onChange={(e) => setParameterValue(e.target.value)}
+                    value={optionsValue ?? (parameter.defaultValue as string)}
+                    onChange={(e) => setOptionsValue(e.target.value)}
                 >
                     {(parameter.content as OptionsContent).map((option) => (
                         <option key={option.label} value={option.value}>
@@ -161,10 +179,16 @@ function ParameterRow({
             )}
             {parameter.type === "boolean" && (
                 <Checkbox
-                    checked={parameterValue == "true"}
+                    checked={booleanValue ?? (parameter.defaultValue as boolean|undefined) ?? false}
                     setChecked={(value) =>
-                        setParameterValue(value ? "true" : "")
+                        setBooleanValue(value)
                     }
+                />
+            )}
+            {parameter.type === "asset" && (
+                <AssetPicker
+                    value={assetValue ?? []}
+                    setValue={setAssetValue}
                 />
             )}
         </div>

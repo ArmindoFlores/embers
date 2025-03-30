@@ -1,6 +1,7 @@
 import { BlueprintFunctionBuiltin, BlueprintFunctionDescription, BlueprintFunctionResolveArgs, BlueprintValue, ErrorOr } from "../types/blueprint";
+import { ImageDownload, Vector2 } from "@owlbear-rodeo/sdk";
 
-import { Vector2 } from "@owlbear-rodeo/sdk";
+import { getItemSize } from "../utils";
 
 function _error(message: string): ErrorOr<never> {
     return { error: message };
@@ -188,6 +189,63 @@ function index_of(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<un
     return _value(index != -1 ? index : undefined);
 }
 
+function token_size(resolve: BlueprintFunctionResolveArgs, arg: BlueprintValue<unknown>) {
+    const maybeToken = resolve(arg);
+    if (maybeToken.error) {
+        return _error(maybeToken.error);
+    }
+    const token = maybeToken.value as ImageDownload;
+    return _value(getItemSize(token));
+}
+
+function target_in_range(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const globalTargets = resolve("$globalTargets");
+    if (globalTargets.error) {
+        return globalTargets;
+    }
+    const [min, max, index] = [resolve(arg1), resolve(arg2), index_of(resolve, "$targets[0]", globalTargets.value)];
+    if (min.error) {
+        return min;
+    }
+    if (max.error) {
+        return max;
+    }
+    if (index.error) {
+        return index;
+    }
+    const minValue = min.value as number;
+    let maxValue = max.value ? (max.value as number) : (minValue + 1);
+    if (maxValue < 0) {
+        maxValue = (globalTargets.value as unknown[])!.length as number + 1;
+    }
+
+    return _value(index.value != undefined && index.value >= minValue && index.value < maxValue);
+}
+
+function target_not_in_range(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const globalTargets = resolve("$globalTargets");
+    if (globalTargets.error) {
+        return globalTargets;
+    }
+    const [min, max, index] = [resolve(arg1), resolve(arg2), index_of(resolve, "$targets[0]", globalTargets.value)];
+    if (min.error) {
+        return min;
+    }
+    if (max.error) {
+        return max;
+    }
+    if (index.error) {
+        return index;
+    }
+    const minValue = min.value as number;
+    let maxValue = max.value ? (max.value as number) : (minValue + 1);
+    if (maxValue < 0) {
+        maxValue = (globalTargets.value as unknown[])!.length as number + 1;
+    }
+
+    return _value(!(index.value != undefined && index.value >= minValue && index.value < maxValue));
+}
+
 export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin, desc: BlueprintFunctionDescription }> = {
     concat: {
         func: concat,
@@ -331,6 +389,36 @@ export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin
             description: "Returns the index of the first argument in the second argument, or undefined if it's not found",
             argumentType: "any",
             returnType: "number|undefined"
+        }
+    },
+    token_size: {
+        func: token_size,
+        desc: {
+            minArgs: 1,
+            maxArgs: 1,
+            description: "Returns the size of the greatest dimension of an item asset",
+            argumentType: "asset",
+            returnType: "number"
+        }
+    },
+    target_not_in_range: {
+        func: target_not_in_range,
+        desc: {
+            minArgs: 1,
+            maxArgs: 2,
+            description: "This function can be used in combination with the \"disabled\" property to only play effects for specific indices of targets.\nIf only one argument is specified, it will return true for the all targets but the one with that specific index; If two arguments are specified, it will return true for all targets outside the interval [arg1, arg2[; A negative number for arg2 sets the upper bound as the number of targets plus that number plus 1",
+            argumentType: "number, number",
+            returnType: "boolean"
+        }
+    },
+    target_in_range: {
+        func: target_in_range,
+        desc: {
+            minArgs: 1,
+            maxArgs: 2,
+            description: "This function can be used in combination with the \"disabled\" property to only play effects for specific indices of targets.\nIf only one argument is specified, it will return true for the target with that specific index; If two arguments are specified, it will return true for all targets in the interval [arg1, arg2[; A negative number for arg2 sets the upper bound as the number of targets plus that number plus 1",
+            argumentType: "number, number",
+            returnType: "boolean"
         }
     }
 };

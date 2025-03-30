@@ -4,8 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 /* eslint-disable react-refresh/only-export-components */
 import { APP_KEY } from "../config";
 import Checkbox from "./Checkbox";
-import { useOBR } from "../react-obr/providers";
 import { Typography } from "@mui/material";
+import { useOBR } from "../react-obr/providers";
 
 export const LOCAL_STORAGE_KEYS = {
     MOST_RECENT_SPELLS_LIST_SIZE: "most-recent-list",

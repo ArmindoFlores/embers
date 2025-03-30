@@ -22,6 +22,7 @@ function ExtensionMultiplexer() {
     const [themeMode, setThemeMode] = useState<"DARK" | "LIGHT">("DARK");
 
     useEffect(() => {
+        if (!ready) return;
         try {
             OBR.theme.getTheme().then((theme) => {
                 setThemeMode(theme.mode);
@@ -41,7 +42,7 @@ function ExtensionMultiplexer() {
         return OBR.onReady(() => {
             setReady(true);
         });
-    })
+    }, []);
 
     const children = useMemo(() => {
         if (searchParams.get("obrref")) {

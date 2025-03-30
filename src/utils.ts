@@ -1,9 +1,22 @@
-import OBR, { Item, isImage } from "@owlbear-rodeo/sdk";
-
+import OBR from "@owlbear-rodeo/sdk";
 import { log_error } from "./logging";
 
-export function getItemSize(item: Item) {
-    const gridFactor = isImage(item) ? Math.max(item.image.width, item.image.height) / item.grid.dpi : 1;
+export interface SizedItem {
+    image?: {
+        width: number;
+        height: number;
+    }
+    scale: {
+        x: number;
+        y: number;
+    }
+    grid?: {
+        dpi: number;
+    }
+}
+
+export function getItemSize(item: SizedItem) {
+    const gridFactor = (item.image && item.grid) ? Math.max(item.image.width, item.image.height) / item.grid.dpi : 1;
     const scale = Math.max(item.scale.x, item.scale.y) * gridFactor;
     return scale;
 }

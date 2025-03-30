@@ -2,6 +2,7 @@ import { Layer, Metadata } from "@owlbear-rodeo/sdk";
 
 import { AOEEffectMessage } from "./aoe";
 import { ConeMessage } from "./cone";
+import { PossibleTarget } from "./blueprint";
 import { ProjectileMessage } from "./projectile";
 
 export interface EffectInstruction {
@@ -17,6 +18,8 @@ export interface EffectInstruction {
     duration?: number;
     // The number of loops to play for this effect
     loops?: number;
+    // Where to execute this effect
+    for?: PossibleTarget;
     // Custom metadata to add to this effect
     metadata?: Metadata;
     // Which layer to play this effect on
