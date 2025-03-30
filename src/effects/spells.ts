@@ -181,6 +181,7 @@ export function doSpell(spellID: string, playerID: string, isGM: boolean) {
         const replicationType = spell.replicate ?? "no";
         const copyDelay = spell.copy ?? 150;
         const parameterValuesString = localStorage.getItem(`${APP_KEY}/spell-parameters/${spellID}`);
+
         const parameterValues = parameterValuesString ? JSON.parse(parameterValuesString) : {};
         for (const parameter of spell.parameters ?? []) {
             if (parameterValues[parameter.id] == undefined) {

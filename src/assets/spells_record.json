@@ -812,6 +812,7 @@
                 "type": "action",
                 "id": "hide",
                 "delay": 1000,
+                "for": "GM",
                 "arguments": ["$targets[0].id"]
             },
             {
@@ -827,12 +828,14 @@
                 "type": "action",
                 "id": "move",
                 "delay": 1500,
+                "for": "GM",
                 "arguments": ["$targets[0].id", "$targets[1].position"]
             },
             {
                 "type": "action",
                 "id": "show",
                 "delay": 3000,
+                "for": "GM",
                 "arguments": ["$targets[0].id"]
             }
         ]
@@ -1700,14 +1703,8 @@
                 "type": "effect",
                 "id": "chain_lightning.primary",
                 "disabled": {
-                    "name": "not_equals",
-                    "arguments": [
-                        {
-                            "name": "index_of",
-                            "arguments": ["$targets[0]", "$globalTargets"]
-                        },
-                        1
-                    ]
+                    "name": "target_not_in_range",
+                    "arguments": [1]
                 },
                 "effectProperties": {
                     "source": "$globalTargets[0].position",
@@ -1720,14 +1717,8 @@
                 "id": "chain_lightning.secondary",
                 "delay": 1000,
                 "disabled": {
-                    "name": "lesser_than",
-                    "arguments": [
-                        {
-                            "name": "index_of",
-                            "arguments": ["$targets[0]", "$globalTargets"]
-                        },
-                        1
-                    ]
+                    "name": "target_not_in_range",
+                    "arguments": [2, -1]
                 },
                 "effectProperties": {
                     "source": "$globalTargets[1].position",
@@ -1990,6 +1981,152 @@
                     "size": "$targets[1].size",
                     "source": "$targets[1].position"
                 }
+            }
+        ]
+    },
+    "summon": {
+        "name": "Summon",
+        "minTargets": 1,
+        "thumbnail": "Generic/Magic_Signs/Conjuration_01_Yellow_Circle_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Token",
+                "id": "tokens",
+                "type": "asset",
+                "defaultValue": null,
+                "content": {
+                    "multiple": false
+                }
+            },
+            {
+                "name": "Caster animation",
+                "id": "caster",
+                "type": "boolean",
+                "defaultValue": true
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.magic_signs.conjuration_circle.regular_yellow.complete",
+                "layer": "PROP",
+                "disabled": {
+                    "name": "or",
+                    "arguments": [
+                        {
+                            "name": "not",
+                            "arguments": ["$caster"]
+                        },
+                        {
+                            "name": "target_not_in_range",
+                            "arguments": [0]
+                        }
+                    ]
+                },
+                "effectProperties": {
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 2]
+                    },
+                    "source": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.magic_signs.conjuration_rune.complete",
+                "delay": {
+                    "name": "if",
+                    "arguments": ["$caster", null, 1000]
+                },
+                "disabled": {
+                    "name": "and",
+                    "arguments": [
+                        "$caster",
+                        {
+                            "name": "target_in_range",
+                            "arguments": [0]
+                        }
+                    ]
+                },
+                "effectProperties": {
+                    "size": {
+                        "name": "token_size",
+                        "arguments": ["$tokens[0]"]
+                    },
+                    "source": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.smoke.puff",
+                "delay": {
+                    "name": "if",
+                    "arguments": ["$caster", 1500, 2500]
+                },
+                "disabled": {
+                    "name": "and",
+                    "arguments": [
+                        "$caster",
+                        {
+                            "name": "target_in_range",
+                            "arguments": [0]
+                        }
+                    ]
+                },
+                "effectProperties": {
+                    "size": {
+                        "name": "token_size",
+                        "arguments": ["$tokens[0]"]
+                    },
+                    "source": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.smoke.puff_ring",
+                "delay": {
+                    "name": "if",
+                    "arguments": ["$caster", 2000, 3000]
+                },
+                "disabled": {
+                    "name": "and",
+                    "arguments": [
+                        "$caster",
+                        {
+                            "name": "target_in_range",
+                            "arguments": [0]
+                        }
+                    ]
+                },
+                "effectProperties": {
+                    "size": {
+                        "name": "token_size",
+                        "arguments": ["$tokens[0]"]
+                    },
+                    "source": "$targets[0].position"
+                }
+            },
+            {
+                "type": "action",
+                "id": "create_token",
+                "for": "CASTER",
+                "delay": {
+                    "name": "if",
+                    "arguments": ["$caster", 2500, 3500]
+                },
+                "disabled": {
+                    "name": "and",
+                    "arguments": [
+                        "$caster",
+                        {
+                            "name": "target_in_range",
+                            "arguments": [0]
+                        }
+                    ]
+                },
+                "arguments": ["$tokens[0]", "$targets[0].position"]
             }
         ]
     }

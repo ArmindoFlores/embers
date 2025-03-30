@@ -1,33 +1,82 @@
 import { BlueprintActionBuiltin, BlueprintActionDescription } from "../types/blueprint";
-import OBR, { Vector2 } from "@owlbear-rodeo/sdk";
+import OBR, { ImageDownload, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 
-function move(itemID: unknown, position: unknown) {
-    OBR.scene.items.updateItems([itemID as string], items => {
+import { log_error } from "../logging";
+
+function move(itemID: string, position: Vector2) {
+    OBR.scene.items.updateItems([itemID], items => {
         for (const item of items) {
-            item.position = position as Vector2;
+            item.position = position;
         }
     });
 }
 
-function hide(itemID: unknown) {
-    OBR.scene.items.updateItems([itemID as string], items => {
+function hide(itemID: string) {
+    OBR.scene.items.updateItems([itemID], items => {
         for (const item of items) {
             item.visible = false;
         }
     });
 }
 
-function show(itemID: unknown) {
-    OBR.scene.items.updateItems([itemID as string], items => {
+function show(itemID: string) {
+    OBR.scene.items.updateItems([itemID], items => {
         for (const item of items) {
             item.visible = true;
         }
     });
 }
 
+function create_token(image: ImageDownload, position: Vector2, local = false) {
+    const imageObj = image;
+    let imageItem = buildImage(imageObj.image, imageObj.grid)
+        .name(imageObj.name)
+        .position(position)
+        .rotation(imageObj.rotation)
+        .scale(imageObj.scale)
+        .text(imageObj.text)
+        .textItemType(imageObj.textItemType)
+        .visible(imageObj.visible)
+        .locked(imageObj.locked)
+        .layer(imageObj.type);
+
+    if (imageObj.description) {
+        imageItem = imageItem.description(imageObj.description);
+    }
+    if (local) {
+        OBR.scene.local.addItems([imageItem.build()]);
+    }
+    else {
+        OBR.scene.items.addItems([imageItem.build()]);
+    }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+function actionWrapper(actionFunc: Function) {
+    function wrapper(...args: unknown[]) {
+        try {
+            return actionFunc(...args);
+        }
+        catch (e) {
+            const error = e as Error;
+            log_error(`Action "${actionFunc.name}": ${error.message}`);
+        }
+    }
+    return wrapper as BlueprintActionBuiltin;
+}
+
 export const actions: Record<string, { action: BlueprintActionBuiltin, desc: BlueprintActionDescription }> = {
+    create_token: {
+        action: actionWrapper(create_token),
+        desc: {
+            minArgs: 2,
+            maxArgs: 3,
+            description: "Add token described by the first argument to the scene at position specified by the second argument; if the third arument argument is true, then it will be added to the local items",
+            argumentType: "[asset, vector, boolean]"
+        }
+    },
     move: {
-        action: move,
+        action: actionWrapper(move),
         desc: {
             minArgs: 2,
             maxArgs: 2,
@@ -36,7 +85,7 @@ export const actions: Record<string, { action: BlueprintActionBuiltin, desc: Blu
         }
     },
     show: {
-        action: show,
+        action: actionWrapper(show),
         desc: {
             minArgs: 1,
             maxArgs: 1,
@@ -45,7 +94,7 @@ export const actions: Record<string, { action: BlueprintActionBuiltin, desc: Blu
         }
     },
     hide: {
-        action: hide,
+        action: actionWrapper(hide),
         desc: {
             minArgs: 1,
             maxArgs: 1,

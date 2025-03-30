@@ -1,7 +1,7 @@
 import { EffectBlueprint } from "./blueprint";
 
 export type ReplicationType = "no" | "all" | "first_to_all";
-export type ParameterType = "options" | "number" | "boolean";
+export type ParameterType = "options" | "number" | "boolean" | "asset";
 
 export type OptionsContent = {
     value: string;

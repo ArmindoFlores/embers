@@ -25,6 +25,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    max-width: 100%;
+    overflow: hidden;
+    gap: 1rem;
+}
+
+.spell-details-row p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.spell-details-row > * {
+    min-width: 0;
+}
+
+.spell-details-row > .label {
+    min-width: fit-content;
 }
 
 .label {

@@ -29,6 +29,8 @@ export interface ConeBlueprint {
     size: BlueprintValue<number>;
 }
 
+export type PossibleTarget = "CASTER" | "GM" | "ALL";
+
 export interface EffectBlueprint {
     // Blueprint type
     type: BlueprintType;
@@ -40,6 +42,8 @@ export interface EffectBlueprint {
     duration?: BlueprintValue<number>;
     // The number of loops to play for this effect
     loops?: BlueprintValue<number>;
+    // Where to execute this effect
+    for?: BlueprintValue<PossibleTarget>;
     // What item to attach this effect to
     attachedTo?: BlueprintValue<string>;
     // Whether to disable hit detection

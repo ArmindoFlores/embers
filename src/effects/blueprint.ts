@@ -1,4 +1,4 @@
-import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, ProjectileBlueprint, Variables } from "../types/blueprint";
+import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, PossibleTarget, ProjectileBlueprint, Variables } from "../types/blueprint";
 import { EffectInstruction, MessageType } from "../types/messageListener";
 import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
 import { Layer, Metadata, Vector2 } from "@owlbear-rodeo/sdk";
@@ -182,6 +182,12 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         return maybeLoops;
     }
     const loops = maybeLoops.value;
+
+    const maybeFor = resolveSimpleValue<PossibleTarget>(element.for, "for", "string", variables);
+    if (isError(maybeFor)) {
+        return maybeFor;
+    }
+    const for_ = maybeFor.value;
 
     const maybeForceVariant = resolveSimpleValue<number>(element.forceVariant, "forceVariant", "number", variables);
     if (isError(maybeForceVariant)) {
@@ -488,6 +494,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         instructions,
         duration,
         loops,
+        for: for_,
         forceVariant,
         metadata,
         layer,

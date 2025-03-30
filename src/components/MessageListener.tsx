@@ -32,10 +32,14 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
             }
         }
 
-        const doInstruction = () => {
+        const doInstruction = (playerId: string, playerRole: "GM" | "PLAYER") => {
             if (instruction.id != undefined) {
                 if (typeof instruction.id !== "string") {
                     log_error(`Instruction id must be a string, not a "${typeof instruction.id}"`);
+                    return;
+                }
+                if ((instruction.for === "GM" && playerRole !== "GM") || (instruction.for === "CASTER" && spellCaster !== playerId)) {
+                    // This won't be played for this player
                     return;
                 }
                 if (instruction.type === "effect") {
@@ -201,28 +205,30 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
             }
         }
 
-        if (instruction.delay) {
-            if (typeof instruction.delay !== "number") {
-                log_error(`Instruction delay must be a number, not a "${typeof instruction.delay}"`);
-                return;
-            }
-
-            if (instruction.delay < 0) {
-                log_error(`Instruction delay must be >= 0 (was ${instruction.delay})`);
-                return;
-            }
-
-            const key = "ml:" + crypto.randomUUID();
-            worker.addEventListener("message", message => {
-                if (message.data === key) {
-                    doInstruction();
+        Promise.all([OBR.player.getId(), OBR.player.getRole()]).then(([playerId, playerRole]) => {
+            if (instruction.delay) {
+                if (typeof instruction.delay !== "number") {
+                    log_error(`Instruction delay must be a number, not a "${typeof instruction.delay}"`);
+                    return;
                 }
-            });
-            worker.postMessage({ duration: instruction.delay, id: key });
-        }
-        else {
-            doInstruction();
-        }
+
+                if (instruction.delay < 0) {
+                    log_error(`Instruction delay must be >= 0 (was ${instruction.delay})`);
+                    return;
+                }
+
+                const key = "ml:" + crypto.randomUUID();
+                worker.addEventListener("message", message => {
+                    if (message.data === key) {
+                        doInstruction(playerId, playerRole);
+                    }
+                });
+                worker.postMessage({ duration: instruction.delay, id: key });
+            }
+            else {
+                doInstruction(playerId, playerRole);
+            }
+        });
     }, [worker, dpi, effectRegister]);
 
     useEffect(() => {
