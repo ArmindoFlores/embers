@@ -1,6 +1,6 @@
 .asset-picker-container {
     border: 1px solid white;
     border-radius: 0.5rem;
-    padding: 0rem 0rem;
+    padding: 0.1rem 0.5rem;
     cursor: pointer;
 }

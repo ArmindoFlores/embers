@@ -1,8 +1,7 @@
 import "./AssetPicker.css";
 
+import { CSSProperties, useCallback } from "react";
 import OBR, { ImageAssetType, ImageDownload } from "@owlbear-rodeo/sdk";
-
-import { useCallback } from "react";
 
 export interface AssetPickerProps {
     value: ImageDownload[];
@@ -10,6 +9,7 @@ export interface AssetPickerProps {
     multiple?: boolean;
     defaultSearch?: string;
     typeHint?: ImageAssetType;
+    style?: CSSProperties;
 }
 
 export default function AssetPicker(props: AssetPickerProps) {
@@ -19,8 +19,8 @@ export default function AssetPicker(props: AssetPickerProps) {
         });
     }, [props]);
 
-    return <div className="asset-picker-container" onClick={handlePickAsset}>
-        <p>
+    return <div style={props.style} className="asset-picker-container" onClick={handlePickAsset}>
+        <p style={{margin: 0}}>
             { props.value.length == 0 && "No assets selected" }
             { props.value.length > 0 && props.value.map(asset => asset.name).join(", ") }
         </p>

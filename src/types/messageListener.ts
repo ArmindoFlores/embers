@@ -20,6 +20,8 @@ export interface EffectInstruction {
     loops?: number;
     // Where to execute this effect
     for?: PossibleTarget;
+    // Whether the first target is the caster's token
+    firstTargetIsCaster?: boolean;
     // Custom metadata to add to this effect
     metadata?: Metadata;
     // Which layer to play this effect on
