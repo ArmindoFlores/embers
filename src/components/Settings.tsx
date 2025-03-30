@@ -1,8 +1,9 @@
-import OBR, { GridScale } from "@owlbear-rodeo/sdk";
+import OBR, { GridScale, ImageDownload } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useState } from "react";
 
 /* eslint-disable react-refresh/only-export-components */
 import { APP_KEY } from "../config";
+import AssetPicker from "./AssetPicker";
 import Checkbox from "./Checkbox";
 import { Typography } from "@mui/material";
 import { useOBR } from "../react-obr/providers";
@@ -11,6 +12,7 @@ export const LOCAL_STORAGE_KEYS = {
     MOST_RECENT_SPELLS_LIST_SIZE: "most-recent-list",
     GRID_SCALING_FACTOR: "grid-scaling-factor",
     KEEP_SELECTED_TARGETS: "keep-selected-targets",
+    DEFAULT_CASTER: "default-caster",
 };
 
 export const GLOBAL_STORAGE_KEYS = {
@@ -22,6 +24,7 @@ const DEFAULT_VALUES = {
     [LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE]: 10,
     [LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR]: null,
     [LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS]: true,
+    [LOCAL_STORAGE_KEYS.DEFAULT_CASTER]: [],
     [GLOBAL_STORAGE_KEYS.PLAYERS_CAN_CAST_SPELLS]: true,
     [GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE]: "caster",
 }
@@ -115,6 +118,7 @@ export default function Settings() {
     const [playersCastSpells, setPlayersCastSpells] = useState<boolean|null>(null);
     const [summonedEntities, setSummonedEntities] = useState<string|null>(null);
     const [gridScale, setGridScale] = useState<GridScale|null>(null);
+    const [defaultCaster, setDefaultCaster] = useState<ImageDownload[]|null>(null);
 
     const setMostRecentSize = useCallback((size: string) => {
         const recentSize = parseInt(size);
@@ -138,6 +142,7 @@ export default function Settings() {
         _setMostRecentSize(getSettingsValue(LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE));
         _setGridScalingFactor(getSettingsValue(LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR));
         setKeepTargets(getSettingsValue(LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS));
+        setDefaultCaster(getSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER));
     }, []);
 
     useEffect(() => {
@@ -188,6 +193,13 @@ export default function Settings() {
     }, [keepTargets]);
 
     useEffect(() => {
+        if (defaultCaster == null) {
+            return;
+        }
+        setSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER, defaultCaster);
+    }, [defaultCaster]);
+
+    useEffect(() => {
         if (playersCastSpells == null) {
             return;
         }
@@ -212,17 +224,15 @@ export default function Settings() {
         <div className="settings-menu">
             <div>
                 <p className="subtitle" title="These settings apply to you only.">Local Settings</p>
-                <div className="settings-item">
-                    <label htmlFor="recent-spells-list-size" title="The size of the recent spells list.">
-                        <p>Recent spells list size</p>
+                <div className="settings-item" title="If set, the first target for some spells will be one of these token, when applicable.">
+                    <label>
+                        <p>Default caster</p>
                     </label>
-                    <input
-                        name="recent-spells-list-size"
-                        min="0"
-                        type="number"
-                        className="settings-input"
-                        value={mostRecentSize ?? ""}
-                        onChange={event => setMostRecentSize(event.target.value)}
+                    <AssetPicker
+                        style={{ height: "1.4rem" }}
+                        value={defaultCaster ?? []}
+                        setValue={setDefaultCaster}
+                        multiple
                     />
                 </div>
                 <div className="settings-item">
@@ -245,6 +255,19 @@ export default function Settings() {
                         <p>Keep selected targets</p>
                     </label>
                     <Checkbox checked={keepTargets ?? false} setChecked={setKeepTargets} />
+                </div>
+                <div className="settings-item">
+                    <label htmlFor="recent-spells-list-size" title="The size of the recent spells list.">
+                        <p>Recent spells list size</p>
+                    </label>
+                    <input
+                        name="recent-spells-list-size"
+                        min="0"
+                        type="number"
+                        className="settings-input"
+                        value={mostRecentSize ?? ""}
+                        onChange={event => setMostRecentSize(event.target.value)}
+                    />
                 </div>
             </div>
             {

@@ -122,7 +122,7 @@ function parseExpression<T = unknown>(expression: BlueprintValueUnresolved, vari
     return parseBlueprintFunction<T>(expression, variables);
 }
 
-function resolveSimpleValue<T>(value: BlueprintValue<T> | undefined, variableName: string, variableType: string, variables: Variables) {
+export function resolveSimpleValue<T>(value: BlueprintValue<T> | undefined, variableName: string, variableType: string, variables: Variables) {
     let resolvedValue: T|undefined;
     if (value != undefined) {
         if (typeof value === variableType && (typeof value !== "string" || value[0] !== "$")) {

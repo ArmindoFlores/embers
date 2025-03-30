@@ -156,6 +156,7 @@
         "maxTargets": 2,
         "thumbnail": "Cantrip/Sacred_Flame/SacredFlameSource_01_Regular_Yellow_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "blueprints": [
             {
@@ -199,6 +200,7 @@
         "minTargets": 1,
         "thumbnail": "1st_Level/Arms_Of_Hadar/ArmsOfHadar_01_Dark_Purple_Thumb.webp",
         "replicate": "all",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -264,6 +266,7 @@
         "maxTargets": 2,
         "thumbnail": "1st_Level/Burning_Hands/BurningHands_01_Regular_Orange_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -314,6 +317,7 @@
         "minTargets": 1,
         "thumbnail": "1st_Level/Detect_Magic/DetectMagicCircle_01_Regular_Blue_Thumb.webp",
         "replicate": "all",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -635,6 +639,7 @@
         "maxTargets": 2,
         "thumbnail": "1st_Level/Witch_Bolt/WitchBolt_01_Regular_Blue_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "blueprints": [
             {
@@ -798,6 +803,7 @@
         "maxTargets": 2,
         "thumbnail": "2nd_Level/Misty_Step/MistyStep_02_Regular_Blue_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "blueprints": [
             {
@@ -1217,6 +1223,7 @@
         "maxTargets": 2,
         "thumbnail": "3rd_Level/Lightning_Bolt/LightningBolt_01_Regular_Blue_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -1347,6 +1354,7 @@
         "minTargets": 1,
         "thumbnail": "3rd_Level/Spirit_Guardians/SpiritGuardians_01_Light_BlueYellow_Thumb.webp",
         "replicate": "all",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -1508,6 +1516,7 @@
         "minTargets": 1,
         "thumbnail": "5th_Level/Antilife_Shell/Antilifeshell_01_Blue_Circle_Thumb.webp",
         "replicate": "all",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -1596,6 +1605,7 @@
         "maxTargets": 2,
         "thumbnail": "5th_Level/Cone_Of_Cold/ConeOfCold_01_Regular_Blue_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -1697,6 +1707,7 @@
         "maxTargets": 5,
         "thumbnail": "6th_Level/Chain_Lightning/ChainLightning_01_Regular_Blue_Primary_Thumb.webp",
         "replicate": "all",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "blueprints": [
             {
@@ -1781,6 +1792,7 @@
         "maxTargets": 2,
         "thumbnail": "Generic/Weapon_Attacks/Melee/Sword01_01_Regular_White_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {
@@ -1963,6 +1975,7 @@
         "maxTargets": 2,
         "thumbnail": "2nd_Level/Divine_Smite/DivineSmite_01_Regular_BlueYellow_Caster_Thumb.webp",
         "replicate": "no",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "blueprints": [
             {
@@ -1989,6 +2002,7 @@
         "minTargets": 1,
         "thumbnail": "Generic/Magic_Signs/Conjuration_01_Yellow_Circle_Thumb.webp",
         "replicate": "all",
+        "firstTargetIsCaster": true,
         "copy": -1,
         "parameters": [
             {

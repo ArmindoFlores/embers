@@ -1,4 +1,4 @@
-import { EffectBlueprint } from "./blueprint";
+import { BlueprintValue, EffectBlueprint } from "./blueprint";
 
 export type ReplicationType = "no" | "all" | "first_to_all";
 export type ParameterType = "options" | "number" | "boolean" | "asset";
@@ -36,7 +36,8 @@ export interface Spell {
     replicate?: ReplicationType;
     // Whether this effect should be copied when targetting the same item multiple times and how to do so
     copy?: number;
-
+    // Whether the first target is the caster's token
+    firstTargetIsCaster?: BlueprintValue<boolean>;
     // List of parameters for this spell
     parameters?: Parameter[];
 
