@@ -51,6 +51,10 @@ function create_token(image: ImageDownload, position: Vector2, local = false) {
     }
 }
 
+function message(channel: string, data: unknown, destination: "REMOTE" | "LOCAL" | "ALL" = "ALL") {
+    OBR.broadcast.sendMessage(channel, data, { destination });
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 function actionWrapper(actionFunc: Function) {
     function wrapper(...args: unknown[]) {
@@ -100,6 +104,14 @@ export const actions: Record<string, { action: BlueprintActionBuiltin, desc: Blu
             maxArgs: 1,
             description: "Set item with ID specified by the first argument to be invisible",
             argumentType: "string"
+        }
+    },
+    message: {
+        action: actionWrapper(message),
+        desc: {
+            minArgs: 2,
+            maxArgs: 3,
+            description: "Send a message using the OBR SDK; the first argument is channel ID, the second is the data, and the last (optional) is the destination, which can be \"REMOTE\" (to send to all other players), \"LOCAL\" (to send to the current player only), or \"ALL\" (to send to every player); the default is \"ALL\""
         }
     }
 };
