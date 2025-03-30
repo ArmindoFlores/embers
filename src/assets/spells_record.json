@@ -2002,7 +2002,7 @@
         "minTargets": 1,
         "thumbnail": "Generic/Magic_Signs/Conjuration_01_Yellow_Circle_Thumb.webp",
         "replicate": "all",
-        "firstTargetIsCaster": true,
+        "firstTargetIsCaster": "$caster",
         "copy": -1,
         "parameters": [
             {
