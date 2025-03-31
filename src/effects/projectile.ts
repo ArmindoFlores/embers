@@ -45,7 +45,6 @@ export function getProjectilePose(source: Vector2, destination: Vector2, dpi: nu
 
 export function projectile(
     projectileInfo: ProjectileProperties,
-    worker: Worker,
     duration?: number,
     loops?: number,
     metadata?: Metadata,
@@ -112,5 +111,5 @@ export function projectile(
     }
 
     // Add all items to the local scene
-    registerEffect(images, worker, realDuration, onComplete, spellCaster);
+    registerEffect(images, realDuration, onComplete, spellCaster);
 }

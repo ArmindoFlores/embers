@@ -1,7 +1,40 @@
 import { BlueprintActionBuiltin, BlueprintActionDescription } from "../types/blueprint";
-import OBR, { ImageDownload, Vector2, buildImage } from "@owlbear-rodeo/sdk";
+import { EasingFunction, getEasingFunction } from "../utils";
+import OBR, { ImageDownload, Item, Vector2, buildImage } from "@owlbear-rodeo/sdk";
+import { log_error, log_warn } from "../logging";
 
-import { log_error } from "../logging";
+import { Draft } from "immer";
+
+async function interactWithItems<T extends Item | Item[]>(items: T, onUpdate: (items: Draft<T>, elapsedMilliseconds: number) => boolean) {
+    const key = "interaction:" + crypto.randomUUID();
+    const worker = window.EmbersWorker;
+    const interaction = await OBR.interaction.startItemInteraction(items);
+
+    return new Promise<T>((resolve) => {
+        const startTime = Date.now();
+        const onMessage = (message: MessageEvent) => {
+            if (message.data === key) {
+                const [update, stop] = interaction;
+                const now = Date.now();
+                let keepGoing = false;
+                update(items => {
+                    keepGoing = onUpdate(items, now - startTime);
+                });
+
+                if (!keepGoing) {
+                    stop();
+                    worker.removeEventListener("message", onMessage);
+                    resolve(items);
+                } else {
+                    worker.postMessage({ duration: 10, id: key });
+                }
+            }
+        };
+
+        worker.addEventListener("message", onMessage);
+        worker.postMessage({ duration: 10, id: key });
+    });
+}
 
 function move(itemID: string, position: Vector2) {
     OBR.scene.items.updateItems([itemID], items => {
@@ -25,6 +58,81 @@ function show(itemID: string) {
             item.visible = true;
         }
     });
+}
+
+async function aslide(itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction) {
+    if (duration > 30000) {
+        log_warn(`slide() called with a duration > 30s (${Math.round(duration) / 1000}s); this might cause issues since OBR's interactions expire in 30s (read more here: https://docs.owlbear.rodeo/extensions/apis/interaction#startiteminteraction)`);
+    }
+
+    const item = (await OBR.scene.items.getItems([itemID]))[0];
+    const startPosition = item.position;
+
+    const easingFunc = getEasingFunction(easingFunction);
+
+    interactWithItems(item, (item, t) => {
+        item.position = {
+            x: startPosition.x + easingFunc(t / duration) * (position.x - startPosition.x),
+            y: startPosition.y + easingFunc(t / duration) * (position.y - startPosition.y)
+        };
+        if (t >= duration) {
+            return false;
+        }
+        return true;
+    }).then(item => {
+        OBR.scene.items.updateItems([item], items => {
+            items[0]!.position = position;
+        });
+    });
+}
+
+function slide(itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
+    aslide(itemID, position, duration, easingFunction);
+}
+
+function scale(itemID: string, scaleVector: Vector2) {
+    OBR.scene.items.updateItems([itemID], items => {
+        for (const item of items) {
+            item.scale = {
+                x: scaleVector.x * item.scale.x,
+                y: scaleVector.y * item.scale.y
+            };
+        }
+    });
+}
+
+async function astretch(itemID: string, scale: Vector2, duration: number, easingFunction: EasingFunction) {
+    if (duration > 30000) {
+        log_warn(`stretch() called with a duration > 30s (${Math.round(duration) / 1000}s); this might cause issues since OBR's interactions expire in 30s (read more here: https://docs.owlbear.rodeo/extensions/apis/interaction#startiteminteraction)`);
+    }
+
+    const item = (await OBR.scene.items.getItems([itemID]))[0];
+    const startScale = item.scale;
+    const endScale = {
+        x: scale.x * startScale.x,
+        y: scale.y * startScale.y
+    };
+
+    const easingFunc = getEasingFunction(easingFunction);
+
+    interactWithItems(item, (item, t) => {
+        item.scale = {
+            x: startScale.x + easingFunc(t / duration) * (endScale.x - startScale.x),
+            y: startScale.y + easingFunc(t / duration) * (endScale.y - startScale.y)
+        }
+        if (t >= duration) {
+            return false;
+        }
+        return true;
+    }).then(item => {
+        OBR.scene.items.updateItems([item], items => {
+            items[0]!.scale = endScale;
+        });
+    });
+}
+
+function stretch(itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
+    astretch(itemID, position, duration, easingFunction);
 }
 
 function create_token(image: ImageDownload, position: Vector2, local = false) {
@@ -86,6 +194,33 @@ export const actions: Record<string, { action: BlueprintActionBuiltin, desc: Blu
             maxArgs: 2,
             description: "Move item with ID specified by the first argument to a position specified by the second argument",
             argumentType: "[string, vector]"
+        }
+    },
+    slide: {
+        action: actionWrapper(slide),
+        desc: {
+            minArgs: 3,
+            maxArgs: 4,
+            description: "Move item with ID specified by the first argument to a position specified by the second argument, animating the process; the 3rd argument specifies the duration, in milliseconds, and the optional 4th argument specifies the easing function (can be one of \"LINEAR\", \"EASE_IN\", \"EASE_OUT\", or \"EASE_IN_OUT\")",
+            argumentType: "[string, vector, number, easing_function]"
+        }
+    },
+    scale: {
+        action: actionWrapper(scale),
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Scale item with ID specified by the first argument by a factor specified by the second argument",
+            argumentType: "[string, vector]"
+        }
+    },
+    stretch: {
+        action: actionWrapper(stretch),
+        desc: {
+            minArgs: 3,
+            maxArgs: 4,
+            description: "Scales the item with ID specified by the first argument by a factor specified by the second argument, animating the process; the 3rd argument specifies the duration, in milliseconds, and the optional 4th argument specifies the easing function (can be one of \"LINEAR\", \"EASE_IN\", \"EASE_OUT\", or \"EASE_IN_OUT\")",
+            argumentType: "[string, vector, number, easing_function]"
         }
     },
     show: {

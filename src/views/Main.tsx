@@ -138,6 +138,7 @@ export default function Main() {
         // When the app mounts:
         // - create a new worker
         const worker = new Worker(effectsWorkerScript);
+        window.EmbersWorker = worker;
         setEffectsWorker(worker);
         // - setup the context menu
         // setupContextMenu(obr.player.role);
@@ -281,7 +282,6 @@ export default function Main() {
             )}
             {effectsWorker && (
                 <MessageListener
-                    worker={effectsWorker}
                     effectRegister={effectRegister}
                 />
             )}

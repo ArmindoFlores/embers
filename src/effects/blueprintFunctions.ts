@@ -11,6 +11,40 @@ function _value<T>(value: T): ErrorOr<T> {
     return { value };
 }
 
+function verifyCompatibleProductTypes(arg1: unknown, arg2: unknown)  {
+    const [vArg1, vArg2] = [arg1, arg2] as Vector2[];
+    let arg1ValueType: string = typeof arg1;
+    let arg2ValueType: string = typeof arg2;
+    if (arg1ValueType === "object" && vArg1.x != undefined && vArg1.y != undefined) {
+        arg1ValueType = "vector";
+    }
+    if (arg2ValueType === "object" && vArg2.x != undefined && vArg2.y != undefined) {
+        arg2ValueType = "vector";
+    }
+
+    if (arg1ValueType !== "number" && arg1ValueType !== "vector") {
+        return `arguments must be "number" or "vector"`;
+    }
+
+    if (arg2ValueType !== "number" && arg2ValueType !== "vector") {
+        return `arguments must be "number" or "vector"`;
+    }
+
+    return null;
+}
+
+function verifyCompatibleElementwiseTypes(arg1: unknown, arg2: unknown)  {
+    const compatibleForProductError = verifyCompatibleProductTypes(arg1, arg2);
+    if (compatibleForProductError) {
+        return compatibleForProductError;
+    }
+    const [type1, type2] = [typeof arg1, typeof arg2];
+    if (type1 !== type2) {
+        return `incompatible types "${type1 !== "object" ? type1 : "vector"}" and "${type2 !== "object" ? type2 : "vector"}"`
+    }
+    return null;
+}
+
 function concat(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unknown>[]) {
     const strings = args.map(arg => resolve(arg));
     for (const string of strings) {
@@ -39,6 +73,134 @@ function sum(resolve: BlueprintFunctionResolveArgs, ...args: BlueprintValue<unkn
         }
     }
     return _value(numbers.map(number => number.value as number).reduce((acc, val) => acc + val, 0));
+}
+
+function add(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return left;
+    }
+    if (right.error) {
+        return right;
+    }
+    const [leftValue, rightValue] = [left.value, right.value];
+    const typesMatchError = verifyCompatibleElementwiseTypes(leftValue, rightValue);
+    if (typesMatchError) {
+        return _error(`add(): ${typesMatchError}`);
+    }
+    if (typeof leftValue === "number") {
+        return _value((leftValue as number) + (rightValue as number));
+    }
+    if (typeof leftValue === "object") {
+        const [v1, v2] = [leftValue, rightValue] as Vector2[];
+        return _value({
+            x: v1.x + v2.x,
+            y: v1.y + v2.y
+        });
+    }
+    return _error("add(): invalid types");
+}
+
+function subtract(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return left;
+    }
+    if (right.error) {
+        return right;
+    }
+    const [leftValue, rightValue] = [left.value, right.value];
+    const typesMatchError = verifyCompatibleElementwiseTypes(leftValue, rightValue);
+    if (typesMatchError) {
+        return _error(`subtract(): ${typesMatchError}`);
+    }
+    if (typeof leftValue === "number") {
+        return _value((leftValue as number) - (rightValue as number));
+    }
+    if (typeof leftValue === "object") {
+        const [v1, v2] = [leftValue, rightValue] as Vector2[];
+        return _value({
+            x: v1.x - v2.x,
+            y: v1.y - v2.y
+        });
+    }
+    return _error("subtract(): invalid types");
+}
+
+function multiply(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return left;
+    }
+    if (right.error) {
+        return right;
+    }
+    const [leftValue, rightValue] = [left.value, right.value];
+    const typesMatchError = verifyCompatibleProductTypes(leftValue, rightValue);
+    if (typesMatchError) {
+        return _error(`multiply(): ${typesMatchError}`);
+    }
+    if (typeof leftValue === "number" && typeof rightValue === "number") {
+        return _value((leftValue as number) * (rightValue as number));
+    }
+    if (typeof leftValue === "number" && typeof rightValue === "object") {
+        return _value({
+            x: (rightValue as Vector2).x * leftValue,
+            y: (rightValue as Vector2).y * leftValue,
+        });
+    }
+    if (typeof leftValue === "object" && typeof rightValue === "number") {
+        return _value({
+            x: (leftValue as Vector2).x * rightValue,
+            y: (leftValue as Vector2).y * rightValue,
+        });
+    }
+    if (typeof leftValue === "object" && typeof rightValue === "object") {
+        const [v1, v2] = [leftValue, rightValue] as Vector2[];
+        return _value({
+            x: v1.x * v2.x,
+            y: v1.y * v2.y
+        });
+    }
+    return _error("multiply(): invalid types");
+}
+
+function divide(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
+    const [left, right] = [resolve(arg1), resolve(arg2)];
+    if (left.error) {
+        return left;
+    }
+    if (right.error) {
+        return right;
+    }
+    const [leftValue, rightValue] = [left.value, right.value];
+    const typesMatchError = verifyCompatibleProductTypes(leftValue, rightValue);
+    if (typesMatchError) {
+        return _error(`divide(): ${typesMatchError}`);
+    }
+    if (typeof leftValue === "number" && typeof rightValue === "number") {
+        return _value((leftValue as number) / (rightValue as number));
+    }
+    if (typeof leftValue === "number" && typeof rightValue === "object") {
+        return _value({
+            x: (rightValue as Vector2).x / leftValue,
+            y: (rightValue as Vector2).y / leftValue,
+        });
+    }
+    if (typeof leftValue === "object" && typeof rightValue === "number") {
+        return _value({
+            x: (leftValue as Vector2).x / rightValue,
+            y: (leftValue as Vector2).y / rightValue,
+        });
+    }
+    if (typeof leftValue === "object" && typeof rightValue === "object") {
+        const [v1, v2] = [leftValue, rightValue] as Vector2[];
+        return _value({
+            x: v1.x / v2.x,
+            y: v1.y / v2.y
+        });
+    }
+    return _error("divide(): invalid types");
 }
 
 function if_(resolve: BlueprintFunctionResolveArgs, condition: BlueprintValue<unknown>, success: BlueprintValue<unknown>, failure?: BlueprintValue<unknown>) {
@@ -256,6 +418,46 @@ export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin
             description: "Add all arguments together",
             argumentType: "number",
             returnType: "number"
+        }
+    },
+    add: {
+        func: add,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Adds the first and the second argument. If both arguments are vectors, performs element-wise addition.",
+            argumentType: "[number|vector, number|vector]",
+            returnType: "number|vector"
+        }
+    },
+    subtract: {
+        func: subtract,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Subtracts the second argument from the first. If both arguments are vectors, performs element-wise subtraction.",
+            argumentType: "[number|vector, number|vector]",
+            returnType: "number|vector"
+        }
+    },
+    multiply: {
+        func: multiply,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Multiplies the first argument by the second. If one argument is a vector, both elements are multiplied by the scalar. If both arguments are vectors, performs element-wise multiplication.",
+            argumentType: "[number|vector, number|vector]",
+            returnType: "number|vector"
+        }
+    },
+    divide: {
+        func: divide,
+        desc: {
+            minArgs: 2,
+            maxArgs: 2,
+            description: "Divides the first argument by the second. If one argument is a vector, both elements are divided by the scalar. If both arguments are vectors, performs element-wise division.",
+            argumentType: "[number|vector, number|vector]",
+            returnType: "number|vector"
         }
     },
     and: {

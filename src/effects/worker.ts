@@ -6,18 +6,17 @@ interface MessageData {
 }
 
 const workerFunction = function () {
-    function log_info(...data: any[]) {
-        console.log(
-            "%cEmbers 🔥%c (WORKER)",
-            "background:purple;border-radius:9999px;color:#fff;padding:3px 7px;font-weight:bold;",
-            "font-weight: bold",
-            ...data
-        );
-    }
+    // function log_info(...data: any[]) {
+    //     console.log(
+    //         "%cEmbers 🔥%c (WORKER)",
+    //         "background:purple;border-radius:9999px;color:#fff;padding:3px 7px;font-weight:bold;",
+    //         "font-weight: bold",
+    //         ...data
+    //     );
+    // }
 
     self.onmessage = (event: MessageEvent) => {
         const messageData = event.data as MessageData;
-        log_info(`Scheduling update in ${messageData.duration} for ${messageData.id}`);
         setTimeout(() => {
             postMessage(messageData.id);
         }, messageData.duration);

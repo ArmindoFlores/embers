@@ -3,11 +3,11 @@ import { Effect, Effects } from "../types/effects";
 import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "../components/Settings";
 import OBR, { Image, Layer, Metadata, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
-import { log_error, log_info } from "../logging";
 
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
 import effectsJSON from "../assets/effect_record.json";
 import { getItemSize } from "../utils";
+import { log_error } from "../logging";
 
 export const effects = effectsJSON as unknown as Effects;
 export const effectNames = gatherEffectNames();
@@ -118,7 +118,7 @@ export function getDistance(source: Vector2, destination: Vector2) {
     return Math.sqrt(Math.pow(source.x - destination.x, 2) + Math.pow(source.y - destination.y, 2));
 }
 
-export function registerEffect(images: Image[], worker: Worker, duration: number, onComplete?: () => void, spellCaster?: string) {
+export function registerEffect(images: Image[], duration: number, onComplete?: () => void, spellCaster?: string) {
     if (duration >= 0) {
         OBR.scene.local.addItems(images).then(() => {
             const id = images[0].id;
@@ -128,13 +128,14 @@ export function registerEffect(images: Image[], worker: Worker, duration: number
             // We can't use setTimeout because, if the extension's window is not visible,
             // the browser will throttle us and we might let the animation play for far
             // too long.
-            worker.addEventListener("message", message => {
+            const messageHandler = (message: MessageEvent) => {
                 if (message.data == id) {
-                    log_info(`Deleting effect assets (from web worker)`);
                     OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
+                    window.EmbersWorker.removeEventListener("message", messageHandler);
                 }
-            });
-            worker.postMessage({ duration, id });
+            }
+            window.EmbersWorker.addEventListener("message", messageHandler);
+            window.EmbersWorker.postMessage({ duration, id });
         });
     }
     else {

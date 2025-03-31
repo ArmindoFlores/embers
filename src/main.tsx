@@ -14,6 +14,7 @@ import OBR from "@owlbear-rodeo/sdk";
 import SpellSelectionPopover from "./views/SpellSelectionPopover.tsx";
 import Tutorials from "./views/Tutorials.tsx";
 import { createRoot } from "react-dom/client";
+import { log_error } from "./logging.ts";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function ExtensionMultiplexer() {
@@ -31,7 +32,7 @@ function ExtensionMultiplexer() {
                 setThemeMode(theme.mode);
             });
         } catch (error) {
-            console.log(error);
+            log_error(error);
             // TODO: Handle the error gracefully
             // current error: "Uncaught (in promise) Error: Unable to send message: not ready"
             setReady(false);

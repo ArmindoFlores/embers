@@ -6,7 +6,6 @@ import { log_error } from "../logging";
 
 export function aoe(
     aoeEffectProperties: AOEEffectProperties,
-    worker: Worker,
     duration?: number,
     loops?: number,
     metadata?: Metadata,
@@ -53,5 +52,5 @@ export function aoe(
     const { image, effectDuration } = result;
 
     // Add all items to the local scene
-    registerEffect([image.build()], worker, effectDuration, onComplete, spellCaster);
+    registerEffect([image.build()], effectDuration, onComplete, spellCaster);
 }
