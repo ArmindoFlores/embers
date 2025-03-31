@@ -1,10 +1,11 @@
-import OBR, { GridScale, ImageDownload } from "@owlbear-rodeo/sdk";
-import { useCallback, useEffect, useState } from "react";
+import { Button, Checkbox, Typography } from "@mui/material";
+import OBR, { GridScale, isImage } from "@owlbear-rodeo/sdk";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /* eslint-disable react-refresh/only-export-components */
 import { APP_KEY } from "../config";
-import AssetPicker from "./AssetPicker";
-import { Checkbox, Typography } from "@mui/material";
+import ReactModal from "react-modal";
+import { SimplifiedItem } from "../types/misc";
 import { useOBR } from "../react-obr/providers";
 
 export const LOCAL_STORAGE_KEYS = {
@@ -32,6 +33,8 @@ const GRID_UNIT_FACTORS: Record<string, number> = {
     "ft": 1,
     "m": 1.524,
 }
+
+type ModalType = "choose-caster-type";
 
 function parseGridScale(raw: string): GridScale {
     const regexMatch = raw.match(/(\d*)(\.\d*)?([a-zA-Z]*)/);
@@ -117,7 +120,10 @@ export default function Settings() {
     const [playersCastSpells, setPlayersCastSpells] = useState<boolean|null>(null);
     const [summonedEntities, setSummonedEntities] = useState<string|null>(null);
     const [gridScale, setGridScale] = useState<GridScale|null>(null);
-    const [defaultCaster, setDefaultCaster] = useState<ImageDownload[]|null>(null);
+    const [defaultCaster, setDefaultCaster] = useState<SimplifiedItem[]|null>(null);
+    const [isModalClosing, setIsModalClosing] = useState(false);
+    const [modalOpened, setModalOpened] = useState<ModalType|null>(null);
+    const mainDiv = useRef<HTMLDivElement>(null);
 
     const setMostRecentSize = useCallback((size: string) => {
         const recentSize = parseInt(size);
@@ -136,6 +142,38 @@ export default function Settings() {
         }
         _setGridScalingFactor(scaleFactor);
     }, []);
+
+    const handleAssetPicker = useCallback(() => {
+        OBR.assets.downloadImages(true).then(selection => {
+            if (selection.length > 0) {
+                setDefaultCaster(selection);
+            }
+        })
+    }, []);
+
+    const handleSetCasterFromSelection = useCallback(() => {
+        OBR.player.getSelection().then(itemIDs => {
+            OBR.scene.items.getItems(itemIDs).then(items => {
+                const selection = items.filter(item => isImage(item));
+                if (selection.length > 0) {
+                    setDefaultCaster(selection.map(selected => ({...selected, type: "CHARACTER"})));
+                }
+            })
+        });
+    }, []);
+
+    const openModal = (modalName: ModalType) => {
+        setIsModalClosing(false);
+        setModalOpened(modalName);
+    };
+
+    const closeModal = () => {
+        setIsModalClosing(true);
+        setTimeout(() => {
+            setModalOpened(null);
+            setIsModalClosing(false);
+        }, 300);
+    };
 
     useEffect(() => {
         _setMostRecentSize(getSettingsValue(LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE));
@@ -212,7 +250,7 @@ export default function Settings() {
         setGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE, summonedEntities);
     }, [summonedEntities]);
 
-    return <div>
+    return <div ref={mainDiv}>
         <Typography
             mb={"0.5rem"}
             variant="h6"
@@ -227,12 +265,19 @@ export default function Settings() {
                     <label>
                         <p>Default caster</p>
                     </label>
-                    <AssetPicker
-                        style={{ height: "1.4rem" }}
-                        value={defaultCaster ?? []}
-                        setValue={setDefaultCaster}
-                        multiple
-                    />
+                    <div style={{maxWidth: "15rem"}}>
+                        <Button
+                            onClick={() => openModal("choose-caster-type")}
+                            variant="outlined"
+                            color="primary"
+                        >
+                            {
+                                (defaultCaster == null || defaultCaster.length == 0) ?
+                                "Select" :
+                                defaultCaster.map(image => image.name).join(", ")
+                            }
+                        </Button>
+                    </div>
                 </div>
                 <div className="settings-item">
                     <label htmlFor="grid-scaling-factor" title="A scaling factor for effects; a spell's width and height will be multiplied by this number. Useful if your grid size is not 5ft">
@@ -293,5 +338,51 @@ export default function Settings() {
                 </>
             }
         </div>
+        <ReactModal
+            isOpen={modalOpened === "choose-caster-type"}
+            onRequestClose={closeModal}
+            overlayClassName={`modal-overlay ${
+                isModalClosing ? "fade-out" : ""
+            }`}
+            className={`modal-content wide ${isModalClosing ? "fade-out" : ""}`}
+            appElement={mainDiv.current!}
+        >
+            <div style={{textAlign: "left"}}>
+                <p>
+                    Please choose from one or more of your assets, or choose "Use Selected"
+                    to use your currently selected tokens.
+                </p>
+                <p>
+                    <span className="bold">Selected</span>:
+                    {
+                        " " + (defaultCaster == null || defaultCaster.length == 0 ? "None" : defaultCaster.map(image => image.name).join(", "))
+                    }
+                </p>
+                <br></br>
+                <div style={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+                    <Button
+                        onClick={() => { handleAssetPicker(); closeModal(); }}
+                        variant="outlined"
+                        color="primary"
+                    >
+                        Open Assets
+                    </Button>
+                    <Button
+                        onClick={() => { handleSetCasterFromSelection(); closeModal(); }}
+                        variant="outlined"
+                        color="primary"
+                    >
+                        Use Selected
+                    </Button>
+                    <Button
+                        onClick={() => { setDefaultCaster([]); closeModal(); }}
+                        variant="outlined"
+                        color="primary"
+                    >
+                        Clear Selection
+                    </Button>
+                </div>
+            </div>
+        </ReactModal>
     </div>;
 }

@@ -1,9 +1,10 @@
 import { BlueprintActionBuiltin, BlueprintActionDescription } from "../types/blueprint";
 import { EasingFunction, getEasingFunction } from "../utils";
-import OBR, { ImageDownload, Item, Vector2, buildImage } from "@owlbear-rodeo/sdk";
+import OBR, { Item, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 import { log_error, log_warn } from "../logging";
 
 import { Draft } from "immer";
+import { SimplifiedItem } from "../types/misc";
 
 async function interactWithItems<T extends Item | Item[]>(items: T, onUpdate: (items: Draft<T>, elapsedMilliseconds: number) => boolean) {
     const key = "interaction:" + crypto.randomUUID();
@@ -135,7 +136,7 @@ function stretch(itemID: string, position: Vector2, duration: number, easingFunc
     astretch(itemID, position, duration, easingFunction);
 }
 
-function create_token(image: ImageDownload, position: Vector2, local = false) {
+function create_token(image: SimplifiedItem, position: Vector2, local = false) {
     const imageObj = image;
     let imageItem = buildImage(imageObj.image, imageObj.grid)
         .name(imageObj.name)

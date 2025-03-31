@@ -71,6 +71,9 @@
     width: 60vw;
 }
 
+.modal-content.wide {
+    width: 80vw!important;
+}
 
 .modal-content.fade-out {
     animation: fadeOut 0.3s ease-in forwards;

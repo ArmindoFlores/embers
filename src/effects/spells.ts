@@ -1,6 +1,6 @@
 import { BlueprintValue, Variables } from "../types/blueprint";
 import { LOCAL_STORAGE_KEYS, getDefaultGridScaleFactor, getSettingsValue } from "../components/Settings";
-import OBR, { Image, ImageDownload, Item, Vector2, isImage } from "@owlbear-rodeo/sdk";
+import OBR, { Image, Item, Vector2, isImage } from "@owlbear-rodeo/sdk";
 import { ReplicationType, Spell, Spells } from "../types/spells";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 import { resolveBlueprint, resolveSimpleValue } from "./blueprint";
@@ -8,6 +8,7 @@ import { resolveBlueprint, resolveSimpleValue } from "./blueprint";
 import { APP_KEY } from "../config";
 import { EffectInstruction } from "../types/messageListener";
 import { MESSAGE_CHANNEL } from "../components/MessageListener";
+import { SimplifiedItem } from "../types/misc";
 import { getItemSize } from "../utils";
 import { log_error } from "../logging";
 import { spellListMetadataKey } from "../views/NewSpellModal";
@@ -184,7 +185,7 @@ function enforceSpellRules(targets: Target[], minTargets?: number, maxTargets?: 
     return null;
 }
 
-function tokenMatchStrength(casterToken: ImageDownload, token: Image) {
+function tokenMatchStrength(casterToken: SimplifiedItem, token: Image) {
     if (casterToken.image.url !== token.image.url) {
         return 0;
     }
