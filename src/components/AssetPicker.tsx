@@ -1,10 +1,13 @@
 import "./AssetPicker.css";
 
-import { CSSProperties, useCallback } from "react";
+import { CSSProperties, useCallback, useMemo } from "react";
 import OBR, { ImageAssetType, ImageDownload } from "@owlbear-rodeo/sdk";
 
+import { Button } from "@mui/material";
+import { SimplifiedItem } from "../types/misc";
+
 export interface AssetPickerProps {
-    value: ImageDownload[];
+    value: SimplifiedItem[];
     setValue: (value: ImageDownload[]) => void;
     multiple?: boolean;
     defaultSearch?: string;
@@ -19,10 +22,29 @@ export default function AssetPicker(props: AssetPickerProps) {
         });
     }, [props]);
 
-    return <div style={props.style} className="asset-picker-container" onClick={handlePickAsset}>
-        <p style={{margin: 0}}>
-            { props.value.length == 0 && "No assets selected" }
-            { props.value.length > 0 && props.value.map(asset => asset.name).join(", ") }
-        </p>
-    </div>;
+    const title = useMemo(() => {
+        if (props.value.length === 0) {
+            return "Select asset";
+        }
+        return `Select asset (${props.value.map(asset => asset.name).join(", ")})`;
+    }, [props.value]);
+
+    return <Button
+        style={props.style}
+        onClick={handlePickAsset}
+        variant="outlined"
+        color="primary"
+        title={title}
+    >
+        <span style={{
+            display: "inline-block",
+            maxWidth: "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            verticalAlign: "middle"
+        }}>
+            { title }
+        </span>
+    </Button>;
 }

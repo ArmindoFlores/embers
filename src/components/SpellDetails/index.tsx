@@ -9,12 +9,13 @@ import {
     ReplicationType,
     Spell,
 } from "../../types/spells";
-import OBR, { ImageDownload, Metadata } from "@owlbear-rodeo/sdk";
+import OBR, { Metadata } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useState } from "react";
 
 import AssetPicker from "../AssetPicker";
 import Checkbox from "../Checkbox";
 import { FaCopy } from "react-icons/fa6";
+import { SimplifiedItem } from "../../types/misc";
 import { getSpell } from "../../effects/spells";
 import { toolMetadataSelectedSpell } from "../../effectsTool";
 import { useOBR } from "../../react-obr/providers";
@@ -60,7 +61,7 @@ function ParameterRow({
     const [optionsValue, setOptionsValue] = useState<string | null>(null);
     const [inputValue, setInputValue] = useState<string | null>(null);
     const [booleanValue, setBooleanValue] = useState<boolean | null>(null);
-    const [assetValue, setAssetValue] = useState<ImageDownload[] | null>(null);
+    const [assetValue, setAssetValue] = useState<SimplifiedItem[] | null>(null);
 
     const setValidatedParameterValue = useCallback(
         (value: string) => {

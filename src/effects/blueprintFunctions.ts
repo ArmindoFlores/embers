@@ -1,6 +1,7 @@
 import { BlueprintFunctionBuiltin, BlueprintFunctionDescription, BlueprintFunctionResolveArgs, BlueprintValue, ErrorOr } from "../types/blueprint";
-import { ImageDownload, Vector2 } from "@owlbear-rodeo/sdk";
 
+import { SimplifiedItem } from "../types/misc";
+import { Vector2 } from "@owlbear-rodeo/sdk";
 import { getItemSize } from "../utils";
 
 function _error(message: string): ErrorOr<never> {
@@ -356,7 +357,7 @@ function token_size(resolve: BlueprintFunctionResolveArgs, arg: BlueprintValue<u
     if (maybeToken.error) {
         return _error(maybeToken.error);
     }
-    const token = maybeToken.value as ImageDownload;
+    const token = maybeToken.value as SimplifiedItem;
     return _value(getItemSize(token));
 }
 
