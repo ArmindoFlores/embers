@@ -1413,6 +1413,110 @@
             }
         ]
     },
+    "dimension_door": {
+        "name": "Dimension Door",
+        "minTargets": 2,
+        "maxTargets": 3,
+        "thumbnail": "Generic/Portals/Portal_Bright_Yellow_H_Thumb.webp",
+        "replicate": "all",
+        "firstTargetIsCaster": true,
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.portals.horizontal",
+                "layer": "PROP",
+                "duration": 3000,
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0]
+                },
+                "effectProperties": {
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$globalTargets[0].size", 2.5]
+                    },
+                    "source": "$globalTargets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.portals.horizontal",
+                "layer": "PROP",
+                "duration": 3000,
+                "disabled": {
+                    "name": "target_in_range",
+                    "arguments": [0]
+                },
+                "effectProperties": {
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$globalTargets[0].size", 2.5]
+                    },
+                    "source": "$globalTargets[-1].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.energy.teleport",
+                "delay": 1000,
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "effectProperties": {
+                    "size": "$targets[0].size",
+                    "source": "$targets[0].position"
+                }
+            },
+            {
+                "type": "action",
+                "id": "hide",
+                "delay": 1300,
+                "for": "GM",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id"]
+            },
+            {
+                "type": "effect",
+                "id": "generic.energy.teleport",
+                "delay": 2000,
+                "disabled": {
+                    "name": "target_in_range",
+                    "arguments": [0, -2]
+                },
+                "effectProperties": {
+                    "size": "$targets[0].size",
+                    "source": "$globalTargets[-1].position"
+                }
+            },
+            {
+                "type": "action",
+                "id": "move",
+                "delay": 2000,
+                "for": "GM",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id", "$globalTargets[-1].position"]
+            },
+            {
+                "type": "action",
+                "id": "show",
+                "delay": 2250,
+                "for": "GM",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id"]
+            }
+        ]
+    },
     "wall_of_fire": {
         "name": "Wall of Fire",
         "minTargets": 2,

@@ -4,8 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 /* eslint-disable react-refresh/only-export-components */
 import { APP_KEY } from "../config";
 import AssetPicker from "./AssetPicker";
-import Checkbox from "./Checkbox";
-import { Typography } from "@mui/material";
+import { Checkbox, Typography } from "@mui/material";
 import { useOBR } from "../react-obr/providers";
 
 export const LOCAL_STORAGE_KEYS = {
@@ -254,7 +253,7 @@ export default function Settings() {
                     <label htmlFor="recent-spells-list-size">
                         <p>Keep selected targets</p>
                     </label>
-                    <Checkbox checked={keepTargets ?? false} setChecked={setKeepTargets} />
+                    <Checkbox checked={keepTargets ?? false} onChange={(event) => {setKeepTargets(event.currentTarget.checked)}} />
                 </div>
                 <div className="settings-item">
                     <label htmlFor="recent-spells-list-size" title="The size of the recent spells list.">
@@ -279,7 +278,7 @@ export default function Settings() {
                             <label htmlFor="recent-spells-list-size" title="If set to false, only the GM can cast spells.">
                                 <p>Players can cast spells</p>
                             </label>
-                            <Checkbox checked={playersCastSpells ?? false} setChecked={setPlayersCastSpells} />
+                            <Checkbox checked={playersCastSpells ?? false} onChange={(event)=>{setPlayersCastSpells(event.currentTarget.checked)}} />
                         </div>
                         <div className="settings-item" title={"Who should own items summoned by Embers. \"Caster\" means the player who cast the spell will own them, while \"GM\" means that the GM will own them regardless of who cast it."}>
                             <label htmlFor="recent-spells-list-size">
