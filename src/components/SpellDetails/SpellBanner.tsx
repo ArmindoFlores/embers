@@ -143,7 +143,7 @@ export default function SpellBanner({
                                     textWrap: "nowrap",
                                     overflow: "hidden",
                                     textOverflow: "ellipsis",
-                                    maxWidth: "150px",
+                                    maxWidth: "9.5rem",
                                 }}
                             >
                                 {selectedSpell.name}
