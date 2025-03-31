@@ -2050,6 +2050,7 @@
             {
                 "type": "effect",
                 "id": "generic.magic_signs.conjuration_rune.complete",
+                "zIndex": 5,
                 "delay": {
                     "name": "if",
                     "arguments": ["$caster", null, 1000]
@@ -2075,6 +2076,7 @@
             {
                 "type": "effect",
                 "id": "generic.smoke.puff",
+                "zIndex": 4,
                 "delay": {
                     "name": "if",
                     "arguments": ["$caster", 1500, 2500]
@@ -2100,6 +2102,7 @@
             {
                 "type": "effect",
                 "id": "generic.smoke.puff_ring",
+                "zIndex": 3,
                 "delay": {
                     "name": "if",
                     "arguments": ["$caster", 2000, 3000]

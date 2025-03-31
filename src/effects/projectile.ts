@@ -50,6 +50,7 @@ export function projectile(
     loops?: number,
     metadata?: Metadata,
     layer?: Layer,
+    zIndex?: number,
     onComplete?: () => void,
     variant?: number,
     spellName?: string,
@@ -88,6 +89,7 @@ export function projectile(
             loops,
             metadata,
             layer,
+            zIndex,
             spellName,
             spellCaster
         );

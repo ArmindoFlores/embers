@@ -52,6 +52,8 @@ export interface EffectBlueprint {
     metadata?: BlueprintValue<Metadata>;
     // What layer this effect goes in
     layer?: BlueprintValue<Layer>;
+    // z-ordering
+    zIndex?: BlueprintValue<number>;
     // Details about how to play this effect
     effectProperties?: ProjectileBlueprint | AOEEffectBlueprint | ConeBlueprint;
     // Instructions to execute after this effect is done

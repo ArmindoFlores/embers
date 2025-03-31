@@ -161,6 +161,7 @@ export function buildEffectImage(
     loops?: number,
     metadata?: Metadata,
     layer?: Layer,
+    zIndex?: number,
     spellName?: string,
     spellCaster?: string
 ) {
@@ -221,6 +222,9 @@ export function buildEffectImage(
         // Maybe change the item this attaches to's metadata
         // to enable a context menu?
         image.attachedTo(attachedTo);
+    }
+    if (zIndex != undefined) {
+        image.zIndex(zIndex);
     }
     return { image, effectDuration };
 }

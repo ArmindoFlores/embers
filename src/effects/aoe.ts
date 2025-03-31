@@ -11,6 +11,7 @@ export function aoe(
     loops?: number,
     metadata?: Metadata,
     layer?: Layer,
+    zIndex?: number,
     onComplete?: () => void,
     variant?: number,
     forcedVariant?: number,
@@ -42,6 +43,7 @@ export function aoe(
         loops,
         metadata,
         layer,
+        zIndex,
         spellName,
         spellCaster
     );
