@@ -216,34 +216,18 @@ function target_in_range(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintV
     const minValue = min.value as number;
     let maxValue = max.value ? (max.value as number) : (minValue + 1);
     if (maxValue < 0) {
-        maxValue = (globalTargets.value as unknown[])!.length as number + 1;
+        maxValue = (globalTargets.value as unknown[])!.length as number + maxValue + 1;
     }
 
     return _value(index.value != undefined && index.value >= minValue && index.value < maxValue);
 }
 
 function target_not_in_range(resolve: BlueprintFunctionResolveArgs, arg1: BlueprintValue<unknown>, arg2: BlueprintValue<unknown>) {
-    const globalTargets = resolve("$globalTargets");
-    if (globalTargets.error) {
-        return globalTargets;
+    const targetInRange = target_in_range(resolve, arg1, arg2);
+    if (targetInRange.error) {
+        return targetInRange;
     }
-    const [min, max, index] = [resolve(arg1), resolve(arg2), index_of(resolve, "$targets[0]", globalTargets.value)];
-    if (min.error) {
-        return min;
-    }
-    if (max.error) {
-        return max;
-    }
-    if (index.error) {
-        return index;
-    }
-    const minValue = min.value as number;
-    let maxValue = max.value ? (max.value as number) : (minValue + 1);
-    if (maxValue < 0) {
-        maxValue = (globalTargets.value as unknown[])!.length as number + 1;
-    }
-
-    return _value(!(index.value != undefined && index.value >= minValue && index.value < maxValue));
+    return _value(!targetInRange.value);
 }
 
 export const blueprintFunctions: Record<string, { func: BlueprintFunctionBuiltin, desc: BlueprintFunctionDescription }> = {
