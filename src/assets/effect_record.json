@@ -4675,6 +4675,134 @@
             }
         },
         "ice": {
+            "ice_spikes": {
+                "radial": {
+                    "burst": {
+                        "basename": "Generic/Ice/IceSpikesRadialBurst_01_Regular_White",
+                        "thumbnail": "Generic/Ice/IceSpikesRadialBurst_01_Regular_White_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "1000": {
+                                "name": [
+                                    "1000x1000"
+                                ],
+                                "duration": [
+                                    4033
+                                ],
+                                "size": [
+                                    1000,
+                                    1000
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Ice/IceSpikesRadialLoop_01_Regular_White",
+                        "thumbnail": "Generic/Ice/IceSpikesRadialLoop_01_Regular_White_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "1000": {
+                                "name": [
+                                    "1000x1000"
+                                ],
+                                "duration": [
+                                    3033
+                                ],
+                                "size": [
+                                    1000,
+                                    1000
+                                ]
+                            }
+                        }
+                    }
+                },
+                "wall": {
+                    "burst": {
+                        "basename": "Generic/Ice/IceSpikesWallBurst_01_Regular_White",
+                        "thumbnail": "Generic/Ice/IceSpikesWallBurst_01_Regular_White_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x1000"
+                                ],
+                                "duration": [
+                                    4033
+                                ],
+                                "size": [
+                                    600,
+                                    1000
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Ice/IceSpikesWallLoop_01_Regular_White",
+                        "thumbnail": "Generic/Ice/IceSpikesWallLoop_01_Regular_White_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x1000"
+                                ],
+                                "duration": [
+                                    3033
+                                ],
+                                "size": [
+                                    600,
+                                    1000
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "ice_shield": {
+                "above": {
+                    "basename": "Generic/Ice/ShieldIceAbove01_01_Regular_Blue",
+                    "thumbnail": "Generic/Ice/ShieldIceAbove01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "below": {
+                    "basename": "Generic/Ice/ShieldIceBelow01_01_Regular_Blue",
+                    "thumbnail": "Generic/Ice/ShieldIceBelow01_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                5000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
             "snowflake_burst": {
                 "complete": {
                     "basename": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Burst",

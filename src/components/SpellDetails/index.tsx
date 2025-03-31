@@ -170,8 +170,8 @@ function ParameterRow({
                         inputValue ??
                         (parameter.defaultValue as number).toString()
                     }
-                    min={(parameter.content as NumberContent).min}
-                    max={(parameter.content as NumberContent).max}
+                    min={(parameter.content as NumberContent)?.min}
+                    max={(parameter.content as NumberContent)?.max}
                     onChange={(e) =>
                         setValidatedParameterValue(e.currentTarget.value)
                     }

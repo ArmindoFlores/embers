@@ -502,6 +502,45 @@
             }
         ]
     },
+    "ice_knife": {
+        "name": "Ice Knife",
+        "minTargets": 2,
+        "thumbnail": "Generic/Ice/IceSpikesRadialBurst_01_Regular_White_Thumb.webp",
+        "target": "first_to_all",
+        "firstTargetIsCaster": true,
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 1,
+                "content": {
+                    "min": 3
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.weapon_attacks.ranged.dagger.throw",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "delay": 1500,
+                "id": "generic.ice.ice_spikes.radial.burst",
+                "effectProperties": {
+                    "source": "$targets[1].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
     "magic_missiles": {
         "name": "Magic Missiles",
         "minTargets": 2,
@@ -963,6 +1002,33 @@
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$radius"
+                }
+            }
+        ]
+    },
+    "silence": {
+        "name": "Silence",
+        "minTargets": 1,
+        "thumbnail": "Generic/Marker/MarkerMute_03_Dark_Red_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 8
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.energy.soundwave.smooth",
+                "disableHit": true,
+                "duration": -1,
+                "effectProperties": {
+                    "size": "$radius",
+                    "source": "$targets[0].position"
                 }
             }
         ]
