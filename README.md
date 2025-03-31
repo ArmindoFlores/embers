@@ -38,7 +38,7 @@ These are some features that are on Embers' backlog:
 - [x] Allow for custom spell parameters
 - [x] Implement the settings menu
 - [x] Save targets between castings (when option is enabled in settings)
-- [ ] Enforce maximum and minimum number of targets specified in the spell's description
+- [x] Enforce maximum and minimum number of targets specified in the spell's description
 - [x] Allow players to control their own permanent effects (not just the GM)
 - [x] Create the UI for creating custom spells
 - [x] Allow some simple actions like moving tokens (for spells like Misty Step)
