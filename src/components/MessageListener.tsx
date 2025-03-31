@@ -14,7 +14,7 @@ import { useOBR } from "../react-obr/providers";
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
 
-export function MessageListener({ worker, effectRegister }: { worker: Worker, effectRegister: Map<string, number> }) {
+export function MessageListener({ effectRegister }: { effectRegister: Map<string, number> }) {
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
 
@@ -90,7 +90,6 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                                 dpi,
                                 ...projectileMessage
                             },
-                            worker,
                             instruction.duration,
                             instruction.loops,
                             instruction.metadata,
@@ -135,7 +134,6 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                                 dpi,
                                 ...coneMessage
                             },
-                            worker,
                             instruction.duration,
                             instruction.loops,
                             instruction.metadata,
@@ -176,7 +174,6 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                                 dpi,
                                 ...aoeEffectMessage
                             },
-                            worker,
                             instruction.duration,
                             instruction.loops,
                             instruction.metadata,
@@ -221,18 +218,22 @@ export function MessageListener({ worker, effectRegister }: { worker: Worker, ef
                 }
 
                 const key = "ml:" + crypto.randomUUID();
-                worker.addEventListener("message", message => {
+
+                const messageHandler = (message: MessageEvent) => {
                     if (message.data === key) {
                         doInstruction(playerId, playerRole);
+                        window.EmbersWorker.removeEventListener("message", messageHandler);
                     }
-                });
-                worker.postMessage({ duration: instruction.delay, id: key });
+                }
+
+                window.EmbersWorker.addEventListener("message", messageHandler);
+                window.EmbersWorker.postMessage({ duration: instruction.delay, id: key });
             }
             else {
                 doInstruction(playerId, playerRole);
             }
         });
-    }, [worker, dpi, effectRegister]);
+    }, [dpi, effectRegister]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady) {

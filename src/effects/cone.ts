@@ -6,7 +6,6 @@ import { log_error } from "../logging";
 
 export function cone(
     coneInfo: ConeProperties,
-    worker: Worker,
     duration?: number,
     loops?: number,
     metadata?: Metadata,
@@ -57,5 +56,5 @@ export function cone(
     const { image, effectDuration } = result;
 
     // Add all items to the local scene
-    registerEffect([image.build()], worker, effectDuration, onComplete, spellCaster);
+    registerEffect([image.build()], effectDuration, onComplete, spellCaster);
 }

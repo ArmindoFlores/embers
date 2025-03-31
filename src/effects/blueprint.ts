@@ -154,7 +154,6 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         return maybeDisabled;
     }
     const disabled = maybeDisabled.value;
-
     if (disabled === true) {
         return _value(element);
     }

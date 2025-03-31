@@ -15,6 +15,7 @@
     "@mui/material": "^6.4.2",
     "@owlbear-rodeo/sdk": "^3.1.0",
     "@types/object-hash": "^3.0.6",
+    "immer": "^10.1.1",
     "object-hash": "^3.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

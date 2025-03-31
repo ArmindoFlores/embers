@@ -1457,23 +1457,32 @@
                 }
             },
             {
-                "type": "effect",
-                "id": "generic.energy.teleport",
+                "type": "action",
+                "id": "stretch",
                 "delay": 1000,
+                "for": "CASTER",
                 "disabled": {
                     "name": "target_not_in_range",
                     "arguments": [0, -2]
                 },
-                "effectProperties": {
-                    "size": "$targets[0].size",
-                    "source": "$targets[0].position"
-                }
+                "arguments": ["$targets[0].id", {"x": 0.01, "y": 0.01}, 300, "EASE_IN"]
+            },
+            {
+                "type": "action",
+                "id": "slide",
+                "delay": 1000,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [1, -2]
+                },
+                "arguments": ["$targets[0].id", "$globalTargets[0].position", 300, "EASE_IN"]
             },
             {
                 "type": "action",
                 "id": "hide",
                 "delay": 1300,
-                "for": "GM",
+                "for": "CASTER",
                 "disabled": {
                     "name": "target_not_in_range",
                     "arguments": [0, -2]
@@ -1481,23 +1490,10 @@
                 "arguments": ["$targets[0].id"]
             },
             {
-                "type": "effect",
-                "id": "generic.energy.teleport",
-                "delay": 2000,
-                "disabled": {
-                    "name": "target_in_range",
-                    "arguments": [0, -2]
-                },
-                "effectProperties": {
-                    "size": "$targets[0].size",
-                    "source": "$globalTargets[-1].position"
-                }
-            },
-            {
                 "type": "action",
                 "id": "move",
-                "delay": 2000,
-                "for": "GM",
+                "delay": 1500,
+                "for": "CASTER",
                 "disabled": {
                     "name": "target_not_in_range",
                     "arguments": [0, -2]
@@ -1507,13 +1503,49 @@
             {
                 "type": "action",
                 "id": "show",
-                "delay": 2250,
-                "for": "GM",
+                "delay": 1900,
+                "for": "CASTER",
                 "disabled": {
                     "name": "target_not_in_range",
                     "arguments": [0, -2]
                 },
                 "arguments": ["$targets[0].id"]
+            },
+            {
+                "type": "action",
+                "id": "stretch",
+                "delay": 2000,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id", {"x": 100, "y": 100}, 300, "EASE_OUT"]
+            },
+            {
+                "type": "action",
+                "id": "slide",
+                "delay": 2000,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [1, -2]
+                },
+                "arguments": [
+                    "$targets[0].id",
+                    {
+                        "name": "add",
+                        "arguments": [
+                            "$globalTargets[-1].position",
+                            {
+                                "name": "subtract",
+                                "arguments": ["$targets[0].position", "$globalTargets[0].position"]
+                            }
+                        ]
+                    },
+                    300,
+                    "EASE_OUT"
+                ]
             }
         ]
     },
