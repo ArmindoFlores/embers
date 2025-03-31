@@ -57,65 +57,38 @@ export default function SpellBanner({
     }, [obr.ready, isGM]);
 
     const renderSpellMode = (replicate: string, minimum: number = 0) => {
+        const props = {
+            // Default Option
+            startIcon: <FaProjectDiagram />,
+            label: "First Target to All",
+        };
+
         if (replicate === "no") {
             if (minimum > 1) {
-                return (
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        size="small"
-                        startIcon={<FaLink />}
-                        onClick={() => {
-                            onButtonClick();
-                        }}
-                    >
-                        Wall Target
-                    </Button>
-                );
+                props.label = "Wall Target";
+                props.startIcon = <FaLink />;
             }
-
-            return (
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                    startIcon={<FaBullseye />}
-                    onClick={() => {
-                        onButtonClick();
-                    }}
-                >
-                    Single Target
-                </Button>
-            );
+            props.label = "Single Target";
+            props.startIcon = <FaBullseye />;
         } else if (replicate === "all") {
-            return (
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                    startIcon={<FaCrosshairs />}
-                    onClick={() => {
-                        onButtonClick();
-                    }}
-                >
-                    All Targets
-                </Button>
-            );
-        } else {
-            return (
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    size="small"
-                    startIcon={<FaProjectDiagram />}
-                    onClick={() => {
-                        onButtonClick();
-                    }}
-                >
-                    First Target to All
-                </Button>
-            );
+            props.label = "All Targets";
+            props.startIcon = <FaCrosshairs />;
         }
+
+        return (
+            <Button
+                variant="outlined"
+                color="primary"
+                size="small"
+                sx={{ textWrap: "nowrap" }}
+                startIcon={props.startIcon}
+                onClick={() => {
+                    onButtonClick();
+                }}
+            >
+                {props.label}
+            </Button>
+        );
     };
 
     return (
@@ -167,7 +140,10 @@ export default function SpellBanner({
                                     padding: "0.5rem",
                                     borderRadius: "4px",
                                     display: "block",
-                                    // flexDirection: "column",
+                                    textWrap: "nowrap",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    maxWidth: "150px",
                                 }}
                             >
                                 {selectedSpell.name}
