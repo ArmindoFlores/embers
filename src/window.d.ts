@@ -1,7 +1,10 @@
-export {};
+import { InteractionRecord } from "./types/misc";
+
+export { };
 
 declare global {
-  interface Window {
-    EmbersWorker: Worker;
-  }
+    interface Window {
+        embersWorker: Worker;
+        interactionRecord: InteractionRecord;
+    }
 }

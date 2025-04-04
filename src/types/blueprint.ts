@@ -89,4 +89,6 @@ export interface BlueprintActionDescription {
     maxArgs?: number;
     description?: string;
     argumentType?: string;
+    requiresItemInteraction?: boolean;
+    itemIDsFromArgs?: (args: unknown[] | undefined) => string[];
 }

@@ -304,6 +304,8 @@ export async function doSpell(spellID: string, playerID: string, isGM: boolean) 
     }
 
     const instructions: EffectInstruction[] = [];
+    const interactionIds = new Set<string>();
+    let interactionCount = 0;
     const variables: Variables[] = [];
     const targetObjects = targets.map(target => itemToTarget(target));
 
@@ -326,12 +328,20 @@ export async function doSpell(spellID: string, playerID: string, isGM: boolean) 
             return;
         }
         instructions.push(...value?.instructions ?? []);
+        for (const interaction of value?.interactions?.ids ?? []) {
+            interactionIds.add(interaction);
+        }
+        interactionCount += value?.interactions?.count ?? 0;
     }
 
     copySpellInstructions(instructions, copyDelay);
 
     const message = {
         instructions,
+        interactions: {
+            ids: Array.from(interactionIds.values()),
+            count: interactionCount,
+        },
         spellData: {
             name: spellID,
             caster: playerID

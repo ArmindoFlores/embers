@@ -131,11 +131,11 @@ export function registerEffect(images: Image[], duration: number, onComplete?: (
             const messageHandler = (message: MessageEvent) => {
                 if (message.data == id) {
                     OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
-                    window.EmbersWorker.removeEventListener("message", messageHandler);
+                    window.embersWorker.removeEventListener("message", messageHandler);
                 }
             }
-            window.EmbersWorker.addEventListener("message", messageHandler);
-            window.EmbersWorker.postMessage({ duration, id });
+            window.embersWorker.addEventListener("message", messageHandler);
+            window.embersWorker.postMessage({ duration, id });
         });
     }
     else {
