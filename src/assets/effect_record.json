@@ -5214,6 +5214,48 @@
                 }
             }
         },
+        "fireflies": {
+            "few": {
+                "basename": "Generic/Fireflies/Fireflies_01_Green",
+                "thumbnail": "Generic/Fireflies/Fireflies_01_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "Few01_400x400", "Few02_400x400"
+                        ],
+                        "duration": [
+                            8000, 8000
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    }
+                }
+            },
+            "many": {
+                "basename": "Generic/Fireflies/Fireflies_01_Green",
+                "thumbnail": "Generic/Fireflies/Fireflies_01_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "400": {
+                        "name": [
+                            "Many01_400x400", "Many02_400x400"
+                        ],
+                        "duration": [
+                            8000, 8000
+                        ],
+                        "size": [
+                            400,
+                            400
+                        ]
+                    }
+                }
+            }
+        },
         "healing": {
             "blue": {
                 "basename": "Generic/Healing/HealingAbility_01_Blue",
