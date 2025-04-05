@@ -1,4 +1,4 @@
-import { GLOBAL_STORAGE_KEYS, LOCAL_STORAGE_KEYS, getGlobalSettingsValue, getSettingsValue } from "./components/Settings";
+import { GLOBAL_STORAGE_KEYS, LOCAL_STORAGE_KEYS, SETTINGS_CHANNEL, getGlobalSettingsValue, getSettingsValue, setSettingsValue } from "./components/Settings";
 import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 
 import { APP_KEY } from "./config";
@@ -18,6 +18,7 @@ export const clearTargetSelectionToolActionID = `${APP_KEY}/clear-target-selecti
 export const targetHighlightMetadataKey = `${APP_KEY}/target-highlight`;
 export const previousToolMetadataKey = `${APP_KEY}/previous-tool`;
 export const playerSelectedTargetsMetadataKey = `${APP_KEY}/selected-targets`;
+export const defaultCasterMenuId = `${APP_KEY}/default-caster-menu`;
 
 export interface TargetHighlightMetadata {
     id: number;
@@ -397,5 +398,24 @@ async function setupTargetToolModes() {
                 deactivateTool();
             }
         }
+    });
+}
+
+export async function setupDefaultCasterMenuOption() {
+    await OBR.contextMenu.remove(defaultCasterMenuId);
+    await OBR.contextMenu.create({
+            id: defaultCasterMenuId,
+            icons: [{
+                icon: "/embers.svg",
+                label: "Set default caster",
+            }],
+            onClick: async () => {
+                const selection = await OBR.player.getSelection();
+                if (selection == undefined) return;
+
+                const items = await OBR.scene.items.getItems(selection);
+                setSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER, items);
+                OBR.broadcast.sendMessage(SETTINGS_CHANNEL, {}, { destination: "LOCAL" });
+            },
     });
 }

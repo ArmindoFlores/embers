@@ -929,29 +929,59 @@
         }
     },
     "darkness": {
-        "opaque": {
-            "basename": "2nd_Level/Darkness/Darkness_01_Black",
-            "thumbnail": "2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
-            "type": "CIRCLE",
-            "dpi": 200,
-            "variants": {
-                "600": {
-                    "name": ["600x600"],
-                    "duration": [5000],
-                    "size": [600, 600]
+        "black": {
+            "opaque": {
+                "basename": "2nd_Level/Darkness/Darkness_01_Black",
+                "thumbnail": "2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [5000],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "transparent": {
+                "basename": "2nd_Level/Darkness/Opacities/Darkness_01_Black_75OPA",
+                "thumbnail": "2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [5000],
+                        "size": [600, 600]
+                    }
                 }
             }
         },
-        "transparent": {
-            "basename": "2nd_Level/Darkness/Opacities/Darkness_01_Black_75OPA",
-            "thumbnail": "2nd_Level/Darkness/Darkness_01_Black_Thumb.webp",
-            "type": "CIRCLE",
-            "dpi": 200,
-            "variants": {
-                "600": {
-                    "name": ["600x600"],
-                    "duration": [5000],
-                    "size": [600, 600]
+        "green": {
+            "opaque": {
+                "basename": "2nd_Level/Darkness/Darkness_01_Green",
+                "thumbnail": "2nd_Level/Darkness/Darkness_01_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [5000],
+                        "size": [600, 600]
+                    }
+                }
+            },
+            "transparent": {
+                "basename": "2nd_Level/Darkness/Opacities/Darkness_01_Green_75OPA",
+                "thumbnail": "2nd_Level/Darkness/Darkness_01_Green_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 200,
+                "variants": {
+                    "600": {
+                        "name": ["600x600"],
+                        "duration": [5000],
+                        "size": [600, 600]
+                    }
                 }
             }
         }
@@ -5417,6 +5447,352 @@
                         ],
                         "duration": [
                             3100
+                        ],
+                        "size": [
+                            600,
+                            600
+                        ]
+                    }
+                }
+            }
+        },
+        "item": {
+            "glint": {
+                "few": {
+                    "basename": "Generic/Item/GlintFew01",
+                    "thumbnail": "Generic/Item/GlintFew01_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "01_Regular_Yellow_200x200", "02_Regular_Yellow_200x200", "03_Regular_Yellow_200x200", "04_Regular_Yellow_200x200"
+                            ],
+                            "duration": [
+                                4625, 4625, 4625, 4625
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "many": {
+                    "basename": "Generic/Item/GlintMany01",
+                    "thumbnail": "Generic/Item/GlintMany01_01_Regular_Yellow_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "01_Regular_Yellow_200x200", "02_Regular_Yellow_200x200", "03_Regular_Yellow_200x200", "04_Regular_Yellow_200x200"
+                            ],
+                            "duration": [
+                                4625, 4625, 4625, 4625
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                }
+            },
+            "ioun_stone": {
+                "absorption": {
+                    "basename": "Generic/Item/IounStone_01_Absorption_Purple",
+                    "thumbnail": "Generic/Item/IounStone_01_Absorption_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "agility": {
+                    "basename": "Generic/Item/IounStone_01_Agility_Red",
+                    "thumbnail": "Generic/Item/IounStone_01_Agility_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "awareness": {
+                    "basename": "Generic/Item/IounStone_01_Awarness_Blue",
+                    "thumbnail": "Generic/Item/IounStone_01_Awarness_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "fortitude": {
+                    "basename": "Generic/Item/IounStone_01_Fortitude_Pink",
+                    "thumbnail": "Generic/Item/IounStone_01_Fortitude_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "great_absorption": {
+                    "basename": "Generic/Item/IounStone_01_GreatAbsorption_Purple",
+                    "thumbnail": "Generic/Item/IounStone_01_GreatAbsorption_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "insight": {
+                    "basename": "Generic/Item/IounStone_01_Insight_Blue",
+                    "thumbnail": "Generic/Item/IounStone_01_Insight_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "intellect": {
+                    "basename": "Generic/Item/IounStone_01_Intellect_Red",
+                    "thumbnail": "Generic/Item/IounStone_01_Intellect_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "leadership": {
+                    "basename": "Generic/Item/IounStone_01_Leadership_Pink",
+                    "thumbnail": "Generic/Item/IounStone_01_Leadership_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "mastery": {
+                    "basename": "Generic/Item/IounStone_01_Mastery_Green",
+                    "thumbnail": "Generic/Item/IounStone_01_Mastery_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "protection": {
+                    "basename": "Generic/Item/IounStone_01_Protection_Pink",
+                    "thumbnail": "Generic/Item/IounStone_01_Protection_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "regeneration": {
+                    "basename": "Generic/Item/IounStone_01_Regeneration_White",
+                    "thumbnail": "Generic/Item/IounStone_01_Regeneration_White_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "reserve": {
+                    "basename": "Generic/Item/IounStone_01_Reserve_Purple",
+                    "thumbnail": "Generic/Item/IounStone_01_Reserve_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "strength": {
+                    "basename": "Generic/Item/IounStone_01_Strength_Blue",
+                    "thumbnail": "Generic/Item/IounStone_01_Strength_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "sustenance": {
+                    "basename": "Generic/Item/IounStone_01_Sustenance_White",
+                    "thumbnail": "Generic/Item/IounStone_01_Sustenance_White_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                4042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                }
+            },
+            "sphere_of_annihilation": {
+                "basename": "Generic/Item/SphereOfAnnihilation_01_Regular_Purple",
+                "thumbnail": "Generic/Item/SphereOfAnnihilation_01_Regular_Purple_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": [
+                            "600x600"
+                        ],
+                        "duration": [
+                            6042
                         ],
                         "size": [
                             600,

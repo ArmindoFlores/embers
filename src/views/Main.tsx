@@ -14,7 +14,7 @@ import {
     setupGMLocalSpells,
     setupPlayerLocalSpells,
 } from "../effects/localSpells";
-import { setupEffectsTool, toolID } from "../effectsTool";
+import { setupDefaultCasterMenuOption, setupEffectsTool, toolID } from "../effectsTool";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import CustomSpells from "../components/CustomSpells";
@@ -146,6 +146,8 @@ export default function Main() {
         const unmount = setupEffectsTool(obr.player.role, obr.player.id);
         // - setup the effects register
         setEffectRegister(new Map());
+        // - setup context menus
+        setupDefaultCasterMenuOption();
 
         // When the app unmounts, reverse both of those operations
         return () => {

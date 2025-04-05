@@ -21,6 +21,8 @@ export const GLOBAL_STORAGE_KEYS = {
     SUMMONED_ENTITIES_RULE: "summoned-entities"
 };
 
+export const SETTINGS_CHANNEL = `${APP_KEY}/settings`;
+
 const DEFAULT_VALUES = {
     [LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE]: 10,
     [LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR]: null,
@@ -174,6 +176,14 @@ export default function Settings() {
         });
     }, []);
 
+    const reloadSettings = useCallback(() => {
+        _setMostRecentSize(getSettingsValue(LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE));
+        _setGridScalingFactor(getSettingsValue(LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR));
+        _setAnimationRate(getSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE));
+        setKeepTargets(getSettingsValue(LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS));
+        setDefaultCaster(getSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER));
+    }, []);
+
     const openModal = (modalName: ModalType) => {
         setIsModalClosing(false);
         setModalOpened(modalName);
@@ -188,12 +198,8 @@ export default function Settings() {
     };
 
     useEffect(() => {
-        _setMostRecentSize(getSettingsValue(LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE));
-        _setGridScalingFactor(getSettingsValue(LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR));
-        _setAnimationRate(getSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE));
-        setKeepTargets(getSettingsValue(LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS));
-        setDefaultCaster(getSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER));
-    }, []);
+        reloadSettings();
+    }, [reloadSettings]);
 
     useEffect(() => {
         if (!obr.ready || !obr.sceneReady) {
@@ -215,6 +221,16 @@ export default function Settings() {
 
         return handler;
     }, [obr.ready, obr.sceneReady]);
+
+    useEffect(() => {
+        if (!obr.ready || !obr.sceneReady) {
+            return;
+        }
+
+        return OBR.broadcast.onMessage(SETTINGS_CHANNEL, () => {
+            reloadSettings();
+        });
+    }, [obr.ready, obr.sceneReady, reloadSettings]);
 
     useEffect(() => {
         if (mostRecentSize == null) {

@@ -472,7 +472,7 @@
                 }
             },
             {
-                "id": "generic.marker.circle_of_stars",
+                "id": "generic.item.glint.many",
                 "delay": 3500,
                 "duration": -1,
                 "disableHit": true,
@@ -481,6 +481,37 @@
                 "effectProperties": {
                     "source": "$targets[1].position",
                     "size": "$targets[1].size"
+                }
+            }
+        ]
+    },
+    "hex": {
+        "name": "Hex",
+        "minTargets": 1,
+        "thumbnail": "Generic/Marker/MarkerHorror_02_Regular_Purple_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.marker.simple.purple.complete",
+                "layer": "PROP",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 2]
+                    }
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.marker.horror.2",
+                "duration": -1,
+                "delay": 2000,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$targets[0].size"
                 }
             }
         ]
@@ -758,12 +789,25 @@
                 "content": {
                     "min": 1
                 }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": false
             }
         ],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "darkness.transparent",
+                "id": {
+                    "name": "if",
+                    "arguments": ["$transparent", "darkness.black.transparent", "darkness.black.opaque"]
+                },
+                "layer": {
+                    "name": "if",
+                    "arguments": ["$transparent", null, "FOG"]
+                },
                 "duration": -1,
                 "disableHit": true,
                 "effectProperties": {
@@ -917,6 +961,65 @@
                         "arguments": ["$targets[0].position", "$targets[1].position"]
                     },
                     "size": "$length"
+                }
+            }
+        ]
+    },
+    "hold_person": {
+        "name": "Hold Person",
+        "minTargets": 1,
+        "thumbnail": "Generic/Marker/MarkerChainSpectralStandard01_02_Regular_Blue_Complete_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "blue",
+                "content": [
+                    { "value": "blue", "label": "Blue" },
+                    { "value": "red", "label": "Red" }
+                ]
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["generic.marker.simple.", "$color", ".complete"]
+                },
+                "layer": "PROP",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 2]
+                    }
+                }
+            },
+            {
+                "type": "effect",
+                "id": {
+                    "name": "if",
+                    "arguments": [
+                        {
+                            "name": "equals",
+                            "arguments": ["$color", "blue"]
+                        },
+                        "generic.marker.spectral_chain.loop",
+                        "generic.marker.red_chain.loop"
+                    ]
+                },
+                "delay": 350,
+                "duration": -1,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 1.5]
+                    }
                 }
             }
         ]
@@ -1447,6 +1550,176 @@
                         "arguments": ["$radius", "$targets[0].size"]
                     }
                 }
+            }
+        ]
+    },
+    "thunder_step": {
+        "name": "Thunder Step",
+        "minTargets": 2,
+        "maxTargets": 3,
+        "for": "GM",
+        "thumbnail": "Generic/Explosion/Explosion_02_Blue_Thumb.webp",
+        "replicate": "all",
+        "firstTargetIsCaster": true,
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "misty_step.out",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0]
+                },
+                "effectProperties": {
+                    "size": "$targets[0].size",
+                    "source": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.explosion.blue1",
+                "delay": 900,
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0]
+                },
+                "effectProperties": {
+                    "size": "$radius",
+                    "source": "$globalTargets[0].position"
+                }
+            },
+            {
+                "type": "action",
+                "id": "hide",
+                "delay": 1000,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id"]
+            },
+            {
+                "type": "action",
+                "id": "move",
+                "delay": 1100,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id", "$globalTargets[-1].position"]
+            },
+            {
+                "type": "action",
+                "id": "move",
+                "delay": 1100,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [1, -2]
+                },
+                "arguments": [
+                    "$targets[0].id",
+                    {
+                        "name": "add",
+                        "arguments": [
+                            "$globalTargets[-1].position",
+                            {
+                                "name": "subtract",
+                                "arguments": ["$targets[0].position", "$globalTargets[0].position"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "action",
+                "id": "show",
+                "delay": 2500,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id"]
+            },
+            {
+                "type": "effect",
+                "id": "misty_step.in",
+                "delay": 1000,
+                "disabled": {
+                    "name": "target_in_range",
+                    "arguments": [0, -2]
+                },
+                "effectProperties": {
+                    "size": "$globalTargets[0].size",
+                    "source": "$targets[0].position"
+                }
+            }
+        ]
+    },
+    "banishment": {
+        "name": "Banishment",
+        "minTargets": 2,
+        "thumbnail": "Generic/Portals/Portal_Bright_Yellow_V_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.ranged_spell.instant.yellow",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.portals.horizontal",
+                "layer": "PROP",
+                "delay": 200,
+                "duration": 3000,
+                "effectProperties": {
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[1].size", 2.5]
+                    },
+                    "source": "$targets[1].position"
+                }
+            },
+            {
+                "type": "action",
+                "id": "stretch",
+                "delay": 250,
+                "for": "CASTER",
+                "arguments": ["$targets[1].id", {"x": 0.01, "y": 0.01}, 300, "EASE_IN"]
+            },
+            {
+                "type": "action",
+                "id": "hide",
+                "delay": 1000,
+                "for": "CASTER",
+                "arguments": ["$targets[1].id"]
+            },
+            {
+                "type": "action",
+                "id": "scale",
+                "delay": 1500,
+                "for": "CASTER",
+                "arguments": ["$targets[1].id", {"x": 100, "y": 100}]
             }
         ]
     },
@@ -1982,6 +2255,49 @@
                 "type": "effect",
                 "id": "whirlwind",
                 "duration": -1,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "cloudkill": {
+        "name": "Cloudkill",
+        "minTargets": 1,
+        "thumbnail": "2nd_Level/Darkness/Darkness_01_Green_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 8,
+                "content": {
+                    "min": 1
+                }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": false
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "if",
+                    "arguments": ["$transparent", "darkness.green.transparent", "darkness.green.opaque"]
+                },
+                "layer": {
+                    "name": "if",
+                    "arguments": ["$transparent", null, "FOG"]
+                },
+                "duration": -1,
+                "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$radius"
