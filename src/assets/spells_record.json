@@ -1553,6 +1553,123 @@
             }
         ]
     },
+    "thunder_step": {
+        "name": "Thunder Step",
+        "minTargets": 2,
+        "maxTargets": 3,
+        "for": "GM",
+        "thumbnail": "Generic/Explosion/Explosion_02_Blue_Thumb.webp",
+        "replicate": "all",
+        "firstTargetIsCaster": true,
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 4,
+                "content": {
+                    "min": 1
+                }
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "misty_step.out",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0]
+                },
+                "effectProperties": {
+                    "size": "$targets[0].size",
+                    "source": "$targets[0].position"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.explosion.blue1",
+                "delay": 900,
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0]
+                },
+                "effectProperties": {
+                    "size": "$radius",
+                    "source": "$globalTargets[0].position"
+                }
+            },
+            {
+                "type": "action",
+                "id": "hide",
+                "delay": 1000,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id"]
+            },
+            {
+                "type": "action",
+                "id": "move",
+                "delay": 1100,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id", "$globalTargets[-1].position"]
+            },
+            {
+                "type": "action",
+                "id": "move",
+                "delay": 1100,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [1, -2]
+                },
+                "arguments": [
+                    "$targets[0].id",
+                    {
+                        "name": "add",
+                        "arguments": [
+                            "$globalTargets[-1].position",
+                            {
+                                "name": "subtract",
+                                "arguments": ["$targets[0].position", "$globalTargets[0].position"]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "action",
+                "id": "show",
+                "delay": 2500,
+                "for": "CASTER",
+                "disabled": {
+                    "name": "target_not_in_range",
+                    "arguments": [0, -2]
+                },
+                "arguments": ["$targets[0].id"]
+            },
+            {
+                "type": "effect",
+                "id": "misty_step.in",
+                "delay": 1000,
+                "disabled": {
+                    "name": "target_in_range",
+                    "arguments": [0, -2]
+                },
+                "effectProperties": {
+                    "size": "$globalTargets[0].size",
+                    "source": "$targets[0].position"
+                }
+            }
+        ]
+    },
     "banishment": {
         "name": "Banishment",
         "minTargets": 2,
