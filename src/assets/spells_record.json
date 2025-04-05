@@ -485,6 +485,37 @@
             }
         ]
     },
+    "hex": {
+        "name": "Hex",
+        "minTargets": 1,
+        "thumbnail": "Generic/Marker/MarkerHorror_02_Regular_Purple_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.marker.simple.purple.complete",
+                "layer": "PROP",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 2]
+                    }
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.marker.horror.2",
+                "duration": -1,
+                "delay": 2000,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$targets[0].size"
+                }
+            }
+        ]
+    },
     "hunters_mark": {
         "name": "Hunter's Mark",
         "minTargets": 1,
@@ -930,6 +961,65 @@
                         "arguments": ["$targets[0].position", "$targets[1].position"]
                     },
                     "size": "$length"
+                }
+            }
+        ]
+    },
+    "hold_person": {
+        "name": "Hold Person",
+        "minTargets": 1,
+        "thumbnail": "Generic/Marker/MarkerChainSpectralStandard01_02_Regular_Blue_Complete_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Color",
+                "id": "color",
+                "type": "options",
+                "defaultValue": "blue",
+                "content": [
+                    { "value": "blue", "label": "Blue" },
+                    { "value": "red", "label": "Red" }
+                ]
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "concat",
+                    "arguments": ["generic.marker.simple.", "$color", ".complete"]
+                },
+                "layer": "PROP",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 2]
+                    }
+                }
+            },
+            {
+                "type": "effect",
+                "id": {
+                    "name": "if",
+                    "arguments": [
+                        {
+                            "name": "equals",
+                            "arguments": ["$color", "blue"]
+                        },
+                        "generic.marker.spectral_chain.loop",
+                        "generic.marker.red_chain.loop"
+                    ]
+                },
+                "delay": 350,
+                "duration": -1,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 1.5]
+                    }
                 }
             }
         ]
