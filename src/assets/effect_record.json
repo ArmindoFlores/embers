@@ -5320,8 +5320,8 @@
             "jet": {
                 "basename": "Generic/Fire/FireJet_01_Orange",
                 "thumbnail": "Generic/Fire/FireJet_01_Orange_Thumb.webp",
-                "type": "CIRCLE",
-                "dpi": 100,
+                "type": "TARGET",
+                "dpi": 200,
                 "variants": {
                     "600": {
                         "name": [
@@ -10462,6 +10462,1036 @@
                             200,
                             200
                         ]
+                    }
+                }
+            }
+        },
+        "muzzle_flash": {
+            "1": {
+                "basename": "Generic/Muzzle_Flash/MuzzleFlashSingle01_01_Regular_Yellow",
+                "thumbnail": "Generic/Muzzle_Flash/MuzzleFlashSingle01_01_Regular_Yellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": [
+                            "600x300"
+                        ],
+                        "duration": [
+                            833
+                        ],
+                        "size": [
+                            600,
+                            300
+                        ]
+                    }
+                }
+            },
+            "2": {
+                "basename": "Generic/Muzzle_Flash/MuzzleFlashSingle01_02_Regular_Yellow",
+                "thumbnail": "Generic/Muzzle_Flash/MuzzleFlashSingle01_02_Regular_Yellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "600": {
+                        "name": [
+                            "600x300"
+                        ],
+                        "duration": [
+                            833
+                        ],
+                        "size": [
+                            600,
+                            300
+                        ]
+                    }
+                }
+            }
+        },
+        "nature": {
+            "group_vine": {
+                "1": {
+                    "complete": {
+                        "basename": "Generic/Nature/GroupVineNature01_01_Regular_Green",
+                        "thumbnail": "Generic/Nature/GroupVineNature01_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "300": {
+                                "name": [
+                                    "300x300"
+                                ],
+                                "duration": [
+                                    8333
+                                ],
+                                "size": [
+                                    300,
+                                    300
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Nature/GroupVineNatureLoop01_01_Regular_Green",
+                        "thumbnail": "Generic/Nature/GroupVineNatureLoop01_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "300": {
+                                "name": [
+                                    "300x300"
+                                ],
+                                "duration": [
+                                    4167
+                                ],
+                                "size": [
+                                    300,
+                                    300
+                                ]
+                            }
+                        }
+                    }
+                },
+                "2": {
+                    "complete": {
+                        "basename": "Generic/Nature/GroupVineNature02_01_Regular_Green",
+                        "thumbnail": "Generic/Nature/GroupVineNature01_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "300": {
+                                "name": [
+                                    "300x300"
+                                ],
+                                "duration": [
+                                    8333
+                                ],
+                                "size": [
+                                    300,
+                                    300
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Nature/GroupVineNatureLoop02_01_Regular_Green",
+                        "thumbnail": "Generic/Nature/GroupVineNatureLoop01_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "300": {
+                                "name": [
+                                    "300x300"
+                                ],
+                                "duration": [
+                                    4167
+                                ],
+                                "size": [
+                                    300,
+                                    300
+                                ]
+                            }
+                        }
+                    }
+                },
+                "3": {
+                    "complete": {
+                        "basename": "Generic/Nature/GroupVineNature03_01_Regular_Green",
+                        "thumbnail": "Generic/Nature/GroupVineNature01_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "300": {
+                                "name": [
+                                    "300x300"
+                                ],
+                                "duration": [
+                                    8333
+                                ],
+                                "size": [
+                                    300,
+                                    300
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Nature/GroupVineNatureLoop03_01_Regular_Green",
+                        "thumbnail": "Generic/Nature/GroupVineNatureLoop01_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "300": {
+                                "name": [
+                                    "300x300"
+                                ],
+                                "duration": [
+                                    4167
+                                ],
+                                "size": [
+                                    300,
+                                    300
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "plant_growth": {
+                "ring": {
+                    "1": {
+                        "complete": {
+                            "basename": "Generic/Nature/PlantGrowthRing02_01_Regular_GreenRed",
+                            "thumbnail": "Generic/Nature/PlantGrowthRing02_01_Regular_GreenRed_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        7750
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        },
+                        "pulse": {
+                            "basename": "Generic/Nature/PlantGrowthRingPulse02_01_Regular_GreenRed",
+                            "thumbnail": "Generic/Nature/PlantGrowthRingPulse02_01_Regular_GreenRed_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        2958
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2": {
+                        "complete": {
+                            "basename": "Generic/Nature/PlantGrowthRing03_01_Regular_GreenYellow",
+                            "thumbnail": "Generic/Nature/PlantGrowthRing03_01_Regular_GreenYellow_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        7750
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/PlantGrowthRingLoop03_01_Regular_GreenYellow",
+                            "thumbnail": "Generic/Nature/PlantGrowthRingLoop03_01_Regular_GreenYellow_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        4042
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        },
+                        "pulse": {
+                            "basename": "Generic/Nature/PlantGrowthRingPulse03_01_Regular_GreenYellow",
+                            "thumbnail": "Generic/Nature/PlantGrowthRingPulse03_01_Regular_GreenYellow_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        2958
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "round": {
+                    "complete": {
+                        "basename": "Generic/Nature/PlantGrowthRound03_01_Regular_GreenYellow",
+                        "thumbnail": "Generic/Nature/PlantGrowthRound03_01_Regular_GreenYellow_500x500_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "500": {
+                                "name": [
+                                    "500x500"
+                                ],
+                                "duration": [
+                                    8500
+                                ],
+                                "size": [
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Nature/PlantGrowthRoundLoop03_01_Regular_GreenYellow",
+                        "thumbnail": "Generic/Nature/PlantGrowthRoundLoop03_01_Regular_GreenYellow_500x500_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "500": {
+                                "name": [
+                                    "500x500"
+                                ],
+                                "duration": [
+                                    4042
+                                ],
+                                "size": [
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    }
+                },
+                "square": {
+                    "complete": {
+                        "basename": "Generic/Nature/PlantGrowthSquare03_01_Regular_GreenYellow",
+                        "thumbnail": "Generic/Nature/PlantGrowthSquare03_01_Regular_GreenYellow_500x500_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "500": {
+                                "name": [
+                                    "500x500"
+                                ],
+                                "duration": [
+                                    8500
+                                ],
+                                "size": [
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "basename": "Generic/Nature/PlantGrowthSquareLoop03_01_Regular_GreenYellow",
+                        "thumbnail": "Generic/Nature/PlantGrowthSquareLoop03_01_Regular_GreenYellow_500x500_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "500": {
+                                "name": [
+                                    "500x500"
+                                ],
+                                "duration": [
+                                    4042
+                                ],
+                                "size": [
+                                    500,
+                                    500
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "siwrling_feathers_outburst": {
+                "1": {
+                    "basename": "Generic/Nature/SwirlingFeathersOutburst01_01_Regular_Textured",
+                    "thumbnail": "Generic/Nature/SwirlingFeathersOutburst01_01_Regular_Textured_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2333
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/Nature/SwirlingFeathersOutburst02_01_Regular_Textured",
+                    "thumbnail": "Generic/Nature/SwirlingFeathersOutburst02_01_Regular_Textured_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2333
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "3": {
+                    "basename": "Generic/Nature/SwirlingFeathersOutburst03_01_Regular_Textured",
+                    "thumbnail": "Generic/Nature/SwirlingFeathersOutburst03_01_Regular_Textured_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2333
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "swirling_leaves": {
+                "line": {
+                    "basename": "Generic/Nature/SwirlingLeaves01_01_Regular_GreenOrange",
+                    "thumbnail": "Generic/Nature/SwirlingLeaves01_01_Regular_GreenOrange_Thumb.webp",
+                    "type": "TARGET",
+                    "dpi": 200,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "05ft_600x400"
+                            ],
+                            "duration": [
+                                3542
+                            ],
+                            "size": [
+                                600,
+                                400
+                            ]
+                        },
+                        "600": {
+                            "name": [
+                                "15ft_1000x400"
+                            ],
+                            "duration": [
+                                4000
+                            ],
+                            "size": [
+                                1000,
+                                400
+                            ]
+                        },
+                        "1200": {
+                            "name": [
+                                "30ft_1600x400"
+                            ],
+                            "duration": [
+                                4542
+                            ],
+                            "size": [
+                                1600,
+                                400
+                            ]
+                        },
+                        "2400": {
+                            "name": [
+                                "60ft_2800x400"
+                            ],
+                            "duration": [
+                                5000
+                            ],
+                            "size": [
+                                2800,
+                                400
+                            ]
+                        },
+                        "3600": {
+                            "name": [
+                                "90ft_4000x400"
+                            ],
+                            "duration": [
+                                5542
+                            ],
+                            "size": [
+                                4000,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "circle": {
+                    "1": {
+                        "complete": {
+                            "basename": "Generic/Nature/SwirlingLeavesComplete01_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/SwirlingLeavesComplete01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x400"
+                                    ],
+                                    "duration": [
+                                        8708
+                                    ],
+                                    "size": [
+                                        400,
+                                        400
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/SwirlingLeavesLoop01_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/SwirlingLeavesLoop01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x400"
+                                    ],
+                                    "duration": [
+                                        5000
+                                    ],
+                                    "size": [
+                                        400,
+                                        400
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2": {
+                        "complete": {
+                            "basename": "Generic/Nature/SwirlingLeavesComplete01_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/SwirlingLeavesComplete01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x400"
+                                    ],
+                                    "duration": [
+                                        8750
+                                    ],
+                                    "size": [
+                                        400,
+                                        400
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/SwirlingLeavesLoop01_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/SwirlingLeavesLoop01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x400"
+                                    ],
+                                    "duration": [
+                                        5000
+                                    ],
+                                    "size": [
+                                        400,
+                                        400
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "3": {
+                        "complete": {
+                            "basename": "Generic/Nature/SwirlingLeavesComplete02_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/SwirlingLeavesComplete02_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x400"
+                                    ],
+                                    "duration": [
+                                        8708
+                                    ],
+                                    "size": [
+                                        400,
+                                        400
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/SwirlingLeavesLoop02_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/SwirlingLeavesLoop02_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "400": {
+                                    "name": [
+                                        "400x400"
+                                    ],
+                                    "duration": [
+                                        5000
+                                    ],
+                                    "size": [
+                                        400,
+                                        400
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "outburst": {
+                    "basename": "Generic/Nature/SwirlingLeavesOutburst_01_01_Regular_Pink",
+                    "thumbnail": "Generic/Nature/SwirlingLeavesOutburst_01_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                2233
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "vine_nature": {
+                "flower": {
+                    "1": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature01_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop01_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature01_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop01_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "3": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature01_03_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_03_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop01_03_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_03_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "thorns": {
+                    "1": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature02_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop02_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature02_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop02_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "3": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature02_03_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_03_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop02_03_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_03_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "simple": {
+                    "1": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature03_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop03_01_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_01_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature03_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop03_02_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_02_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "3": {
+                        "complete": {
+                            "basename": "Generic/Nature/VineNature03_03_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNature01_03_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        8333
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Nature/VineNatureLoop03_03_Regular_Green",
+                            "thumbnail": "Generic/Nature/VineNatureLoop01_03_Regular_Green_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "300x300"
+                                    ],
+                                    "duration": [
+                                        4167
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                }
+                            }
+                        }
                     }
                 }
             }
