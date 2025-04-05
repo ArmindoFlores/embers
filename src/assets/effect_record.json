@@ -2971,6 +2971,352 @@
                 }
             }
         },
+        "celestial_bodies": {
+            "asteroid": {
+                "disk": {
+                    "regular": {
+                        "1": {
+                            "basename": "Generic/Celestial_Bodies/AsteroidDiskIron01_01_Regular_Red",
+                            "thumbnail": "Generic/Celestial_Bodies/AsteroidDiskIron01_01_Regular_Red_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        20000
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        },
+                        "2": {
+                            "basename": "Generic/Celestial_Bodies/AsteroidDiskIron02_01_Regular_Red",
+                            "thumbnail": "Generic/Celestial_Bodies/AsteroidDiskIron02_01_Regular_Red_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        20000
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        },
+                        "3": {
+                            "basename": "Generic/Celestial_Bodies/AsteroidDiskIron03_01_Regular_Red",
+                            "thumbnail": "Generic/Celestial_Bodies/AsteroidDiskIron03_01_Regular_Red_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        20000
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        },
+                        "4": {
+                            "basename": "Generic/Celestial_Bodies/AsteroidDiskIron04_01_Regular_Red",
+                            "thumbnail": "Generic/Celestial_Bodies/AsteroidDiskIron04_01_Regular_Red_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        20000
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "large": {
+                        "basename": "Generic/Celestial_Bodies/AsteroidLargeDiskIron01_01_Regular_Red",
+                        "thumbnail": "Generic/Celestial_Bodies/AsteroidLargeDiskIron01_01_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    20000
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "line": {
+                    "basename": "Generic/Celestial_Bodies/AsteroidLineIron01_01_Regular_Red",
+                    "thumbnail": "Generic/Celestial_Bodies/AsteroidLineIron01_01_Regular_Red_05x15_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "05x15_600x200"
+                            ],
+                            "duration": [
+                                20000
+                            ],
+                            "size": [
+                                600,
+                                200
+                            ]
+                        },
+                        "1000": {
+                            "name": [
+                                "05x25_1000x200"
+                            ],
+                            "duration": [
+                                20000
+                            ],
+                            "size": [
+                                1000,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "ring": {
+                    "basename": "Generic/Celestial_Bodies/AsteroidRingIron01_01_Regular_Red",
+                    "thumbnail": "Generic/Celestial_Bodies/AsteroidRingIron01_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                20000
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "single": {
+                    "1": {
+                        "basename": "Generic/Celestial_Bodies/AsteroidSingleIron01_01_Regular_Red",
+                        "thumbnail": "Generic/Celestial_Bodies/AsteroidSingleIron01_01_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": [
+                                    "400x400"
+                                ],
+                                "duration": [
+                                    20000
+                                ],
+                                "size": [
+                                    400,
+                                    400
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/Celestial_Bodies/AsteroidSingleIron02_01_Regular_Red",
+                        "thumbnail": "Generic/Celestial_Bodies/AsteroidSingleIron02_01_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": [
+                                    "400x400"
+                                ],
+                                "duration": [
+                                    20000
+                                ],
+                                "size": [
+                                    400,
+                                    400
+                                ]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/Celestial_Bodies/AsteroidSingleIron03_01_Regular_Red",
+                        "thumbnail": "Generic/Celestial_Bodies/AsteroidSingleIron03_01_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": [
+                                    "400x400"
+                                ],
+                                "duration": [
+                                    20000
+                                ],
+                                "size": [
+                                    400,
+                                    400
+                                ]
+                            }
+                        }
+                    },
+                    "4": {
+                        "basename": "Generic/Celestial_Bodies/AsteroidSingleIron04_01_Regular_Red",
+                        "thumbnail": "Generic/Celestial_Bodies/AsteroidSingleIron04_01_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": [
+                                    "400x400"
+                                ],
+                                "duration": [
+                                    20000
+                                ],
+                                "size": [
+                                    400,
+                                    400
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "planet": {
+                "atmosphere": {
+                    "blue_orange": {
+                        "basename": "Generic/Celestial_Bodies/PlanetAtmo_01_Regular_BlueOrange",
+                        "thumbnail": "Generic/Celestial_Bodies/PlanetAtmo_01_Regular_BlueOrange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    13083
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "red": {
+                        "basename": "Generic/Celestial_Bodies/PlanetAtmo_05_Regular_Red",
+                        "thumbnail": "Generic/Celestial_Bodies/PlanetAtmo_05_Regular_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    8000
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "yellow": {
+                        "basename": "Generic/Celestial_Bodies/PlanetAtmo_06_Regular_Yellow",
+                        "thumbnail": "Generic/Celestial_Bodies/PlanetAtmo_06_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    8000
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "gas_giant": {
+                    "basename": "Generic/Celestial_Bodies/PlanetGasGiant_01_Regular_Blue",
+                    "thumbnail": "Generic/Celestial_Bodies/PlanetGasGiant_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                10000
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "no_atmosphere": {
+                    "basename": "Generic/Celestial_Bodies/PlanetNoAtmo_03_Regular_Grey",
+                    "thumbnail": "Generic/Celestial_Bodies/PlanetNoAtmo_03_Regular_Grey_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                13083
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "conditions": {
             "boons": {
                 "1": {
