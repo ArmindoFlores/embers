@@ -7,7 +7,7 @@ To play a spell or ability effect with Embers, you can select the "Cast spell" t
 
 ![Tool Panel](./images/toolpanel.png)
 
-After this, you will enter the default "Add Targets" tool mode, which allows you to click on the scene and add targets to your spell. If you mess up, you can remove a target by selecting the "Remove Target" (or pressing `R`), and clicking on a target; you can then go back to adding more targets by clicking on the previous tool mode (or pressing `A`).
+After this, you will enter the default "Add Targets" tool mode, which allows you to click on the scene and add targets to your spell. If you mess up, you can remove a target by selecting the "Remove Target" (or pressing `R`), and clicking on a target, or remove all targets using the "Clear Selection" button (or pressing `X`); you can then go back to adding more targets by clicking on the previous tool mode (or pressing `A`).
 Once you are done selecting all your targets, you can select the spell you want to cast (by clicking on the "Select Spell" action or pressing `.`) and either click on the "Cast Selected Spell" tool action or press `Enter` to play the effect.
 
 ![Tool Modes](./images/toolmodes.png)
@@ -17,6 +17,7 @@ This image shows, from left to right:
 * Remove Target (`R`)
 * Cast Selected Spell (`Enter`)
 * Select Spell (`.`)
+* Clear Selection (`X`)
 
 ### Effect Customization
 When the "Cast spell" tool is activated, if Embers' action panel is opened, it will switch to the "Spell Details" tab and show the currently selected spell's properties. Some of these can be edited, like the color of some spells, and will immediately take effect.
@@ -32,7 +33,7 @@ These are some features that are on Embers' backlog:
 - [x] Support basic projectiles/AOE effects
 - [x] Support all spell effects from JB2A
 - [ ] Support all generic effects from JB2A
-- [ ] Implement all spells from D&D 5e's Player Handbook (48/361 - 13.2%)
+- [ ] Implement all spells from D&D 5e's Player Handbook (60/361 - 16.6%)
 - [x] Support permanent effects
 - [x] Support custom metadata
 - [x] Allow for custom spell parameters
@@ -44,6 +45,9 @@ These are some features that are on Embers' backlog:
 - [x] Allow some simple actions like moving tokens (for spells like Misty Step)
 - [ ] Allow basic shader effects like changing colors, screen shake, etc
 - [x] Allow effects to play when a spell ends manually
+
+### More Information
+For more information, visit the [Embers website](https://embers.armindo.eu).
 
 ## Contacts
 The easiest way to reach out to me about this extension is to join Owlbear Rodeo's [Discord Server](https://discord.gg/u5RYMkV98s) and message me at `armindoflores`.
