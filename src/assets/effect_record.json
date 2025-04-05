@@ -5378,6 +5378,48 @@
                 }
             }
         },
+        "footprint": {
+            "black": {
+                "basename": "Generic/FootPrint/ShoePrint_01_Black",
+                "thumbnail": "Generic/FootPrint/ShoePrint_01_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            4792
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "grey": {
+                "basename": "Generic/FootPrint/ShoePrint_01_Grey",
+                "thumbnail": "Generic/FootPrint/ShoePrint_01_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            4792
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            }
+        },
         "healing": {
             "blue": {
                 "basename": "Generic/Healing/HealingAbility_01_Blue",
