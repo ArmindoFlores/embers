@@ -1,113 +1,147 @@
 import { BlueprintActionBuiltin, BlueprintActionDescription } from "../types/blueprint";
-import { EasingFunction, getEasingFunction } from "../utils";
-import OBR, { Item, Vector2, buildImage } from "@owlbear-rodeo/sdk";
+import { EasingFunction, getEasingFunction, setDifference } from "../utils";
+import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 import { log_error, log_warn } from "../logging";
 
-import { Draft } from "immer";
+import { Interaction } from "../components/MessageListener";
 import { SimplifiedItem } from "../types/misc";
+import { WritableDraft } from "immer";
 
-async function interactWithItems<T extends Item | Item[]>(items: T, onUpdate: (items: Draft<T>, elapsedMilliseconds: number) => boolean) {
-    const key = "interaction:" + crypto.randomUUID();
-    const worker = window.EmbersWorker;
-    const interaction = await OBR.interaction.startItemInteraction(items);
+async function updateItems(items: string[], update: (draft: WritableDraft<Item>[]) => void, interaction: Interaction|undefined, localOnly: boolean) {
+    const localItems = items.map(item => `embers-copy-${item}`);
 
-    return new Promise<T>((resolve) => {
-        const startTime = Date.now();
-        const onMessage = (message: MessageEvent) => {
-            if (message.data === key) {
-                const [update, stop] = interaction;
-                const now = Date.now();
-                let keepGoing = false;
-                update(items => {
-                    keepGoing = onUpdate(items, now - startTime);
-                });
+    if (interaction) {
+        const [interactionUpdate] = interaction.manager;
+        interactionUpdate(items => {
+            update(items.filter(item => localItems.includes(item.id.toString())));
+        });
+    }
 
-                if (!keepGoing) {
-                    stop();
-                    worker.removeEventListener("message", onMessage);
-                    resolve(items);
-                } else {
-                    worker.postMessage({ duration: 10, id: key });
-                }
-            }
-        };
-
-        worker.addEventListener("message", onMessage);
-        worker.postMessage({ duration: 10, id: key });
-    });
+    const itemsToUpdateGlobally = Array.from((localOnly ? new Set<string>() : setDifference(new Set(items), new Set(interaction?.trackedIDs ?? []))).values());
+    if (itemsToUpdateGlobally.length) {
+        OBR.scene.items.updateItems(itemsToUpdateGlobally, update);
+    }
 }
 
-function move(itemID: string, position: Vector2) {
-    OBR.scene.items.updateItems([itemID], items => {
+async function getItems(items: string[], interaction: Interaction|undefined) {
+    const localItems = items.map(item => `embers-copy-${item}`);
+    const difference: Set<string> = new Set(items);
+    let itemStates: Image[] = [];
+
+    if (interaction) {
+        itemStates = interaction.getLastKnownState(localItems);
+        for (const item of itemStates) {
+            difference.delete(item.id.replace("embers-copy-", ""));
+        }
+    }
+    const differenceArray = Array.from(difference.values());
+    if (differenceArray.length > 0) {
+        return [...itemStates, ...await OBR.scene.items.getItems(items)];
+    }
+    return itemStates;
+}
+
+function move(interaction: Interaction|undefined, localOnly: boolean, itemID: string, position: Vector2) {
+    updateItems([itemID], items => {
         for (const item of items) {
             item.position = position;
         }
-    });
+    }, interaction, localOnly);
 }
 
-function hide(itemID: string) {
-    OBR.scene.items.updateItems([itemID], items => {
+function hide(interaction: Interaction|undefined, localOnly: boolean, itemID: string) {
+    updateItems([itemID], items => {
         for (const item of items) {
             item.visible = false;
         }
-    });
+    }, interaction, localOnly);
 }
 
-function show(itemID: string) {
-    OBR.scene.items.updateItems([itemID], items => {
+function show(interaction: Interaction|undefined, localOnly: boolean, itemID: string) {
+    updateItems([itemID], items => {
         for (const item of items) {
             item.visible = true;
         }
-    });
+    }, interaction, localOnly);
 }
 
-async function aslide(itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction) {
+async function aslide(interaction: Interaction|undefined, itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction) {
     if (duration > 30000) {
         log_warn(`slide() called with a duration > 30s (${Math.round(duration) / 1000}s); this might cause issues since OBR's interactions expire in 30s (read more here: https://docs.owlbear.rodeo/extensions/apis/interaction#startiteminteraction)`);
     }
 
-    const item = (await OBR.scene.items.getItems([itemID]))[0];
+    const item = (await getItems([itemID], interaction))[0];
+
+    if (item == undefined) {
+        log_error("slide() called on a non-existing item");
+        return;
+    }
+
+    if (!isImage(item)) {
+        log_error("slide() called on an non-image item");
+        return;
+    }
+
+    if (interaction == undefined) {
+        log_error("slide() called without an interaction manager");
+        return;
+    }
+
     const startPosition = item.position;
 
     const easingFunc = getEasingFunction(easingFunction);
 
-    interactWithItems(item, (item, t) => {
-        item.position = {
-            x: startPosition.x + easingFunc(t / duration) * (position.x - startPosition.x),
-            y: startPosition.y + easingFunc(t / duration) * (position.y - startPosition.y)
+    interaction.registerUpdates([item], (items, t) => {
+        const completness = Math.min(t / duration, 1);
+        items[0].position = {
+            x: startPosition.x + easingFunc(completness) * (position.x - startPosition.x),
+            y: startPosition.y + easingFunc(completness) * (position.y - startPosition.y)
         };
         if (t >= duration) {
             return false;
         }
         return true;
-    }).then(item => {
-        OBR.scene.items.updateItems([item], items => {
-            items[0]!.position = position;
-        });
     });
 }
 
-function slide(itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
-    aslide(itemID, position, duration, easingFunction);
+function slide(interaction: Interaction|undefined, _localOnly: boolean, itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
+    aslide(interaction, itemID, position, duration, easingFunction);
 }
 
-function scale(itemID: string, scaleVector: Vector2) {
-    OBR.scene.items.updateItems([itemID], items => {
+function scale(interaction: Interaction|undefined, localOnly: boolean, itemID: string, scaleVector: Vector2) {
+    updateItems([itemID], items => {
         for (const item of items) {
             item.scale = {
                 x: scaleVector.x * item.scale.x,
                 y: scaleVector.y * item.scale.y
             };
         }
-    });
+    }, interaction, localOnly);
 }
 
-async function astretch(itemID: string, scale: Vector2, duration: number, easingFunction: EasingFunction) {
+async function astretch(interaction: Interaction|undefined, itemID: string, scale: Vector2, duration: number, easingFunction: EasingFunction) {
     if (duration > 30000) {
         log_warn(`stretch() called with a duration > 30s (${Math.round(duration) / 1000}s); this might cause issues since OBR's interactions expire in 30s (read more here: https://docs.owlbear.rodeo/extensions/apis/interaction#startiteminteraction)`);
     }
 
-    const item = (await OBR.scene.items.getItems([itemID]))[0];
+    if (interaction == undefined) {
+        log_error("stretch() called without an interaction manager");
+        return;
+    }
+
+    // const item = (await OBR.scene.items.getItems([itemID]))[0];
+    const item = (await getItems([itemID], interaction))[0];
+
+    if (item == undefined) {
+        log_error("stretch() called on a non-existing item");
+        return;
+    }
+
+    if (!isImage(item)) {
+        log_error("stretch() called on an non-image item");
+        return;
+    }
+
     const startScale = item.scale;
     const endScale = {
         x: scale.x * startScale.x,
@@ -116,27 +150,27 @@ async function astretch(itemID: string, scale: Vector2, duration: number, easing
 
     const easingFunc = getEasingFunction(easingFunction);
 
-    interactWithItems(item, (item, t) => {
-        item.scale = {
-            x: startScale.x + easingFunc(t / duration) * (endScale.x - startScale.x),
-            y: startScale.y + easingFunc(t / duration) * (endScale.y - startScale.y)
+    interaction.registerUpdates([item], (items, t) => {
+        const completness = Math.min(t / duration, 1);
+        items[0].scale = {
+            x: startScale.x + easingFunc(completness) * (endScale.x - startScale.x),
+            y: startScale.y + easingFunc(completness) * (endScale.y - startScale.y)
         }
         if (t >= duration) {
             return false;
         }
         return true;
-    }).then(item => {
-        OBR.scene.items.updateItems([item], items => {
-            items[0]!.scale = endScale;
-        });
     });
 }
 
-function stretch(itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
-    astretch(itemID, position, duration, easingFunction);
+function stretch(interaction: Interaction|undefined, _localOnly: boolean, itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
+    astretch(interaction, itemID, position, duration, easingFunction);
 }
 
-function create_token(image: SimplifiedItem, position: Vector2, local = false) {
+function create_token(_interaction: Interaction|undefined, localOnly: boolean, image: SimplifiedItem, position: Vector2, local = false) {
+    if (localOnly) {
+        return;
+    }
     const imageObj = image;
     let imageItem = buildImage(imageObj.image, imageObj.grid)
         .name(imageObj.name)
@@ -160,7 +194,10 @@ function create_token(image: SimplifiedItem, position: Vector2, local = false) {
     }
 }
 
-function message(channel: string, data: unknown, destination: "REMOTE" | "LOCAL" | "ALL" = "ALL") {
+function message(_interaction: Interaction|undefined, localOnly: boolean, channel: string, data: unknown, destination: "REMOTE" | "LOCAL" | "ALL" = "ALL") {
+    if (localOnly) {
+        return;
+    }
     OBR.broadcast.sendMessage(channel, data, { destination });
 }
 
@@ -200,6 +237,8 @@ export const actions: Record<string, { action: BlueprintActionBuiltin, desc: Blu
     slide: {
         action: actionWrapper(slide),
         desc: {
+            requiresItemInteraction: true,
+            itemIDsFromArgs: args => args ? [args[0] as string] : [],
             minArgs: 3,
             maxArgs: 4,
             description: "Move item with ID specified by the first argument to a position specified by the second argument, animating the process; the 3rd argument specifies the duration, in milliseconds, and the optional 4th argument specifies the easing function (can be one of \"LINEAR\", \"EASE_IN\", \"EASE_OUT\", or \"EASE_IN_OUT\")",
@@ -218,6 +257,8 @@ export const actions: Record<string, { action: BlueprintActionBuiltin, desc: Blu
     stretch: {
         action: actionWrapper(stretch),
         desc: {
+            requiresItemInteraction: true,
+            itemIDsFromArgs: args => args ? [args[0] as string] : [],
             minArgs: 3,
             maxArgs: 4,
             description: "Scales the item with ID specified by the first argument by a factor specified by the second argument, animating the process; the 3rd argument specifies the duration, in milliseconds, and the optional 4th argument specifies the easing function (can be one of \"LINEAR\", \"EASE_IN\", \"EASE_OUT\", or \"EASE_IN_OUT\")",

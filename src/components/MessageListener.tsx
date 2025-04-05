@@ -1,4 +1,6 @@
-import { EffectInstruction, MessageType } from "../types/messageListener";
+import { EffectInstruction, InteractionData, MessageType } from "../types/messageListener";
+import { LOCAL_STORAGE_KEYS, getSettingsValue } from "./Settings";
+import OBR, { Image, InteractionManager, isImage } from "@owlbear-rodeo/sdk";
 import { aoe, cone, getEffect, projectile } from "../effects";
 import { log_error, log_warn } from "../logging";
 import { useCallback, useEffect, useState } from "react";
@@ -6,7 +8,6 @@ import { useCallback, useEffect, useState } from "react";
 import { AOEEffectMessage } from "../types/aoe";
 import { APP_KEY } from "../config";
 import { ConeMessage } from "../types/cone";
-import OBR from "@owlbear-rodeo/sdk";
 import { ProjectileMessage } from "../types/projectile";
 import { actions } from "../effects/actions";
 import { useOBR } from "../react-obr/providers";
@@ -14,11 +15,133 @@ import { useOBR } from "../react-obr/providers";
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
 
+export type InteractionUpdateFunc = (items: Image[], elapsed: number) => boolean;
+
+export interface Interaction {
+    manager: InteractionManager<Image[]>;
+    registerUpdates: (items: Image[], onUpdate: InteractionUpdateFunc) => Promise<Image[]>;
+    trackedIDs: string[];
+    getLastKnownState: (items: string[]) => Image[];
+}
+
+async function createItemInteractions({ ids, count }: InteractionData, localOnly: boolean): Promise<Interaction> {
+    const originalItems = await OBR.scene.items.getItems(ids);
+    const localItems = originalItems.map(item => ({...item, id: `embers-copy-${item.id}`, visible: true })).filter(item => isImage(item));
+    const localItemIDs = localItems.map(item => item.id);
+    const originalItemIDs = originalItems.map(item => item.id);
+
+    const setupPromises = [
+        OBR.scene.local.addItems(localItems),
+    ];
+    if (!localOnly) {
+        setupPromises.push(
+            OBR.scene.items.updateItems(originalItems, items => {
+                for (const item of items) {
+                    item.visible = false;
+                }
+            }
+        ));
+    }
+    await Promise.all(setupPromises);
+
+    const [update, stop] = await OBR.interaction.startItemInteraction(localItems);
+    const ongoingUpdaters: { start: number, onUpdate: InteractionUpdateFunc, items: Image[], resolve: (items: Image[]) => void, resolved: boolean }[] = [];
+
+    const updateDelay = 1000 / getSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE);
+
+    // Register a callback every "updateDelay" milliseconds
+    const key = "interaction:" + crypto.randomUUID();
+    const worker = window.embersWorker;
+    let latestItems: Image[] = [];
+
+    const onMessage = (message: MessageEvent) => {
+        if (message.data === key) {
+            const now = Date.now();
+
+            latestItems = update(itemsToUpdate => {
+                for (const updater of ongoingUpdaters) {
+                    const elapsed = now - updater.start;
+                    const updaterItemIDs = updater.items.map(item => item.id.startsWith("embers-copy-") ? item.id : `embers-copy-${item.id}`);
+                    const keepGoing = updater.onUpdate(
+                        itemsToUpdate.filter(itemToUpdate => updaterItemIDs.includes(itemToUpdate.id.toString())),
+                        elapsed
+                    );
+                    if (!keepGoing) {
+                        count--;
+                        updater.resolve(updater.items);
+                        updater.resolved = true;
+                    }
+                }
+            });
+
+            for (let i = ongoingUpdaters.length - 1; i >= 0; i--) {
+                if (ongoingUpdaters[i].resolved === true) {
+                    ongoingUpdaters.splice(i, 1);
+                }
+            }
+
+            if (count > 0) {
+                worker.postMessage({ duration: updateDelay, id: key });
+            }
+            else {
+                worker.removeEventListener("message", onMessage);
+                stop();
+                if (!localOnly) {
+                    OBR.scene.items.updateItems(originalItemIDs, items => {
+                        for (const item of items) {
+                            const localItem = latestItems.find(latestItem => latestItem.id === `embers-copy-${item.id}`);
+                            if (!localItem) continue;
+                            item.visible = localItem.visible ?? true;
+                            item.position = localItem.position;
+                            item.scale = localItem.scale;
+                            item.rotation = localItem.rotation;
+                            item.locked = localItem.locked;
+                        }
+                    });
+                }
+                OBR.scene.local.deleteItems(localItemIDs);
+            }
+        }
+    };
+
+    worker.addEventListener("message", onMessage);
+    worker.postMessage({ duration: updateDelay, id: key });
+
+    const registerUpdates = async (items: Image[], onUpdate: InteractionUpdateFunc) => {
+        return new Promise<Image[]>(resolve => {
+            ongoingUpdaters.push({
+                start: (new Date()).getTime(),
+                items,
+                onUpdate,
+                resolve,
+                resolved: false
+            });
+        });
+    }
+
+    const getLastKnownState = (items: string[]) => {
+        return latestItems.filter(item => items.includes(item.id));
+    }
+
+    const onUserCalledStop = () => {
+    }
+
+    return {
+        manager: [
+            update,
+            onUserCalledStop
+        ],
+        registerUpdates,
+        trackedIDs: ids,
+        getLastKnownState
+    };
+}
+
 export function MessageListener({ effectRegister }: { effectRegister: Map<string, number> }) {
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
 
-    const processInstruction = useCallback((instruction: EffectInstruction, spellName?: string, spellCaster?: string) => {
+    const processInstruction = useCallback((instruction: EffectInstruction, spellName?: string, spellCaster?: string, interaction?: Interaction) => {
         const doMoreWork = (instructions?: EffectInstruction[]) => {
             if (instructions == undefined) {
                 return;
@@ -38,11 +161,11 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
                     log_error(`Instruction id must be a string, not a "${typeof instruction.id}"`);
                     return;
                 }
-                if ((instruction.for === "GM" && playerRole !== "GM") || (instruction.for === "CASTER" && spellCaster !== playerId)) {
-                    // This won't be played for this player
-                    return;
-                }
                 if (instruction.type === "effect") {
+                    if ((instruction.for === "GM" && playerRole !== "GM") || (instruction.for === "CASTER" && spellCaster !== playerId)) {
+                        // This won't be played for this player
+                        return;
+                    }
                     const effect = getEffect(instruction.id);
                     if (effect == undefined) {
                         log_error(`Couldn't find effect "${instruction.id}"`);
@@ -191,12 +314,14 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
                     }
                 }
                 else if (instruction.type === "action") {
-                    const action = actions[instruction.id].action;
+                    const localOnly = (instruction.for === "GM" && playerRole !== "GM") || (instruction.for === "CASTER" && spellCaster !== playerId);
+                    const actionObject = actions[instruction.id];
+                    const action = actionObject.action;
                     if (action == undefined) {
                         log_error(`Invalid blueprint: undefined action "${instruction.id}"`);
                         return;
                     }
-                    action(...(instruction.arguments ?? []));
+                    action(interaction, localOnly, ...(instruction.arguments ?? []));
                 }
                 else {
                     log_error(`Invalid instruction type "${instruction.type}"`);
@@ -222,12 +347,12 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
                 const messageHandler = (message: MessageEvent) => {
                     if (message.data === key) {
                         doInstruction(playerId, playerRole);
-                        window.EmbersWorker.removeEventListener("message", messageHandler);
+                        window.embersWorker.removeEventListener("message", messageHandler);
                     }
                 }
 
-                window.EmbersWorker.addEventListener("message", messageHandler);
-                window.EmbersWorker.postMessage({ duration: instruction.delay, id: key });
+                window.embersWorker.addEventListener("message", messageHandler);
+                window.embersWorker.postMessage({ duration: instruction.delay, id: key });
             }
             else {
                 doInstruction(playerId, playerRole);
@@ -248,9 +373,20 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
             }
             const spellName = messageData.spellData ? messageData.spellData.name : undefined;
             const spellCaster = messageData.spellData ? messageData.spellData.caster : undefined;
-            for (const instruction of messageData.instructions) {
-                processInstruction(instruction, spellName, spellCaster);
-            }
+
+            OBR.player.getId().then(playerId => {
+                const interactionPromise = messageData.interactions.ids.length === 0 ?
+                    (new Promise<undefined>(resolve => resolve(undefined))) :
+                    createItemInteractions(messageData.interactions, spellCaster != undefined && playerId !== spellCaster);
+
+                interactionPromise.then(interaction => {
+                    for (const instruction of messageData.instructions) {
+                        processInstruction(instruction, spellName, spellCaster, interaction);
+                    }
+                }).catch((error: Error) => {
+                    log_error(error);
+                });
+            });
         });
 
         return () => {

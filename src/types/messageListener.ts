@@ -36,8 +36,14 @@ export interface EffectInstruction {
     instructions?: EffectInstruction[];
 }
 
+export interface InteractionData {
+    count: number,
+    ids: string[];
+};
+
 export interface MessageType {
     instructions: EffectInstruction[];
+    interactions: InteractionData;
     spellData?: {
         name: string;
         caster: string;

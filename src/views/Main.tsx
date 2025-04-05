@@ -138,7 +138,7 @@ export default function Main() {
         // When the app mounts:
         // - create a new worker
         const worker = new Worker(effectsWorkerScript);
-        window.EmbersWorker = worker;
+        window.embersWorker = worker;
         setEffectsWorker(worker);
         // - setup the context menu
         // setupContextMenu(obr.player.role);
@@ -213,6 +213,19 @@ export default function Main() {
 
         return () => clearInterval(interval);
     }, [obr.ready, obr.sceneReady, obr.player?.role]);
+
+    useEffect(() => {
+        if (!obr.ready || !obr.sceneReady) {
+            return;
+        }
+
+        if (window.interactionRecord) {
+            window.interactionRecord.clear();
+        }
+        else {
+            window.interactionRecord = new Map();
+        }
+    }, [obr.ready, obr.sceneReady]);
 
     return (
         <Box

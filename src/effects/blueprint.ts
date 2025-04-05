@@ -1,11 +1,12 @@
 import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, PossibleTarget, ProjectileBlueprint, Variables } from "../types/blueprint";
-import { EffectInstruction, MessageType } from "../types/messageListener";
+import { EffectInstruction, InteractionData, MessageType } from "../types/messageListener";
 import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
 import { Layer, Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 import { AOEEffectMessage } from "../types/aoe";
 import { ConeMessage } from "../types/cone";
 import { ProjectileMessage } from "../types/projectile";
+import { actions } from "./actions";
 import { blueprintFunctions } from "./blueprintFunctions";
 import { log_error } from "../logging";
 
@@ -143,7 +144,7 @@ export function resolveSimpleValue<T>(value: BlueprintValue<T> | undefined, vari
     return _value(resolvedValue);
 }
 
-function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], variables: Variables): ErrorOr<EffectBlueprint> {
+function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], interactions: InteractionData, variables: Variables): ErrorOr<EffectBlueprint> {
     if (element.type === "spell") {
         log_error("Invalid blueprint: type spell is not supported");
         return _error("type spell is not supported");
@@ -485,7 +486,7 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
 
     const instructions: EffectInstruction[] = [];
     if (element.blueprints != undefined) {
-        const error = _resolveBlueprint(element.blueprints, instructions, variables);
+        const error = _resolveBlueprint(element.blueprints, instructions, interactions, variables);
         if (error) {
             return _error(error);
         }
@@ -507,17 +508,28 @@ function parseBlueprint(element: EffectBlueprint, message: EffectInstruction[], 
         arguments: actionArguments
     };
     message.push(newInstruction);
+
+    if (element.type === "action" && id) {
+        const action = actions[id];
+        if (action && action.desc.requiresItemInteraction && action.desc.itemIDsFromArgs) {
+            for (const itemID of action.desc.itemIDsFromArgs(actionArguments)) {
+                interactions.ids.push(itemID);
+            }
+            interactions.count++;
+        }
+    }
+
     return _value(element);
 }
 
-function _resolveBlueprint(blueprint: EffectBlueprint[], message: EffectInstruction[], variables: Variables): string|undefined {
+function _resolveBlueprint(blueprint: EffectBlueprint[], message: EffectInstruction[], interactions: InteractionData, variables: Variables): string|undefined {
     if (!Array.isArray(blueprint)) {
         log_error("Invalid blueprint: blueprint must be an array");
         return "blueprint must be an array";
     }
 
     for (const instruction of blueprint) {
-        const result = parseBlueprint(instruction, message, variables);
+        const result = parseBlueprint(instruction, message, interactions, variables);
         if (result.error) {
             return result.error;
         }
@@ -528,9 +540,17 @@ function _resolveBlueprint(blueprint: EffectBlueprint[], message: EffectInstruct
 export function resolveBlueprint(blueprint: string|EffectBlueprint[], variables: Variables): ErrorOr<MessageType> {
     try {
         const blueprintJSON = (typeof blueprint === "string" ? JSON.parse(blueprint) : blueprint) as EffectBlueprint[];
-        const message: MessageType = { instructions: [] };
+        const message: MessageType = { instructions: [], interactions: { count: 0, ids: [] } };
 
-        const error = _resolveBlueprint(blueprintJSON, message.instructions, variables);
+        const interactions = {
+            ids: [],
+            count: 0
+        };
+        const error = _resolveBlueprint(blueprintJSON, message.instructions, interactions, variables);
+        message.interactions = {
+            ids: Array.from(interactions.ids.values()),
+            count: interactions.count
+        };
         return { value: message, error };
     }
     catch (e: unknown) {
