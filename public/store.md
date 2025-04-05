@@ -2,7 +2,7 @@
 title: Embers
 description: Use and create animated spell & ability effects for your games
 author: Armindo Flores
-image: https://battle-system.com/owlbear/clash-docs/clash-main-preview.png
+image: https://embers.armindo.eu/cover.png
 icon: https://embers.armindo.eu/embers.svg
 tags:
   - combat

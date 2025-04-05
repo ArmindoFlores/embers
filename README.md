@@ -1,5 +1,5 @@
 # 🔥 Embers
-Embers is an Owlbear Rodeo extension that allows you to play animated spells and abilities. It uses the animated assets generously provided by [JB2A](https://jb2a.com/), under the Creative Commons License Attribution-NonCommercial CC BY-NC-SA ([click here](https://creativecommons.org/licenses/by-nc-sa/4.0/) to know more about this).
+Embers is an Owlbear Rodeo extension that allows you to play animated spells and abilities. It uses the animated assets generously provided by [JB2A](https://jb2a.com/), under the Creative Commons License Attribution-NonCommercial CC BY-NC-SA ([click here](https://creativecommons.org/licenses/by-nc-sa/4.0/) to know more about this). Many thanks to [Aji Banawan](https://github.com/aaajii) for his work on Embers' UI.
 
 ## How to use it
 ### Basic usage
