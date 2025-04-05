@@ -13681,6 +13681,670 @@
                 }
             }
         },
+        "ui": {
+            "3_chevrons": {
+                "basename": "Generic/UI/3Chevrons_01_Regular_Yellow",
+                "thumbnail": "Generic/UI/3Chevrons_01_Regular_Yellow_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            3042
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "critical": {
+                "hit": {
+                    "1": {
+                        "basename": "Generic/UI/Critical_02_Red",
+                        "thumbnail": "Generic/UI/Critical_02_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1533
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/UI/Critical_03_Red",
+                        "thumbnail": "Generic/UI/Critical_03_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/UI/Critical_04_Red",
+                        "thumbnail": "Generic/UI/Critical_04_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    }
+                },
+                "miss": {
+                    "1": {
+                        "basename": "Generic/UI/CriticalMiss_02_Red",
+                        "thumbnail": "Generic/UI/CriticalMiss_02_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/UI/CriticalMiss_03_Red",
+                        "thumbnail": "Generic/UI/CriticalMiss_03_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/UI/CriticalMiss_04_Red",
+                        "thumbnail": "Generic/UI/CriticalMiss_04_Red_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1700
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "heartbeat": {
+                "flat": {
+                    "basename": "Generic/UI/HeartbeatECG01_01_Regular_Green",
+                    "thumbnail": "Generic/UI/HeartbeatECG01_01_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                1667
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "regular": {
+                    "basename": "Generic/UI/HeartbeatECG01_02_Regular_Green",
+                    "thumbnail": "Generic/UI/HeartbeatECG01_02_Regular_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                1250
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "icon": {
+                "drop": {
+                    "basename": "Generic/UI/IconDrop_01_Regular_Red",
+                    "thumbnail": "Generic/UI/IconDrop_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "fear": {
+                    "basename": "Generic/UI/IconFear_01_Dark_Purple",
+                    "thumbnail": "Generic/UI/IconFear_01_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "heart": {
+                    "basename": "Generic/UI/IconHeart_01_Regular_Pink",
+                    "thumbnail": "Generic/UI/IconHeart_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "horror": {
+                    "basename": "Generic/UI/IconHorror_01_Regular_Purple",
+                    "thumbnail": "Generic/UI/IconHorror_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "music_note": {
+                    "basename": "Generic/UI/IconMusicNote_01_Regular_Blue",
+                    "thumbnail": "Generic/UI/IconMusicNote_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "mute": {
+                    "basename": "Generic/UI/IconMute_01_Dark_Red",
+                    "thumbnail": "Generic/UI/IconMute_01_Dark_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                5958
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "poison": {
+                    "basename": "Generic/UI/IconPoison_01_Dark_Green",
+                    "thumbnail": "Generic/UI/IconPoison_01_Dark_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "runes": {
+                    "1": {
+                        "basename": "Generic/UI/IconRunes_01_Regular_Orange",
+                        "thumbnail": "Generic/UI/IconRunes_01_Regular_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/UI/IconRunes02_01_Regular_Orange",
+                        "thumbnail": "Generic/UI/IconRunes02_01_Regular_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/UI/IconRunes03_01_Regular_Orange",
+                        "thumbnail": "Generic/UI/IconRunes03_01_Regular_Orange_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    }
+                },
+                "shield": {
+                    "regular": {
+                        "basename": "Generic/UI/IconShield_01_Regular_Green",
+                        "thumbnail": "Generic/UI/IconShield_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "cracked": {
+                        "basename": "Generic/UI/IconShieldCracked_01_Regular_Purple",
+                        "thumbnail": "Generic/UI/IconShieldCracked_01_Regular_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    }
+                },
+                "skull": {
+                    "basename": "Generic/UI/IconSkull_01_Regular_Purple",
+                    "thumbnail": "Generic/UI/IconSkull_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "snowflake": {
+                    "basename": "Generic/UI/IconSnowflake_01_Regular_Blue",
+                    "thumbnail": "Generic/UI/IconSnowflake_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                },
+                "stun": {
+                    "basename": "Generic/UI/IconStun_01_Regular_Purple",
+                    "thumbnail": "Generic/UI/IconStun_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "200": {
+                            "name": [
+                                "200x200"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                200,
+                                200
+                            ]
+                        }
+                    }
+                }
+            },
+            "indicator": {
+                "multiple": {
+                    "1": {
+                        "basename": "Generic/UI/Indicator01_02_Regular_BlueGreen",
+                        "thumbnail": "Generic/UI/Indicator01_02_Regular_BlueGreen_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": [
+                                    "400x400"
+                                ],
+                                "duration": [
+                                    1333
+                                ],
+                                "size": [
+                                    400,
+                                    400
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/UI/Indicator02_02_Regular_BlueGreen",
+                        "thumbnail": "Generic/UI/Indicator02_02_Regular_BlueGreen_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "400": {
+                                "name": [
+                                    "400x400"
+                                ],
+                                "duration": [
+                                    1333
+                                ],
+                                "size": [
+                                    400,
+                                    400
+                                ]
+                            }
+                        }
+                    }
+                },
+                "single": {
+                    "1": {
+                        "basename": "Generic/UI/Indicator01_03_Regular_BlueGreen",
+                        "thumbnail": "Generic/UI/Indicator01_03_Regular_BlueGreen_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1333
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "2": {
+                        "basename": "Generic/UI/Indicator02_03_Regular_BlueGreen",
+                        "thumbnail": "Generic/UI/Indicator02_03_Regular_BlueGreen_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    1333
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "3": {
+                        "basename": "Generic/UI/Indicator_01_Regular_Yellow",
+                        "thumbnail": "Generic/UI/Indicator_01_Regular_Yellow_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "200": {
+                                "name": [
+                                    "200x200"
+                                ],
+                                "duration": [
+                                    2042
+                                ],
+                                "size": [
+                                    200,
+                                    200
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "miss": {
+                "basename": "Generic/UI/Miss_02_White",
+                "thumbnail": "Generic/UI/Miss_02_White_Thumb.webp",
+                "type": "CIRCLE",
+                "dpi": 100,
+                "variants": {
+                    "200": {
+                        "name": [
+                            "200x200"
+                        ],
+                        "duration": [
+                            2800
+                        ],
+                        "size": [
+                            200,
+                            200
+                        ]
+                    }
+                }
+            },
+            "sneak_attack": {
+                "1": {
+                    "basename": "Generic/UI/SneakAttackText_01_Dark_Red",
+                    "thumbnail": "Generic/UI/SneakAttackText_01_Dark_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                3000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "2": {
+                    "basename": "Generic/UI/SneakAttackText_02_Dark_Red",
+                    "thumbnail": "Generic/UI/SneakAttackText_02_Dark_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "400": {
+                            "name": [
+                                "400x400"
+                            ],
+                            "duration": [
+                                3000
+                            ],
+                            "size": [
+                                400,
+                                400
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "unarmed_attacks": {
             "flurry_of_blows": {
                 "magical": {
