@@ -11,6 +11,7 @@ export default function Docs() {
             <p className="docs-p">
                 Embers is an Owlbear Rodeo extension that allows you to play animated spells and abilities.
                 It uses the animated assets generously provided by <a href="https://jb2a.com/">JB2A</a>, under the Creative Commons License Attribution-NonCommercial CC BY-NC-SA (click <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">here</a> to know more about this).
+                Many thanks to <a href="https://github.com/aaajii">Aji Banawan</a> for his work on Embers' UI.
             </p>
             <br></br>
             <p className="docs-p">
@@ -39,7 +40,7 @@ export default function Docs() {
             </ul>
             <br></br>
             <p className="docs-p">
-                You can view this extensio on <a href="https://github.com/ArmindoFlores/embers">GitHub</a>. If you find an issue, have a suggestion, or just need help regarding some feature,
+                You can view this extension on <a href="https://github.com/ArmindoFlores/embers">GitHub</a>. If you find an issue, have a suggestion, or just need help regarding some feature,
                 please reach out to me on the <a href="https://discord.gg/u5RYMkV98s">official Owlbear Rodeo discord</a>.
             </p>
         </div>
