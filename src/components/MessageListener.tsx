@@ -22,6 +22,7 @@ export interface Interaction {
     registerUpdates: (items: Image[], onUpdate: InteractionUpdateFunc) => Promise<Image[]>;
     trackedIDs: string[];
     getLastKnownState: (items: string[]) => Image[];
+    active: () => boolean;
 }
 
 async function createItemInteractions({ ids, count }: InteractionData, localOnly: boolean): Promise<Interaction> {
@@ -120,7 +121,10 @@ async function createItemInteractions({ ids, count }: InteractionData, localOnly
     }
 
     const getLastKnownState = (items: string[]) => {
-        return latestItems.filter(item => items.includes(item.id));
+        if (count > 0) {
+            return latestItems.filter(item => items.includes(item.id));
+        }
+        return [];
     }
 
     const onUserCalledStop = () => {
@@ -133,7 +137,8 @@ async function createItemInteractions({ ids, count }: InteractionData, localOnly
         ],
         registerUpdates,
         trackedIDs: ids,
-        getLastKnownState
+        getLastKnownState,
+        active: () => count > 0
     };
 }
 

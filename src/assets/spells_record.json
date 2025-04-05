@@ -1553,6 +1553,59 @@
             }
         ]
     },
+    "banishment": {
+        "name": "Banishment",
+        "minTargets": 2,
+        "thumbnail": "Generic/Portals/Portal_Bright_Yellow_V_Thumb.webp",
+        "replicate": "first_to_all",
+        "copy": -1,
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": "generic.ranged_spell.instant.yellow",
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "destination": "$targets[1].position",
+                    "copies": 1
+                }
+            },
+            {
+                "type": "effect",
+                "id": "generic.portals.horizontal",
+                "layer": "PROP",
+                "delay": 200,
+                "duration": 3000,
+                "effectProperties": {
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[1].size", 2.5]
+                    },
+                    "source": "$targets[1].position"
+                }
+            },
+            {
+                "type": "action",
+                "id": "stretch",
+                "delay": 250,
+                "for": "CASTER",
+                "arguments": ["$targets[1].id", {"x": 0.01, "y": 0.01}, 300, "EASE_IN"]
+            },
+            {
+                "type": "action",
+                "id": "hide",
+                "delay": 1000,
+                "for": "CASTER",
+                "arguments": ["$targets[1].id"]
+            },
+            {
+                "type": "action",
+                "id": "scale",
+                "delay": 1500,
+                "for": "CASTER",
+                "arguments": ["$targets[1].id", {"x": 100, "y": 100}]
+            }
+        ]
+    },
     "black_tentacles": {
         "name": "Black Tentacles",
         "minTargets": 1,

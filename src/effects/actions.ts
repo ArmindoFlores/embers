@@ -10,14 +10,17 @@ import { WritableDraft } from "immer";
 async function updateItems(items: string[], update: (draft: WritableDraft<Item>[]) => void, interaction: Interaction|undefined, localOnly: boolean) {
     const localItems = items.map(item => `embers-copy-${item}`);
 
-    if (interaction) {
+    if (interaction && interaction.active()) {
         const [interactionUpdate] = interaction.manager;
         interactionUpdate(items => {
             update(items.filter(item => localItems.includes(item.id.toString())));
         });
     }
 
-    const itemsToUpdateGlobally = Array.from((localOnly ? new Set<string>() : setDifference(new Set(items), new Set(interaction?.trackedIDs ?? []))).values());
+    if (localOnly) {
+        return;
+    }
+    const itemsToUpdateGlobally = Array.from((!interaction?.active?.() ? new Set(items) : setDifference(new Set(items), new Set(interaction?.trackedIDs ?? []))).values());
     if (itemsToUpdateGlobally.length) {
         OBR.scene.items.updateItems(itemsToUpdateGlobally, update);
     }
