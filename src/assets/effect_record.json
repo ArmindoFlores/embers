@@ -12636,6 +12636,2164 @@
                 }
             }
         },
+        "template": {
+            "circle": {
+                "aura": {
+                    "blue_purple": {
+                        "complete": {
+                            "basename": "Generic/Template/Circle/Aura/AuraComplete01_01_Regular_BluePurple",
+                            "thumbnail": "Generic/Template/Circle/Aura/Aura01_01_Regular_BluePurple_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        7070
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                },
+                                "900": {
+                                    "name": [
+                                        "900x900"
+                                    ],
+                                    "duration": [
+                                        7033
+                                    ],
+                                    "size": [
+                                        900,
+                                        900
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Aura/AuraLoop01_01_Regular_BluePurple",
+                            "thumbnail": "Generic/Template/Circle/Aura/Aura01_01_Regular_BluePurple_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        3667
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                },
+                                "900": {
+                                    "name": [
+                                        "900x900"
+                                    ],
+                                    "duration": [
+                                        3667
+                                    ],
+                                    "size": [
+                                        900,
+                                        900
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "blue_pink": {
+                        "complete": {
+                            "basename": "Generic/Template/Circle/Aura/AuraComplete02_01_Regular_BluePink",
+                            "thumbnail": "Generic/Template/Circle/Aura/Aura02_01_Regular_BluePink_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        7200
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                },
+                                "900": {
+                                    "name": [
+                                        "900x900"
+                                    ],
+                                    "duration": [
+                                        7200
+                                    ],
+                                    "size": [
+                                        900,
+                                        900
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Aura/AuraLoop02_01_Regular_BluePink",
+                            "thumbnail": "Generic/Template/Circle/Aura/Aura02_01_Regular_BluePink_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "500": {
+                                    "name": [
+                                        "500x500"
+                                    ],
+                                    "duration": [
+                                        3333
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                },
+                                "900": {
+                                    "name": [
+                                        "900x900"
+                                    ],
+                                    "duration": [
+                                        3333
+                                    ],
+                                    "size": [
+                                        900,
+                                        900
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "cold": {
+                        "inward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteCold01_01_Regular_Blue",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteCold01_01_Regular_Blue_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardLoopCold01_01_Regular_Blue",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteCold01_01_Regular_Blue_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "orbit": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteCold01_01_Regular_Blue",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteCold01_01_Regular_Blue_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitLoopCold01_01_Regular_Blue",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteCold01_01_Regular_Blue_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "outward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteCold01_01_Regular_Blue",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteCold01_01_Regular_Blue_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardLoopCold01_01_Regular_Blue",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteCold01_01_Regular_Blue_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "metal": {
+                        "inward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteMetal01_01_Regular_Grey",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteMetal01_01_Regular_Grey_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardLoopMetal01_01_Regular_Grey",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteMetal01_01_Regular_Grey_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "orbit": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteMetal01_01_Regular_Grey",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteMetal01_01_Regular_Grey_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitLoopMetal01_01_Regular_Grey",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteMetal01_01_Regular_Grey_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "outward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteMetal01_01_Regular_Grey",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteMetal01_01_Regular_Grey_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardLoopMetal01_01_Regular_Grey",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteMetal01_01_Regular_Grey_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "nature": {
+                        "inward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteNature01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteNature01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardLoopNature01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteNature01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "orbit": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteNature01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteNature01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitLoopNature01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteNature01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "outward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteNature01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteNature01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardLoopNature01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteNature01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "wood": {
+                        "inward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteWood01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteWood01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedInwardLoopWood01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedInwardCompleteWood01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "orbit": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteWood01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteWood01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOrbitLoopWood01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOrbitCompleteWood01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "outward": {
+                            "complete": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteWood01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteWood01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            8700
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Circle/Aura/AuraThemedOutwardLoopWood01_01_Regular_Green",
+                                "thumbnail": "Generic/Template/Circle/Aura/AuraThemedOutwardCompleteWood01_01_Regular_Green_Thumb.webp",
+                                "type": "CIRCLE",
+                                "dpi": 100,
+                                "variants": {
+                                    "700": {
+                                        "name": [
+                                            "700x700"
+                                        ],
+                                        "duration": [
+                                            3967
+                                        ],
+                                        "size": [
+                                            700,
+                                            700
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "lightning": {
+                    "basename": "Generic/Template/Circle/Lightning/TemplateCircleLightning01_01_Regular_BluePurple_Loop",
+                    "thumbnail": "Generic/Template/Circle/Lightning/TemplateCircleLightning01_01_Regular_BluePurple_Loop_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "700": {
+                            "name": [
+                                "700x700"
+                            ],
+                            "duration": [
+                                2930
+                            ],
+                            "size": [
+                                700,
+                                700
+                            ]
+                        }
+                    }
+                },
+                "outpulse": {
+                    "music_notes": {
+                        "burst": {
+                            "basename": "Generic/Template/Circle/OutPulse/OutPulse_01_Regular_BlueWhite_Burst",
+                            "thumbnail": "Generic/Template/Circle/OutPulse/OutPulse_01_Regular_BlueWhite_Burst_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        2367
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Template/Circle/OutPulse/OutPulse_01_Regular_BlueWhite_Loop",
+                            "thumbnail": "Generic/Template/Circle/OutPulse/OutPulse_01_Regular_BlueWhite_Loop_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        2367
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "regular": {
+                        "burst": {
+                            "basename": "Generic/Template/Circle/OutPulse/OutPulse_02_Regular_BlueWhite_Burst",
+                            "thumbnail": "Generic/Template/Circle/OutPulse/OutPulse_02_Regular_BlueWhite_Burst_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        2367
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Template/Circle/OutPulse/OutPulse_02_Regular_BlueWhite_Loop",
+                            "thumbnail": "Generic/Template/Circle/OutPulse/OutPulse_02_Regular_BlueWhite_Loop_Thumb.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        2367
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "radar": {
+                    "1_1": {
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_001_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        },
+                        "background_loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_BG_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        },
+                        "ping_round_loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_PingRound_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "Size1_300x300"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                },
+                                "500": {
+                                    "name": [
+                                        "Size2_500x500"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        },
+                        "ping_square_loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_PingSquare_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "Size1_300x300"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                },
+                                "500": {
+                                    "name": [
+                                        "Size2_500x500"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        },
+                        "ping_triangle_loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_PingTriangle_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "300": {
+                                    "name": [
+                                        "Size1_300x300"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        300,
+                                        300
+                                    ]
+                                },
+                                "500": {
+                                    "name": [
+                                        "Size2_500x500"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        500,
+                                        500
+                                    ]
+                                }
+                            }
+                        },
+                        "pulse_loop_1": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_Pulse_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        },
+                        "pulse_loop_2": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_Pulse_002_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        },
+                        "sweep_loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_Sweep_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "1_2": {
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_001_002_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "1_3": {
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_001_003_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2_1": {
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_002_001_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2_2": {
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_002_002_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "2_3": {
+                        "loop": {
+                            "basename": "Generic/Template/Circle/Radar/RadarLoop_002_003_GreenPurple",
+                            "thumbnail": "Generic/Template/Circle/Radar/RadarLoop_StillFrame_001_GreenPurple_15ft_800x800.webp",
+                            "type": "CIRCLE",
+                            "dpi": 100,
+                            "variants": {
+                                "800": {
+                                    "name": [
+                                        "15ft_800x800"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        800,
+                                        800
+                                    ]
+                                },
+                                "1400": {
+                                    "name": [
+                                        "30ft_1400x1400"
+                                    ],
+                                    "duration": [
+                                        4000
+                                    ],
+                                    "size": [
+                                        1400,
+                                        1400
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "drop": {
+                    "basename": "Generic/Template/Circle/TemplateDropCircle_01_Regular_Red",
+                    "thumbnail": "Generic/Template/Circle/TemplateDropCircle_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "fear": {
+                    "basename": "Generic/Template/Circle/TemplateFearCircle_01_Dark_Purple",
+                    "thumbnail": "Generic/Template/Circle/TemplateFearCircle_01_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "heart": {
+                    "basename": "Generic/Template/Circle/TemplateHeartCircle_01_Regular_Pink",
+                    "thumbnail": "Generic/Template/Circle/TemplateHeartCircle_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "horror": {
+                    "basename": "Generic/Template/Circle/TemplateHorrorCircle_01_Regular_Purple",
+                    "thumbnail": "Generic/Template/Circle/TemplateHorrorCircle_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "music_note": {
+                    "basename": "Generic/Template/Circle/TemplateMusicNoteCircle_01_Regular_Blue",
+                    "thumbnail": "Generic/Template/Circle/TemplateMusicNoteCircle_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "poison": {
+                    "basename": "Generic/Template/Circle/TemplatePoisonCircle_01_Dark_Green",
+                    "thumbnail": "Generic/Template/Circle/TemplatePoisonCircle_01_Dark_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "runes": {
+                    "basename": "Generic/Template/Circle/TemplateRunesCircle_01_Regular_Orange",
+                    "thumbnail": "Generic/Template/Circle/TemplateRunesCircle_01_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "shield": {
+                    "regular": {
+                        "basename": "Generic/Template/Circle/TemplateShieldCircle_01_Regular_Green",
+                        "thumbnail": "Generic/Template/Circle/TemplateShieldCircle_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "cracked": {
+                        "basename": "Generic/Template/Circle/TemplateShieldCrackedCircle_01_Regular_Purple",
+                        "thumbnail": "Generic/Template/Circle/TemplateShieldCrackedCircle_01_Regular_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    }
+                },
+                "skull": {
+                    "basename": "Generic/Template/Circle/TemplateSkullCircle_01_Regular_Purple",
+                    "thumbnail": "Generic/Template/Circle/TemplateSkullCircle_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "snowflake": {
+                    "basename": "Generic/Template/Circle/TemplateSnowflakeCircle_01_Regular_Blue",
+                    "thumbnail": "Generic/Template/Circle/TemplateSnowflakeCircle_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "stun": {
+                    "basename": "Generic/Template/Circle/TemplateStunCircle_01_Regular_Purple",
+                    "thumbnail": "Generic/Template/Circle/TemplateStunCircle_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "800": {
+                            "name": [
+                                "800x800"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                800,
+                                800
+                            ]
+                        }
+                    }
+                },
+                "vortex": {
+                    "loop": {
+                        "basename": "Generic/Template/Circle/Vortex_01_Regular_Blue",
+                        "thumbnail": "Generic/Template/Circle/Vortex_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Template/Circle/VortexIntro_01_Regular_Blue",
+                        "thumbnail": "Generic/Template/Circle/VortexIntro_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    1583
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Template/Circle/VortexOutro_01_Regular_Blue",
+                        "thumbnail": "Generic/Template/Circle/VortexOutro_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    2042
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                },
+                "whirl": {
+                    "loop": {
+                        "basename": "Generic/Template/Circle/Whirl_01_Regular_Blue",
+                        "thumbnail": "Generic/Template/Circle/Whirl_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    5042
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "intro": {
+                        "basename": "Generic/Template/Circle/WhirlIntro_01_Regular_Blue",
+                        "thumbnail": "Generic/Template/Circle/WhirlIntro_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    2042
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "outro": {
+                        "basename": "Generic/Template/Circle/WhirlOutro_01_Regular_Blue",
+                        "thumbnail": "Generic/Template/Circle/WhirlOutro_01_Regular_Blue_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    2000
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "cone": {
+                "breath_weapon": {
+                    "fire": {
+                        "full": {
+                            "burst": {
+                                "basename": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Cone_Burst",
+                                "thumbnail": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Cone_Burst_Thumb.webp",
+                                "type": "CONE",
+                                "dpi": 100,
+                                "variants": {
+                                    "800": {
+                                        "name": [
+                                            "800x800"
+                                        ],
+                                        "duration": [
+                                            7292
+                                        ],
+                                        "size": [
+                                            800,
+                                            800
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Cone_Loop",
+                                "thumbnail": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Cone_Loop_Thumb.webp",
+                                "type": "CONE",
+                                "dpi": 100,
+                                "variants": {
+                                    "800": {
+                                        "name": [
+                                            "800x800"
+                                        ],
+                                        "duration": [
+                                            5000
+                                        ],
+                                        "size": [
+                                            800,
+                                            800
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "sweep": {
+                            "burst": {
+                                "basename": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire02_Regular_Orange_Cone_Burst",
+                                "thumbnail": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire02_Regular_Orange_Cone_Burst_Thumb.webp",
+                                "type": "CONE",
+                                "dpi": 100,
+                                "variants": {
+                                    "800": {
+                                        "name": [
+                                            "800x800"
+                                        ],
+                                        "duration": [
+                                            7458
+                                        ],
+                                        "size": [
+                                            800,
+                                            800
+                                        ]
+                                    }
+                                }
+                            },
+                            "loop": {
+                                "basename": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire02_Regular_Orange_Cone_Loop",
+                                "thumbnail": "Generic/Template/Cone/Breath_Weapon/Breathweapon02_Fire02_Regular_Orange_Cone_Loop_Thumb.webp",
+                                "type": "CONE",
+                                "dpi": 100,
+                                "variants": {
+                                    "800": {
+                                        "name": [
+                                            "800x800"
+                                        ],
+                                        "duration": [
+                                            5000
+                                        ],
+                                        "size": [
+                                            800,
+                                            800
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "charge": {
+                            "basename": "Generic/Template/Cone/Breath_Weapon/BreathWeapon_Fire01_Regular_Orange_30ft_Cone_Burst",
+                            "thumbnail": "Generic/Template/Cone/Breath_Weapon/BreathWeapon_Fire01_Regular_Orange_30ft_Cone_Burst_Thumb.webp",
+                            "type": "CONE",
+                            "dpi": 100,
+                            "variants": {
+                                "600": {
+                                    "name": [
+                                        "600x600"
+                                    ],
+                                    "duration": [
+                                        8466
+                                    ],
+                                    "size": [
+                                        600,
+                                        600
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "cold": {
+                        "basename": "Generic/Template/Cone/Breath_Weapon/BreathWeapon_Cold01_Regular_Blue_30ft_Cone_Burst",
+                        "thumbnail": "Generic/Template/Cone/Breath_Weapon/BreathWeapon_Cold01_Regular_Blue_30ft_Cone_Burst_Thumb.webp",
+                        "type": "CONE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    9000
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "poison": {
+                        "basename": "Generic/Template/Cone/Breath_Weapon/BreathWeapon_Poison01_Regular_Green_30ft_Cone_Burst",
+                        "thumbnail": "Generic/Template/Cone/Breath_Weapon/BreathWeapon_Poison01_Regular_Green_30ft_Cone_Burst_Thumb.webp",
+                        "type": "CONE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    9266
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                },
+                "lightning": {
+                    "regular": {
+                        "basename": "Generic/Template/Cone/Lightning/TemplateCone5eLightning01_01_Regular_BluePurple_30ft_Loop",
+                        "thumbnail": "Generic/Template/Cone/Lightning/TemplateCone5eLightning01_01_Regular_BluePurple_30ft_Loop_Thumb.webp",
+                        "type": "CONE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x800"
+                                ],
+                                "duration": [
+                                    2933
+                                ],
+                                "size": [
+                                    800,
+                                    800
+                                ]
+                            }
+                        }
+                    },
+                    "wide": {
+                        "basename": "Generic/Template/Cone/Lightning/TemplateConePF2eLightning01_01_Regular_BluePurple_30ft_Loop",
+                        "thumbnail": "Generic/Template/Cone/Lightning/TemplateConePF2eLightning01_01_Regular_BluePurple_30ft_Loop_Thumb.webp",
+                        "type": "CONE",
+                        "dpi": 100,
+                        "variants": {
+                            "800": {
+                                "name": [
+                                    "800x1000"
+                                ],
+                                "duration": [
+                                    2933
+                                ],
+                                "size": [
+                                    800,
+                                    1000
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "line": {
+                "breath_weapon": {
+                    "fire": {
+                        "burst": {
+                            "basename": "Generic/Template/Line/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Line_Burst",
+                            "thumbnail": "Generic/Template/Line/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Line_Burst_Thumb.webp",
+                            "type": "CONE",
+                            "dpi": 100,
+                            "variants": {
+                                "1200": {
+                                    "name": [
+                                        "1200x400"
+                                    ],
+                                    "duration": [
+                                        7458
+                                    ],
+                                    "size": [
+                                        1200,
+                                        400
+                                    ]
+                                }
+                            }
+                        },
+                        "loop": {
+                            "basename": "Generic/Template/Line/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Line_Loop",
+                            "thumbnail": "Generic/Template/Line/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Line_Loop_Thumb.webp",
+                            "type": "CONE",
+                            "dpi": 100,
+                            "variants": {
+                                "1200": {
+                                    "name": [
+                                        "1200x400"
+                                    ],
+                                    "duration": [
+                                        5000
+                                    ],
+                                    "size": [
+                                        1200,
+                                        400
+                                    ]
+                                }
+                            }
+                        },
+                        "charge": {
+                            "basename": "Generic/Template/Line/Breath_Weapon/BreathWeapon_Fire01_Regular_Orange_30ft_Line_Burst",
+                            "thumbnail": "Generic/Template/Line/Breath_Weapon/BreathWeapon_Fire01_Regular_Orange_30ft_Line_Burst_Thumb.webp",
+                            "type": "CONE",
+                            "dpi": 100,
+                            "variants": {
+                                "1200": {
+                                    "name": [
+                                        "1200x200"
+                                    ],
+                                    "duration": [
+                                        8067
+                                    ],
+                                    "size": [
+                                        1200,
+                                        200
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "acid": {
+                        "basename": "Generic/Template/Line/Breath_Weapon/BreathWeapon_Acid01_Regular_Green_30ft_Line_Burst",
+                        "thumbnail": "Generic/Template/Line/Breath_Weapon/BreathWeapon_Acid01_Regular_Green_30ft_Line_Burst_Thumb.webp",
+                        "type": "CONE",
+                        "dpi": 100,
+                        "variants": {
+                            "1200": {
+                                "name": [
+                                    "1200x200"
+                                ],
+                                "duration": [
+                                    7100
+                                ],
+                                "size": [
+                                    1200,
+                                    200
+                                ]
+                            }
+                        }
+                    },
+                    "lightning": {
+                        "basename": "Generic/Template/Line/Breath_Weapon/BreathWeapon_Lightning01_Regular_Blue_30ft_Line_Burst",
+                        "thumbnail": "Generic/Template/Line/Breath_Weapon/BreathWeapon_Lightning01_Regular_Blue_30ft_Line_Burst_Thumb.webp",
+                        "type": "CONE",
+                        "dpi": 100,
+                        "variants": {
+                            "1200": {
+                                "name": [
+                                    "1200x200"
+                                ],
+                                "duration": [
+                                    6867
+                                ],
+                                "size": [
+                                    1200,
+                                    200
+                                ]
+                            }
+                        }
+                    }
+                },
+                "generic": {
+                    "basename": "Generic/Template/Line/Generic/Piercing_Generic01_01_Regular_Orange",
+                    "thumbnail": "Generic/Template/Line/Generic/Piercing_Generic01_01_Regular_Orange_Thumb.webp",
+                    "type": "CONE",
+                    "dpi": 100,
+                    "variants": {
+                        "1000": {
+                            "name": [
+                                "1000x400"
+                            ],
+                            "duration": [
+                                500
+                            ],
+                            "size": [
+                                1000,
+                                400
+                            ]
+                        }
+                    }
+                },
+                "ice": {
+                    "basename": "Generic/Template/Line/Ice/TemplateLineIce01_01_Regular_Blue",
+                    "thumbnail": "Generic/Template/Line/Ice/TemplateLineIce01_01_Regular_Blue_Thumb.webp",
+                    "type": "CONE",
+                    "dpi": 100,
+                    "variants": {
+                        "1000": {
+                            "name": [
+                                "15ft_1000x400"
+                            ],
+                            "duration": [
+                                5000
+                            ],
+                            "size": [
+                                1000,
+                                400
+                            ]
+                        },
+                        "1600": {
+                            "name": [
+                                "30ft_1600x400"
+                            ],
+                            "duration": [
+                                5000
+                            ],
+                            "size": [
+                                1600,
+                                400
+                            ]
+                        },
+                        "2800": {
+                            "name": [
+                                "60ft_2800x400"
+                            ],
+                            "duration": [
+                                5000
+                            ],
+                            "size": [
+                                2800,
+                                400
+                            ]
+                        }
+                    }
+                }
+            },
+            "square": {
+                "drop": {
+                    "basename": "Generic/Template/Square/TemplateDropSquare_01_Regular_Red",
+                    "thumbnail": "Generic/Template/Square/TemplateDropSquare_01_Regular_Red_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "fear": {
+                    "basename": "Generic/Template/Square/TemplateFearSquare_01_Dark_Purple",
+                    "thumbnail": "Generic/Template/Square/TemplateFearSquare_01_Dark_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "heart": {
+                    "basename": "Generic/Template/Square/TemplateHeartSquare_01_Regular_Pink",
+                    "thumbnail": "Generic/Template/Square/TemplateHeartSquare_01_Regular_Pink_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "horror": {
+                    "basename": "Generic/Template/Square/TemplateHorrorSquare_01_Regular_Purple",
+                    "thumbnail": "Generic/Template/Square/TemplateHorrorSquare_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "music_note": {
+                    "basename": "Generic/Template/Square/TemplateMusicNoteSquare_01_Regular_Blue",
+                    "thumbnail": "Generic/Template/Square/TemplateMusicNoteSquare_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "poison": {
+                    "basename": "Generic/Template/Square/TemplatePoisonSquare_01_Dark_Green",
+                    "thumbnail": "Generic/Template/Square/TemplatePoisonSquare_01_Dark_Green_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "runes": {
+                    "basename": "Generic/Template/Square/TemplateRunesSquare_01_Regular_Orange",
+                    "thumbnail": "Generic/Template/Square/TemplateRunesSquare_01_Regular_Orange_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "shield": {
+                    "cracked": {
+                        "basename": "Generic/Template/Square/TemplateShieldCrackedSquare_01_Regular_Purple",
+                        "thumbnail": "Generic/Template/Square/TemplateShieldCrackedSquare_01_Regular_Purple_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    },
+                    "regular": {
+                        "basename": "Generic/Template/Square/TemplateShieldSquare_01_Regular_Green",
+                        "thumbnail": "Generic/Template/Square/TemplateShieldSquare_01_Regular_Green_Thumb.webp",
+                        "type": "CIRCLE",
+                        "dpi": 100,
+                        "variants": {
+                            "600": {
+                                "name": [
+                                    "600x600"
+                                ],
+                                "duration": [
+                                    6042
+                                ],
+                                "size": [
+                                    600,
+                                    600
+                                ]
+                            }
+                        }
+                    }
+                },
+                "skull": {
+                    "basename": "Generic/Template/Square/TemplateSkullSquare_01_Regular_Purple",
+                    "thumbnail": "Generic/Template/Square/TemplateSkullSquare_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "snowflake": {
+                    "basename": "Generic/Template/Square/TemplateSnowflakeSquare_01_Regular_Blue",
+                    "thumbnail": "Generic/Template/Square/TemplateSnowflakeSquare_01_Regular_Blue_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                },
+                "stun": {
+                    "basename": "Generic/Template/Square/TemplateStunSquare_01_Regular_Purple",
+                    "thumbnail": "Generic/Template/Square/TemplateStunSquare_01_Regular_Purple_Thumb.webp",
+                    "type": "CIRCLE",
+                    "dpi": 100,
+                    "variants": {
+                        "600": {
+                            "name": [
+                                "600x600"
+                            ],
+                            "duration": [
+                                6042
+                            ],
+                            "size": [
+                                600,
+                                600
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "twinkling_stars": {
             "twinklingstars_04": {
                 "basename": "Generic/Twinkling_Stars/TwinklingStars_04",
