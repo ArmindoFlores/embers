@@ -129,7 +129,6 @@ async function astretch(interaction: Interaction|undefined, itemID: string, scal
         return;
     }
 
-    // const item = (await OBR.scene.items.getItems([itemID]))[0];
     const item = (await getItems([itemID], interaction))[0];
 
     if (item == undefined) {
