@@ -1482,7 +1482,8 @@
     "dimension_door": {
         "name": "Dimension Door",
         "minTargets": 2,
-        "maxTargets": 5,
+        "maxTargets": 3,
+        "for": "GM",
         "thumbnail": "Generic/Portals/Portal_Bright_Yellow_H_Thumb.webp",
         "replicate": "all",
         "firstTargetIsCaster": true,

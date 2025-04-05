@@ -13,6 +13,7 @@ export const LOCAL_STORAGE_KEYS = {
     GRID_SCALING_FACTOR: "grid-scaling-factor",
     KEEP_SELECTED_TARGETS: "keep-selected-targets",
     DEFAULT_CASTER: "default-caster",
+    ANIMATION_UPDATE_RATE: "animation-update-rate",
 };
 
 export const GLOBAL_STORAGE_KEYS = {
@@ -25,6 +26,7 @@ const DEFAULT_VALUES = {
     [LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR]: null,
     [LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS]: true,
     [LOCAL_STORAGE_KEYS.DEFAULT_CASTER]: [],
+    [LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE]: 50,
     [GLOBAL_STORAGE_KEYS.PLAYERS_CAN_CAST_SPELLS]: true,
     [GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE]: "caster",
 }
@@ -121,6 +123,7 @@ export default function Settings() {
     const [summonedEntities, setSummonedEntities] = useState<string|null>(null);
     const [gridScale, setGridScale] = useState<GridScale|null>(null);
     const [defaultCaster, setDefaultCaster] = useState<SimplifiedItem[]|null>(null);
+    const [animationRate, _setAnimationRate] = useState<number|null>(null);
     const [isModalClosing, setIsModalClosing] = useState(false);
     const [modalOpened, setModalOpened] = useState<ModalType|null>(null);
     const mainDiv = useRef<HTMLDivElement>(null);
@@ -141,6 +144,15 @@ export default function Settings() {
             return;
         }
         _setGridScalingFactor(scaleFactor);
+    }, []);
+
+    const setAnimationRate = useCallback((rate: string) => {
+        const intRate = parseInt(rate);
+        if (isNaN(intRate)) {
+            _setAnimationRate(null);
+            return;
+        }
+        _setAnimationRate(intRate);
     }, []);
 
     const handleAssetPicker = useCallback(() => {
@@ -178,6 +190,7 @@ export default function Settings() {
     useEffect(() => {
         _setMostRecentSize(getSettingsValue(LOCAL_STORAGE_KEYS.MOST_RECENT_SPELLS_LIST_SIZE));
         _setGridScalingFactor(getSettingsValue(LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR));
+        _setAnimationRate(getSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE));
         setKeepTargets(getSettingsValue(LOCAL_STORAGE_KEYS.KEEP_SELECTED_TARGETS));
         setDefaultCaster(getSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER));
     }, []);
@@ -235,6 +248,17 @@ export default function Settings() {
         }
         setSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER, defaultCaster);
     }, [defaultCaster]);
+
+    useEffect(() => {
+        if (animationRate == null) {
+            return;
+        }
+        if (isNaN(animationRate) || animationRate <= 0) {
+            setSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE, null);
+            return;
+        }
+        setSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE, animationRate);
+    }, [animationRate]);
 
     useEffect(() => {
         if (playersCastSpells == null) {
@@ -311,6 +335,19 @@ export default function Settings() {
                         className="settings-input"
                         value={mostRecentSize ?? ""}
                         onChange={event => setMostRecentSize(event.target.value)}
+                    />
+                </div>
+                <div className="settings-item">
+                    <label htmlFor="animation-update-rate" title="How many updates (per second) are performed when animating items. WARNING: setting this to a high value may lag your computer.">
+                        <p>Animation update rate</p>
+                    </label>
+                    <input
+                        name="animation-update-rate"
+                        min="0"
+                        type="number"
+                        className="settings-input"
+                        value={animationRate ?? ""}
+                        onChange={event => setAnimationRate(event.target.value)}
                     />
                 </div>
             </div>

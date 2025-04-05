@@ -66,6 +66,10 @@ export function downloadFileFromString(content: string, filename: string, MIMETy
     window.URL.revokeObjectURL(url);
 }
 
+export function setDifference<T>(a: Set<T>, b: Set<T>): Set<T> {
+    return new Set([...a].filter(x => !b.has(x)));
+}
+
 function linear(t: number): number {
     return t;
 }

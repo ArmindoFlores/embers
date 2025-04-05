@@ -1,5 +1,6 @@
 import { EffectInstruction, InteractionData, MessageType } from "../types/messageListener";
-import OBR, { Image, InteractionManager, UpdateInteraction, isImage } from "@owlbear-rodeo/sdk";
+import { LOCAL_STORAGE_KEYS, getSettingsValue } from "./Settings";
+import OBR, { Image, InteractionManager, isImage } from "@owlbear-rodeo/sdk";
 import { aoe, cone, getEffect, projectile } from "../effects";
 import { log_error, log_warn } from "../logging";
 import { useCallback, useEffect, useState } from "react";
@@ -14,49 +15,133 @@ import { useOBR } from "../react-obr/providers";
 export const MESSAGE_CHANNEL = `${APP_KEY}/effects`;
 export const BLUEPRINTS_CHANNEL = `${APP_KEY}/blueprints`;
 
-async function createItemInteractions({ ids, count }: InteractionData): Promise<InteractionManager<Image[]>> {
-    const originalItems = await OBR.scene.items.getItems(ids);
-    const localItems = originalItems.map(item => ({...item, id: `embers-copy-${item.id}` })).filter(item => isImage(item));
+export type InteractionUpdateFunc = (items: Image[], elapsed: number) => boolean;
 
-    await Promise.all([
-        OBR.scene.items.updateItems(originalItems, items => {
-            for (const item of items) {
-                console.log("Hiding", item);
-                item.visible = false;
-            }
-        }),
+export interface Interaction {
+    manager: InteractionManager<Image[]>;
+    registerUpdates: (items: Image[], onUpdate: InteractionUpdateFunc) => Promise<Image[]>;
+    trackedIDs: string[];
+    getLastKnownState: (items: string[]) => Image[];
+}
+
+async function createItemInteractions({ ids, count }: InteractionData, localOnly: boolean): Promise<Interaction> {
+    const originalItems = await OBR.scene.items.getItems(ids);
+    const localItems = originalItems.map(item => ({...item, id: `embers-copy-${item.id}`, visible: true })).filter(item => isImage(item));
+    const localItemIDs = localItems.map(item => item.id);
+    const originalItemIDs = originalItems.map(item => item.id);
+
+    const setupPromises = [
         OBR.scene.local.addItems(localItems),
-    ]);
+    ];
+    if (!localOnly) {
+        setupPromises.push(
+            OBR.scene.items.updateItems(originalItems, items => {
+                for (const item of items) {
+                    item.visible = false;
+                }
+            }
+        ));
+    }
+    await Promise.all(setupPromises);
 
     const [update, stop] = await OBR.interaction.startItemInteraction(localItems);
-    return [
-        (draft: UpdateInteraction<Image[]>) => {
-            if (count > 0) {
-                return update(draft);
-            }
-            return [];
-        },
-        () => {
-            count--;
-            if (count == 0) {
-                stop();
-                OBR.scene.local.deleteItems(localItems.map(item => item.id));
-                OBR.scene.items.updateItems(originalItems.map(item => item.id), items => {
-                    for (const item of items) {
-                        console.log("Showing", originalItems.find(originalItem => originalItem.id === item.id)?.visible);
-                        item.visible = originalItems.find(originalItem => originalItem.id === item.id)?.visible ?? true;
+    const ongoingUpdaters: { start: number, onUpdate: InteractionUpdateFunc, items: Image[], resolve: (items: Image[]) => void, resolved: boolean }[] = [];
+
+    const updateDelay = 1000 / getSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE);
+
+    // Register a callback every "updateDelay" milliseconds
+    const key = "interaction:" + crypto.randomUUID();
+    const worker = window.embersWorker;
+    let latestItems: Image[] = [];
+
+    const onMessage = (message: MessageEvent) => {
+        if (message.data === key) {
+            const now = Date.now();
+
+            latestItems = update(itemsToUpdate => {
+                for (const updater of ongoingUpdaters) {
+                    const elapsed = now - updater.start;
+                    const updaterItemIDs = updater.items.map(item => item.id.startsWith("embers-copy-") ? item.id : `embers-copy-${item.id}`);
+                    const keepGoing = updater.onUpdate(
+                        itemsToUpdate.filter(itemToUpdate => updaterItemIDs.includes(itemToUpdate.id.toString())),
+                        elapsed
+                    );
+                    if (!keepGoing) {
+                        count--;
+                        updater.resolve(updater.items);
+                        updater.resolved = true;
                     }
-                });
+                }
+            });
+
+            for (let i = ongoingUpdaters.length - 1; i >= 0; i--) {
+                if (ongoingUpdaters[i].resolved === true) {
+                    ongoingUpdaters.splice(i, 1);
+                }
+            }
+
+            if (count > 0) {
+                worker.postMessage({ duration: updateDelay, id: key });
+            }
+            else {
+                worker.removeEventListener("message", onMessage);
+                stop();
+                if (!localOnly) {
+                    OBR.scene.items.updateItems(originalItemIDs, items => {
+                        for (const item of items) {
+                            const localItem = latestItems.find(latestItem => latestItem.id === `embers-copy-${item.id}`);
+                            if (!localItem) continue;
+                            item.visible = localItem.visible ?? true;
+                            item.position = localItem.position;
+                            item.scale = localItem.scale;
+                            item.rotation = localItem.rotation;
+                            item.locked = localItem.locked;
+                        }
+                    });
+                }
+                OBR.scene.local.deleteItems(localItemIDs);
             }
         }
-    ];
+    };
+
+    worker.addEventListener("message", onMessage);
+    worker.postMessage({ duration: updateDelay, id: key });
+
+    const registerUpdates = async (items: Image[], onUpdate: InteractionUpdateFunc) => {
+        return new Promise<Image[]>(resolve => {
+            ongoingUpdaters.push({
+                start: (new Date()).getTime(),
+                items,
+                onUpdate,
+                resolve,
+                resolved: false
+            });
+        });
+    }
+
+    const getLastKnownState = (items: string[]) => {
+        return latestItems.filter(item => items.includes(item.id));
+    }
+
+    const onUserCalledStop = () => {
+    }
+
+    return {
+        manager: [
+            update,
+            onUserCalledStop
+        ],
+        registerUpdates,
+        trackedIDs: ids,
+        getLastKnownState
+    };
 }
 
 export function MessageListener({ effectRegister }: { effectRegister: Map<string, number> }) {
     const obr = useOBR();
     const [dpi, setDpi] = useState(400);
 
-    const processInstruction = useCallback((instruction: EffectInstruction, spellName?: string, spellCaster?: string, interactionManager?: InteractionManager<Image[]>) => {
+    const processInstruction = useCallback((instruction: EffectInstruction, spellName?: string, spellCaster?: string, interaction?: Interaction) => {
         const doMoreWork = (instructions?: EffectInstruction[]) => {
             if (instructions == undefined) {
                 return;
@@ -236,7 +321,7 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
                         log_error(`Invalid blueprint: undefined action "${instruction.id}"`);
                         return;
                     }
-                    action(interactionManager, localOnly, ...(instruction.arguments ?? []));
+                    action(interaction, localOnly, ...(instruction.arguments ?? []));
                 }
                 else {
                     log_error(`Invalid instruction type "${instruction.type}"`);
@@ -288,15 +373,19 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
             }
             const spellName = messageData.spellData ? messageData.spellData.name : undefined;
             const spellCaster = messageData.spellData ? messageData.spellData.caster : undefined;
-            const interactionPromise = messageData.interactions.ids.length === 0 ? (new Promise<undefined>(resolve => resolve(undefined))) : createItemInteractions(messageData.interactions);
 
-            interactionPromise.then(interactionManager => {
-                for (const instruction of messageData.instructions) {
-                    processInstruction(instruction, spellName, spellCaster, interactionManager);
-                }
-            }).catch((error: Error) => {
-                log_error(error);
+            OBR.player.getId().then(playerId => {
+                const interactionPromise = messageData.interactions.ids.length === 0 ?
+                    (new Promise<undefined>(resolve => resolve(undefined))) :
+                    createItemInteractions(messageData.interactions, spellCaster != undefined && playerId !== spellCaster);
 
+                interactionPromise.then(interaction => {
+                    for (const instruction of messageData.instructions) {
+                        processInstruction(instruction, spellName, spellCaster, interaction);
+                    }
+                }).catch((error: Error) => {
+                    log_error(error);
+                });
             });
         });
 
