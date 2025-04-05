@@ -472,7 +472,7 @@
                 }
             },
             {
-                "id": "generic.marker.circle_of_stars",
+                "id": "generic.item.glint.many",
                 "delay": 3500,
                 "duration": -1,
                 "disableHit": true,
@@ -758,12 +758,25 @@
                 "content": {
                     "min": 1
                 }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": false
             }
         ],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "darkness.transparent",
+                "id": {
+                    "name": "if",
+                    "arguments": ["$transparent", "darkness.black.transparent", "darkness.black.opaque"]
+                },
+                "layer": {
+                    "name": "if",
+                    "arguments": ["$transparent", null, "FOG"]
+                },
                 "duration": -1,
                 "disableHit": true,
                 "effectProperties": {
@@ -1982,6 +1995,49 @@
                 "type": "effect",
                 "id": "whirlwind",
                 "duration": -1,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": "$radius"
+                }
+            }
+        ]
+    },
+    "cloudkill": {
+        "name": "Cloudkill",
+        "minTargets": 1,
+        "thumbnail": "2nd_Level/Darkness/Darkness_01_Green_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [
+            {
+                "name": "Radius (in cells)",
+                "id": "radius",
+                "type": "number",
+                "defaultValue": 8,
+                "content": {
+                    "min": 1
+                }
+            },
+            {
+                "name": "Transparency",
+                "id": "transparent",
+                "type": "boolean",
+                "defaultValue": false
+            }
+        ],
+        "blueprints": [
+            {
+                "type": "effect",
+                "id": {
+                    "name": "if",
+                    "arguments": ["$transparent", "darkness.green.transparent", "darkness.green.opaque"]
+                },
+                "layer": {
+                    "name": "if",
+                    "arguments": ["$transparent", null, "FOG"]
+                },
+                "duration": -1,
+                "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$radius"
