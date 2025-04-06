@@ -1,5 +1,6 @@
 import "./CustomSpells.css";
 
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Fade, FormControl, MenuItem, Select, Typography } from "@mui/material";
 import {
     FaCirclePlus,
     FaCopy,
@@ -8,6 +9,7 @@ import {
     FaTrash,
     FaUpload,
 } from "react-icons/fa6";
+import OBR, { Theme } from "@owlbear-rodeo/sdk";
 import { Spell, Spells } from "../types/spells";
 import { downloadFileFromString, loadJSONFile } from "../utils";
 import { getSpell, spellIDs } from "../effects/spells";
@@ -16,9 +18,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { APP_KEY } from "../config";
 import { Modal } from "@owlbear-rodeo/sdk/lib/types/Modal";
-import OBR from "@owlbear-rodeo/sdk";
-import ReactModal from "react-modal";
-import { Typography } from "@mui/material";
 import { log_info } from "../logging";
 import { useOBR } from "../react-obr/providers";
 
@@ -113,9 +112,9 @@ function verifySpells(spells: unknown) {
 export default function CustomSpells() {
     const obr = useOBR();
     const [customSpells, setCustomSpells] = useState<string[]>([]);
-    const [isModalClosing, setIsModalClosing] = useState<boolean>(false);
     const [modalOpened, setModalOpened] = useState<ModalType | null>(null);
     const [selectedSpellID, setSelectedSpellID] = useState("");
+    const [theme, setTheme] = useState<Theme>();
     const mainDiv = useRef<HTMLDivElement>(null);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -156,18 +155,18 @@ export default function CustomSpells() {
         );
     }, []);
 
-    const openModal = (modalName: ModalType) => {
-        setIsModalClosing(false);
-        setModalOpened(modalName);
+    const closeModal = () => {
+        setModalOpened(null);
     };
 
-    const closeModal = () => {
-        setIsModalClosing(true);
-        setTimeout(() => {
-            setModalOpened(null);
-            setIsModalClosing(false);
-        }, 300);
-    };
+    useEffect(() => {
+        if (!obr.ready) {
+            return;
+        }
+
+        OBR.theme.getTheme().then(theme => setTheme(theme));
+        return OBR.theme.onChange(theme => setTheme(theme));
+    }, [obr.ready]);
 
     useEffect(() => {
         OBR.scene.getMetadata().then((metadata) => {
@@ -210,7 +209,7 @@ export default function CustomSpells() {
                     <FaCopy
                         title="Add a new custom spell based off of an existing one"
                         style={{ marginLeft: "0.5rem", cursor: "pointer" }}
-                        onClick={() => openModal("choose-spell")}
+                        onClick={() => setModalOpened("choose-spell")}
                     />
                     <FaUpload
                         title="Import a list of spells"
@@ -225,7 +224,7 @@ export default function CustomSpells() {
                     <FaTrash
                         title="Delete all custom spells"
                         style={{ marginLeft: "0.5rem", cursor: "pointer" }}
-                        onClick={() => openModal("remove-all-spells")}
+                        onClick={() => setModalOpened("remove-all-spells")}
                     />
                 </Typography>
                 {customSpells.length == 0 && <p>No custom spells yet.</p>}
@@ -257,83 +256,107 @@ export default function CustomSpells() {
                     })}
                 </ul>
             </div>
-            <ReactModal
-                isOpen={modalOpened === "choose-spell"}
-                onRequestClose={closeModal}
-                overlayClassName={`modal-overlay ${
-                    isModalClosing ? "fade-out" : ""
-                }`}
-                className={`modal-content ${isModalClosing ? "fade-out" : ""}`}
-                appElement={mainDiv.current!}
+            <Dialog
+                open={modalOpened === "choose-spell"}
+                onClose={closeModal}
+                slots={{ transition: Fade }}
+                slotProps={{ transition: { timeout: 300 }, paper: { sx: { backgroundColor: theme?.background?.paper } } }}
+                fullWidth
+                maxWidth="sm"
             >
-                <p className="large">Choose the spell to copy:</p>
-                <select
-                    className="settings-select"
-                    value={selectedSpellID}
-                    onChange={(event) => setSelectedSpellID(event.target.value)}
-                >
-                    <option disabled value="">
-                        Select a spell
-                    </option>
-                    {spellIDs
-                        .sort((a, b) => a.localeCompare(b))
-                        .map((spellID) => {
-                            const spell = getSpell(spellID, true);
-                            if (spell == undefined) return null;
-                            return (
-                                <option key={spellID} value={spellID}>
-                                    {spell.name}
-                                </option>
-                            );
-                        })}
-                </select>
-                <div style={{ height: "1rem" }}></div>
-                <div className="row" style={{ justifyContent: "space-evenly" }}>
-                    <button
+                <DialogTitle>
+                    Choose the spell to copy:
+                </DialogTitle>
+
+                <DialogContent>
+                    <FormControl fullWidth sx={{ mt: 2 }}>
+                        <Select
+                            labelId="select-spell-label"
+                            value={selectedSpellID}
+                            onChange={(event) => setSelectedSpellID(event.target.value)}
+                            label="Spell"
+                            inputProps={{
+                                MenuProps: {
+                                    MenuListProps: {
+                                        sx: {
+                                            backgroundColor: theme?.background?.paper
+                                        }
+                                    }
+                                }
+                            }}
+                        >
+                            <MenuItem disabled value="" >
+                                Select a spell
+                            </MenuItem>
+                            {spellIDs
+                                .sort((a, b) => a.localeCompare(b))
+                                .map((spellID) => {
+                                    const spell = getSpell(spellID, true);
+                                    if (spell == undefined) return null;
+                                    return (
+                                        <MenuItem key={spellID} value={spellID}>
+                                            {spell.name}
+                                        </MenuItem>
+                                    );
+                                })}
+                        </Select>
+                    </FormControl>
+                </DialogContent>
+
+                <DialogActions sx={{ justifyContent: "space-evenly", padding: "2rem" }}>
+                    <Button
+                        variant="contained"
                         onClick={() => {
                             closeModal();
                             openOBRModal(selectedSpellID);
                         }}
                     >
-                        Edit
-                    </button>
-                    <button className="secondary" onClick={() => closeModal()}>
+                        Add
+                    </Button>
+                    <Button variant="outlined" onClick={closeModal}>
                         Cancel
-                    </button>
-                </div>
-            </ReactModal>
-            <ReactModal
-                isOpen={modalOpened === "remove-all-spells"}
-                onRequestClose={closeModal}
-                overlayClassName={`modal-overlay ${
-                    isModalClosing ? "fade-out" : ""
-                }`}
-                className={`modal-content ${isModalClosing ? "fade-out" : ""}`}
-                appElement={mainDiv.current!}
+                    </Button>
+                </DialogActions>
+            </Dialog>
+            <Dialog
+                open={modalOpened === "remove-all-spells"}
+                onClose={closeModal}
+                slots={{ transition: Fade }}
+                slotProps={{ transition: { timeout: 300 }, paper: { sx: { backgroundColor: theme?.background?.paper } } }}
+                fullWidth
+                maxWidth="sm"
             >
-                <p className="large" style={{ display: "block" }}>
-                    Are you sure you want to delete <b>all</b> your custom
-                    spells?
-                </p>
-                <p style={{ textAlign: "left" }}>
-                    This action is irreversible unless you have previously
-                    exported this list of spells.
-                </p>
-                <div style={{ height: "1rem" }}></div>
-                <div className="row" style={{ justifyContent: "space-evenly" }}>
-                    <button
+                <DialogTitle>
+                    <Typography variant="h6">Delete spell group</Typography>
+                </DialogTitle>
+
+                <DialogContent>
+                    <Typography variant="body1" gutterBottom>
+                        <strong>
+                            Are you sure you want to delete <b>all</b> your custom
+                            spells?{" "}
+                        </strong>
+                        This action is irreversible unless you have previously
+                        exported this list of spells.
+                    </Typography>
+                </DialogContent>
+
+                <Box sx={{ alignItems: "center", padding: "2rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    <Button variant="outlined" color="inherit" onClick={closeModal}>
+                        Cancel
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
                         onClick={() => {
                             closeModal();
                             removeAllSpells();
                         }}
                     >
                         Yes, delete all spells
-                    </button>
-                    <button className="secondary" onClick={() => closeModal()}>
-                        Cancel
-                    </button>
-                </div>
-            </ReactModal>
+                    </Button>
+                </Box>
+            </Dialog>
         </div>
     );
 }

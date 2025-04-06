@@ -1,10 +1,9 @@
-import { Button, Checkbox, Typography } from "@mui/material";
-import OBR, { GridScale, isImage } from "@owlbear-rodeo/sdk";
+import { Box, Button, Checkbox, Dialog, DialogContent, DialogTitle, Fade, Typography } from "@mui/material";
+import OBR, { GridScale, Theme, isImage } from "@owlbear-rodeo/sdk";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 /* eslint-disable react-refresh/only-export-components */
 import { APP_KEY } from "../config";
-import ReactModal from "react-modal";
 import { SimplifiedItem } from "../types/misc";
 import { useOBR } from "../react-obr/providers";
 
@@ -63,7 +62,7 @@ function parseGridScale(raw: string): GridScale {
     return { raw, parsed: { multiplier: 1, unit: "", digits: 0 } };
 }
 
-function tryComputeGridScaling(gridScale: GridScale|null) {
+function tryComputeGridScaling(gridScale: GridScale | null) {
     if (gridScale == null) {
         return null;
     }
@@ -118,16 +117,16 @@ export async function setGlobalSettingsValue(key: string, value: unknown) {
 export default function Settings() {
     const obr = useOBR();
 
-    const [mostRecentSize, _setMostRecentSize] = useState<number|null>(null);
-    const [gridScalingFactor, _setGridScalingFactor] = useState<number|null>(null);
-    const [keepTargets, setKeepTargets] = useState<boolean|null>(null);
-    const [playersCastSpells, setPlayersCastSpells] = useState<boolean|null>(null);
-    const [summonedEntities, setSummonedEntities] = useState<string|null>(null);
-    const [gridScale, setGridScale] = useState<GridScale|null>(null);
-    const [defaultCaster, setDefaultCaster] = useState<SimplifiedItem[]|null>(null);
-    const [animationRate, _setAnimationRate] = useState<number|null>(null);
-    const [isModalClosing, setIsModalClosing] = useState(false);
-    const [modalOpened, setModalOpened] = useState<ModalType|null>(null);
+    const [mostRecentSize, _setMostRecentSize] = useState<number | null>(null);
+    const [gridScalingFactor, _setGridScalingFactor] = useState<number | null>(null);
+    const [keepTargets, setKeepTargets] = useState<boolean | null>(null);
+    const [playersCastSpells, setPlayersCastSpells] = useState<boolean | null>(null);
+    const [summonedEntities, setSummonedEntities] = useState<string | null>(null);
+    const [gridScale, setGridScale] = useState<GridScale | null>(null);
+    const [defaultCaster, setDefaultCaster] = useState<SimplifiedItem[] | null>(null);
+    const [animationRate, _setAnimationRate] = useState<number | null>(null);
+    const [modalOpened, setModalOpened] = useState<ModalType | null>(null);
+    const [theme, setTheme] = useState<Theme>();
     const mainDiv = useRef<HTMLDivElement>(null);
 
     const setMostRecentSize = useCallback((size: string) => {
@@ -170,7 +169,7 @@ export default function Settings() {
             OBR.scene.items.getItems(itemIDs).then(items => {
                 const selection = items.filter(item => isImage(item));
                 if (selection.length > 0) {
-                    setDefaultCaster(selection.map(selected => ({...selected, type: "CHARACTER"})));
+                    setDefaultCaster(selection.map(selected => ({ ...selected, type: "CHARACTER" })));
                 }
             })
         });
@@ -184,18 +183,18 @@ export default function Settings() {
         setDefaultCaster(getSettingsValue(LOCAL_STORAGE_KEYS.DEFAULT_CASTER));
     }, []);
 
-    const openModal = (modalName: ModalType) => {
-        setIsModalClosing(false);
-        setModalOpened(modalName);
+    const closeModal = () => {
+        setModalOpened(null);
     };
 
-    const closeModal = () => {
-        setIsModalClosing(true);
-        setTimeout(() => {
-            setModalOpened(null);
-            setIsModalClosing(false);
-        }, 300);
-    };
+    useEffect(() => {
+        if (!obr.ready) {
+            return;
+        }
+
+        OBR.theme.getTheme().then(theme => setTheme(theme));
+        return OBR.theme.onChange(theme => setTheme(theme));
+    }, [obr.ready]);
 
     useEffect(() => {
         reloadSettings();
@@ -305,16 +304,16 @@ export default function Settings() {
                     <label>
                         <p>Default caster</p>
                     </label>
-                    <div style={{maxWidth: "15rem"}}>
+                    <div style={{ maxWidth: "15rem" }}>
                         <Button
-                            onClick={() => openModal("choose-caster-type")}
+                            onClick={() => setModalOpened("choose-caster-type")}
                             variant="outlined"
                             color="primary"
                         >
                             {
                                 (defaultCaster == null || defaultCaster.length == 0) ?
-                                "Select" :
-                                defaultCaster.map(image => image.name).join(", ")
+                                    "Select" :
+                                    defaultCaster.map(image => image.name).join(", ")
                             }
                         </Button>
                     </div>
@@ -338,7 +337,7 @@ export default function Settings() {
                     <label htmlFor="recent-spells-list-size">
                         <p>Keep selected targets</p>
                     </label>
-                    <Checkbox checked={keepTargets ?? false} onChange={(event) => {setKeepTargets(event.currentTarget.checked)}} />
+                    <Checkbox checked={keepTargets ?? false} onChange={(event) => { setKeepTargets(event.currentTarget.checked) }} />
                 </div>
                 <div className="settings-item">
                     <label htmlFor="recent-spells-list-size" title="The size of the recent spells list.">
@@ -369,14 +368,14 @@ export default function Settings() {
             </div>
             {
                 obr.player?.role === "GM" && <>
-                    <hr style={{margin: "0.5rem 0"}}></hr>
+                    <hr style={{ margin: "0.5rem 0" }}></hr>
                     <div>
                         <p className="subtitle" title="These settings apply to all players and can only be set by the GM.">GM Settings</p>
                         <div className="settings-item">
                             <label htmlFor="recent-spells-list-size" title="If set to false, only the GM can cast spells.">
                                 <p>Players can cast spells</p>
                             </label>
-                            <Checkbox checked={playersCastSpells ?? false} onChange={(event)=>{setPlayersCastSpells(event.currentTarget.checked)}} />
+                            <Checkbox checked={playersCastSpells ?? false} onChange={(event) => { setPlayersCastSpells(event.currentTarget.checked) }} />
                         </div>
                         <div className="settings-item" title={"Who should own items summoned by Embers. \"Caster\" means the player who cast the spell will own them, while \"GM\" means that the GM will own them regardless of who cast it."}>
                             <label htmlFor="recent-spells-list-size">
@@ -391,51 +390,55 @@ export default function Settings() {
                 </>
             }
         </div>
-        <ReactModal
-            isOpen={modalOpened === "choose-caster-type"}
-            onRequestClose={closeModal}
-            overlayClassName={`modal-overlay ${
-                isModalClosing ? "fade-out" : ""
-            }`}
-            className={`modal-content wide ${isModalClosing ? "fade-out" : ""}`}
-            appElement={mainDiv.current!}
+        <Dialog
+            open={modalOpened === "choose-caster-type"}
+            onClose={closeModal}
+            slots={{ transition: Fade }}
+            slotProps={{ transition: { timeout: 300 }, paper: { sx: { backgroundColor: theme?.background?.paper } } }}
+            fullWidth
+            maxWidth="sm"
         >
-            <div style={{textAlign: "left"}}>
-                <p>
-                    Please choose from one or more of your assets, or choose "Use Selected"
-                    to use your currently selected tokens.
-                </p>
-                <p>
-                    <span className="bold">Selected</span>:
-                    {
-                        " " + (defaultCaster == null || defaultCaster.length == 0 ? "None" : defaultCaster.map(image => image.name).join(", "))
-                    }
-                </p>
-                <br></br>
-                <div style={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
-                    <Button
-                        onClick={() => { handleAssetPicker(); closeModal(); }}
-                        variant="outlined"
-                        color="primary"
-                    >
-                        Open Assets
-                    </Button>
-                    <Button
-                        onClick={() => { handleSetCasterFromSelection(); closeModal(); }}
-                        variant="outlined"
-                        color="primary"
-                    >
-                        Use Selected
-                    </Button>
-                    <Button
-                        onClick={() => { setDefaultCaster([]); closeModal(); }}
-                        variant="outlined"
-                        color="primary"
-                    >
-                        Clear Selection
-                    </Button>
-                </div>
-            </div>
-        </ReactModal>
+            <DialogTitle>
+                Delete spell group
+            </DialogTitle>
+
+            <DialogContent>
+                <Typography variant="body1" gutterBottom>
+                    Please choose from one or more of your assets, or choose{" "}
+                    <strong>"Use Selected"</strong> to use your currently selected tokens.
+                </Typography>
+
+                <Typography variant="body1">
+                    <strong>Selected</strong>:{" "}
+                    {defaultCaster == null || defaultCaster.length === 0
+                        ? "None"
+                        : defaultCaster.map((image) => image.name).join(", ")}
+                </Typography>
+            </DialogContent>
+
+            <Box sx={{ alignItems: "center", padding: "2rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <Button
+                    onClick={() => { handleAssetPicker(); closeModal(); }}
+                    variant="outlined"
+                    color="primary"
+                >
+                    Open Assets
+                </Button>
+                <Button
+                    onClick={() => { handleSetCasterFromSelection(); closeModal(); }}
+                    variant="outlined"
+                    color="primary"
+                >
+                    Use Selected
+                </Button>
+                <Button
+                    onClick={() => { setDefaultCaster([]); closeModal(); }}
+                    variant="outlined"
+                    color="primary"
+                >
+                    Clear Selection
+                </Button>
+            </Box>
+        </Dialog>
     </div>;
 }
