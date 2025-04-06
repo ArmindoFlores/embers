@@ -8,6 +8,7 @@ import {
     FaTrash,
     FaUpload,
 } from "react-icons/fa6";
+import { Spell, Spells } from "../types/spells";
 import { downloadFileFromString, loadJSONFile } from "../utils";
 import { getSpell, spellIDs } from "../effects/spells";
 import { newSpellModalID, spellListMetadataKey } from "../views/NewSpellModal";
@@ -17,10 +18,9 @@ import { APP_KEY } from "../config";
 import { Modal } from "@owlbear-rodeo/sdk/lib/types/Modal";
 import OBR from "@owlbear-rodeo/sdk";
 import ReactModal from "react-modal";
-import { Spells } from "../types/spells";
+import { Typography } from "@mui/material";
 import { log_info } from "../logging";
 import { useOBR } from "../react-obr/providers";
-import { Typography } from "@mui/material";
 
 type ModalType = "choose-spell" | "remove-all-spells";
 
@@ -230,8 +230,7 @@ export default function CustomSpells() {
                 </Typography>
                 {customSpells.length == 0 && <p>No custom spells yet.</p>}
                 <ul className="custom-spells-list">
-                    {customSpells.map((spellID) => {
-                        const spell = getSpell(`$.${spellID}`, true);
+                    {customSpells.map(spellID => ([spellID, getSpell(`$.${spellID}`, true)] as [string, Spell])).filter(spell => spell[1] != undefined).sort((a, b) => a[1].name?.localeCompare?.(b[1].name ?? "") ?? 0).map(([spellID, spell]) => {
                         return (
                             <li key={spellID} className="custom-spells-item">
                                 <p>{spell?.name ?? "N/A"}</p>

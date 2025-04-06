@@ -25,6 +25,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import OBR from "@owlbear-rodeo/sdk";
 import ReactModal from "react-modal";
+import { Spell } from "../types/spells";
 import { useOBR } from "../react-obr/providers";
 
 type ModalType =
@@ -381,11 +382,7 @@ export default function SpellBook() {
                     </AccordionSummary>
                     <AccordionDetails>
                         <ul style={{ margin: 0 }} className="spellgroup-list">
-                            {spells.map((spellID, index) => {
-                                const spell = getSpell(spellID, isGM);
-                                if (spell == undefined) {
-                                    return null;
-                                }
+                            {spells.map(spellID => ([spellID, getSpell(spellID, isGM)] as [string, Spell])).filter(spell => spell[1] != undefined).sort((a, b) => a[1].name?.localeCompare?.(b[1].name ?? "") ?? 0).map(([spellID, spell], index) => {
                                 return (
                                     <li
                                         key={index}
