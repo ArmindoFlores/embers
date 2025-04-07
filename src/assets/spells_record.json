@@ -526,9 +526,26 @@
             {
                 "type": "effect",
                 "id": "hunters_mark.pulse",
+                "zIndex": 10,
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
+                }
+            },
+            {
+                "type": "effect",
+                "id": "hunters_mark.loop",
+                "delay": 2500,
+                "duration": -1,
+                "attachedTo": "$targets[0].id",
+                "disableHit": true,
+                "zIndex": 1,
+                "effectProperties": {
+                    "source": "$targets[0].position",
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size", 0.5]
+                    }
                 }
             }
         ]
