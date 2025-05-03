@@ -6,7 +6,6 @@ image: https://embers.armindo.eu/cover.png
 icon: https://embers.armindo.eu/embers.svg
 tags:
   - combat
-  - other
 manifest: https://embers.armindo.eu/manifest.json
 learn-more: francisco.rodrigues0908@gmail.com
 ---
