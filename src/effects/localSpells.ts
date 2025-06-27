@@ -1,4 +1,4 @@
-import { log_error, log_info } from "../logging";
+import { log_info, log_warn } from "../logging";
 
 import { APP_KEY } from "../config";
 import OBR from "@owlbear-rodeo/sdk";
@@ -99,7 +99,7 @@ export function setupPlayerLocalSpells(roomId: string, playerID: string) {
             }
         }
         else {
-            log_error(`Invalid message type "${data.type}"`);
+            log_warn(`Invalid message type "${data.type}"`);
         }
     });
     OBR.broadcast.sendMessage(
@@ -164,7 +164,7 @@ export function setupGMLocalSpells(playerConnections: Record<string, string>) {
             }
         }
         else {
-            log_error(`Invalid message type "${data.type}"`);
+            log_warn(`Invalid message type "${data.type}"`);
         }
     });
 
