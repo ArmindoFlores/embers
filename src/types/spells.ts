@@ -15,12 +15,16 @@ export interface NumberContent {
 
 export type BooleanContent = undefined;
 
+export interface AssetContent {
+    multiple: boolean;
+}
+
 export interface Parameter {
     name: string;
     id: string;
     type: ParameterType;
     defaultValue: unknown;
-    content?: OptionsContent | NumberContent | BooleanContent;
+    content?: OptionsContent | NumberContent | BooleanContent | AssetContent;
 }
 
 export interface Spell {
