@@ -2,10 +2,10 @@ import "./NewSpellModal.css";
 
 import { AOEEffectBlueprint, BlueprintFunction, BlueprintType, BlueprintValue, EffectBlueprint, ProjectileBlueprint } from "../types/blueprint";
 import { APP_KEY, ASSET_LOCATION } from "../config";
+import { AssetContent, NumberContent, OptionsContent, Parameter, ParameterType, ReplicationType, Spell } from "../types/spells";
 import { Effect, EffectType } from "../types/effects";
-import { FaArrowLeft, FaCirclePlus, FaFloppyDisk, FaPencil, FaTrash } from "react-icons/fa6";
+import { FaArrowLeft, FaCircleMinus, FaCirclePlus, FaFloppyDisk, FaPencil, FaTrash } from "react-icons/fa6";
 import OBR, { Layer } from "@owlbear-rodeo/sdk";
-import { ReplicationType, Spell } from "../types/spells";
 import { effectNames, getEffect, getEffectURL, getVariantName } from "../effects";
 import { isBlueprintVariable, isUnresolvedBlueprint } from "../effects/blueprint";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -23,7 +23,7 @@ const LAYERS: Layer[] = ["ATTACHMENT", "CHARACTER", "CONTROL", "DRAWING", "FOG",
 type ValueType = "string" | "number" | "boolean" | "vector" | "effect" | "action" | "layer";
 
 interface Editable<T = unknown> {
-    type: "effect" | "action" | "value" | "spell";
+    type: "effect" | "action" | "value" | "spell" | "parameter";
     value: T;
     setValue: (v: T) => void;
     valueType?: ValueType;
@@ -457,6 +457,212 @@ function EditAction({ action, setAction, close }: { action: EffectBlueprint, set
     </div>;
 }
 
+function EditParameter({ parameter, setParameter, close }: { parameter: Parameter, setParameter: (v: Parameter) => void, close: () => void }) {
+    const [parameterID, setParameterID] = useState<string|null>(null);
+    const [parameterType, setParameterType] = useState<ParameterType|null>(null);
+    const [parameterName, setParameterName] = useState<string|null>(null);
+    const [defaultValue, setDefaultValue] = useState<string|number|boolean|null>(null);
+    const [numberContent, setNumberContent] = useState<NumberContent|null>(null);
+    const [assetContent, setAssetContent] = useState<AssetContent|null>(null);
+    const [optionsContent, setOptionsContent] = useState<OptionsContent|null>(null);
+
+    const onClose = useCallback(() => {
+        if (parameterID == null) {
+            return;
+        }
+
+        let content = undefined;
+        switch (parameterType) {
+            case "asset":
+                content = assetContent;
+                break;
+            case "number":
+                content = numberContent;
+                break;
+            case "options":
+                content = optionsContent;
+                break;
+        }
+
+        setParameter({
+            id: parameterID,
+            type: parameterType ?? "options",
+            name: parameterName ?? "",
+            defaultValue: defaultValue,
+            content: content ?? undefined
+        });
+
+        close();
+    }, [close, parameterID, setParameter, parameterType, parameterName, defaultValue, assetContent, numberContent, optionsContent]);
+
+    useEffect(() => {
+        setParameterID(parameter.id ?? null);
+        setParameterType(parameter.type);
+        setParameterName(parameter.name);
+        setDefaultValue(parameter.defaultValue as (string|number|boolean|null|undefined) ?? null);
+        if (parameter.content != undefined) {
+            if (parameter.type === "asset") {
+                setAssetContent(parameter.content as AssetContent);
+            }
+            else if (parameter.type === "number") {
+                setNumberContent(parameter.content as NumberContent);
+            }
+            else if (parameter.type === "options") {
+                setOptionsContent(parameter.content as OptionsContent);
+            }
+        }
+    }, [parameter, setParameter]);
+
+    return <div className="edit-parameter-modal">
+        <p className="modal-title" style={{display: "flex", alignItems: "center"}}>
+            <FaArrowLeft style={{marginRight: "0.5rem", cursor: "pointer"}} onClick={onClose} />
+            Edit Parameter
+        </p>
+        <p className="title">Details</p>
+        <div className="row">
+            <div>
+                <label htmlFor="parameter-id"><p>Parameter ID</p></label>
+                <input name="parameter-id" value={parameterID ?? ""} onChange={e => setParameterID(e.target.value)}></input>
+            </div>
+            <div>
+                <label htmlFor="parameter-name"><p>Parameter Name</p></label>
+                <input name="parameter-name" value={parameterName ?? ""} onChange={e => setParameterName(e.target.value)}></input>
+            </div>
+        </div>
+        <div className="row">
+            <div>
+                <label htmlFor="parameter-type"><p>Parameter Type</p></label>
+                <select name="parameter-type" value={parameterType ?? ""} onChange={e => setParameterType(e.target.value as ParameterType)}>
+                    <option value="" disabled>Select a type...</option>
+                    <option value="number">Number</option>
+                    <option value="options">Options</option>
+                    <option value="asset">Asset</option>
+                    <option value="boolean">Boolean</option>
+                </select>
+            </div>
+            <div>
+                <label htmlFor="default-value"><p>Default Value</p></label>
+                {
+                    parameterType == "number" &&
+                    <input type="number" value={typeof defaultValue === "number" ? defaultValue : ""} onChange={e => setDefaultValue(parseFloat(e.target.value))}></input>
+                }
+                {
+                    parameterType == "boolean" &&
+                    <select value={typeof defaultValue === "boolean" ? (defaultValue ? "t" : "f") : ""} onChange={(e => setDefaultValue(e.target.value === "t"))} style={{width: "18.3rem"}}>
+                        <option value="" disabled>Select a value...</option>
+                        <option value="f">False</option>
+                        <option value="t">True</option>
+                    </select>
+                }
+                {
+                    parameterType == "options" &&
+                    <select style={{width: "18.3rem"}} value={typeof defaultValue === "string" ? defaultValue : ""} onChange={e => setDefaultValue(e.target.value)}>
+                        <option value="" disabled>Select a default value...</option>
+                        {
+                            (optionsContent ?? []).map(opt => (
+                                <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))
+                        }
+                    </select>
+                }
+                {
+                    parameterType == "asset" &&
+                    <p style={{width: "18rem"}}>Not possible to set</p>
+                }
+                {
+                    parameterType == null &&
+                    <p style={{width: "18rem"}}>Select a type</p>
+                }
+            </div>
+        </div>
+        <br></br>
+        {
+            parameterType != null && parameterType != "boolean" &&
+            <p className="title">Settings</p>
+        }
+        <div>
+            {
+                parameterType == "number" && <div className="row">
+                    <div>
+                        <label htmlFor="min-value"><p>Minimum</p></label>
+                        <input
+                            name="min-value"
+                            type="number"
+                            value={numberContent?.min ?? ""}
+                            onChange={e => e.target.value != "" ? setNumberContent(old => ({ ...old, min: parseFloat(e.target.value)})) : setNumberContent(old => ({ max: old?.max }))}
+                        ></input>
+                    </div>
+                    <div>
+                        <label htmlFor="max-value"><p>Maximum</p></label>
+                        <input
+                            name="max-value"
+                            type="number"
+                            value={numberContent?.max ?? ""}
+                            onChange={e => e.target.value != "" ? setNumberContent(old => ({ ...old, max: parseFloat(e.target.value)})) : setNumberContent(old => ({ min: old?.min }))}
+                        ></input>
+                    </div>
+                </div>
+            }
+            {
+                parameterType == "asset" && <div className="row">
+                    <div>
+                        <label htmlFor="multiple"><p>Allow multiple selections</p></label>
+                        <select name="multiple" value={assetContent?.multiple ? "t" : "f"} onChange={e => setAssetContent({multiple: e.target.value === "t"})}>
+                            <option value="t">True</option>
+                            <option value="f">False</option>
+                        </select>
+                    </div>
+                </div>
+            }
+            {
+                parameterType == "options" && <div>
+                    {
+                        (optionsContent ?? []).map((opt, i) => <div key={i} className="row">
+                            <label>
+                                <p>Label</p>
+                                <input
+                                    value={opt.label}
+                                    onChange={e => setOptionsContent(old => {
+                                        if (old == null) {
+                                            return null;
+                                        }
+                                        const filtered = old.filter((_, idx) => idx != i);
+                                        filtered.splice(i, 0, { value: opt.value, label: e.target.value });
+                                        return filtered;
+                                    })}
+                                ></input>
+                            </label>
+                            <label>
+                                <p>Value</p>
+                                <input
+                                    value={opt.value}
+                                    onChange={e => setOptionsContent(old => {
+                                        if (old == null) {
+                                            return null;
+                                        }
+                                        const filtered = old.filter((_, idx) => idx != i);
+                                        filtered.splice(i, 0, { value: e.target.value, label: opt.label });
+                                        return filtered;
+                                    })}
+                                >
+                                </input>
+                            </label>
+                            <FaCircleMinus
+                                style={{ marginLeft: "0.25rem", cursor: "pointer" }}
+                                onClick={() => setOptionsContent(old => old?.filter?.(o => o.value !== opt.value) ?? null)}
+                            />
+                        </div>)
+                    }
+                    <FaCirclePlus
+                        style={{ marginLeft: "0.25rem", cursor: "pointer" }}
+                        onClick={() => setOptionsContent(old => [...(old ?? []), { label: `Option #${old?.length ?? -1+1}`, value: `option-${old?.length ?? -1+1}`}])}
+                    />
+                </div>
+            }
+        </div>
+    </div>;
+}
+
 function EditEffect({ effect, setEffect, close }: { effect: EffectBlueprint, setEffect: (v: EffectBlueprint) => void, close: () => void }) {
     const [effectID, setEffectID] = useState<BlueprintValue<string>|null>(null);
     const [attachedTo, setAttachedTo] = useState<BlueprintValue<string>|null>(null);
@@ -700,8 +906,9 @@ export default function NewSpellModal() {
     const [replicate, setReplicate] = useState<string|null>(null);
     const [copy, _setCopy] = useState<number|null>(null);
     const [blueprints, setBlueprints] = useState<EffectBlueprint[]>([]);
+    const [parameters, setParameters] = useState<Parameter[]>([]);
     const [thumbnail, setThumbnail] = useState<string>();
-    const [editing, setEditing] = useState<Editable<EffectBlueprint>>();
+    const [editing, setEditing] = useState<Editable<Parameter> | Editable<EffectBlueprint>>();
     const [isGM, setIsGM] = useState(false);
     const [selectingThumbnail, setSelectingThumbnail] = useState<boolean>(false);
 
@@ -717,6 +924,12 @@ export default function NewSpellModal() {
         );
     }, []);
 
+    const removeParameter = useCallback((index: number) => {
+        setParameters((oldParameters) =>
+            oldParameters.filter((_, i) => i !== index)
+        );
+    }, []);
+
     const saveSpell = useCallback(() => {
         const spell: Spell = {
             name: spellName ?? undefined,
@@ -725,6 +938,7 @@ export default function NewSpellModal() {
             replicate: replicate as ReplicationType|null ?? undefined,
             copy: copy ?? undefined,
             blueprints: blueprints,
+            parameters: parameters,
             thumbnail: thumbnail
         };
         const spellJSON = JSON.stringify(spell);
@@ -746,7 +960,7 @@ export default function NewSpellModal() {
         });
 
         OBR.modal.close(newSpellModalID);
-    }, [spellName, spellID, minTargets, maxTargets, replicate, copy, blueprints, thumbnail]);
+    }, [spellName, spellID, minTargets, maxTargets, replicate, copy, blueprints, parameters, thumbnail]);
 
     const SpellBlueprint = useCallback(({ blueprint, blueprintIndex }: { blueprint: EffectBlueprint, blueprintIndex: number }) => {
         function setValue(newBlueprint: EffectBlueprint) {
@@ -773,6 +987,29 @@ export default function NewSpellModal() {
             </div>
         </div>;
     }, [removeBlueprint]);
+
+    const SpellParameter = useCallback(({ parameter, parameterIndex }: { parameter: Parameter, parameterIndex: number }) => {
+        function setValue(newParameter: Parameter) {
+            setParameters(parameters => parameters.map((b, i) => i === parameterIndex ? newParameter : b));
+        }
+
+        return <div className="spell-creation-parameter-container row">
+            <p>{ parameter.id }</p>
+            <p>{ parameter.name }</p>
+            <div className="spell-creation-parameter-controls row">
+                <FaPencil
+                    className="clickable"
+                    onClick={() => setEditing({
+                        type: "parameter",
+                        value: parameter,
+                        setValue
+                    })}
+                    title={`Edit this parameter`}
+                />
+                <FaTrash className="clickable" onClick={() => removeParameter(parameterIndex)} title="Delete this parameter" />
+            </div>
+        </div>;
+    }, [removeParameter]);
 
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
@@ -802,6 +1039,7 @@ export default function NewSpellModal() {
         setReplicate(spell.replicate ?? null);
         _setCopy(spell.copy ?? null);
         setBlueprints(spell.blueprints ?? []);
+        setParameters(spell.parameters ?? []);
         setThumbnail(spell.thumbnail);
         // setIsEditing(editing);
 
@@ -809,10 +1047,16 @@ export default function NewSpellModal() {
 
     if (editing != undefined) {
         if (editing.type === "effect") {
-            return <EditEffect effect={editing.value} setEffect={editing.setValue} close={() => setEditing(undefined)} />;
+            const editingEffect = editing as Editable<EffectBlueprint>;
+            return <EditEffect effect={editingEffect.value} setEffect={editingEffect.setValue} close={() => setEditing(undefined)} />;
         }
         else if (editing.type === "action") {
-            return <EditAction action={editing.value} setAction={editing.setValue} close={() => setEditing(undefined)} />;
+            const editingAction = editing as Editable<EffectBlueprint>;
+            return <EditAction action={editingAction.value} setAction={editingAction.setValue} close={() => setEditing(undefined)} />;
+        }
+        else if (editing.type === "parameter") {
+            const editingParameter = editing as Editable<Parameter>;
+            return <EditParameter parameter={editingParameter.value} setParameter={editingParameter.setValue} close={() => setEditing(undefined)} />;
         }
     }
 
@@ -872,6 +1116,21 @@ export default function NewSpellModal() {
             {
                 blueprints.map((blueprint, i) => (
                     <SpellBlueprint key={i} blueprint={blueprint} blueprintIndex={i} />
+                ))
+            }
+            <hr style={{margin: "0.5rem 0px"}}></hr>
+        </div>
+        <div className="spell-creation-parameters">
+            <p className="subtitle add-custom-spell" title="Add parameters to be used by variables">
+                Parameters
+                <FaCirclePlus
+                    style={{ marginLeft: "0.25rem", cursor: "pointer" }}
+                    onClick={() => setParameters(old => [...old, { type: "options", id: `parameter-${old.length+1}`, name: `Parameter #${old.length+1}`, defaultValue: "" }])}
+                />
+            </p>
+            {
+                parameters.map((parameter, i) => (
+                    <SpellParameter key={i} parameter={parameter} parameterIndex={i} />
                 ))
             }
         </div>
