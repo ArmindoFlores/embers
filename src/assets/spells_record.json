@@ -510,6 +510,7 @@
                 "duration": -1,
                 "delay": 2000,
                 "attachedTo": "$targets[0].id",
+                "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
