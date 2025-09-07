@@ -118,7 +118,7 @@ export default function Settings() {
     const obr = useOBR();
 
     const [mostRecentSize, _setMostRecentSize] = useState<number | null>(null);
-    const [gridScalingFactor, _setGridScalingFactor] = useState<number | null>(null);
+    const [gridScalingFactor, _setGridScalingFactor] = useState<number | null | undefined>(undefined);
     const [keepTargets, setKeepTargets] = useState<boolean | null>(null);
     const [playersCastSpells, setPlayersCastSpells] = useState<boolean | null>(null);
     const [summonedEntities, setSummonedEntities] = useState<string | null>(null);
@@ -243,7 +243,8 @@ export default function Settings() {
     }, [mostRecentSize]);
 
     useEffect(() => {
-        if (gridScalingFactor == null || isNaN(gridScalingFactor) || gridScalingFactor <= 0) {
+        if (gridScalingFactor === undefined) return;
+         if (gridScalingFactor == null || isNaN(gridScalingFactor) || gridScalingFactor <= 0) {
             setSettingsValue(LOCAL_STORAGE_KEYS.GRID_SCALING_FACTOR, null);
             return;
         }
