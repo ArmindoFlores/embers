@@ -2669,7 +2669,11 @@
                 "for": "CASTER",
                 "delay": {
                     "name": "if",
-                    "arguments": ["$caster", 2500, 3500]
+                    "arguments": [
+                        "$caster",
+                        2500,
+                        3500
+                    ]
                 },
                 "disabled": {
                     "name": "and",
@@ -2681,7 +2685,10 @@
                         }
                     ]
                 },
-                "arguments": ["$tokens[0]", "$targets[0].position"]
+                "arguments": [
+                    "$tokens[0]",
+                    "$targets[0].position"
+                ]
             }
         ]
     }

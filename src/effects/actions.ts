@@ -169,7 +169,7 @@ function stretch(interaction: Interaction|undefined, _localOnly: boolean, itemID
     astretch(interaction, itemID, position, duration, easingFunction);
 }
 
-function create_token(_interaction: Interaction|undefined, localOnly: boolean, image: SimplifiedItem, position: Vector2, local = false) {
+function create_token(_interaction: Interaction|undefined, localOnly: boolean, image: SimplifiedItem, position: Vector2, local = false, id: string | undefined = undefined) {
     if (localOnly) {
         return;
     }
@@ -187,6 +187,9 @@ function create_token(_interaction: Interaction|undefined, localOnly: boolean, i
 
     if (imageObj.description) {
         imageItem = imageItem.description(imageObj.description);
+    }
+    if (id) {
+        imageItem = imageItem.id(id);
     }
     if (local) {
         OBR.scene.local.addItems([imageItem.build()]);
@@ -222,9 +225,9 @@ export const actions: Record<string, { action: BlueprintActionBuiltin, desc: Blu
         action: actionWrapper(create_token),
         desc: {
             minArgs: 2,
-            maxArgs: 3,
-            description: "Add token described by the first argument to the scene at position specified by the second argument; if the third arument argument is true, then it will be added to the local items",
-            argumentType: "[asset, vector, boolean]"
+            maxArgs: 4,
+            description: "Add token described by the first argument to the scene at position specified by the second argument; if the third arument argument is true, then it will be added to the local items. If a fourth argument is specified, it will be used as the created token's ID.",
+            argumentType: "[asset, vector, boolean?, string?]"
         }
     },
     move: {
