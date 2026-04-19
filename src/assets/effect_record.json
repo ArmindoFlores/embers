@@ -6452,7 +6452,7 @@
             "side_impact_fast_ice_shard": {
                 "basename": "Generic/Impact/PartSideImpactFastIceShard01_01_Regular_Blue",
                 "thumbnail": "Generic/Impact/PartSideImpactFastIceShard01_01_Regular_Blue_Thumb.webp",
-                "type": "CIRCLE",
+                "type": "CONE",
                 "dpi": 100,
                 "variants": {
                     "600": {
@@ -6472,7 +6472,7 @@
             "side_impact_shockwave": {
                 "basename": "Generic/Impact/PartSideImpactShockwave01_01_Regular_Blue",
                 "thumbnail": "Generic/Impact/PartSideImpactShockwave01_01_Regular_Blue_Thumb.webp",
-                "type": "CIRCLE",
+                "type": "CONE",
                 "dpi": 100,
                 "variants": {
                     "600": {
@@ -6492,7 +6492,7 @@
             "side_impact_slow_snowflake": {
                 "basename": "Generic/Impact/PartSideImpactSlowSnowflake01_01_Regular_Blue",
                 "thumbnail": "Generic/Impact/PartSideImpactSlowSnowflake01_01_Regular_Blue_Thumb.webp",
-                "type": "CIRCLE",
+                "type": "CONE",
                 "dpi": 100,
                 "variants": {
                     "600": {
@@ -6513,7 +6513,7 @@
                 "1": {
                     "basename": "Generic/Impact/PartSideImpactSmoke01_01_Regular_Blue",
                     "thumbnail": "Generic/Impact/PartSideImpactSmoke01_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
+                    "type": "CONE",
                     "dpi": 100,
                     "variants": {
                         "600": {
@@ -6533,7 +6533,7 @@
                 "2": {
                     "basename": "Generic/Impact/PartSideImpactSmoke02_01_Regular_Blue",
                     "thumbnail": "Generic/Impact/PartSideImpactSmoke02_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
+                    "type": "CONE",
                     "dpi": 100,
                     "variants": {
                         "600": {
@@ -6553,7 +6553,7 @@
                 "3": {
                     "basename": "Generic/Impact/PartSideImpactSmoke03_01_Regular_Blue",
                     "thumbnail": "Generic/Impact/PartSideImpactSmoke03_01_Regular_Blue_Thumb.webp",
-                    "type": "CIRCLE",
+                    "type": "CONE",
                     "dpi": 100,
                     "variants": {
                         "600": {
@@ -6574,7 +6574,7 @@
             "side_impact_ice_shard": {
                 "basename": "Generic/Impact/SideImpactIceShard01_01_Regular_Blue",
                 "thumbnail": "Generic/Impact/SideImpactIceShard01_01_Regular_Blue_Thumb.webp",
-                "type": "CIRCLE",
+                "type": "CONE",
                 "dpi": 100,
                 "variants": {
                     "600": {
