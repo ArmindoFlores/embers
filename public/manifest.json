@@ -5,6 +5,7 @@
     "author": "Armindo Flores",
     "icon": "/embers.svg",
     "homepage_url": "https://github.com/ArmindoFlores/embers",
+    "background_url": "/background.html",
     "description": "Use and create animated spell & ability effects for your games.",
     "action": {
       "title": "Embers",

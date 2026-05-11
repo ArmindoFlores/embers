@@ -2,7 +2,7 @@ import { EffectInstruction, InteractionData, MessageType } from "../types/messag
 import { LOCAL_STORAGE_KEYS, getSettingsValue } from "./Settings";
 import OBR, { Image, InteractionManager, isImage } from "@owlbear-rodeo/sdk";
 import { aoe, cone, getEffect, projectile } from "../effects";
-import { log_error, log_warn } from "../logging";
+import { log_error, log_info, log_warn } from "../logging";
 import { useCallback, useEffect, useState } from "react";
 
 import { AOEEffectMessage } from "../types/aoe";
@@ -51,62 +51,55 @@ async function createItemInteractions({ ids, count }: InteractionData, localOnly
     const updateDelay = 1000 / getSettingsValue(LOCAL_STORAGE_KEYS.ANIMATION_UPDATE_RATE);
 
     // Register a callback every "updateDelay" milliseconds
-    const key = "interaction:" + crypto.randomUUID();
-    const worker = window.embersWorker;
     let latestItems: Image[] = [];
 
-    const onMessage = (message: MessageEvent) => {
-        if (message.data === key) {
-            const now = Date.now();
-
-            latestItems = update(itemsToUpdate => {
-                for (const updater of ongoingUpdaters) {
-                    const elapsed = now - updater.start;
-                    const updaterItemIDs = updater.items.map(item => item.id.startsWith("embers-copy-") ? item.id : `embers-copy-${item.id}`);
-                    const keepGoing = updater.onUpdate(
-                        itemsToUpdate.filter(itemToUpdate => updaterItemIDs.includes(itemToUpdate.id.toString())),
-                        elapsed
-                    );
-                    if (!keepGoing) {
-                        count--;
-                        updater.resolve(updater.items);
-                        updater.resolved = true;
-                    }
-                }
-            });
-
-            for (let i = ongoingUpdaters.length - 1; i >= 0; i--) {
-                if (ongoingUpdaters[i].resolved === true) {
-                    ongoingUpdaters.splice(i, 1);
+    let intervalId: number | null = null;
+    const afterDelay = () => {
+        const now = Date.now();
+        log_info("updating!", count, now)
+        latestItems = update(itemsToUpdate => {
+            for (const updater of ongoingUpdaters) {
+                const elapsed = now - updater.start;
+                const updaterItemIDs = updater.items.map(item => item.id.startsWith("embers-copy-") ? item.id : `embers-copy-${item.id}`);
+                const keepGoing = updater.onUpdate(
+                    itemsToUpdate.filter(itemToUpdate => updaterItemIDs.includes(itemToUpdate.id.toString())),
+                    elapsed
+                );
+                if (!keepGoing) {
+                    count--;
+                    updater.resolve(updater.items);
+                    updater.resolved = true;
                 }
             }
+        });
 
-            if (count > 0) {
-                worker.postMessage({ duration: updateDelay, id: key });
-            }
-            else {
-                worker.removeEventListener("message", onMessage);
-                stop();
-                if (!localOnly) {
-                    OBR.scene.items.updateItems(originalItemIDs, items => {
-                        for (const item of items) {
-                            const localItem = latestItems.find(latestItem => latestItem.id === `embers-copy-${item.id}`);
-                            if (!localItem) continue;
-                            item.visible = localItem.visible ?? true;
-                            item.position = localItem.position;
-                            item.scale = localItem.scale;
-                            item.rotation = localItem.rotation;
-                            item.locked = localItem.locked;
-                        }
-                    });
-                }
-                OBR.scene.local.deleteItems(localItemIDs);
+        for (let i = ongoingUpdaters.length - 1; i >= 0; i--) {
+            if (ongoingUpdaters[i].resolved === true) {
+                ongoingUpdaters.splice(i, 1);
             }
         }
-    };
 
-    worker.addEventListener("message", onMessage);
-    worker.postMessage({ duration: updateDelay, id: key });
+        if (count <= 0) {
+            clearInterval(intervalId!);
+            stop();
+            if (!localOnly) {
+                OBR.scene.items.updateItems(originalItemIDs, items => {
+                    for (const item of items) {
+                        const localItem = latestItems.find(latestItem => latestItem.id === `embers-copy-${item.id}`);
+                        if (!localItem) continue;
+                        item.visible = localItem.visible ?? true;
+                        item.position = localItem.position;
+                        item.scale = localItem.scale;
+                        item.rotation = localItem.rotation;
+                        item.locked = localItem.locked;
+                    }
+                });
+            }
+            OBR.scene.local.deleteItems(localItemIDs);
+        }
+    };
+    intervalId = setInterval(afterDelay, updateDelay);
+    log_info("update delay is", updateDelay);
 
     const registerUpdates = async (items: Image[], onUpdate: InteractionUpdateFunc) => {
         return new Promise<Image[]>(resolve => {
@@ -347,7 +340,7 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
                     return;
                 }
 
-                const key = "ml:" + crypto.randomUUID();
+                /*const key = "ml:" + crypto.randomUUID();
 
                 const messageHandler = (message: MessageEvent) => {
                     if (message.data === key) {
@@ -357,7 +350,10 @@ export function MessageListener({ effectRegister }: { effectRegister: Map<string
                 }
 
                 window.embersWorker.addEventListener("message", messageHandler);
-                window.embersWorker.postMessage({ duration: instruction.delay, id: key });
+                window.embersWorker.postMessage({ duration: instruction.delay, id: key });*/
+                setTimeout(() => {
+                    doInstruction(playerId, playerRole);
+                }, instruction.delay);
             }
             else {
                 doInstruction(playerId, playerRole);

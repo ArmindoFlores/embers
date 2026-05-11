@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 
 import OBR from "@owlbear-rodeo/sdk";
 import { setSelectedSpell } from "../effectsTool";
-import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
+import { constants } from "../constants";
 
 export const spellPopoverId = `${APP_KEY}/spell-popover`;
 export const mostRecentEffectsMetadataKey = `${APP_KEY}/most-recent-effects`;
@@ -53,7 +53,7 @@ async function getSortedSpellsList() {
         OBR.scene.getMetadata(),
         getMostRecentSpells()
     ]);
-    const localSpellIDs = Array.isArray(metadata[spellListMetadataKey]) ? metadata[spellListMetadataKey] as string[] : [];
+    const localSpellIDs = Array.isArray(metadata[constants.SPELL_LIST_METADATA_KEY]) ? metadata[constants.SPELL_LIST_METADATA_KEY] as string[] : [];
     const allSpellIDs = [...spellIDs, ...localSpellIDs.map(id => `$.${id}`)].sort((s1, s2) => s1.localeCompare(s2));
     const effectNamesWithoutMostRecent = allSpellIDs.filter(name => !mostRecentSpellsList.includes(name));
     return mostRecentSpellsList.concat(effectNamesWithoutMostRecent);

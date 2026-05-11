@@ -8,14 +8,9 @@ import {
     FaHatWizard,
     FaPlus,
 } from "react-icons/fa6";
-import OBR, { Player } from "@owlbear-rodeo/sdk";
-import {
-    sendSpellsUpdate,
-    setupGMLocalSpells,
-    setupPlayerLocalSpells,
-} from "../effects/localSpells";
-import { setupDefaultCasterMenuOption, setupEffectsTool, toolID } from "../effectsTool";
-import { useEffect, useMemo, useRef, useState } from "react";
+import OBR from "@owlbear-rodeo/sdk";
+import { toolID } from "../effectsTool";
+import { useEffect, useState } from "react";
 
 import CustomSpells from "../components/CustomSpells";
 import { MessageListener } from "../components/MessageListener";
@@ -26,25 +21,7 @@ import SpellBanner from "../components/SpellDetails/SpellBanner";
 import SpellBook from "../components/SpellBook";
 import SpellDetails from "../components/SpellDetails";
 import effectsWorkerScript from "../effects/worker";
-import { spellListMetadataKey } from "./NewSpellModal";
 import { useOBR } from "../react-obr/providers";
-
-function hasPartyChanged(prevParty: Player[], currentParty: Player[]) {
-    if (!prevParty || prevParty.length !== currentParty.length) {
-        return true;
-    }
-
-    for (let i = 0; i < currentParty.length; i++) {
-        if (
-            prevParty[i].id !== currentParty[i].id ||
-            prevParty[i].connectionId !== currentParty[i].connectionId
-        ) {
-            return true;
-        }
-    }
-
-    return false;
-}
 
 const MENU_OPTIONS = [
     {
@@ -90,28 +67,6 @@ export default function Main() {
     // const [toolSelected, setToolSelected] = useState(false);
     const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState(0);
-    const previousPartyRef = useRef<{
-        players: Player[];
-        connections: Record<string, string>;
-    }>({ players: [], connections: {} });
-    const playerConnections = useMemo(() => {
-        if (!obr.ready) {
-            return {};
-        }
-
-        if (!hasPartyChanged(previousPartyRef.current.players, obr.party)) {
-            return previousPartyRef.current.connections;
-        }
-
-        const newConnections = Object.fromEntries(
-            obr.party.map((player) => [player.connectionId, player.id])
-        );
-        previousPartyRef.current = {
-            connections: newConnections,
-            players: obr.party,
-        };
-        return newConnections;
-    }, [obr.ready, obr.party]);
 
     const [isGM, setIsGM] = useState(false);
 
@@ -129,51 +84,23 @@ export default function Main() {
     useEffect(() => {
         if (
             !obr.ready ||
-            !obr.sceneReady ||
-            !obr.player?.role ||
-            !obr.player?.id
+            !obr.sceneReady
         ) {
             return;
         }
         // When the app mounts:
         // - create a new worker
         const worker = new Worker(effectsWorkerScript);
-        window.embersWorker = worker;
+        // window.embersWorker = worker;
         setEffectsWorker(worker);
-        // - setup the context menu
-        // setupContextMenu(obr.player.role);
-        // - setup tool
-        const unmount = setupEffectsTool(obr.player.role, obr.player.id);
         // - setup the effects register
         setEffectRegister(new Map());
-        // - setup context menus
-        setupDefaultCasterMenuOption();
 
         // When the app unmounts, reverse both of those operations
         return () => {
             worker.terminate();
-            unmount();
         };
-    }, [obr.ready, obr.sceneReady, obr.player?.role, obr.player?.id]);
-
-    useEffect(() => {
-        if (!obr.ready || !obr.player?.role || !obr.player?.id) {
-            return;
-        }
-
-        const hooks: (() => void)[] = [];
-        if (obr.player.role !== "GM") {
-            hooks.push(setupPlayerLocalSpells(OBR.room.id, obr.player.id));
-        } else {
-            hooks.push(setupGMLocalSpells(playerConnections));
-        }
-
-        return () => {
-            for (const hook of hooks) {
-                hook();
-            }
-        };
-    }, [obr.ready, playerConnections, obr.player?.id, obr.player?.role]);
+    }, [obr.ready, obr.sceneReady]);
 
     useEffect(() => {
         if (!obr.ready) {
@@ -189,45 +116,6 @@ export default function Main() {
             );
         });
     }, [obr.ready, selectedTab, previouslySelectedTab]);
-
-    useEffect(() => {
-        if (!obr.ready || !obr.sceneReady || obr.player?.role != "GM") {
-            return;
-        }
-
-        // Update scene metadata
-        const spellListJSON = localStorage.getItem(spellListMetadataKey);
-        if (spellListJSON == undefined) {
-            return;
-        }
-        const spellList = JSON.parse(spellListJSON);
-        OBR.scene.setMetadata({ [spellListMetadataKey]: spellList });
-    }, [obr.ready, obr.sceneReady, obr.player?.role]);
-
-    useEffect(() => {
-        if (!obr.ready || !obr.sceneReady || obr.player?.role != "GM") {
-            return;
-        }
-
-        const interval = setInterval(() => {
-            sendSpellsUpdate("all");
-        }, 30000);
-
-        return () => clearInterval(interval);
-    }, [obr.ready, obr.sceneReady, obr.player?.role]);
-
-    useEffect(() => {
-        if (!obr.ready || !obr.sceneReady) {
-            return;
-        }
-
-        if (window.interactionRecord) {
-            window.interactionRecord.clear();
-        }
-        else {
-            window.interactionRecord = new Map();
-        }
-    }, [obr.ready, obr.sceneReady]);
 
     return (
         <Box

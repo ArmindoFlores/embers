@@ -121,21 +121,22 @@ export function getDistance(source: Vector2, destination: Vector2) {
 export function registerEffect(images: Image[], duration: number, onComplete?: () => void, spellCaster?: string) {
     if (duration >= 0) {
         OBR.scene.local.addItems(images).then(() => {
-            const id = images[0].id;
-
             // This worker will send a message to us with our ID, signaling us to delete
             // the item because enough time has passed.
             // We can't use setTimeout because, if the extension's window is not visible,
             // the browser will throttle us and we might let the animation play for far
             // too long.
-            const messageHandler = (message: MessageEvent) => {
+            /*const messageHandler = (message: MessageEvent) => {
                 if (message.data == id) {
                     OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
                     window.embersWorker.removeEventListener("message", messageHandler);
                 }
             }
             window.embersWorker.addEventListener("message", messageHandler);
-            window.embersWorker.postMessage({ duration, id });
+            window.embersWorker.postMessage({ duration, id });*/
+            setTimeout(() => {
+                OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
+            }, duration);
         });
     }
     else {
