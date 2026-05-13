@@ -3,7 +3,7 @@ import { EasingFunction, getEasingFunction, setDifference } from "../utils";
 import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 import { log_error, log_warn } from "../logging";
 
-import { Interaction } from "../components/MessageListener";
+import { Interaction } from "./messageListener";
 import { SimplifiedItem } from "../types/misc";
 import { WritableDraft } from "immer";
 
@@ -22,7 +22,7 @@ async function updateItems(items: string[], update: (draft: WritableDraft<Item>[
     }
     const itemsToUpdateGlobally = Array.from((!interaction?.active?.() ? new Set(items) : setDifference(new Set(items), new Set(interaction?.trackedIDs ?? []))).values());
     if (itemsToUpdateGlobally.length) {
-        OBR.scene.items.updateItems(itemsToUpdateGlobally, update);
+        await OBR.scene.items.updateItems(itemsToUpdateGlobally, update);
     }
 }
 
@@ -44,31 +44,31 @@ async function getItems(items: string[], interaction: Interaction|undefined) {
     return itemStates;
 }
 
-function move(interaction: Interaction|undefined, localOnly: boolean, itemID: string, position: Vector2) {
-    updateItems([itemID], items => {
+async function move(interaction: Interaction|undefined, localOnly: boolean, itemID: string, position: Vector2) {
+    await updateItems([itemID], items => {
         for (const item of items) {
             item.position = position;
         }
     }, interaction, localOnly);
 }
 
-function hide(interaction: Interaction|undefined, localOnly: boolean, itemID: string) {
-    updateItems([itemID], items => {
+async function hide(interaction: Interaction|undefined, localOnly: boolean, itemID: string) {
+    await updateItems([itemID], items => {
         for (const item of items) {
             item.visible = false;
         }
     }, interaction, localOnly);
 }
 
-function show(interaction: Interaction|undefined, localOnly: boolean, itemID: string) {
-    updateItems([itemID], items => {
+async function show(interaction: Interaction|undefined, localOnly: boolean, itemID: string) {
+    await updateItems([itemID], items => {
         for (const item of items) {
             item.visible = true;
         }
     }, interaction, localOnly);
 }
 
-async function aslide(interaction: Interaction|undefined, itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction) {
+async function slide(interaction: Interaction|undefined, _localOnly: boolean, itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction) {
     if (duration > 30000) {
         log_warn(`slide() called with a duration > 30s (${Math.round(duration) / 1000}s); this might cause issues since OBR's interactions expire in 30s (read more here: https://docs.owlbear.rodeo/extensions/apis/interaction#startiteminteraction)`);
     }
@@ -94,7 +94,7 @@ async function aslide(interaction: Interaction|undefined, itemID: string, positi
 
     const easingFunc = getEasingFunction(easingFunction);
 
-    interaction.registerUpdates([item], (items, t) => {
+    await interaction.registerUpdates([item], (items, t) => {
         const completness = Math.min(t / duration, 1);
         items[0].position = {
             x: startPosition.x + easingFunc(completness) * (position.x - startPosition.x),
@@ -107,12 +107,8 @@ async function aslide(interaction: Interaction|undefined, itemID: string, positi
     });
 }
 
-function slide(interaction: Interaction|undefined, _localOnly: boolean, itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
-    aslide(interaction, itemID, position, duration, easingFunction);
-}
-
-function scale(interaction: Interaction|undefined, localOnly: boolean, itemID: string, scaleVector: Vector2) {
-    updateItems([itemID], items => {
+async function scale(interaction: Interaction|undefined, localOnly: boolean, itemID: string, scaleVector: Vector2) {
+    await updateItems([itemID], items => {
         for (const item of items) {
             item.scale = {
                 x: scaleVector.x * item.scale.x,
@@ -122,7 +118,7 @@ function scale(interaction: Interaction|undefined, localOnly: boolean, itemID: s
     }, interaction, localOnly);
 }
 
-async function astretch(interaction: Interaction|undefined, itemID: string, scale: Vector2, duration: number, easingFunction: EasingFunction) {
+async function stretch(interaction: Interaction|undefined, _localOnly: boolean, itemID: string, scale: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
     if (duration > 30000) {
         log_warn(`stretch() called with a duration > 30s (${Math.round(duration) / 1000}s); this might cause issues since OBR's interactions expire in 30s (read more here: https://docs.owlbear.rodeo/extensions/apis/interaction#startiteminteraction)`);
     }
@@ -152,7 +148,7 @@ async function astretch(interaction: Interaction|undefined, itemID: string, scal
 
     const easingFunc = getEasingFunction(easingFunction);
 
-    interaction.registerUpdates([item], (items, t) => {
+    await interaction.registerUpdates([item], (items, t) => {
         const completness = Math.min(t / duration, 1);
         items[0].scale = {
             x: startScale.x + easingFunc(completness) * (endScale.x - startScale.x),
@@ -165,11 +161,7 @@ async function astretch(interaction: Interaction|undefined, itemID: string, scal
     });
 }
 
-function stretch(interaction: Interaction|undefined, _localOnly: boolean, itemID: string, position: Vector2, duration: number, easingFunction: EasingFunction = "LINEAR") {
-    astretch(interaction, itemID, position, duration, easingFunction);
-}
-
-function create_token(_interaction: Interaction|undefined, localOnly: boolean, image: SimplifiedItem, position: Vector2, local = false, id: string | undefined = undefined) {
+async function create_token(_interaction: Interaction|undefined, localOnly: boolean, image: SimplifiedItem, position: Vector2, local = false, id: string | undefined = undefined) {
     if (localOnly) {
         return;
     }
@@ -192,29 +184,29 @@ function create_token(_interaction: Interaction|undefined, localOnly: boolean, i
         imageItem = imageItem.id(id);
     }
     if (local) {
-        OBR.scene.local.addItems([imageItem.build()]);
+        await OBR.scene.local.addItems([imageItem.build()]);
     }
     else {
-        OBR.scene.items.addItems([imageItem.build()]);
+        await OBR.scene.items.addItems([imageItem.build()]);
     }
 }
 
-function message(_interaction: Interaction|undefined, localOnly: boolean, channel: string, data: unknown, destination: "REMOTE" | "LOCAL" | "ALL" = "ALL") {
+async function message(_interaction: Interaction|undefined, localOnly: boolean, channel: string, data: unknown, destination: "REMOTE" | "LOCAL" | "ALL" = "ALL") {
     if (localOnly) {
         return;
     }
-    OBR.broadcast.sendMessage(channel, data, { destination });
+    await OBR.broadcast.sendMessage(channel, data, { destination });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-function actionWrapper(actionFunc: Function) {
-    function wrapper(...args: unknown[]) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function actionWrapper(actionFunc: (...args: any[]) => Promise<void>) {
+    async function wrapper(...args: unknown[]) {
         try {
-            return actionFunc(...args);
+            return await actionFunc(...args);
         }
         catch (e) {
             const error = e as Error;
-            log_error(`Action "${actionFunc.name}": ${error.message}`);
+            log_error(`Action "${actionFunc.name}": ${JSON.stringify(error)}`);
         }
     }
     return wrapper as BlueprintActionBuiltin;

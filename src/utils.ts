@@ -104,6 +104,12 @@ export function getEasingFunction(name: EasingFunction) {
     return easingFunc;
 }
 
+export function waitMs(ms: number): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
+
 export const easingFunctions = {
     linear,
     inQuad,

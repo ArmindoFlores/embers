@@ -1,6 +1,6 @@
 import { AOEEffectBlueprint, BlueprintFunction, BlueprintValue, BlueprintValueUnresolved, ConeBlueprint, EffectBlueprint, ErrorOr, PossibleTarget, ProjectileBlueprint, Variables } from "../types/blueprint";
 import { EffectInstruction, InteractionData, MessageType } from "../types/messageListener";
-import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
+import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings/settings";
 import { Layer, Metadata, Vector2 } from "@owlbear-rodeo/sdk";
 
 import { AOEEffectMessage } from "../types/aoe";

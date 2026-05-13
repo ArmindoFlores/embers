@@ -1,8 +1,8 @@
 import OBR from "@owlbear-rodeo/sdk";
-import { log_info } from "./logging";
 import { setupDefaultCasterMenuOption, setupEffectsTool } from "./effectsTool";
 import { sendSpellsUpdate, setupGMLocalSpells, setupPlayerLocalSpells } from "./effects/localSpells";
 import { constants } from "./constants";
+import { setupMessageListener } from "./effects/messageListener";
 
 function loadSpellListFromLocalStorage() {
     // Update scene metadata
@@ -41,7 +41,7 @@ function setupScene() {
         unsubscribeLocalSpells = setupLocalSpells(role);
 
         if (role === "GM") {
-            interval = setInterval(() => {
+            interval = window.setInterval(() => {
                 sendSpellsUpdate("all");
             }, 30000);
         }
@@ -65,7 +65,7 @@ function setupScene() {
 
         unsubscribeTool = setupEffectsTool(player.role, player.id);
         unsubscribeLocalSpells = setupLocalSpells(player.role);
-        interval = setInterval(() => {
+        interval = window.setInterval(() => {
             sendSpellsUpdate("all");
         }, 30000);
     });
@@ -85,6 +85,8 @@ function setup() {
         window.interactionRecord = new Map();
     }
 
+    setupMessageListener();
+
     let unsubscribe: (() => void) | null = null;
     OBR.scene.isReady().then(ready => {
         if (ready) {
@@ -99,9 +101,7 @@ function setup() {
         if (ready) {
             unsubscribe = setupScene();
         }
-    })
-
-    log_info("main setup");
+    });
 }
 
 OBR.onReady(setup);

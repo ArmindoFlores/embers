@@ -4,14 +4,13 @@ import { buildEffectImage, getEffect, getVariantName, registerEffect } from "./e
 import { AOEEffectProperties } from "../types/aoe";
 import { log_error } from "../logging";
 
-export function aoe(
+export async function aoe(
     aoeEffectProperties: AOEEffectProperties,
     duration?: number,
     loops?: number,
     metadata?: Metadata,
     layer?: Layer,
     zIndex?: number,
-    onComplete?: () => void,
     variant?: number,
     forcedVariant?: number,
     spellName?: string,
@@ -51,6 +50,6 @@ export function aoe(
     }
     const { image, effectDuration } = result;
 
-    // Add all items to the local scene
-    registerEffect([image.build()], effectDuration, onComplete, spellCaster);
+    // Add all items to the local scene and wait for them to be removed if they are temporary
+    await registerEffect([image.build()], effectDuration, spellCaster);
 }

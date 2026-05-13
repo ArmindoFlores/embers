@@ -13,14 +13,12 @@ import { toolID } from "../effectsTool";
 import { useEffect, useState } from "react";
 
 import CustomSpells from "../components/CustomSpells";
-import { MessageListener } from "../components/MessageListener";
 import MovementHandler from "../components/MovementHandler";
 import SceneControls from "../components/SceneControls";
 import Settings from "../components/Settings";
 import SpellBanner from "../components/SpellDetails/SpellBanner";
 import SpellBook from "../components/SpellBook";
 import SpellDetails from "../components/SpellDetails";
-import effectsWorkerScript from "../effects/worker";
 import { useOBR } from "../react-obr/providers";
 
 const MENU_OPTIONS = [
@@ -60,10 +58,6 @@ const SPELL_DETAIL_TAB = 1;
 
 export default function Main() {
     const obr = useOBR();
-    const [effectsWorker, setEffectsWorker] = useState<Worker>();
-    const [effectRegister, setEffectRegister] = useState<Map<string, number>>(
-        new Map()
-    );
     // const [toolSelected, setToolSelected] = useState(false);
     const [previouslySelectedTab, setPreviouslySelectedTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState(0);
@@ -80,27 +74,6 @@ export default function Main() {
             setIsGM(true);
         }
     }, [obr.ready, obr.player?.role, isGM]);
-
-    useEffect(() => {
-        if (
-            !obr.ready ||
-            !obr.sceneReady
-        ) {
-            return;
-        }
-        // When the app mounts:
-        // - create a new worker
-        const worker = new Worker(effectsWorkerScript);
-        // window.embersWorker = worker;
-        setEffectsWorker(worker);
-        // - setup the effects register
-        setEffectRegister(new Map());
-
-        // When the app unmounts, reverse both of those operations
-        return () => {
-            worker.terminate();
-        };
-    }, [obr.ready, obr.sceneReady]);
 
     useEffect(() => {
         if (!obr.ready) {
@@ -182,11 +155,6 @@ export default function Main() {
                         }}
                     />
                 </Box>
-            )}
-            {effectsWorker && (
-                <MessageListener
-                    effectRegister={effectRegister}
-                />
             )}
             <MovementHandler />
         </Box>

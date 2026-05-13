@@ -1,7 +1,7 @@
 import "./SpellSelectionPopover.css";
 
 import { APP_KEY, ASSET_LOCATION } from "../config";
-import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings";
+import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings/settings";
 import { getSpell, spellIDs } from "../effects/spells";
 import { useEffect, useState } from "react";
 

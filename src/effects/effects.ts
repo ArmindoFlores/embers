@@ -1,12 +1,12 @@
 import { APP_KEY, ASSET_LOCATION } from "../config";
 import { Effect, Effects } from "../types/effects";
-import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "../components/Settings";
+import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "../components/Settings/settings";
 import OBR, { Image, Layer, Metadata, Vector2, buildImage } from "@owlbear-rodeo/sdk";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
 
-import { MESSAGE_CHANNEL } from "../components/MessageListener";
+import { MESSAGE_CHANNEL } from "./messageListener";
 import effectsJSON from "../assets/effect_record.json";
-import { getItemSize } from "../utils";
+import { getItemSize, waitMs } from "../utils";
 import { log_error } from "../logging";
 
 export const effects = effectsJSON as unknown as Effects;
@@ -118,33 +118,17 @@ export function getDistance(source: Vector2, destination: Vector2) {
     return Math.sqrt(Math.pow(source.x - destination.x, 2) + Math.pow(source.y - destination.y, 2));
 }
 
-export function registerEffect(images: Image[], duration: number, onComplete?: () => void, spellCaster?: string) {
+export async function registerEffect(images: Image[], duration: number, spellCaster?: string) {
     if (duration >= 0) {
-        OBR.scene.local.addItems(images).then(() => {
-            // This worker will send a message to us with our ID, signaling us to delete
-            // the item because enough time has passed.
-            // We can't use setTimeout because, if the extension's window is not visible,
-            // the browser will throttle us and we might let the animation play for far
-            // too long.
-            /*const messageHandler = (message: MessageEvent) => {
-                if (message.data == id) {
-                    OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
-                    window.embersWorker.removeEventListener("message", messageHandler);
-                }
-            }
-            window.embersWorker.addEventListener("message", messageHandler);
-            window.embersWorker.postMessage({ duration, id });*/
-            setTimeout(() => {
-                OBR.scene.local.deleteItems(images.map(image => image.id)).then(onComplete);
-            }, duration);
-        });
+        await OBR.scene.local.addItems(images);
+        await waitMs(duration);
+        await OBR.scene.local.deleteItems(images.map(image => image.id));
     }
     else {
-        Promise.all([getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE), OBR.player.getId(), OBR.player.getRole()]).then(([summonRule, id, role]) => {
-            if ((summonRule === "caster" && id === spellCaster) || (summonRule === "gm-only" && role === "GM")) {
-                OBR.scene.items.addItems(images);
-            }
-        });
+        const [summonRule, id, role] = await Promise.all([getGlobalSettingsValue(GLOBAL_STORAGE_KEYS.SUMMONED_ENTITIES_RULE), OBR.player.getId(), OBR.player.getRole()]);
+        if ((summonRule === "caster" && id === spellCaster) || (summonRule === "gm-only" && role === "GM")) {
+            await OBR.scene.items.addItems(images);
+        }
     }
 }
 

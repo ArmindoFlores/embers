@@ -1,8 +1,8 @@
-import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "./components/Settings";
+import { GLOBAL_STORAGE_KEYS, getGlobalSettingsValue } from "./components/Settings/settings";
 import OBR, { Image } from "@owlbear-rodeo/sdk";
 
 import { APP_KEY } from "./config";
-import { MESSAGE_CHANNEL } from "./components/MessageListener";
+import { MESSAGE_CHANNEL } from "./effects/messageListener";
 
 export function setupContextMenu(playerRole: "GM" | "PLAYER") {
     const id = `${APP_KEY}/context-menu`;

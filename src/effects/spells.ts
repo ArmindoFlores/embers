@@ -1,5 +1,5 @@
 import { BlueprintValue, Variables } from "../types/blueprint";
-import { LOCAL_STORAGE_KEYS, getDefaultGridScaleFactor, getSettingsValue } from "../components/Settings";
+import { LOCAL_STORAGE_KEYS, getDefaultGridScaleFactor, getSettingsValue } from "../components/Settings/settings";
 import OBR, { Image, Item, Vector2, isImage } from "@owlbear-rodeo/sdk";
 import { ReplicationType, Spell, Spells } from "../types/spells";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
@@ -7,7 +7,7 @@ import { resolveBlueprint, resolveSimpleValue } from "./blueprint";
 
 import { APP_KEY } from "../config";
 import { EffectInstruction } from "../types/messageListener";
-import { MESSAGE_CHANNEL } from "../components/MessageListener";
+import { MESSAGE_CHANNEL } from "./messageListener";
 import { SimplifiedItem } from "../types/misc";
 import { getItemSize } from "../utils";
 import { log_error } from "../logging";
