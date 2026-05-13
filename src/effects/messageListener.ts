@@ -1,7 +1,7 @@
 import { EffectInstruction, InteractionData, MessageType } from "../types/messageListener";
 import { LOCAL_STORAGE_KEYS, getSettingsValue } from "../components/Settings/settings";
 import OBR, { Image, InteractionManager, isImage } from "@owlbear-rodeo/sdk";
-import { log_error, log_info } from "../logging";
+import { log_error } from "../logging";
 
 import { AOEEffectMessage } from "../types/aoe";
 import { APP_KEY } from "../config";
@@ -323,9 +323,7 @@ async function processInstruction(instruction: EffectInstruction, dpi: number, s
                 log_error(`Invalid blueprint: undefined action "${instruction.id}"`);
                 return;
             }
-            log_info(`action started "${instruction.id}"`, Date.now());
             await action(interaction, localOnly, ...(instruction.arguments ?? []));
-            log_info(`action finished "${instruction.id}"`, Date.now());
         }
         else {
             log_error(`Invalid instruction type "${instruction.type}"`);
@@ -347,9 +345,10 @@ export function setupMessageListener() {
             OBR.scene.grid.getDpi(),
         ]);
         try {
-            const interaction = await (messageData.interactions.ids.length === 0 ?
+            const interactions = messageData.interactions;
+            const interaction = await ((interactions === undefined || interactions.ids.length === 0) ?
                 (new Promise<undefined>(resolve => resolve(undefined))) :
-                createItemInteractions(messageData.interactions, spellCaster != undefined && playerId !== spellCaster));
+                createItemInteractions(interactions, spellCaster != undefined && playerId !== spellCaster));
 
             await Promise.allSettled(messageData.instructions.map(async instruction => {
                 await processInstruction(instruction, dpi, spellName, spellCaster, interaction);
