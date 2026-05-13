@@ -1,10 +1,11 @@
 {
     "name": "Embers",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "manifest_version": 1,
     "author": "Armindo Flores",
     "icon": "/embers.svg",
     "homepage_url": "https://github.com/ArmindoFlores/embers",
+    "background_url": "/background.html",
     "description": "Use and create animated spell & ability effects for your games.",
     "action": {
       "title": "Embers",

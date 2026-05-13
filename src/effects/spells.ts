@@ -1,5 +1,5 @@
 import { BlueprintValue, Variables } from "../types/blueprint";
-import { LOCAL_STORAGE_KEYS, getDefaultGridScaleFactor, getSettingsValue } from "../components/Settings";
+import { LOCAL_STORAGE_KEYS, getDefaultGridScaleFactor, getSettingsValue } from "../components/Settings/settings";
 import OBR, { Image, Item, Vector2, isImage } from "@owlbear-rodeo/sdk";
 import { ReplicationType, Spell, Spells } from "../types/spells";
 import { getSortedTargets, getTargetCount } from "../effectsTool";
@@ -7,12 +7,12 @@ import { resolveBlueprint, resolveSimpleValue } from "./blueprint";
 
 import { APP_KEY } from "../config";
 import { EffectInstruction } from "../types/messageListener";
-import { MESSAGE_CHANNEL } from "../components/MessageListener";
+import { MESSAGE_CHANNEL } from "./messageListener";
 import { SimplifiedItem } from "../types/misc";
 import { getItemSize } from "../utils";
 import { log_error } from "../logging";
-import { spellListMetadataKey } from "../views/NewSpellModal";
 import spellsJSON from "../assets/spells_record.json";
+import { constants } from "../constants";
 
 export const spells = spellsJSON as Spells;
 export const spellIDs = Object.keys(spells);
@@ -133,7 +133,7 @@ export function getSpell(spellID: string, isGM: boolean = false): Spell|undefine
 
 export async function getAllSpellNames(): Promise<string[]> {
     const metadata = await OBR.scene.getMetadata();
-    const spellList = (metadata[spellListMetadataKey] ?? []) as string[];
+    const spellList = (metadata[constants.SPELL_LIST_METADATA_KEY] ?? []) as string[];
     return [...spellIDs, ...spellList.map(spell => `$.${spell}`)];
 }
 

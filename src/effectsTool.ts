@@ -1,4 +1,4 @@
-import { GLOBAL_STORAGE_KEYS, LOCAL_STORAGE_KEYS, SETTINGS_CHANNEL, getGlobalSettingsValue, getSettingsValue, setSettingsValue } from "./components/Settings";
+import { GLOBAL_STORAGE_KEYS, LOCAL_STORAGE_KEYS, SETTINGS_CHANNEL, getGlobalSettingsValue, getSettingsValue, setSettingsValue } from "./components/Settings/settings";
 import OBR, { Image, Item, Vector2, buildImage, isImage } from "@owlbear-rodeo/sdk";
 
 import { APP_KEY } from "./config";

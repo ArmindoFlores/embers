@@ -13,13 +13,14 @@ import OBR, { Theme } from "@owlbear-rodeo/sdk";
 import { Spell, Spells } from "../types/spells";
 import { downloadFileFromString, loadJSONFile } from "../utils";
 import { getSpell, spellIDs } from "../effects/spells";
-import { newSpellModalID, spellListMetadataKey } from "../views/NewSpellModal";
+import { newSpellModalID } from "../views/NewSpellModal";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { APP_KEY } from "../config";
 import { Modal } from "@owlbear-rodeo/sdk/lib/types/Modal";
 import { log_info } from "../logging";
 import { useOBR } from "../react-obr/providers";
+import { constants } from "../constants";
 
 type ModalType = "choose-spell" | "remove-all-spells";
 
@@ -43,22 +44,22 @@ function removeSpells(spells: string[]) {
     for (const spell of spells) {
         localStorage.removeItem(`${APP_KEY}/spells/${spell}`);
     }
-    const spellListJSON = localStorage.getItem(spellListMetadataKey) ?? "[]";
+    const spellListJSON = localStorage.getItem(constants.SPELL_LIST_METADATA_KEY) ?? "[]";
     const spellList = (JSON.parse(spellListJSON) as string[]).filter(
         (s) => !spells.includes(s)
     );
-    localStorage.setItem(spellListMetadataKey, JSON.stringify(spellList));
-    OBR.scene.setMetadata({ [spellListMetadataKey]: spellList });
+    localStorage.setItem(constants.SPELL_LIST_METADATA_KEY, JSON.stringify(spellList));
+    OBR.scene.setMetadata({ [constants.SPELL_LIST_METADATA_KEY]: spellList });
 }
 
 function removeAllSpells() {
-    const spellListJSON = localStorage.getItem(spellListMetadataKey) ?? "[]";
+    const spellListJSON = localStorage.getItem(constants.SPELL_LIST_METADATA_KEY) ?? "[]";
     const spellList = JSON.parse(spellListJSON) as string[];
     for (const spell of spellList) {
         localStorage.removeItem(`${APP_KEY}/spells/${spell}`);
     }
-    localStorage.setItem(spellListMetadataKey, "[]");
-    OBR.scene.setMetadata({ [spellListMetadataKey]: [] });
+    localStorage.setItem(constants.SPELL_LIST_METADATA_KEY, "[]");
+    OBR.scene.setMetadata({ [constants.SPELL_LIST_METADATA_KEY]: [] });
 }
 
 function addSpells(spells: Spells | null) {
@@ -68,7 +69,7 @@ function addSpells(spells: Spells | null) {
     }
     let added = 0,
         overridden = 0;
-    const spellListJSON = localStorage.getItem(spellListMetadataKey) ?? "[]";
+    const spellListJSON = localStorage.getItem(constants.SPELL_LIST_METADATA_KEY) ?? "[]";
     const spellList = JSON.parse(spellListJSON) as string[];
     for (const [spellID, spell] of Object.entries(spells)) {
         added++;
@@ -82,8 +83,8 @@ function addSpells(spells: Spells | null) {
             JSON.stringify(spell)
         );
     }
-    localStorage.setItem(spellListMetadataKey, JSON.stringify(spellList));
-    OBR.scene.setMetadata({ [spellListMetadataKey]: spellList });
+    localStorage.setItem(constants.SPELL_LIST_METADATA_KEY, JSON.stringify(spellList));
+    OBR.scene.setMetadata({ [constants.SPELL_LIST_METADATA_KEY]: spellList });
     log_info(
         `Added ${added} new spell(s) from file (${overridden} overridden)`
     );
@@ -171,18 +172,18 @@ export default function CustomSpells() {
     useEffect(() => {
         OBR.scene.getMetadata().then((metadata) => {
             if (
-                metadata[spellListMetadataKey] &&
-                Array.isArray(metadata[spellListMetadataKey])
+                metadata[constants.SPELL_LIST_METADATA_KEY] &&
+                Array.isArray(metadata[constants.SPELL_LIST_METADATA_KEY])
             ) {
-                setCustomSpells(metadata[spellListMetadataKey] as string[]);
+                setCustomSpells(metadata[constants.SPELL_LIST_METADATA_KEY] as string[]);
             }
         });
         return OBR.scene.onMetadataChange((metadata) => {
             if (
-                metadata[spellListMetadataKey] &&
-                Array.isArray(metadata[spellListMetadataKey])
+                metadata[constants.SPELL_LIST_METADATA_KEY] &&
+                Array.isArray(metadata[constants.SPELL_LIST_METADATA_KEY])
             ) {
-                setCustomSpells(metadata[spellListMetadataKey] as string[]);
+                setCustomSpells(metadata[constants.SPELL_LIST_METADATA_KEY] as string[]);
             }
         });
     }, [obr.ready]);

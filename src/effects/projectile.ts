@@ -43,14 +43,13 @@ export function getProjectilePose(source: Vector2, destination: Vector2, dpi: nu
     return { distance, rotation, position };
 }
 
-export function projectile(
+export async function projectile(
     projectileInfo: ProjectileProperties,
     duration?: number,
     loops?: number,
     metadata?: Metadata,
     layer?: Layer,
     zIndex?: number,
-    onComplete?: () => void,
     variant?: number,
     spellName?: string,
     spellCaster?: string
@@ -110,6 +109,6 @@ export function projectile(
         images.push(builtImage);
     }
 
-    // Add all items to the local scene
-    registerEffect(images, realDuration, onComplete, spellCaster);
+    // Add all items to the local scene and wait for them to be removed if they are temporary
+    await registerEffect(images, realDuration, spellCaster);
 }

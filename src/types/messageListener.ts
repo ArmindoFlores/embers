@@ -43,7 +43,7 @@ export interface InteractionData {
 
 export interface MessageType {
     instructions: EffectInstruction[];
-    interactions: InteractionData;
+    interactions?: InteractionData;
     spellData?: {
         name: string;
         caster: string;

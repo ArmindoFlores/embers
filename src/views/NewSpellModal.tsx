@@ -15,9 +15,9 @@ import { blueprintFunctions } from "../effects/blueprintFunctions";
 import { getSpell } from "../effects/spells";
 import { useOBR } from "../react-obr/providers";
 import { useParams } from "react-router";
+import { constants } from "../constants";
 
 export const newSpellModalID = `${APP_KEY}/new-spell`;
-export const spellListMetadataKey = `${APP_KEY}/spell-list`;
 const LAYERS: Layer[] = ["ATTACHMENT", "CHARACTER", "CONTROL", "DRAWING", "FOG", "GRID", "MAP", "MOUNT", "NOTE", "POINTER", "POPOVER", "POST_PROCESS", "PROP", "RULER", "TEXT"];
 
 type ValueType = "string" | "number" | "boolean" | "vector" | "effect" | "action" | "layer";
@@ -944,17 +944,17 @@ export default function NewSpellModal() {
         const spellJSON = JSON.stringify(spell);
 
         OBR.scene.getMetadata().then(metadata => {
-            const localStorageSpellList = JSON.parse(localStorage.getItem(spellListMetadataKey) ?? "[]");
+            const localStorageSpellList = JSON.parse(localStorage.getItem(constants.SPELL_LIST_METADATA_KEY) ?? "[]");
             localStorage.setItem(`${APP_KEY}/spells/${spellID}`, spellJSON);
             if (!localStorageSpellList.includes(spellID)) {
-                localStorage.setItem(spellListMetadataKey, JSON.stringify([...localStorageSpellList, spellID]));
+                localStorage.setItem(constants.SPELL_LIST_METADATA_KEY, JSON.stringify([...localStorageSpellList, spellID]));
             }
 
-            const metadataSpellList = metadata[spellListMetadataKey];
+            const metadataSpellList = metadata[constants.SPELL_LIST_METADATA_KEY];
             const spellList = Array.isArray(metadataSpellList) ? metadataSpellList : [];
             if (!spellList.includes(spellID)) {
                 OBR.scene.setMetadata({
-                    [spellListMetadataKey]: [...spellList, spellID]
+                    [constants.SPELL_LIST_METADATA_KEY]: [...spellList, spellID]
                 });
             }
         });

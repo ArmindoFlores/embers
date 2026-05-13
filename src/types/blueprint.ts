@@ -83,7 +83,7 @@ export interface BlueprintFunctionDescription {
     argumentType?: string;
 }
 
-export type BlueprintActionBuiltin = (...args: unknown[]) => void;
+export type BlueprintActionBuiltin = (...args: unknown[]) => Promise<void>;
 export interface BlueprintActionDescription {
     minArgs?: number;
     maxArgs?: number;

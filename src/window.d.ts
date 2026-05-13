@@ -4,7 +4,6 @@ export { };
 
 declare global {
     interface Window {
-        embersWorker: Worker;
         interactionRecord: InteractionRecord;
     }
 }

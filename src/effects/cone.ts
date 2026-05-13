@@ -4,14 +4,13 @@ import { buildEffectImage, getEffect, registerEffect } from "./effects";
 import { ConeProperties } from "../types/cone";
 import { log_error } from "../logging";
 
-export function cone(
+export async function cone(
     coneInfo: ConeProperties,
     duration?: number,
     loops?: number,
     metadata?: Metadata,
     layer?: Layer,
     zIndex?: number,
-    onComplete?: () => void,
     variant?: number,
     spellName?: string,
     spellCaster?: string
@@ -55,6 +54,6 @@ export function cone(
     }
     const { image, effectDuration } = result;
 
-    // Add all items to the local scene
-    registerEffect([image.build()], effectDuration, onComplete, spellCaster);
+    // Add all items to the local scene and wait for them to be removed if they are temporary
+    await registerEffect([image.build()], effectDuration, spellCaster);
 }
